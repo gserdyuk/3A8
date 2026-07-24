@@ -13,8 +13,8 @@ different estimation methods.
 
 ## How it works
 
-The same project is estimated with several independent techniques (WBS decomposition
-+ PERT, analogy / reference class, throughput Monte Carlo, parametric models). Each
+The same project is estimated with several independent techniques (WBS 
+decomposition + PERT, analogy / reference class, throughput Monte Carlo, parametric models). Each
 technique's blind spots are **guaranteed by construction**, not random. When they
 disagree, the gap is not averaged away but **diagnosed** through each method's known
 blind spot — for example, a WBS leaf-sum below the analogy => the charge for the seams
