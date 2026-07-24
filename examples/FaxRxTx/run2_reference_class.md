@@ -1,97 +1,97 @@
-﻿# FaxRxTx — Прогон 2: Reference Class Forecasting (outside view)
+# FaxRxTx — Run 2: Reference Class Forecasting (outside view)
 
-**Метод:** оценка по классу похожих проектов целиком, без декомпозиции на подзадачи.
-**Вход:** SYSTEM.md + assumptions.md (A1–A9). FACT.md, REQUIREMENTS.md и прочие файлы проекта не открывались; веб-поиск не использовался.
-**Дата прогона:** 2026-07-17.
-
----
-
-## 1. Кандидаты референс-класса
-
-Объект оценки (по SYSTEM.md §6 и A1–A8): переписывание с нуля кор-функционала работающей распределённой messaging/telecom-платформы среднего масштаба; продуктовая компания; эпоха 2007–2009; C#/.NET на собственном железе; blended-команда с QA/PM; домен для команды новый; есть работающая v1 как живой референс требований; Definition of Done — боевой трафик в проде и возможность вывода v1 из эксплуатации (A2).
-
-### Кандидат A. «Полное переписывание работающего серверного продукта среднего масштаба» (ground-up rewrite)
-
-Класс проектов, где продуктовая компания решает заменить работающую систему новой, без переиспользования кода. Хорошо задокументированный в индустриальном фольклоре и постмортемах класс с устойчивыми свойствами:
-
-- **Систематическая недооценка объёма.** Работающая v1 создаёт иллюзию «требования известны, осталось написать чисто». На деле значительная доля поведения v1 — неявные фиксы граничных случаев, накопленные годами; новая система вынуждена их переоткрывать. Это классический источник «второй половины проекта после того, как всё вроде готово».
-- **Second-system effect:** вторую версию проектируют «правильно», с запасом на всё, что раздражало в первой (здесь это видно прямо в SYSTEM.md: выкинули MSMQ, изучали DHT, строят собственный оркестратор с вочдогами и токенами). Это удлиняет архитектурную фазу и утяжеляет систему.
-- **Типичный исход по классу:** медианный rewrite такого масштаба занимает примерно в 1.5–2.5 раза больше трудозатрат, чем ожидает команда на старте; заметная доля (по разным индустриальным наблюдениям — порядка 20–40%) rewrite-проектов либо не доходит до полного вывода старой системы из эксплуатации, либо доходит спустя годы параллельной эксплуатации.
-- Типичный успешный представитель класса в середине–конце 2000-х: команда 6–12 человек (blended), 1.5–2.5 года до боевого cutover.
-
-**Соответствие:** высокое. Совпадает почти всё: работающая v1, нулевое переиспользование кода, внутренняя инициатива руководства, продуктовая компания, средний масштаб.
-
-### Кандидат B. «Разработка распределённой messaging/integration-инфраструктуры своими руками, до эпохи готовых брокеров» (середина 2000-х)
-
-Класс: команды, строившие собственные конвейеры доставки сообщений/заданий с гарантиями (mail-шлюзы, SMS/MMS-платформы, биллинговые конвейеры телекомов, обработка документопотоков) в эпоху, когда «брокер + оркестратор» не брались с полки, а писались руками.
-
-Известные свойства класса:
-
-- **Инфраструктурная часть доминирует.** Прикладная логика (рендеринг, парсинг, портал) — видимая часть; контроль доставки каждого сообщения, восстановление после сбоев, борьба с частичными отказами и дубликатами исторически съедали от трети до половины всех трудозатрат и почти весь «хвост» стабилизации.
-- **Хвост стабилизации длинный и плохо сжимаемый:** распределённые сбои воспроизводятся только под реальной нагрузкой, поэтому последние 20% функционала стоят непропорционально дорого.
-- Типичный представитель: 5–10 инженеров, 1–2 года до устойчивого прода, плюс долгий период доводки.
-
-**Соответствие:** высокое по технической природе (самодельная оркестрация, вочдоги+токены, интеграционные тесты на живом трафике — A5, A6), но класс обычно описывает greenfield без v1-референса, то есть чуть завышает требовательский риск относительно нашего случая.
-
-### Кандидат C. «Средний бизнес-софтверный проект эпохи CHAOS-отчётов» (генерический класс)
-
-Широкий класс корпоративных проектов 2000-х: медианный перерасход по срокам/трудозатратам порядка +50–100% к плану, ~20–30% проектов challenged/failed. Даёт полезную базовую ставку «насколько врут оценки вообще», но игнорирует специфику: распределённость, телеком-домен, rewrite. Внутри этого широкого класса наш проект сидит в более тяжёлой подгруппе.
-
-**Соответствие:** низкое как рабочий класс (слишком широк), но пригоден как sanity-check на коэффициент недооценки.
-
-### Выбор рабочего класса
-
-**Рабочий класс — A (rewrite работающего серверного продукта), с поправкой на системные свойства B (самодельная распределённая доставка до эпохи брокеров).** Обоснование: A совпадает по организационной природе (продуктовая компания, v1 существует, внутренняя переделка — именно это определяет динамику скоупа и «второсистемность»), а B поставляет главный технический драйвер трудозатрат — рукописную оркестрацию с гарантиями доставки. C используется только как проверка масштаба коэффициента перерасхода. Итоговое распределение строится по A∩B: «rewrite распределённой доставочной платформы среднего масштаба силами продуктовой команды, 2005–2010».
+**Method:** estimating by the class of similar projects as a whole, without decomposition into subtasks.
+**Input:** SYSTEM.md + assumptions.md (A1–A9). FACT.md, REQUIREMENTS.md, and the other project files were not opened; web search was not used.
+**Run date:** 2026-07-17.
 
 ---
 
-## 2. Калибровка масштаба внутри класса
+## 1. Reference-class candidates
 
-Чтобы поставить проект на шкалу класса (не декомпозируя!), достаточно грубых наблюдаемых признаков:
+The object of the estimate (per SYSTEM.md §6 and A1–A8): rewriting from scratch the core functionality of a working distributed messaging/telecom platform of medium scale; a product company; the 2007–2009 era; C#/.NET on our own hardware; a blended team with QA/PM; the domain new to the team; a working v1 exists as a live requirements reference; the Definition of Done — production traffic in prod and the ability to decommission v1 (A2).
 
-- ~8–10 разнотипных прикладных компонент/подсистем в скоупе (SYSTEM.md §6) + инфраструктурный слой доставки;
-- целевой номинал ~30 msg/с с burst ×10 (A6) — это «средний» масштаб для класса: не игрушка, но и не carrier-grade гигант;
-- кластер 16–20 нод, 10–20 PoP (интеграция, не разработка);
-- 8–10 форматов рендеринга, каждый — отдельная работа по стабилизации (A7);
-- blended-команда с QA/PM, «водопадная» фаза планирования + скрам (A8);
-- смягчители: v1 как референс требований, готовый софт PoP и раутинг, сторонний OCR, отсутствие жёсткого дедлайна при внутренних согласованиях.
+### Candidate A. "A full rewrite of a working server product of medium scale" (ground-up rewrite)
 
-По этим признакам проект попадает в **среднюю часть класса** «rewrite распределённой доставочной платформы»: типовые представители этой средней части исторически исполнялись командами 6–12 человек за 1.5–2.5 года, то есть ложатся в диапазон суммарных трудозатрат порядка **100–300 person-months**, с медианой класса около **150–180 pm**.
+A class of projects where a product company decides to replace a working system with a new one, without code reuse. A class well documented in industrial folklore and post-mortems, with stable properties:
+
+- **Systematic underestimation of volume.** A working v1 creates the illusion "the requirements are known, all that's left is to write it cleanly." In reality a significant share of v1's behavior is implicit fixes of edge cases accumulated over years; the new system is forced to rediscover them. This is the classic source of "the second half of the project after everything seemed done."
+- **Second-system effect:** the second version is designed "properly," with margin for everything that annoyed in the first (here it is visible directly in SYSTEM.md: they threw out MSMQ, studied DHT, are building their own orchestrator with watchdogs and tokens). This lengthens the architectural phase and makes the system heavier.
+- **Typical outcome for the class:** a median rewrite of this scale takes roughly 1.5–2.5 times more effort than the team expects at the start; a noticeable share (by various industrial observations — on the order of 20–40%) of rewrite projects either never reach full decommissioning of the old system or reach it after years of parallel operation.
+- A typical successful representative of the class in the mid-to-late 2000s: a team of 6–12 people (blended), 1.5–2.5 years to a production cutover.
+
+**Fit:** high. Almost everything matches: a working v1, zero code reuse, an internal management initiative, a product company, medium scale.
+
+### Candidate B. "Hand-building distributed messaging/integration infrastructure, before the era of ready brokers" (mid-2000s)
+
+The class: teams building their own delivery pipelines for messages/jobs with guarantees (mail gateways, SMS/MMS platforms, telecom billing pipelines, document-flow processing) in an era when "a broker + an orchestrator" were not taken off the shelf but written by hand.
+
+Known properties of the class:
+
+- **The infrastructure part dominates.** The application logic (rendering, parsing, portal) is the visible part; delivery control of every message, recovery from failures, the fight against partial failures and duplicates historically ate from a third to a half of all the effort and almost the entire stabilization "tail."
+- **The stabilization tail is long and poorly compressible:** distributed failures reproduce only under real load, so the last 20% of the functionality cost disproportionately much.
+- A typical representative: 5–10 engineers, 1–2 years to a stable production, plus a long tuning period.
+
+**Fit:** high in technical nature (home-grown orchestration, watchdogs+tokens, integration tests on live traffic — A5, A6), but the class usually describes greenfield without a v1 reference, i.e. it slightly overstates the requirements risk relative to our case.
+
+### Candidate C. "An average business-software project of the CHAOS-report era" (a generic class)
+
+A broad class of 2000s corporate projects: median overrun in schedule/effort on the order of +50–100% of plan, ~20–30% of projects challenged/failed. It gives a useful base rate for "how much estimates lie in general," but ignores the specifics: distribution, the telecom domain, the rewrite. Within this broad class our project sits in a heavier subgroup.
+
+**Fit:** low as a working class (too broad), but usable as a sanity check on the underestimation coefficient.
+
+### Choice of the working class
+
+**The working class is A (a rewrite of a working server product), with a correction for the systemic properties of B (home-grown distributed delivery before the era of brokers).** Rationale: A matches in organizational nature (a product company, v1 exists, an internal rework — this is exactly what defines the dynamics of the scope and the "second-systemness"), while B supplies the main technical effort driver — hand-written orchestration with delivery guarantees. C is used only as a check on the scale of the overrun coefficient. The final distribution is built on A∩B: "a rewrite of a distributed delivery platform of medium scale by a product team, 2005–2010."
 
 ---
 
-## 3. Распределение трудозатрат (person-months, по A9)
+## 2. Calibrating the scale within the class
 
-| Квантиль | Оценка, pm | Что это за сценарий внутри класса |
+To place the project on the class's scale (without decomposing!), coarse observable features suffice:
+
+- ~8–10 heterogeneous application components/subsystems in the scope (SYSTEM.md §6) + the infrastructure delivery layer;
+- the target nominal ~30 msg/s with a burst ×10 (A6) — this is a "medium" scale for the class: not a toy, but not a carrier-grade giant either;
+- a cluster of 16–20 nodes, 10–20 PoPs (integration, not development);
+- 8–10 rendering formats, each a separate piece of stabilization work (A7);
+- a blended team with QA/PM, a "waterfall" planning phase + scrum (A8);
+- mitigators: v1 as a requirements reference, ready PoP software and routing, a third-party OCR, no hard deadline under internal approvals.
+
+By these features the project lands in the **middle part of the class** "a rewrite of a distributed delivery platform": typical representatives of this middle part were historically executed by teams of 6–12 people in 1.5–2.5 years, i.e. they fall into a total-effort range on the order of **100–300 person-months**, with a class median around **150–180 pm**.
+
+---
+
+## 3. Effort distribution (person-months, per A9)
+
+| Quantile | Estimate, pm | What scenario within the class this is |
 |---|---|---|
-| **P10** | **~85 pm** | Верхний дециль удачи класса: небольшая сильная команда (~5–6 blended), v1-референс реально срезает требовательский риск, вочдог-оркестратор «взлетает» с первой архитектуры, форматы рендеринга стабилизируются без сюрпризов; ~14–16 месяцев до cutover. Ниже 85 pm в этом классе почти не бывает: даже идеальный прогон несёт неснижаемый минимум — 1–2 месяца вникания в новый домен × команда, 8–10 компонент, интеграционные тесты на живом трафике со сравнением с v1. |
-| **P50** | **~160 pm** | Медиана класса: команда ~8 blended, ~20 месяцев. Один-два цикла переделки в слое оркестрации (первая схема вочдогов/токенов не выдерживает реальных сбоев — типовое событие класса), затяжная стабилизация 2–3 «капризных» форматов рендеринга, несколько месяцев параллельной эксплуатации с v1 до полного доверия. Соответствует известному свойству класса: факт ≈ 1.5–2× от наивной внутренней оценки. |
-| **P90** | **~320 pm** | Нижний дециль (без провала): второсистемный размах архитектуры (DHT-амбиции, переусложнённый оркестратор), переоткрытие неявных поведений v1 в проде, живой трафик выявляет расхождения со старой системой волнами, cutover откладывается многократно; команда дорастает до 10–12, срок — 2.5–3 года. Для rewrite-класса перерасход ×2 от медианы — не экзотика, а именно P90. |
+| **P10** | **~85 pm** | The upper decile of the class's luck: a small strong team (~5–6 blended), the v1 reference really cuts the requirements risk, the watchdog orchestrator "takes off" on the first architecture, the rendering formats stabilize without surprises; ~14–16 months to cutover. Below 85 pm almost never happens in this class: even an ideal run carries an irreducible minimum — 1–2 months of immersion in the new domain × team, 8–10 components, integration tests on live traffic with comparison to v1. |
+| **P50** | **~160 pm** | The class median: a team of ~8 blended, ~20 months. One or two rework cycles in the orchestration layer (the first watchdog/token scheme does not withstand real failures — a typical class event), drawn-out stabilization of 2–3 "capricious" rendering formats, several months of parallel operation with v1 until full trust. Corresponds to the known property of the class: fact ≈ 1.5–2× the naive internal estimate. |
+| **P90** | **~320 pm** | The lower decile (without a failure): a second-system sweep of the architecture (DHT ambitions, an over-complicated orchestrator), rediscovery of v1's implicit behaviors in prod, live traffic reveals discrepancies with the old system in waves, the cutover is postponed repeatedly; the team grows to 10–12, the term — 2.5–3 years. For the rewrite class a ×2 overrun from the median is not exotic but exactly P90. |
 
-**P99-хвост (словесно).** У rewrite-класса хвост не гауссов, а «провальный»: сценарии 450–600+ pm — это проекты, где новая система годами живёт рядом со старой, не в силах её вытеснить (расхождения на живом трафике не сходятся, доверие бизнеса не наступает), либо где после смены приоритетов/владельца проект урезается и де-факто не достигает DoD из A2. По базовым ставкам класса вероятность исхода «полный вывод v1 так и не состоялся в разумный срок» — порядка 15–30%; в терминах трудозатрат до момента остановки это и есть масса P99-хвоста. Отдельный усилитель хвоста именно для этой подгруппы класса: интеграционное тестирование на живом потоке со сравнением с v1 — честный, но безжалостный критерий готовности, он не позволяет «объявить победу» раньше времени и потому конвертирует все скрытые дефекты в дополнительные person-months, а не в закрытые глаза.
+**The P99 tail (in words).** For the rewrite class the tail is not Gaussian but "failure-shaped": scenarios of 450–600+ pm are projects where the new system lives beside the old for years, unable to displace it (discrepancies on live traffic do not converge, business trust does not arrive), or where after a change of priorities/owner the project is cut and de facto does not reach the DoD of A2. By the class base rates the probability of the outcome "full decommissioning of v1 never happened within a reasonable term" is on the order of 15–30%; in terms of effort to the point of stopping, this is exactly the mass of the P99 tail. A separate tail amplifier specifically for this subgroup of the class: integration testing on the live stream with comparison to v1 is an honest but merciless readiness criterion; it does not allow "declaring victory" prematurely and therefore converts all hidden defects into additional person-months, not into closed eyes.
 
-### Почему точки именно такие (сводка обоснований через свойства класса)
+### Why the points are exactly these (a summary of the justifications through class properties)
 
-1. **Частота и размер недооценки.** Генерический класс C даёт медианный перерасход +50–100%; подгруппа «rewrite + распределёнка» стабильно в верхней половине этого диапазона. Медиана 160 pm уже включает этот перерасход относительно «наивных» ~90–110 pm, которые команда такого проекта обычно называет на старте.
-2. **Second-system effect** (§SYSTEM.md прямо показывает симптомы: отказ от MSMQ, исследование DHT, собственный оркестратор) — сдвигает и медиану, и особенно P90: главный механизм правого хвоста в классе A.
-3. **Эпоха без готовых брокеров (A5).** В классе B слой «гарантированная доставка + восстановление» исторически стоит 30–50% всех трудозатрат и даёт непропорциональный вклад в хвост стабилизации — это отражено в разрыве P50→P90 (×2), который шире, чем разрыв P10→P50 (×1.9): распределение скошено вправо.
-4. **Живой трафик как тест-оракул.** Свойство подгруппы: сравнение с v1 на реальном потоке удлиняет фазу приёмки, но снижает вероятность «тихого провала» — поэтому P99-хвост у этого проекта скорее «долго и дорого», чем «выкатили сломанное».
-5. **Смягчители учтены в P10/P50:** v1-референс требований, переиспользование PoP-софта/раутинга/OCR, отсутствие внешнего enterprise-заказчика (A8) — именно они не дают медиане уехать к 200+ pm, где сидят greenfield-представители класса B без референса.
-
----
-
-## 4. Что метод не видит по конструкции
-
-Outside view сознательно игнорирует внутреннее устройство именно этой задачи и этой команды. Для сверки с другими прогонами — список слепых зон:
-
-1. **Фактическая сила и состав команды.** Класс усредняет по командам разной квалификации; реальная продуктивность конкретных людей Venali (и то, была ли там пара «якорных» сильных инженеров, тянущих оркестратор) может сдвинуть исход на квантиль в любую сторону. Assumption log численность команды намеренно не фиксирует (A3) — метод этим и пользуется, и от этого же слеп.
-2. **Реальная сложность конкретных компонент.** Метод не различает, что внутри скоупа дорого, а что дёшево: например, действительно ли парсер email и CDR тривиальны, а вочдоги+токены — 40% работы. Это территория декомпозиции; здесь любые такие суждения запрещены и не делались.
-3. **Качество конкретных сторонних компонент.** Насколько стабильны именно Black Ice-класс printer driver, именно эта OCR-библиотека, именно Lustre под Windows-нагрузкой в 2008 — класс знает только «интеграция сторонних компонент иногда взрывается», но не знает, взорвётся ли здесь.
-4. **Фактическое качество v1 как референса.** Если v1 хорошо наблюдаема и её поведение легко снимать — требовательский риск ниже среднего по классу; если v1 — чёрный ящик без логов, выше. Документ этого не сообщает, метод — не видит.
-5. **Организационная динамика конкретной компании.** Патентная тяжба с j2 с 2006 года и последующая продажа компании (SYSTEM.md §7) — сигналы возможного давления на приоритеты/финансирование, которые могли как ускорить («доделать к сделке»), так и оборвать проект. Outside view учитывает такие вещи только как анонимную массу хвоста, а не как конкретный фактор с датами.
-6. **Эффект «скрам после водопада» именно в этой команде.** Класс усредняет по процессам; была ли фаза планирования полезной или ритуальной — вне разрешения метода.
-7. **Нелинейности burst-требования.** Проектирование «на номинал с устойчивостью к burst ×10» (A6) может быть почти бесплатным при удачной архитектуре или очень дорогим при неудачной; outside view видит только среднее по классу, не bifurcation конкретного дизайна.
+1. **The frequency and size of underestimation.** The generic class C gives a median overrun of +50–100%; the "rewrite + distributed" subgroup is stably in the upper half of this range. The median 160 pm already includes this overrun relative to the "naive" ~90–110 pm that a team on such a project usually names at the start.
+2. **Second-system effect** (SYSTEM.md directly shows the symptoms: rejecting MSMQ, exploring DHT, its own orchestrator) — shifts both the median and especially P90: the main mechanism of the right tail in class A.
+3. **The era without ready brokers (A5).** In class B the "guaranteed delivery + recovery" layer historically costs 30–50% of all the effort and gives a disproportionate contribution to the stabilization tail — this is reflected in the P50→P90 gap (×2), which is wider than the P10→P50 gap (×1.9): the distribution is skewed right.
+4. **Live traffic as a test oracle.** A property of the subgroup: comparison with v1 on the real stream lengthens the acceptance phase but lowers the probability of a "silent failure" — so the P99 tail of this project is rather "long and expensive" than "shipped broken."
+5. **The mitigators are accounted for in P10/P50:** the v1 requirements reference, reuse of the PoP software/routing/OCR, the absence of an external enterprise client (A8) — these are exactly what keeps the median from drifting to 200+ pm, where the greenfield representatives of class B without a reference sit.
 
 ---
 
-*Файл сгенерирован изолированным прогоном reference class forecasting. Не сверялся с FACT.md, findings.md и прогонами других методов.*
+## 4. What the method does not see by construction
+
+The outside view deliberately ignores the internal workings of this particular task and this particular team. For the check against the other runs — a list of blind zones:
+
+1. **The team's actual strength and composition.** The class averages over teams of different skill; the real productivity of the specific Venali people (and whether there was a pair of "anchor" strong engineers carrying the orchestrator) can shift the outcome by a quantile in either direction. The assumption log deliberately does not fix the team's headcount (A3) — the method both uses this and is blind because of it.
+2. **The real complexity of specific components.** The method does not distinguish what inside the scope is expensive and what is cheap: for example, whether the email parser and CDR are really trivial, and watchdogs+tokens are 40% of the work. This is decomposition's territory; here any such judgments are forbidden and were not made.
+3. **The quality of specific third-party components.** How stable exactly the Black Ice-class printer driver, exactly this OCR library, exactly Lustre under Windows load in 2008 are — the class knows only "integrating third-party components sometimes blows up," but does not know whether it will blow up here.
+4. **The actual quality of v1 as a reference.** If v1 is well observable and its behavior is easy to capture — the requirements risk is below the class average; if v1 is a black box without logs, above. The document does not report this, the method does not see it.
+5. **The organizational dynamics of the specific company.** The patent lawsuit with j2 from 2006 and the subsequent sale of the company (SYSTEM.md §7) — signals of possible pressure on priorities/financing, which could either accelerate ("finish for the deal") or cut off the project. The outside view accounts for such things only as an anonymous mass of the tail, not as a specific factor with dates.
+6. **The "scrum after waterfall" effect in this particular team.** The class averages over processes; whether the planning phase was useful or ritual is beyond the method's resolution.
+7. **The nonlinearities of the burst requirement.** Designing "to the nominal with burst ×10 resilience" (A6) may be almost free with a lucky architecture or very expensive with an unlucky one; the outside view sees only the class average, not the bifurcation of the specific design.
+
+---
+
+*The file was generated by an isolated reference class forecasting run. It was not checked against FACT.md, findings.md, or the runs of the other methods.*

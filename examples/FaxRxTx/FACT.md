@@ -1,14 +1,14 @@
-﻿# FaxRxTx — фактический исход проекта (SEALED)
+# FaxRxTx — the project's actual outcome (SEALED)
 
-**НЕ включать в контекст агентов-оценщиков.** Файл открывается только на
-шаге D (финальная сверка), после завершения всех независимых прогонов.
+**Do NOT include in the context of the estimator agents.** The file is opened
+only at Step D (the final check), after all independent runs are complete.
 
-- Команда: **~10 человек (±)**, включая QA/PM.
-- Длительность: **около 1 года**.
-- Итого: **~120 человеко-месяцев**.
-- Период работ: примерно 2007–2009 (участник называл и «2007–2008»,
-  и «2008–2009»).
+- Team: **~10 people (±)**, including QA/PM.
+- Duration: **about 1 year**.
+- Total: **~120 person-months**.
+- Work period: roughly 2007–2009 (the participant named both "2007–2008"
+  and "2008–2009").
 
-Оговорка: цифры по памяти участника (записано 2026-07-17), документальных
-источников нет. Точность оценки длительности работы — по словам участника,
-**около ±20%** (то есть ~120 чел-мес ≈ диапазон 96–144 чел-мес).
+Caveat: the numbers are from the participant's memory (recorded 2026-07-17), there are no
+documentary sources. The accuracy of the duration estimate, per the participant, is
+**about ±20%** (i.e. ~120 person-months ≈ a range of 96–144 person-months).

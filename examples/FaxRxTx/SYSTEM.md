@@ -1,143 +1,142 @@
-﻿# FaxRxTx (Venali) — описание системы и задачи
+# FaxRxTx (Venali) — system and task description
 
-**Источник:** воспоминания участника проекта, записаны 2026-07-17 со слов.
-Реальный коммерческий проект (компания Venali, датацентр в Майами).
-Пометки неуверенности («кажется», «вроде», «не помню») сохранены намеренно —
-это часть входных данных, а не редакторский брак.
+**Source:** the recollections of a project participant, recorded 2026-07-17 from their
+account. A real commercial project (the company Venali, a data center in Miami).
+Markers of uncertainty ("it seems," "I think," "I don't remember") are kept deliberately —
+they are part of the input data, not editorial defects.
 
-**Статус документа:** фиксируемый вход для пайплайна 3A8 (аналог
-BMS_extracted.md в примере BMS). Оценка должна опираться только на этот
-документ + assumption log, без доступа к фактическому исходу.
-
----
-
-## 1. Что делает система
-
-Worldwide-сервис передачи и приёма факсов: как минимум Европа и США
-(возможно, и Австралия — участник не помнит точно). Пользователь получает
-входящие факсы на email и отправляет исходящие факсы письмом на специальный
-адрес.
-
-## 2. Приём факсов (Rx)
-
-1. Географически распределённые точки присутствия (PoP) размещены у
-   телеком-провайдеров: работали с BT, с другими провайдерами тоже.
-   У провайдера арендуется место в шкафу, ставится компьютер с платами
-   **Brooktrout** для приёма факсов.
-2. Принятые факсы в виде TIFF-файлов передаются в собственный датацентр
-   в Майами.
-3. В датацентре, в зависимости от конфигурации пользователя, факс либо
-   присоединяется к email постранично (TIFF), либо конвертируется в PDF
-   и аттачится к email. Конвертация в PDF включала оцифровку (OCR) —
-   этим занимались OCR-воркеры.
-4. Email отправляется пользователю. Конвертацией и отправкой занимаются
-   **воркеры**.
-
-## 3. Передача факсов (Tx)
-
-1. Пользователь присылает email на определённый адрес. Письмо парсится,
-   из него добывается номер факса адресата.
-2. Документ из аттачмента рендерится в TIFF (кажется, через **Black Ice**
-   printer driver) и в виде архива отправляется в точку присутствия, где
-   уходит в PSTN через платы Brooktrout.
-3. Работает программа **раутинга** (least-cost routing): определяет, в какую
-   точку присутствия отправить TIFF-файлы, чтобы доставка была дешевле.
-4. **Рендереры** — для основных форматов документов: DOC, XLS, PPT, PDF,
-   TXT, GIF, TIFF (список по памяти, участник мог что-то забыть; всего
-   порядка 8–10 форматов).
-
-## 4. Инфраструктура и ключевые технические решения
-
-- **Собственный кластер компьютеров Windows 7** — для рендеринга и других
-  задач.
-- **Тул управления кластером** — длина очередей и т.п.
-- **Очередь заданий (MQ) не использовалась**: использование MSMQ в предыдущей
-  версии системы ломало всю работу. Вместо неё — самодельная система из
-  **вочдогов и токенов** (неупорядоченное хранилище), которая хранила статус
-  каждого факса и возобновляла работу, если что-то пошло не так. По сути —
-  оркестратор большого числа факсов.
-- **Хранение:** файловая система **Lustre** (вроде от HP) — хранила и архив
-  факсов, и рабочие файлы. Была и база данных (СУБД не уточнена) — через
-  БД и API общались компоненты.
-- **Язык разработки:** C#.
-- **NOC** — внутренний контрольный центр: состояние удалённых нод (PoP),
-  кластера и очередей (там, где они были).
-- **Юзер-портал** — сайт пользователей.
-
-## 5. Масштаб
-
-- Номинальный целевой объём — **~1 000 000 факсов за 10-часовой день**
-  (~30/с в среднем). Цифра 10 000 000/день (~300/с) — **burst-оценка**,
-  пиковый режим ~10× к номиналу. Фактический трафик был ещё ниже
-  номинала (уточнение участника, 2026-07-17).
-- Точек присутствия (PoP): **10–20**.
-- Нод в рендер-кластере: **~16–20** (по памяти: «наверное 20», «может 16»),
-  объединены собственной сетью.
-
-## 6. Скоуп команды (объект оценки)
-
-Контекст: к началу работ **уже существовала работающая первая версия
-системы**. Задача — переделать то, что не нравилось руководству в
-первоначальной версии. Команда при этом **домена не знала**: около
-месяца (возможно, двух) ушло на обсуждения, вникание в предметную
-область и выбор технологий (изучали DHT и другие механизмы).
-Переиспользования кода не было («никаких референсных базовых
-классов») — со старой системой только интеграция и сосуществование
-на время перехода.
-
-**Делала команда (входит в оценку):**
-
-- этап вникания в домен и выбора архитектуры/технологий (рассматривали
-  DHT и т.п.) — примерно 1–2 месяца;
-- воркеры печати (рендеринга) и OCR — OCR на библиотеке третьей стороны;
-- сам кластер с механизмом контроля доставки (вочдоги + токены, §4);
-- NOC;
-- юзер-портал;
-- парсер входящих email (Tx-путь);
-- сохранение CDR и данных для биллинга (сам биллинг — вне скоупа);
-- интеграционные тесты на реальном потоке сообщений со сравнением
-  результатов со «старой системой».
-
-**Не делала команда (вне оценки):**
-
-- софт на PoP'ах (приём/отправка через Brooktrout) — уже был;
-- программа раутинга (least-cost) — была готова, переиспользована;
-- биллинг — был отдельно.
-
-Компоненты общались через базу данных и API.
-
-**Процесс:** «скрам после водопада» — сначала фаза планирования, затем
-скрам. Жёсткого дедлайна не было, но давление было. В команду входили
-и QA/PM, не только разработчики. Период работ — примерно 2007–2009
-(участник называл и «2007–2008», и «2008–2009»).
-
-## 7. Публичный контекст (открытые источники, 2026-07-17)
-
-- Venali, Inc. — Майами, hosted enterprise internet fax для Fortune 1000
-  (медицина, ритейл, финансы/страхование).
-- Куплена j2 Global в сентябре 2010 за ~$17 млн; выручка ~$10 млн за
-  предшествующие 12 месяцев. С 2006 шла патентная тяжба Venali против j2,
-  закрытая сделкой.
-- Кластер на Windows 7 (вышла в октябре 2009) + продажа компании в 2010
-  ограничивают датировку описываемой разработки примерно 2005–2010 годами;
-  точный период — уточнить у участника.
-
-## 8. Задача оценки
-
-Оценить **трудозатраты в человеко-месяцах** на скоуп из §6 — вслепую,
-только по этому документу и assumption log.
-
-Фактический исход проекта (размер команды, длительность, итоговые
-человеко-месяцы) записан отдельно в **FACT.md** и не должен попадать
-в контекст агентов-оценщиков. Сверка с фактом — только на финальном
-шаге D пайплайна.
+**Document status:** a fixed input for the 3A8 pipeline (the analog of
+BMS_extracted.md in the BMS example). The estimate must rely only on this
+document + the assumption log, with no access to the actual outcome.
 
 ---
 
-## Примечание о REQUIREMENTS.md
+## 1. What the system does
 
-Лежащий рядом REQUIREMENTS.md — более ранняя синтетическая постановка
-«модель ёмкости для приёма факсов». Она расходится с реальной системой:
-только приём (без Tx), 100 тыс. факсов/день вместо 10 млн design target,
-придуманные SLA. Считать её черновиком другой задачи, не описанием этой
-системы; судьбу файла решает автор проекта.
+A worldwide fax send-and-receive service: at least Europe and the USA
+(possibly Australia too — the participant does not remember exactly). The user receives
+incoming faxes by email and sends outgoing faxes by emailing a special address.
+
+## 2. Fax reception (Rx)
+
+1. Geographically distributed points of presence (PoP) are placed at
+   telecom providers: they worked with BT and with others too.
+   Rack space is rented at the provider, a computer with **Brooktrout**
+   boards is installed to receive faxes.
+2. Received faxes, as TIFF files, are sent to the company's own data center
+   in Miami.
+3. In the data center, depending on the user's configuration, the fax is either
+   attached to the email page by page (TIFF) or converted to PDF
+   and attached to the email. Conversion to PDF included digitization (OCR) —
+   this was handled by OCR workers.
+4. The email is sent to the user. Conversion and sending are handled by
+   **workers**.
+
+## 3. Fax transmission (Tx)
+
+1. The user sends an email to a specific address. The email is parsed,
+   the recipient's fax number is extracted from it.
+2. The document from the attachment is rendered to TIFF (via, it seems, the **Black Ice**
+   printer driver) and sent as an archive to a point of presence, where it
+   goes into the PSTN through the Brooktrout boards.
+3. A **routing** program (least-cost routing) works: it decides which
+   point of presence to send the TIFF files to, so that delivery is cheaper.
+4. **Renderers** — for the main document formats: DOC, XLS, PPT, PDF,
+   TXT, GIF, TIFF (the list is from memory; the participant may have forgotten
+   something; on the order of 8–10 formats in all).
+
+## 4. Infrastructure and key technical decisions
+
+- **Its own cluster of Windows 7 computers** — for rendering and other
+  tasks.
+- **A cluster management tool** — queue lengths and so on.
+- **A job queue (MQ) was not used**: using MSMQ in the previous version of the
+  system broke everything. Instead — a home-grown system of
+  **watchdogs and tokens** (an unordered store) that kept the status
+  of each fax and resumed work if something went wrong. Essentially — an
+  orchestrator of a large number of faxes.
+- **Storage:** the **Lustre** file system (from HP, it seems) — it stored both the
+  fax archive and the working files. There was also a database (the DBMS is not
+  specified) — the components communicated through the DB and an API.
+- **Development language:** C#.
+- **NOC** — an internal control center: the state of the remote nodes (PoP),
+  the cluster, and the queues (where there were any).
+- **User portal** — the users' website.
+
+## 5. Scale
+
+- The nominal target volume — **~1,000,000 faxes per 10-hour day**
+  (~30/s on average). The figure 10,000,000/day (~300/s) is a **burst estimate**,
+  the peak mode ~10× the nominal. Actual traffic was even below the
+  nominal (the participant's clarification, 2026-07-17).
+- Points of presence (PoP): **10–20**.
+- Nodes in the render cluster: **~16–20** (from memory: "probably 20," "maybe 16"),
+  joined by a private network.
+
+## 6. The team's scope (the object of the estimate)
+
+Context: by the start of the work **a working first version of the system already
+existed**. The task was to redo what management did not like in the
+original version. The team, meanwhile, **did not know the domain**: about
+a month (possibly two) went into discussions, immersion in the subject
+area, and technology selection (they studied DHT and other mechanisms).
+There was no code reuse ("no reference base classes") —
+only integration with the old system and coexistence for the duration
+of the transition.
+
+**What the team did (included in the estimate):**
+
+- the stage of domain immersion and architecture/technology selection
+  (they considered DHT and the like) — about 1–2 months;
+- the printing (rendering) and OCR workers — OCR on a third-party library;
+- the cluster itself with the delivery-control mechanism (watchdogs + tokens, §4);
+- the NOC;
+- the user portal;
+- the inbound-email parser (the Tx path);
+- saving CDR and billing data (billing itself is out of scope);
+- integration tests on the real message stream with comparison of the
+  results to the "old system."
+
+**What the team did not do (out of the estimate):**
+
+- the software on the PoPs (reception/sending via Brooktrout) — already existed;
+- the routing program (least-cost) — was ready, reused;
+- billing — was separate.
+
+The components communicated through the database and an API.
+
+**Process:** "scrum after waterfall" — first a planning phase, then
+scrum. There was no hard deadline, but there was pressure. The team included
+QA/PM, not just developers. The work period — roughly 2007–2009
+(the participant named both "2007–2008" and "2008–2009").
+
+## 7. Public context (open sources, 2026-07-17)
+
+- Venali, Inc. — Miami, hosted enterprise internet fax for Fortune 1000
+  (healthcare, retail, finance/insurance).
+- Acquired by j2 Global in September 2010 for ~$17M; revenue ~$10M over
+  the preceding 12 months. Since 2006 there was a patent lawsuit by Venali against j2,
+  closed by the deal.
+- A cluster on Windows 7 (released in October 2009) + the sale of the company in 2010
+  constrain the dating of the development described to roughly 2005–2010;
+  the exact period — to be clarified with the participant.
+
+## 8. The estimation task
+
+Estimate the **effort in person-months** for the scope from §6 — blind,
+from this document and the assumption log only.
+
+The project's actual outcome (team size, duration, final
+person-months) is recorded separately in **FACT.md** and must not enter
+the context of the estimator agents. The check against fact — only at the final
+Step D of the pipeline.
+
+---
+
+## A note on REQUIREMENTS.md
+
+The REQUIREMENTS.md next to it is an earlier synthetic statement of
+a "capacity model for fax reception." It diverges from the real system:
+reception only (no Tx), 100k faxes/day instead of the 10M design target,
+invented SLAs. Treat it as a draft of a different task, not a description of this
+system; the file's fate is up to the project's author.

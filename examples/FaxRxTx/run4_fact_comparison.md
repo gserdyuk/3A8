@@ -1,45 +1,45 @@
-﻿# FaxRxTx — Шаг D: вскрытие FACT.md и сверка с фактом (2026-07-17)
+# FaxRxTx — Step D: unsealing FACT.md and checking against fact (2026-07-17)
 
-Все слепые прогоны (run1–run3) завершены до вскрытия. Факт из FACT.md:
-**~120 person-months** (команда ~10 человек × ~1 год), точность оценки
-длительности со слов участника **±20% → окно 96–144 pm**.
+All blind runs (run1–run3) are complete before the unsealing. The fact from FACT.md:
+**~120 person-months** (a team of ~10 people × ~1 year), the accuracy of the duration
+estimate per the participant **±20% → a window of 96–144 pm**.
 
-## Сводная таблица
+## Summary table
 
-| Оценка | Центр | Диапазон | Против окна факта 96–144 |
+| Estimate | Center | Range | Against the fact window 96–144 |
 |---|---|---|---|
-| Run 1 — decomposition (сырой) | E ≈ 111.6 | E±2σ: 103–120.5; honest ΣO…ΣP: 51–205 | в окне (−7% от 120) |
-| Run 2 — reference class | P50 ≈ 160 | P10 85 … P90 320 | факт ≈ P25–P35 класса, внутри распределения |
-| Run 3 — калиброванный decomposition | ≈ 155 | 135–180 | +29% от центра окна, +8% от его края; диапазоны перекрываются (135–144) |
+| Run 1 — decomposition (raw) | E ≈ 111.6 | E±2σ: 103–120.5; honest ΣO…ΣP: 51–205 | in the window (−7% of 120) |
+| Run 2 — reference class | P50 ≈ 160 | P10 85 … P90 320 | fact ≈ P25–P35 of the class, inside the distribution |
+| Run 3 — calibrated decomposition | ≈ 155 | 135–180 | +29% of the window center, +8% of its edge; the ranges overlap (135–144) |
 
-## Интерпретация
+## Interpretation
 
-**Главная оговорка — сам измеритель мягкий.** Факт восстановлен по памяти
-~18-летней давности с заявленной точностью ±20%. Расхождение калиброванной
-оценки с фактом (155 против 120) — в пределах одной ширины погрешности
-самого воспоминания: если проект на деле занял не 12, а 13–14 месяцев,
-«промаха» нет вообще, а отличить это по памяти участник не может.
+**The main caveat — the measuring instrument itself is soft.** The fact is reconstructed from
+memory ~18 years old with a stated accuracy of ±20%. The divergence of the calibrated
+estimate from the fact (155 vs. 120) is within one width of the error
+of the recollection itself: if the project actually took not 12 but 13–14 months,
+there is no "miss" at all, and the participant cannot tell this apart from memory.
 
-Поэтому итог формулируется скромно:
+Therefore the result is stated modestly:
 
-- **Все три оценки согласуются с фактом в пределах точности воспоминаний.**
-  На таком факте нельзя утверждать ни «сырой decomposition попал», ни
-  «калиброванный промахнулся» — различие между 112 и 155 меньше
-  разрешающей способности измерителя.
-- Пайплайн не выдал абсурда ни на одном шаге: сырой центр, калиброванный
-  коридор и квантиль факта в классе (~P30) взаимно совместимы.
-- **Воспроизведены оба структурных паттерна BMS:** абсурдно узкий CI
-  сырого decomposition (±8% — артефакт независимости листьев) и
-  некалибруемый правый хвост (выше ~177 pm множителями на WBS не
-  дотянуть; P90 класса 320 берётся только из reference class).
+- **All three estimates are consistent with the fact within the accuracy of the recollection.**
+  On such a fact one can assert neither "raw decomposition hit" nor
+  "calibrated missed" — the difference between 112 and 155 is smaller than the
+  resolving power of the instrument.
+- The pipeline produced no absurdity at any step: the raw center, the calibrated
+  corridor, and the fact's quantile in the class (~P30) are mutually compatible.
+- **Both structural patterns of BMS reproduced:** the absurdly narrow CI
+  of raw decomposition (±8% — an artifact of leaf independence) and
+  the non-calibratable right tail (above ~177 pm multipliers on the WBS cannot
+  reach; the class P90 320 is taken only from reference class).
 
-## Гипотезы на будущее (не выводы; n=2, факт мягкий)
+## Hypotheses for the future (not conclusions; n=2, the fact is soft)
 
-1. Калибровка тянет оценку к P50 ансамбля и потому должна систематически
-   завышать на проектах лучше медианы — цена страховки от правого хвоста.
-   Возможная форма ответа — тройка: центр из WBS, коридор из калибровки,
-   резерв из хвоста класса. Проверять на проекте с задокументированным
-   (не по памяти) фактом.
-2. «Воспитанный» WBS (слепые пятна уже итемизированы листами) + ансамблевые
-   глобальные множители (scope creep, орг-налог) = риск двойного счёта;
-   возможно, нужна «скидка на воспитанность WBS».
+1. Calibration pulls the estimate toward the ensemble P50 and therefore should systematically
+   overshoot on projects better than the median — the price of insurance against the right tail.
+   A possible form of the answer — a triple: the center from the WBS, the corridor from calibration,
+   the reserve from the class tail. To be tested on a project with a documented
+   (not remembered) fact.
+2. A "well-behaved" WBS (blind spots already itemized as leaves) + ensemble
+   global multipliers (scope creep, org tax) = a risk of double counting;
+   a "well-behavedness discount on the WBS" may be needed.
