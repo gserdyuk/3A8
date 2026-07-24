@@ -1,179 +1,179 @@
-﻿# FaxRxTx — Run 1: Classic Decomposition (bottom-up WBS + PERT)
+# FaxRxTx — Run 1: Classic Decomposition (bottom-up WBS + PERT)
 
-**Метод:** декомпозиция скоупа §6 SYSTEM.md на листовые работы, тройные оценки
-O/M/P в person-months, PERT: E = (O + 4M + P)/6, σ = (P − O)/6.
-**Вход:** SYSTEM.md + assumptions.md (A1–A9). Ничего другого не читалось.
-**Единицы:** person-months (A9), blended-команда включая QA/PM.
-**Дата прогона:** 2026-07-17.
+**Method:** decomposition of the §6 scope of SYSTEM.md into leaf tasks, triple
+estimates O/M/P in person-months, PERT: E = (O + 4M + P)/6, σ = (P − O)/6.
+**Input:** SYSTEM.md + assumptions.md (A1–A9). Nothing else was read.
+**Units:** person-months (A9), a blended team including QA/PM.
+**Run date:** 2026-07-17.
 
-Принципы декомпозиции:
-- Скоуп строго по A1 (входит / не входит), DoD по A2 (боевой трафик,
-  сравнение со старой системой, v1 можно выключать).
-- Эпоха A5: оркестрация (вочдоги + токены) пишется руками, MQ и готовые
-  оркестраторы недоступны/исключены — это заметная доля ядра.
-- Форматы рендеринга по A7 — каждый формат отдельная работа по интеграции
-  и стабилизации, включая резерв на 1–3 забытых.
-- Масштаб по A6: номинал ~30/с, burst ~300/с, устойчивость к сбоям и
-  контроль доставки каждого факса — обязательные свойства, заложены в
-  оценки ядра и нагрузочного тестирования, без внешних множителей.
+Decomposition principles:
+- Scope strictly per A1 (included / not included), DoD per A2 (production traffic,
+  comparison with the old system, v1 can be switched off).
+- Era A5: orchestration (watchdogs + tokens) is written by hand, MQ and ready
+  orchestrators are unavailable/excluded — this is a noticeable share of the core.
+- Rendering formats per A7 — each format is a separate piece of integration
+  and stabilization work, including a reserve for 1–3 forgotten ones.
+- Scale per A6: nominal ~30/s, burst ~300/s, resilience to failures and
+  delivery control of each fax are mandatory properties, built into the
+  estimates of the core and load testing, without external multipliers.
 
 ---
 
-## WBS и оценки (person-months)
+## WBS and estimates (person-months)
 
-### 1. Фаза вникания и выбора архитектуры (A1, A3)
+### 1. The immersion and architecture-selection phase (A1, A3)
 
-| ID | Работа | O | M | P | E | σ |
+| ID | Work | O | M | P | E | σ |
 |----|--------|---:|---:|---:|---:|---:|
-| 1.1 | Вникание в домен: факс-протоколы, телеком, разбор поведения v1 как живого референса требований | 2.0 | 4.0 | 7.0 | 4.17 | 0.83 |
-| 1.2 | Оценка технологий и прототипы (DHT и другие механизмы распределённого хранения/координации) | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
-| 1.3 | Архитектура целевой системы + план сосуществования/перехода с v1 | 2.0 | 4.0 | 8.0 | 4.33 | 1.00 |
-| 1.4 | Фаза планирования («водопад перед скрамом»): бэклог, спеки, постановка процесса | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
+| 1.1 | Domain immersion: fax protocols, telecom, analysis of v1's behavior as a live requirements reference | 2.0 | 4.0 | 7.0 | 4.17 | 0.83 |
+| 1.2 | Technology evaluation and prototypes (DHT and other distributed storage/coordination mechanisms) | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
+| 1.3 | Architecture of the target system + a coexistence/transition plan with v1 | 2.0 | 4.0 | 8.0 | 4.33 | 1.00 |
+| 1.4 | Planning phase ("waterfall before scrum"): backlog, specs, process setup | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
 
-### 2. Ядро: кластер и механизм контроля доставки (вочдоги + токены)
+### 2. Core: the cluster and the delivery-control mechanism (watchdogs + tokens)
 
-| ID | Работа | O | M | P | E | σ |
+| ID | Work | O | M | P | E | σ |
 |----|--------|---:|---:|---:|---:|---:|
-| 2.1 | Модель статуса факса и токенов: неупорядоченное хранилище статусов, жизненный цикл задания | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
-| 2.2 | Вочдоги: обнаружение зависших/потерянных заданий, возобновление обработки после сбоев | 2.0 | 4.0 | 8.0 | 4.33 | 1.00 |
-| 2.3 | Диспетчеризация заданий по нодам кластера без MQ (pull/lease-логика поверх БД и хранилища) | 2.0 | 4.0 | 8.0 | 4.33 | 1.00 |
-| 2.4 | Семантика доставки: идемпотентность, защита от дублей/потерь при сбоях нод и сети | 2.0 | 4.0 | 9.0 | 4.50 | 1.17 |
-| 2.5 | Тул управления кластером: длины очередей, состояние нод, управление воркерами | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
-| 2.6 | Развёртывание и конфигурация нод кластера (~16–20), собственная сеть, скрипты установки | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
-| 2.7 | Нагрузочное тестирование ядра: номинал ~30/с, burst до ~300/с, деградация и восстановление | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
+| 2.1 | Fax status and token model: an unordered status store, the job lifecycle | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
+| 2.2 | Watchdogs: detecting hung/lost jobs, resuming processing after failures | 2.0 | 4.0 | 8.0 | 4.33 | 1.00 |
+| 2.3 | Job dispatch across cluster nodes without MQ (pull/lease logic over the DB and the store) | 2.0 | 4.0 | 8.0 | 4.33 | 1.00 |
+| 2.4 | Delivery semantics: idempotency, protection against duplicates/losses under node and network failures | 2.0 | 4.0 | 9.0 | 4.50 | 1.17 |
+| 2.5 | Cluster management tool: queue lengths, node state, worker management | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
+| 2.6 | Deployment and configuration of the cluster nodes (~16–20), a private network, install scripts | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
+| 2.7 | Load testing of the core: nominal ~30/s, burst up to ~300/s, degradation and recovery | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
 
-### 3. Rx-путь (приём факсов)
+### 3. The Rx path (fax reception)
 
-| ID | Работа | O | M | P | E | σ |
+| ID | Work | O | M | P | E | σ |
 |----|--------|---:|---:|---:|---:|---:|
-| 3.1 | Приём TIFF из PoP в датацентр: интеграция с существующим PoP-софтом, регистрация факса в ядре | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
-| 3.2 | Воркер компоновки email с постраничными TIFF-аттачментами (по конфигурации пользователя) | 0.75 | 1.5 | 3.0 | 1.63 | 0.38 |
-| 3.3 | Воркер конвертации TIFF → PDF | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
-| 3.4 | OCR-воркер: интеграция сторонней OCR-библиотеки, встраивание в PDF-конвейер, стабилизация | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
-| 3.5 | Воркер отправки email: SMTP, ретраи, обработка недоставки | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
+| 3.1 | Reception of TIFF from PoP into the data center: integration with the existing PoP software, registration of the fax in the core | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
+| 3.2 | Worker composing the email with per-page TIFF attachments (per user configuration) | 0.75 | 1.5 | 3.0 | 1.63 | 0.38 |
+| 3.3 | Worker converting TIFF → PDF | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
+| 3.4 | OCR worker: integration of a third-party OCR library, embedding into the PDF pipeline, stabilization | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
+| 3.5 | Email-sending worker: SMTP, retries, handling non-delivery | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
 
-### 4. Tx-путь (передача факсов)
+### 4. The Tx path (fax transmission)
 
-| ID | Работа | O | M | P | E | σ |
+| ID | Work | O | M | P | E | σ |
 |----|--------|---:|---:|---:|---:|---:|
-| 4.1 | Парсер входящих email: адресация, извлечение номера факса, аттачменты, валидация, ошибки пользователю | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
-| 4.2 | Каркас рендеринга через printer driver (Black Ice-класс): изоляция процессов, таймауты, зависшие приложения | 2.0 | 3.5 | 7.0 | 3.83 | 0.83 |
-| 4.3 | Рендереры офисных форматов DOC/XLS/PPT: интеграция и стабилизация (самые капризные) | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
-| 4.4 | Рендереры PDF и TXT | 0.75 | 1.5 | 3.0 | 1.63 | 0.38 |
-| 4.5 | Рендереры графических форматов GIF/TIFF | 0.5 | 1.0 | 2.0 | 1.08 | 0.25 |
-| 4.6 | Резерв A7: 1–3 забытых формата (интеграция + стабилизация каждого) | 0.5 | 1.5 | 3.5 | 1.67 | 0.50 |
-| 4.7 | Передача TIFF-архивов в PoP: упаковка, транспорт, интеграция с готовой программой раутинга | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
-| 4.8 | Статусы отправки: подтверждения/отчёты о доставке, ретраи, уведомления отправителю | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
+| 4.1 | Inbound-email parser: addressing, extracting the fax number, attachments, validation, errors to the user | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
+| 4.2 | Rendering framework via a printer driver (Black Ice-class): process isolation, timeouts, hung applications | 2.0 | 3.5 | 7.0 | 3.83 | 0.83 |
+| 4.3 | Office-format renderers DOC/XLS/PPT: integration and stabilization (the most capricious) | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
+| 4.4 | PDF and TXT renderers | 0.75 | 1.5 | 3.0 | 1.63 | 0.38 |
+| 4.5 | Graphics-format renderers GIF/TIFF | 0.5 | 1.0 | 2.0 | 1.08 | 0.25 |
+| 4.6 | Reserve A7: 1–3 forgotten formats (integration + stabilization of each) | 0.5 | 1.5 | 3.5 | 1.67 | 0.50 |
+| 4.7 | Transmission of TIFF archives to the PoP: packaging, transport, integration with the ready routing program | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
+| 4.8 | Sending statuses: delivery confirmations/reports, retries, notifications to the sender | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
 
 ### 5. NOC
 
-| ID | Работа | O | M | P | E | σ |
+| ID | Work | O | M | P | E | σ |
 |----|--------|---:|---:|---:|---:|---:|
-| 5.1 | Сбор телеметрии: агенты/поллинг удалённых PoP (10–20), нод кластера, очередей | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
-| 5.2 | UI NOC: дашборды состояния, алерты, история инцидентов | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
+| 5.1 | Telemetry collection: agents/polling of the remote PoPs (10–20), cluster nodes, queues | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
+| 5.2 | NOC UI: state dashboards, alerts, incident history | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
 
-### 6. Юзер-портал
+### 6. User portal
 
-| ID | Работа | O | M | P | E | σ |
+| ID | Work | O | M | P | E | σ |
 |----|--------|---:|---:|---:|---:|---:|
-| 6.1 | Портал — бэкенд/API: аккаунты, конфигурация доставки (TIFF/PDF, OCR), номера, история факсов | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
-| 6.2 | Портал — веб-UI (ASP.NET эпохи A5) | 1.0 | 2.5 | 5.0 | 2.67 | 0.67 |
+| 6.1 | Portal — backend/API: accounts, delivery configuration (TIFF/PDF, OCR), numbers, fax history | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
+| 6.2 | Portal — web UI (ASP.NET of era A5) | 1.0 | 2.5 | 5.0 | 2.67 | 0.67 |
 
-### 7. Данные и хранение
+### 7. Data and storage
 
-| ID | Работа | O | M | P | E | σ |
+| ID | Work | O | M | P | E | σ |
 |----|--------|---:|---:|---:|---:|---:|
-| 7.1 | Схема БД и API межкомпонентного взаимодействия (компоненты общаются через БД и API) | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
-| 7.2 | CDR и данные для биллинга: фиксация событий, надёжное сохранение, выгрузка в биллинг (сам биллинг вне скоупа) | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
-| 7.3 | Интеграция с Lustre: layout архива и рабочих файлов, доступ с нод, очистка/ретеншн | 0.75 | 1.5 | 3.0 | 1.63 | 0.38 |
+| 7.1 | DB schema and the API for inter-component interaction (components communicate through the DB and an API) | 1.5 | 3.0 | 6.0 | 3.25 | 0.75 |
+| 7.2 | CDR and billing data: event capture, reliable storage, export to billing (billing itself is out of scope) | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
+| 7.3 | Integration with Lustre: layout of the archive and working files, access from the nodes, cleanup/retention | 0.75 | 1.5 | 3.0 | 1.63 | 0.38 |
 
-### 8. Интеграционное тестирование и переход (A2)
+### 8. Integration testing and transition (A2)
 
-| ID | Работа | O | M | P | E | σ |
+| ID | Work | O | M | P | E | σ |
 |----|--------|---:|---:|---:|---:|---:|
-| 8.1 | Каркас интеграционных тестов на реальном потоке: дублирование трафика, сравнение результатов со старой системой | 2.0 | 4.0 | 8.0 | 4.33 | 1.00 |
-| 8.2 | Прогоны сравнения, разбор расхождений, стабилизация до сходимости с v1 | 2.0 | 4.0 | 9.0 | 4.50 | 1.17 |
-| 8.3 | Сосуществование с v1 и поэтапное переключение боевого трафика | 1.0 | 2.5 | 5.0 | 2.67 | 0.67 |
-| 8.4 | Вывод в прод: прод-конфигурация, runbook, дежурство периода запуска до DoD | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
+| 8.1 | Integration-test framework on the real stream: traffic duplication, comparison of results with the old system | 2.0 | 4.0 | 8.0 | 4.33 | 1.00 |
+| 8.2 | Comparison runs, analysis of discrepancies, stabilization to convergence with v1 | 2.0 | 4.0 | 9.0 | 4.50 | 1.17 |
+| 8.3 | Coexistence with v1 and phased switchover of production traffic | 1.0 | 2.5 | 5.0 | 2.67 | 0.67 |
+| 8.4 | Rollout to production: prod configuration, runbook, launch-period on-call to DoD | 1.0 | 2.0 | 4.0 | 2.17 | 0.50 |
 
-### 9. Сквозные работы (QA/PM входят в оценку по A9)
+### 9. Cross-cutting work (QA/PM are included in the estimate per A9)
 
-| ID | Работа | O | M | P | E | σ |
+| ID | Work | O | M | P | E | σ |
 |----|--------|---:|---:|---:|---:|---:|
-| 9.1 | QA на протяжении разработки: тест-планы, функциональная регрессия компонентов (сверх интеграционных тестов п.8) | 3.0 | 6.0 | 10.0 | 6.17 | 1.17 |
-| 9.2 | PM/скрам-процесс: ведение бэклога, координация, отчётность | 2.0 | 4.0 | 6.0 | 4.00 | 0.67 |
+| 9.1 | QA throughout development: test plans, functional regression of components (beyond the integration tests of §8) | 3.0 | 6.0 | 10.0 | 6.17 | 1.17 |
+| 9.2 | PM/scrum process: backlog management, coordination, reporting | 2.0 | 4.0 | 6.0 | 4.00 | 0.67 |
 
 ---
 
-## Итоги
+## Totals
 
-37 листьев.
+37 leaves.
 
-| Показатель | Значение |
+| Metric | Value |
 |---|---|
-| Σ O (сумма оптимистов) | **51.25 pm** |
-| Σ M (сумма наиболее вероятных) | **103.5 pm** |
-| Σ P (сумма пессимистов) | **204.5 pm** |
+| Σ O (sum of optimistic) | **51.25 pm** |
+| Σ M (sum of most-likely) | **103.5 pm** |
+| Σ P (sum of pessimistic) | **204.5 pm** |
 | **Σ E (PERT)** | **≈ 111.6 pm** |
-| Σ σ² (дисперсия суммы) | ≈ 19.66 |
-| **σ суммы (при независимости листьев)** | **≈ 4.4 pm** |
+| Σ σ² (variance of the sum) | ≈ 19.66 |
+| **σ of the sum (under leaf independence)** | **≈ 4.4 pm** |
 | **E ± 2σ** | **≈ 102.8 … 120.5 pm** |
-| **Honest-диапазон (ΣO … ΣP)** | **51 … 205 pm** |
+| **Honest range (ΣO … ΣP)** | **51 … 205 pm** |
 
-Промежуточные суммы E по разделам: фаза вникания 13.9; ядро/кластер 24.0;
-Rx 11.4; Tx 19.0; NOC 6.5; портал 5.9; данные 7.0; интеграционные
-тесты/переход 13.7; QA/PM сквозные 10.2.
+Intermediate E sums by section: immersion phase 13.9; core/cluster 24.0;
+Rx 11.4; Tx 19.0; NOC 6.5; portal 5.9; data 7.0; integration
+tests/transition 13.7; QA/PM cross-cutting 10.2.
 
-**Явная оговорка про σ.** Суммарная σ ≈ 4.4 pm получена в предположении
-**независимости листьев** (σ² складываются, σ растёт как корень). Это
-известный артефакт метода: реальные риски задач коррелированы (одна и та
-же команда, одна технологическая база, общее ядро), поэтому диапазон
-E ± 2σ (≈ 103–120 pm) **искусственно узок** и отражает не реальную
-неопределённость проекта, а математику суммирования независимых величин.
-Honest-диапазон по суммам крайних сценариев (51–205 pm) честнее описывает
-края, хотя одновременное попадание всех задач в O или всех в P тоже
-маловероятно. Разумное чтение результата: центр ≈ 110 pm, реальная
-неопределённость заметно шире ±2σ и уже, чем ΣO…ΣP.
+**An explicit caveat about σ.** The total σ ≈ 4.4 pm is obtained under the assumption
+of **leaf independence** (σ² add, σ grows as the square root). This is a
+known artifact of the method: real task risks are correlated (the same
+team, one technology base, a shared core), so the range
+E ± 2σ (≈ 103–120 pm) is **artificially narrow** and reflects not the project's real
+uncertainty but the mathematics of summing independent quantities.
+The honest range from the sums of the extreme scenarios (51–205 pm) more honestly describes the
+edges, though all tasks hitting O simultaneously or all hitting P is also
+unlikely. A reasonable reading of the result: center ≈ 110 pm, the real
+uncertainty is noticeably wider than ±2σ and narrower than ΣO…ΣP.
 
 ---
 
-## Что метод не видит по конструкции
+## What the method does not see by construction
 
-Перечисляется без поправок — bottom-up decomposition по построению слеп
-к этим эффектам; их учёт — дело других методов пайплайна.
+Listed without corrections — bottom-up decomposition is by construction blind
+to these effects; accounting for them is the job of the other methods of the pipeline.
 
-1. **Корреляция рисков между задачами.** Суммирование дисперсий как
-   независимых занижает разброс: если «вочдоги + токены» оказались сложнее
-   ожидаемого, то с высокой вероятностью сложнее окажутся и диспетчеризация,
-   и семантика доставки, и интеграционная стабилизация — общая команда,
-   общая архитектура, общие технологические сюрпризы (.NET 3.x, Lustre,
-   отсутствие MQ). Метод складывает σ² и делает вид, что хвосты
-   компенсируются.
-2. **Интеграция частей — рёбра, а не узлы.** WBS оценивает узлы (компоненты),
-   а значительная часть трудозатрат живёт на рёбрах: стыковка воркеров с
-   ядром, ядра с БД/Lustre, Tx-пути с готовым раутингом и PoP-софтом,
-   сосуществование с v1. Часть рёбер здесь выделена в листья (3.1, 4.7, 8.x),
-   но комбинаторика взаимодействий N компонентов всегда шире любого
-   конечного списка листьев — «недостающие рёбра» в оценке отсутствуют.
-3. **Организационный overhead.** Коммуникация в команде, онбординг,
-   смена приоритетов руководством, переключения контекста, простои на
-   ожидание решений, «давление без дедлайна» (A8) — decomposition видит
-   только чистую работу над листьями. Blended-состав частично учтён
-   листьями 9.1–9.2, но системный организационный налог — нет.
-4. **Scope creep.** Оценивается зафиксированный сегодня список работ.
-   Реальный проект «переделать то, что не нравилось руководству» почти
-   гарантированно обрастал новыми хотелками, форматами, требованиями NOC
-   и портала по ходу дела — метод оценивает снимок скоупа, а не его
-   траекторию.
-5. **Неизвестные неизвестные домена.** Команда домена не знала (A3);
-   листья описывают работы, которые *видны заранее*. Задачи, о существовании
-   которых узнаёшь только внутри телеком/факс-домена (капризы протоколов,
-   совместимость факс-аппаратов, качество линий), в WBS не попадают в
-   принципе.
-6. **Хвост стабилизации в проде.** DoD (A2) требует сходимости со старой
-   системой на реальном потоке; листья 8.2–8.4 оценивают предвидимую часть
-   этой работы, но длина хвоста «последних 10%» на живом трафике — классическая
-   зона недооценки bottom-up.
+1. **Correlation of risk across tasks.** Summing variances as independent underestimates
+   the spread: if "watchdogs + tokens" turned out harder than
+   expected, then with high probability dispatch, delivery semantics,
+   and integration stabilization will also be harder — a shared team,
+   a shared architecture, shared technology surprises (.NET 3.x, Lustre,
+   the absence of MQ). The method adds σ² and pretends the tails
+   cancel.
+2. **Integration of the parts — edges, not nodes.** The WBS estimates nodes (components),
+   while a significant share of the effort lives on the edges: joining the workers to
+   the core, the core to the DB/Lustre, the Tx path to the ready routing and PoP
+   software, coexistence with v1. Some edges here are broken out into leaves (3.1, 4.7, 8.x),
+   but the combinatorics of interactions of N components is always wider than any
+   finite list of leaves — the "missing edges" are absent from the estimate.
+3. **Organizational overhead.** Communication within the team, onboarding,
+   changes of priority by management, context switches, idle time waiting
+   for decisions, "pressure without a deadline" (A8) — decomposition sees
+   only the pure work on the leaves. The blended composition is partly accounted for
+   by leaves 9.1–9.2, but the systemic organizational tax is not.
+4. **Scope creep.** The list of work fixed today is estimated.
+   A real project to "redo what management did not like" almost
+   guaranteedly accreted new wishes, formats, requirements for the NOC
+   and portal along the way — the method estimates a snapshot of the scope, not its
+   trajectory.
+5. **Unknown unknowns of the domain.** The team did not know the domain (A3);
+   the leaves describe work that is *visible in advance*. Tasks whose existence
+   you only learn about inside the telecom/fax domain (protocol quirks,
+   fax-machine compatibility, line quality) do not get into the WBS at
+   all.
+6. **The stabilization tail in production.** The DoD (A2) requires convergence with the old
+   system on the real stream; leaves 8.2–8.4 estimate the foreseeable part
+   of this work, but the length of the "last 10%" tail on live traffic is a classic
+   zone of bottom-up underestimation.
 
-Никакие поправочные коэффициенты за пункты 1–6 **не применялись** —
-по протоколу прогона это зона ответственности reference-class-метода.
+No correction coefficients for points 1–6 **were applied** —
+by the run protocol this is the responsibility of the reference-class method.
