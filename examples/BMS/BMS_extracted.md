@@ -27,9 +27,9 @@ Key aspects:
 
 ### Context diagram (image2.png in the docx)
 
-- Внутри системы: **Employees Portal**, **Administration Portal**, **Suppliers Portal**, **Admin and Support**.
-- Акторы: Employees (review/accept bookings; review/update trip details в CTC), Travel Department (alerts/notifications, manage bookings, configuration and rules, reports), IT Support, Hotel suppliers (manual upload of available bookings), Transport suppliers (manual upload of pricing).
-- Внешние системы: **Cost Tracking Center** (hotel and transport requirements → BMS), **External Hotel Booking Systems** (automatic search and booking), **External Transport Booking Systems** (automatic search and booking).
+- Inside the system: **Employees Portal**, **Administration Portal**, **Suppliers Portal**, **Admin and Support**.
+- Actors: Employees (review/accept bookings; review/update trip details in CTC), Travel Department (alerts/notifications, manage bookings, configuration and rules, reports), IT Support, Hotel suppliers (manual upload of available bookings), Transport suppliers (manual upload of pricing).
+- External systems: **Cost Tracking Center** (hotel and transport requirements → BMS), **External Hotel Booking Systems** (automatic search and booking), **External Transport Booking Systems** (automatic search and booking).
 
 ## Functional Requirements
 
@@ -84,9 +84,9 @@ Reports: booking details, suppliers reporting, financial reporting.
 | Data Security | TLS 1.2 minimum for all authenticated client traffic |
 | Data Security | Customer data compliant with Data Protection Act |
 
-## Чего в РФП нет (важно для оценки)
+## What the RFP does not contain (important for estimation)
 
-- Сроков, бюджета, критериев выбора поставщика, процедуры подачи предложений.
-- Объёмов нагрузки кроме косвенных (5000 отелей + 1000 такси в год ≈ низкая транзакционная нагрузка).
-- Деталей API CTC/UPSA (только факт наличия API), деталей SSO (только "Documentation").
-- Состава команды, Definition of Done, модели поддержки после запуска (кроме "Supplier will host and support").
+- Timelines, budget, supplier selection criteria, the proposal submission procedure.
+- Load volumes beyond the indirect ones (5000 hotels + 1000 taxis per year ≈ low transaction load).
+- Details of the CTC/UPSA APIs (only the fact that an API exists), details of SSO (only "Documentation").
+- The team composition, Definition of Done, the post-launch support model (except "Supplier will host and support").
