@@ -1,60 +1,60 @@
-﻿# BMS — Прогон №2: Reference Class Forecasting (outside view)
+# BMS — Run #2: Reference Class Forecasting (outside view)
 
-Дата: 2026-07-17. Вход: [BMS_extracted.md](BMS_extracted.md) + [assumptions.md](assumptions.md).
+Date: 2026-07-17. Input: [BMS_extracted.md](BMS_extracted.md) + [assumptions.md](assumptions.md).
 
-**Протокол независимости:** прогон выполнен изолированным агентом в отдельной сессии, которому передан только дайджест РФП и assumption log. Результаты прогона №1 (decomposition) агенту не показывались — во избежание якорения (см. findings §1: anchoring у LLM сильнее, чем у людей). Текст ниже — ответ агента без правок по существу.
+**Independence protocol:** the run was performed by an isolated agent in a separate session, given only the RFP digest and the assumption log. The results of run #1 (decomposition) were not shown to the agent — to avoid anchoring (see findings §1: anchoring is stronger in LLMs than in humans). The text below is the agent's answer with no substantive edits.
 
 ---
 
-## 1. Референс-класс
+## 1. Reference class
 
-**Определение:** заказная разработка enterprise-веб-приложения средней величины (multi-portal B2E/B2B система с workflow согласований и 4–6 внешними интеграциями), выполняемая внешним поставщиком по fixed-scope контракту, оценка на **стадии RFP** (до детального анализа требований, самая широкая часть «конуса неопределённости»).
+**Definition:** custom development of a medium-size enterprise web application (a multi-portal B2E/B2B system with approval workflows and 4–6 external integrations), performed by an external supplier under a fixed-scope contract, estimated at the **RFP stage** (before detailed requirements analysis, the widest part of the "cone of uncertainty").
 
-**Почему именно он:**
-- Технологически это не продуктовая инновация и не «большой» IT-проект (>$15M): типовой класс «корпоративный портал + интеграции + workflow». Низкая транзакционная нагрузка (5000 броней/год) исключает класс high-load систем.
-- Ключевые драйверы трудозатрат класса — не «фичи», а: (а) число внешних интеграций, (б) число ролей/порталов, (в) enterprise-заказчик с формальными согласованиями и UAT, (г) SaaS-обязательства (HA/DR, безопасность). По всем четырём признакам проект — середина класса, не край.
-- Стадия оценки (RFP) — критичный признак класса: на ней систематическая ошибка оценок максимальна.
+**Why this one:**
+- Technologically this is not a product innovation and not a "big" IT project (>$15M): the typical class "corporate portal + integrations + workflow." The low transaction load (5000 bookings/year) rules out the class of high-load systems.
+- The class's key effort drivers are not "features" but: (a) the number of external integrations, (b) the number of roles/portals, (c) an enterprise client with formal approvals and UAT, (d) SaaS obligations (HA/DR, security). On all four the project is the middle of the class, not the edge.
+- The estimation stage (RFP) is a critical feature of the class: it is where the systematic error of estimates is at its maximum.
 
-## 2. Base rates и якоря класса
+## 2. Class base rates and anchors
 
-**Абсолютные якоря:**
+**Absolute anchors:**
 
-| Якорь | Значение | Уверенность |
+| Anchor | Value | Confidence |
 |---|---|---|
-| Типовая длительность проектов класса до первого прод-релиза | 6–12 календарных месяцев | Высокая |
-| Типовая команда | 5–8 человек, ~5–6.5 FTE эффективно | Высокая |
-| Абсолютный диапазон класса | 5.5 FTE × 21 pd/мес × (6…12 мес) ≈ **700–1400 pd**, центр ~950–1000 pd | Средняя |
-| Типовой RFP-бюджет таких систем у вендоров в 2016 г. | $250–700k при blended-рейте $300–400/день → ~700–1800 pd проданных; сами бид-оценки обычно 400–700 pd | Средняя |
+| Typical duration of class projects to first production release | 6–12 calendar months | High |
+| Typical team | 5–8 people, ~5–6.5 FTE effectively | High |
+| Absolute class range | 5.5 FTE × 21 pd/month × (6…12 months) ≈ **700–1400 pd**, center ~950–1000 pd | Medium |
+| Typical RFP budget of such systems at vendors in 2016 | $250–700k at a blended rate of $300–400/day → ~700–1800 pd sold; the bid estimates themselves are usually 400–700 pd | Medium |
 
-**Относительные base rates (перерасход относительно RFP-стадийных оценок):**
+**Relative base rates (overrun relative to RFP-stage estimates):**
 
-| Источник | Base rate | Уверенность |
+| Source | Base rate | Confidence |
 |---|---|---|
-| Boehm, «конус неопределённости» | на стадии RFP фактический результат в ×0.5…×2 от оценки; систематически смещён вверх (конкурентное давление занижает бид) | Высокая в форме, средняя в числах |
-| Standish CHAOS (2000-е–2015) | средний cost overrun ~45–60%, time overrun ~70–80%; проекты <$1M статистически успешнее крупных | Средняя (критика методологии известна, порядок величины устойчив) |
-| McKinsey–Oxford (2012) | крупные IT-проекты: +45% к бюджету в среднем; 17% — «чёрные лебеди» с перерасходом >200%. Проект меньше порога выборки ($15M) → среднее с дисконтом, хвост применим | Средняя-высокая для формы |
-| Flyvbjerg (IT-выборка, fat tails) | медианный перерасход IT ~10–30%, но тяжёлый правый хвост: ~18% проектов уходят за +50% | Высокая (методологически самый чистый источник по форме) |
-| Отраслевой опыт fixed-price RFP | победившая RFP-оценка занижена на 20–40% против честной внутренней; интеграции — главный источник хвоста | Средняя (практический консенсус) |
+| Boehm, "cone of uncertainty" | at the RFP stage the actual result is ×0.5…×2 of the estimate; systematically biased upward (competitive pressure lowers the bid) | High in form, medium in numbers |
+| Standish CHAOS (2000s–2015) | average cost overrun ~45–60%, time overrun ~70–80%; projects <$1M are statistically more successful than large ones | Medium (methodological criticism is known, the order of magnitude is stable) |
+| McKinsey–Oxford (2012) | large IT projects: +45% to budget on average; 17% are "black swans" with overruns >200%. The project is below the sample threshold ($15M) → discount the average, the tail applies | Medium-high for the form |
+| Flyvbjerg (IT sample, fat tails) | median IT overrun ~10–30%, but a heavy right tail: ~18% of projects go past +50% | High (methodologically the cleanest source on form) |
+| Industry experience with fixed-price RFP | the winning RFP estimate is undervalued by 20–40% against the honest internal one; integrations are the main source of the tail | Medium (practical consensus) |
 
-**Синтез:** медиана реального результата ≈ типовая RFP-оценка (500–650 pd) × 1.4–1.6; абсолютный якорь (команда × месяцы) независимо даёт центр ~950–1000 pd. Два якоря сходятся.
+**Synthesis:** the median of the real result ≈ typical RFP estimate (500–650 pd) × 1.4–1.6; the absolute anchor (team × months) independently gives a center of ~950–1000 pd. The two anchors converge.
 
-## 3. Распределение (person-days)
+## 3. Distribution (person-days)
 
-| Квантиль | Оценка | Сценарий класса |
+| Quantile | Estimate | Class scenario |
 |---|---|---|
-| **P10** | **≈ 600 pd** | Интеграции работают как задокументированы, согласования не блокируют, UAT в один цикл. ~5.5 FTE × 5–5.5 мес. Так завершается ~10–15% проектов класса |
-| **P50** | **≈ 950 pd** | RFP-оценка × ~1.5; совпадает с якорем 5.5–6 FTE × 8 мес. Обычный рост скоупа при детализации, 1–2 сюрприза в интеграциях, 2 цикла UAT |
-| **P80** | **≈ 1400 pd** | Одна интеграция фактически не готова, заказчик перекраивает workflow на UAT, NFR добавляют цикл. ~6 FTE × 11 мес |
-| **P90** | **≈ 1800 pd** | Вход в толстый хвост (не чёрный лебедь — те за P95): ×2 к медиане = верх конуса Boehm. Смена требований среды заказчика (CTC), переделка синхронизации, затяжной UAT. ~6.5 FTE × 13–14 мес |
+| **P10** | **≈ 600 pd** | Integrations work as documented, approvals do not block, UAT in one cycle. ~5.5 FTE × 5–5.5 months. ~10–15% of class projects finish this way |
+| **P50** | **≈ 950 pd** | RFP estimate × ~1.5; matches the anchor 5.5–6 FTE × 8 months. Usual scope growth on detailing, 1–2 surprises in integrations, 2 UAT cycles |
+| **P80** | **≈ 1400 pd** | One integration is actually not ready, the client reshapes the workflow at UAT, NFRs add a cycle. ~6 FTE × 11 months |
+| **P90** | **≈ 1800 pd** | Entering the fat tail (not a black swan — those are past P95): ×2 to the median = the top of Boehm's cone. A change in the client's environment requirements (CTC), a redo of the sync, a drawn-out UAT. ~6.5 FTE × 13–14 months |
 
-Асимметрия намеренная: P50−P10 = 350 pd, P90−P50 = 850 pd — следствие right-skewed формы класса, не анализа фич.
+The asymmetry is deliberate: P50−P10 = 350 pd, P90−P50 = 850 pd — a consequence of the class's right-skewed shape, not of feature analysis.
 
-## 4. Assumption log метода (по конструкции не учитывает)
+## 4. The method's assumption log (does not account for, by construction)
 
-1. **Специфику данной команды** — класс усредняет по всем командам; первый совместный проект команды обычно правее медианы её будущего перформанса.
-2. **Специфику данных интеграций** — «CTC и UPSA документированы» принято как данность; класс лишь говорит, что такие допущения ложны достаточно часто, чтобы раздуть P80/P90.
-3. **Реальную сложность конкретных фич** (merge-политика, приоритизация поиска) — декомпозиции не было; аномально сложные/простые фичи метод не увидит.
-4. **Качество конкретного заказчика** — используется средний enterprise.
-5. **Датировку base rates** — источники агрегируют разные эпохи и методологии; применимость к 2016 г. предположена без коррекции.
-6. **Управленческие интервенции** (de-scoping, T&M вместо fixed-price) — могут срезать правый хвост; метод описывает класс «как есть».
-7. **Misclassification** — главный риск метода: если проект ближе к классу «интеграционная платформа», P80/P90 занижены.
+1. **The specifics of this team** — the class averages over all teams; a team's first joint project is usually to the right of the median of its future performance.
+2. **The specifics of these integrations** — "CTC and UPSA are documented" is taken as given; the class only says that such assumptions are false often enough to inflate P80/P90.
+3. **The real complexity of specific features** (merge policy, search prioritization) — there was no decomposition; the method will not see anomalously complex/simple features.
+4. **The quality of the specific client** — an average enterprise is used.
+5. **The dating of the base rates** — the sources aggregate different eras and methodologies; applicability to 2016 is assumed without correction.
+6. **Management interventions** (de-scoping, T&M instead of fixed-price) — may cut the right tail; the method describes the class "as is."
+7. **Misclassification** — the method's main risk: if the project is closer to the class "integration platform," P80/P90 are underestimated.

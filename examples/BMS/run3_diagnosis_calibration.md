@@ -1,52 +1,52 @@
-﻿# BMS — Шаги B, C, D: диагностика расхождения, перенос параметров, финальный диапазон
+# BMS — Steps B, C, D: diagnosing the divergence, parameter transfer, final range
 
-Дата: 2026-07-17. Входы: [run1_decomposition.md](run1_decomposition.md) (E = 486 pd), [run2_reference_class.md](run2_reference_class.md) (P10 600 / P50 950 / P80 1400 / P90 1800).
+Date: 2026-07-17. Inputs: [run1_decomposition.md](run1_decomposition.md) (E = 486 pd), [run2_reference_class.md](run2_reference_class.md) (P10 600 / P50 950 / P80 1400 / P90 1800).
 
-## Шаг B — диагностика расхождения
+## Step B — diagnosing the divergence
 
-Расхождение центров: 950 / 486 ≈ **×1.95**. По методологии не усредняем, а раскладываем по известным слепым пятнам decomposition:
+Center divergence: 950 / 486 ≈ **×1.95**. Per the methodology we do not average, but decompose across decomposition's known blind spots:
 
-| Компонент разрыва | Слепое пятно decomposition | Функциональная форма | Оценка (из base rates, не подгонка) |
+| Gap component | Decomposition's blind spot | Functional form | Estimate (from base rates, not fitting) |
 |---|---|---|---|
-| Рост scope при детализации RFP → delivered | Scope creep: WBS оценивает текст РФП от 10.06.2016, а не то, чем проект окажется | **Мультипликативная** (растёт всё тело работы) | ×1.25 (1.15–1.40); requirements creep ~1–3%/мес × 8–12 мес |
-| Интеграционные «айсберги» (CTC merge-политика, реальное качество API агрегатора) | Системные/интеграционные риски: WBS не содержит того, чего нет в тексте | **Таргетированная добавка** — множитель только на интеграционные пункты (97.5 pd), в терминах общей суммы это добавка, не пропорция | ×1.5 (1.25–2.0) на интеграционную долю → +30…+135 pd |
-| Координация / организационный overhead (митинги, согласования, ожидание доступов, фрагментация) | Организационный overhead: не привязан к задачам, в pd-оценках пунктов отсутствует | **Мультипликативная** (пропорциональна объёму и числу людей) | ×1.30 (1.15–1.45); класс-типовой focus factor ~0.7–0.85 |
-| PM/BA на реальную длительность | PM-пункт WBS был неявно отмасштабирован под «оптимистичный» календарь | **Добавка** (замена пункта: 31 → 40–60 pd, линейно от длительности) | +10…+30 pd |
-| Дополнительный цикл UAT у enterprise-заказчика | Организационный + системный риск | **Чистая добавка** | +10…+40 pd |
-| Толстый правый хвост (P90 = 1800) | Корреляция рисков + события вне любого множителя | **Не переносится вообще** (см. Шаг D) | — |
+| Scope growth from RFP detailing → delivered | Scope creep: the WBS estimates the RFP text of 2016-06-10, not what the project turns out to be | **Multiplicative** (grows the whole body of work) | ×1.25 (1.15–1.40); requirements creep ~1–3%/month × 8–12 months |
+| Integration "icebergs" (CTC merge policy, the real quality of the aggregator API) | Systemic/integration risks: the WBS does not contain what is not in the text | **Targeted addition** — a multiplier only on the integration items (97.5 pd); in terms of the total sum this is an addition, not a proportion | ×1.5 (1.25–2.0) on the integration share → +30…+135 pd |
+| Coordination / organizational overhead (meetings, approvals, waiting for access, fragmentation) | Organizational overhead: not tied to tasks, absent from the items' pd estimates | **Multiplicative** (proportional to volume and headcount) | ×1.30 (1.15–1.45); a class-typical focus factor ~0.7–0.85 |
+| PM/BA over the real duration | The PM item of the WBS was implicitly scaled to an "optimistic" calendar | **Addition** (item replacement: 31 → 40–60 pd, linear in duration) | +10…+30 pd |
+| An extra UAT cycle with an enterprise client | Organizational + systemic risk | **Pure addition** | +10…+40 pd |
+| The fat right tail (P90 = 1800) | Risk correlation + events beyond any multiplier | **Not transferred at all** (see Step D) | — |
 
-**Замечание о форме (зафиксировано с автора проекта):** калибровка — не одно число. Часть расходов — «статьи», которых в WBS нет вовсе, простым множителем их не поймать: нужна форма «умножить и добавить». Аффинную модель y = a·x + b по одному проекту не идентифицировать (нужно ≥2 точки), поэтому здесь параметры не *фитятся*, а *переносятся* поимённо из внешних base rates — каждый со своей формой. Фит станет возможен в Фазе 2, на собственной истории из нескольких проектов/спринтов.
+**A note on form (recorded from the project's author):** calibration is not a single number. Part of the cost is "items" that are not in the WBS at all, and a simple multiplier will not catch them: the "multiply and add" form is needed. The affine model y = a·x + b is not identifiable from one project (needs ≥2 points), so here the parameters are not *fitted* but *transferred* by name from external base rates — each with its own form. Fitting becomes possible in Phase 2, on one's own history from several projects/sprints.
 
-## Шаг C — перенос параметров (механическая калибровка)
+## Step C — parameter transfer (mechanical calibration)
 
-Цепочка (W = 455 pd работы без PM-пункта; интеграционная доля 97.5 pd):
+The chain (W = 455 pd of work without the PM item; integration share 97.5 pd):
 
-| Шаг | low | central | high |
+| Step | low | central | high |
 |---|---:|---:|---:|
 | W × scope | 523 | 569 | 637 |
-| + айсберг на интеграционную долю | 551 | 630 | 774 |
-| × координация | 634 | 819 | 1122 |
-| + PM/BA (пересчитанный) | 674 | 864 | 1182 |
-| + доп. цикл UAT | **684** | **884** | **1222** |
+| + iceberg on the integration share | 551 | 630 | 774 |
+| × coordination | 634 | 819 | 1122 |
+| + PM/BA (recomputed) | 674 | 864 | 1182 |
+| + extra UAT cycle | **684** | **884** | **1222** |
 
-- Калиброванный decomposition: **~884 pd**, диапазон 684–1222.
-- Суммарный implied-множитель ×1.82 против ×1.95 у reference class — компоненты, взятые из независимых base rates, почти воспроизводят классовый коэффициент. Это кросс-валидация, а не подгонка: ни один компонент не выбирался, глядя на 950.
-- Коррекция разброса через корреляцию рисков: при ρ = 0.3–0.6 между пунктами WBS σ растёт с 17 до 45–61 pd (после калибровки 82–112 pd) → P90 калиброванного decomposition ≈ **990–1030 pd**.
+- Calibrated decomposition: **~884 pd**, range 684–1222.
+- The total implied multiplier ×1.82 against ×1.95 for reference class — the components, taken from independent base rates, almost reproduce the class coefficient. This is cross-validation, not fitting: no component was chosen by looking at 950.
+- Spread correction via risk correlation: at ρ = 0.3–0.6 between WBS items, σ grows from 17 to 45–61 pd (after calibration 82–112 pd) → P90 of the calibrated decomposition ≈ **990–1030 pd**.
 
-## Шаг D — финальный диапазон и объяснённый остаток
+## Step D — final range and explained residual
 
-**Финальная оценка Фазы 1: центр ~900 pd (884–950), рабочий диапазон P10–P80 ≈ 650–1400 pd.**
-(~5.5–6 FTE × 7–9 месяцев в центре сценариев.)
+**Final Phase 1 estimate: center ~900 pd (884–950), working range P10–P80 ≈ 650–1400 pd.**
+(~5.5–6 FTE × 7–9 months at the center of the scenarios.)
 
-Остаток, объяснённый и необъяснённый:
-- **Объяснено переносом параметров:** ~93% разрыва центров (486 → 884 из 950); каждая компонента поименована и привязана к слепому пятну.
-- **Необъяснённый остаток №1 — зазор центров ~66 pd (7%):** либо неточность компонентных base rates, либо доля хвостовых сценариев, сидящая в медиане класса. Честная неопределённость, не шум.
-- **Необъяснённый остаток №2 — хвост:** P90 калиброванного decomposition ≈ 1000 pd, P90 класса = 1800 pd. Разрыв ×1.8 в хвосте **не устраняется калибровкой в принципе**: события хвоста (переделка архитектуры синхронизации, смена требований среды заказчика) не существуют как пункты WBS ни с каким множителем. Хвост — уникальный вклад reference class, и для контрактных решений (fixed price vs T&M, буферы) пользоваться нужно именно им.
+The residual, explained and unexplained:
+- **Explained by parameter transfer:** ~93% of the center gap (486 → 884 out of 950); each component is named and tied to a blind spot.
+- **Unexplained residual #1 — the center gap ~66 pd (7%):** either imprecision of the component base rates, or a share of tail scenarios sitting in the class median. Honest uncertainty, not noise.
+- **Unexplained residual #2 — the tail:** P90 of the calibrated decomposition ≈ 1000 pd, class P90 = 1800 pd. The ×1.8 gap in the tail **is not removed by calibration in principle**: tail events (redoing the sync architecture, a change in the client's environment requirements) do not exist as WBS items with any multiplier. The tail is the unique contribution of reference class, and for contract decisions (fixed price vs. T&M, buffers) it is the one to use.
 
-**Проверка на ложную конвергенцию (METHODOLOGY §3):** полной конвергенции нет — центры сблизились, хвосты нет. Это правильный исход: методы отвечают на разные вопросы (что *обычно* стоит эта работа vs что *бывает* с такими проектами), и остаточное расхождение хвостов — их сохранённая диагностическая независимость.
+**A check against false convergence (METHODOLOGY §3):** there is no full convergence — the centers came together, the tails did not. This is the correct outcome: the methods answer different questions (what this work *usually* costs vs. what *happens* to such projects), and the residual tail divergence is their preserved diagnostic independence.
 
-## Процессные находки прогона (для findings)
+## Process findings of the run (for findings)
 
-1. **Протокол независимости:** прогон №2 выполнялся изолированным субагентом (только РФП + допущения, без цифр прогона №1) — в одной сессии второй прогон был бы заякорен. Требование для Фазы 1: каждый метод — отдельная сессия/агент.
-2. **«Умножить и добавить»:** калибровка Шага C — композиция разноформенных поправок (множители, таргетированные и чистые добавки), а не один скаляр; аффинный фит неидентифицируем на одной точке — до появления собственной истории (Фаза 2) параметры переносятся из внешних base rates.
-3. **Непреднамеренная валидация:** изолированный агент независимо назвал типовой диапазон бид-оценок RFP-стадии 400–700 pd; наш decomposition (486) попал в него — подтверждение, что decomposition ведёт себя как типичный RFP-бид, а его разрыв с reference class — систематика класса, а не ошибка конкретного WBS.
+1. **Independence protocol:** run #2 was performed by an isolated subagent (RFP + assumptions only, without the numbers of run #1) — in one session the second run would be anchored. A requirement for Phase 1: each method is a separate session/agent.
+2. **"Multiply and add":** the calibration of Step C is a composition of differently-shaped corrections (multipliers, targeted and pure additions), not a single scalar; the affine fit is unidentifiable on one point — until one's own history appears (Phase 2), the parameters are transferred from external base rates.
+3. **Unintended validation:** the isolated agent independently named the typical range of RFP-stage bid estimates, 400–700 pd; our decomposition (486) landed inside it — confirmation that decomposition behaves like a typical RFP bid, and that its gap with reference class is a systematic feature of the class, not an error of this particular WBS.

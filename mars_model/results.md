@@ -1,144 +1,144 @@
-﻿# mars_model — проверка гипотез §11.3–11.4 на открытых датасетах (2026-07-17)
+# mars_model — checking the §11.3–11.4 hypotheses on open datasets (2026-07-17)
 
-## Постановка
+## Setup
 
-Проверка на данных двух утверждений из findings §11.3–11.4:
-(Q1) показатель степени в Effort ~ Size^b больше 1 (diseconomy of scale);
-(Q2) существуют изломы — границы размерных режимов;
-(Q3) множитель перерасхода (факт/оценка) растёт с размером.
+A data check of two claims from findings §11.3–11.4:
+(Q1) the exponent in Effort ~ Size^b is greater than 1 (diseconomy of scale);
+(Q2) breaks exist — boundaries of size regimes;
+(Q3) the overrun multiplier (actual/estimate) grows with size.
 
-Метод — сознательно простой (предосторожность §11.5): «MARS-лайт» — один
-хинж max(0, x−t) в log-log осях, перебор узла по сетке, сравнение с прямой
-по AICc, стабильность узла — бутстрепом (500 ресемплов), CI наклонов —
-бутстрепом (2000). Полноценный MARS (R `earth`) — возможный второй заход;
-для одной ковариаты наш фит эквивалентен MARS с одним узлом.
+The method is deliberately simple (the §11.5 precaution): "MARS-lite" — a single
+hinge max(0, x−t) in log-log axes, a grid search over the knot, a comparison with a
+straight line by AICc, knot stability by bootstrap (500 resamples), slope CIs by
+bootstrap (2000). A full MARS (R `earth`) is a possible second pass;
+for a single covariate our fit is equivalent to MARS with one knot.
 
-Данные (зеркало PROMISE, репозиторий danrodgar/DASE): China (n=499, AFP→
-чел-часы), Kitchenham (n=145, AFP→чел-часы, есть First.estimate), Desharnais
-(n=81), Maxwell (n=63). Скрипт: fit_piecewise.py; график: loglog_fits.png.
+Data (a PROMISE mirror, the danrodgar/DASE repository): China (n=499, AFP→
+person-hours), Kitchenham (n=145, AFP→person-hours, has First.estimate), Desharnais
+(n=81), Maxwell (n=63). Script: fit_piecewise.py; figure: loglog_fits.png.
 
-## Q1. Показатель степени: гипотеза «b>1» НЕ подтвердилась
+## Q1. The exponent: the "b>1" hypothesis was NOT confirmed
 
-| Датасет | b | 95% CI | R² |
+| Dataset | b | 95% CI | R² |
 |---|---|---|---|
 | China | 0.768 | 0.701–0.833 | 0.46 |
 | Desharnais | 0.984 | 0.734–1.235 | 0.44 |
 | Kitchenham | 0.672 | 0.528–0.801 | 0.53 |
 | Maxwell | 0.862 | 0.715–0.982 | 0.63 |
 
-Во всех четырёх b ≤ 1, в трёх — CI целиком ниже 1: данные показывают
-**экономию масштаба** производственной функции, а не рост удельной цены.
-Это не наша аномалия — это известный многолетний спор в литературе
-(Banker & Kemerer 1989 «Scale economies in new software development»;
-Kitchenham 2002 «The question of scale economies — why cannot researchers
-agree?»): FP-датасеты часто дают b<1, KLOC-калибровки COCOMO — b>1.
+In all four b ≤ 1, in three the CI is entirely below 1: the data show
+**economies of scale** in the production function, not a rise in unit cost.
+This is not our anomaly — it is a well-known, long-standing dispute in the literature
+(Banker & Kemerer 1989, "Scale economies in new software development";
+Kitchenham 2002, "The question of scale economies — why cannot researchers
+agree?"): FP datasets often give b<1, KLOC calibrations of COCOMO give b>1.
 
-Оговорки, не позволяющие читать b<1 буквально:
-- **survivorship**: в датасетах только завершённые проекты; крупные
-  провалившиеся (тот самый хвост класса) не наблюдаемы вовсе;
-- смешение организаций и эпох (кроме Kitchenham — одна компания);
-- FP как метрика размера сама нелинейно связана с объёмом работы;
-- большие проекты могут получать лучшие команды/процессы (эндогенность).
+Caveats that prevent reading b<1 literally:
+- **survivorship**: the datasets contain only completed projects; the large
+  failed ones (that very class tail) are unobservable at all;
+- mixing of organizations and eras (except Kitchenham — one company);
+- FP as a size metric is itself non-linearly related to the volume of work;
+- large projects may get better teams/processes (endogeneity).
 
-## Q2. Изломы: направление есть, положение неустойчиво
+## Q2. Breaks: the direction is there, the position is unstable
 
-| Датасет | Узел (лучший) | Наклон до → после | AICc-вердикт | Бутстреп: доля «наклон растёт» |
+| Dataset | Knot (best) | Slope before → after | AICc verdict | Bootstrap: share "slope grows" |
 |---|---|---|---|---|
-| China | ~616 FP | 0.74 → 0.85 | не оправдан | 77% |
-| Desharnais | ~141 | 0.40 → 1.07 | не оправдан | 62% |
-| Kitchenham | ~701 FP | 0.56 → 1.15 | **оправдан** | **98%** |
-| Maxwell | ~1137 | 0.79 → 1.16 | не оправдан | 47% |
+| China | ~616 FP | 0.74 → 0.85 | not justified | 77% |
+| Desharnais | ~141 | 0.40 → 1.07 | not justified | 62% |
+| Kitchenham | ~701 FP | 0.56 → 1.15 | **justified** | **98%** |
+| Maxwell | ~1137 | 0.79 → 1.16 | not justified | 47% |
 
-Систематическая картина: там, где излом виден, наклон после узла
-**увеличивается** (экономия масштаба ослабевает или сменяется ростом на
-крупных проектах). Формально оправдан излом только в Kitchenham
-(однородный источник — одна компания; узел ~600–700 FP, 98% бутстреп-
-выборок согласны по направлению). Положение узла в остальных гуляет на
-порядок → **стратификация по размеру осмысленна как идея, но границы страт
-из этих данных уверенно не извлекаются**. Косвенно поддерживает §11.4:
-однородная популяция (Kitchenham) показывает режимную границу чётче, чем
-смесь организаций (China).
+The systematic picture: where a break is visible, the slope after the knot
+**increases** (economies of scale weaken or turn into growth on large
+projects). A break is formally justified only in Kitchenham
+(a homogeneous source — one company; knot ~600–700 FP, 98% of bootstrap
+samples agree on the direction). The knot position wanders by an order of
+magnitude in the others → **stratification by size is meaningful as an idea, but
+stratum boundaries cannot be confidently extracted from these data**. It indirectly
+supports §11.4: a homogeneous population (Kitchenham) shows a regime boundary more
+clearly than a mix of organizations (China).
 
-## Q3. Множитель перерасхода растёт с размером — ПОДТВЕРЖДЕНО (Kitchenham)
+## Q3. The overrun multiplier grows with size — CONFIRMED (Kitchenham)
 
-Единственный датасет с парой «первая оценка / факт» (n=145):
+The only dataset with a "first estimate / actual" pair (n=145):
 
-- Медиана Actual/FirstEstimate = **0.97** — в медиане компания оценивала
-  себя точно; P90 = 1.34.
-- Наклон log(ratio) ~ log(size): **+0.054, 95% CI 0.006–0.097** — CI не
-  накрывает ноль, множитель растёт с размером.
-- По терцилям размера: медиана 0.95 / 0.94 / 1.00; **P90: 1.11 / 1.15 / 1.46**.
+- Median Actual/FirstEstimate = **0.97** — in the median the company estimated
+  itself accurately; P90 = 1.34.
+- Slope of log(ratio) ~ log(size): **+0.054, 95% CI 0.006–0.097** — the CI does
+  not cover zero, the multiplier grows with size.
+- By size terciles: median 0.95 / 0.94 / 1.00; **P90: 1.11 / 1.15 / 1.46**.
 
-Ключевая структура эффекта: с размером растёт не центр ошибки, а её
-**правый хвост**. Маленькие проекты промахиваются на проценты; большие —
-в P90 уже на +46%, при почти той же медиане.
+The key structure of the effect: with size it is not the center of the error that
+grows, but its **right tail**. Small projects miss by percentages; large ones —
+in P90 already by +46%, at almost the same median.
 
-## Синтез: поправка к нашей теории (§11.3)
+## Synthesis: a correction to our theory (§11.3)
 
-Данные разводят две величины, которые §11.3 смешивал:
+The data separate two quantities that §11.3 conflated:
 
-1. **Производственная функция** Effort(Size) — может показывать экономию
-   масштаба (b<1); утверждение «степень >1» в этой формулировке данными
-   не поддерживается (с оговорками survivorship/FP выше).
-2. **Ошибка оценивания** (факт/оценка) — растёт с размером, причём хвостом,
-   а не центром. Именно это и утверждал §11.3 в терминах «множителя
-   перерасхода», и именно это релевантно для 3A8: пайплайн калибрует
-   оценки, а не производит проекты.
+1. **The production function** Effort(Size) — may show economies of
+   scale (b<1); the claim "exponent >1" in this formulation is not
+   supported by the data (with the survivorship/FP caveats above).
+2. **The estimation error** (actual/estimate) — grows with size, and in the tail,
+   not the center. This is exactly what §11.3 claimed in terms of the "overrun
+   multiplier," and this is exactly what is relevant for 3A8: the pipeline calibrates
+   estimates, it does not produce projects.
 
-Уточнение аргумента рёбер (n²/2): рёбра бьют не обязательно по самой
-стоимости проекта, а по её **видимости в WBS** — недооценка растёт с
-числом стыков, потому что стыки не имеют строк. Рост P90 множителя с
-размером при стабильной медиане ровно этому соответствует: у больших
-проектов больше невидимых статей, которые иногда выстреливают.
+A refinement of the edges argument (n²/2): edges strike not necessarily at the
+project's cost itself, but at its **visibility in the WBS** — the underestimation
+grows with the number of seams, because seams have no lines. The growth of the P90
+multiplier with size at a stable median corresponds exactly to this: large projects
+have more invisible items that occasionally fire.
 
-## Полученные модели (использовать только как форму prior'а, не как предиктор)
+## The obtained models (use only as the shape of a prior, not as a predictor)
 
-- China: Effort ≈ 27.1 · AFP^0.77 (чел-часы)
-- Kitchenham: Effort ≈ 37.1 · AFP^0.67; после ~700 FP наклон ~1.15
+- China: Effort ≈ 27.1 · AFP^0.77 (person-hours)
+- Kitchenham: Effort ≈ 37.1 · AFP^0.67; after ~700 FP the slope ~1.15
 - Desharnais: Effort ≈ 15.3 · FP^0.98
 - Maxwell: Effort ≈ 26.2 · Size^0.86
 
-Популяции — чужие организации 1990–2000-х, эпоха функциональных точек;
-R² 0.44–0.63 (половина дисперсии — вне размера). Легальное применение в
-3A8 (по §11.5): переносить **форму** (порядок b, существование излома,
-рост хвоста множителя с размером), уровень подстраивать на своей истории.
+The populations are other people's organizations of the 1990s–2000s, the era of
+function points; R² 0.44–0.63 (half the variance is outside size). The legitimate
+use in 3A8 (per §11.5): transfer the **shape** (the order of b, the existence of a
+break, the growth of the multiplier tail with size), tune the level on one's own history.
 
-## Пилот: состав работ как параметры (идея автора, продолжение §11.4)
+## Pilot: work composition as parameters (the author's idea, a continuation of §11.4)
 
-Идея: MARS-подход мультивариантен — вместо одного «размера» подать
-**вектор состава WBS** (доли типов работ), превратив дискретные страты
-§11.4 в непрерывные координаты пространства классов. Открытых датасетов
-с настоящими WBS нет, но China раскладывает размер на элементы FP
-(Input/Output/Enquiry/File/Interface) — грубый прокси состава. Особый
-интерес: доля **Interface** (внешние интерфейсные файлы) — почти буквальный
-прокси интеграционных рёбер.
+The idea: the MARS approach is multivariate — instead of a single "size," feed a
+**vector of WBS composition** (the shares of work types), turning the discrete strata
+of §11.4 into continuous coordinates of a class space. There are no open datasets
+with real WBSs, but China breaks size down into FP elements
+(Input/Output/Enquiry/File/Interface) — a crude proxy for composition. Of particular
+interest: the share of **Interface** (external interface files) — an almost literal
+proxy for integration edges.
 
-Скрипт: composition_china.py. Модель: остатки log(E)~log(AFP) регрессируются
-на доли элементов (OLS, бутстреп-CI, без отбора признаков — §11.5).
+Script: composition_china.py. Model: the residuals of log(E)~log(AFP) are regressed
+on the element shares (OLS, bootstrap CIs, no feature selection — §11.5).
 
-Результат (n=499):
-- Прирост R² от состава сверх размера: **+0.017** (скромный на уровне популяции).
-- Значимые доли: **share_Interface +0.43 [CI 0.13..0.76]** и share_Enquiry
-  +0.42 [0.12..0.73]; Output и File — нули.
-- Интерпретация: +10 п.п. доли Interface → **×1.10 к затратам при том же AFP**.
+Result (n=499):
+- The R² gain from composition over size: **+0.017** (modest at the population level).
+- Significant shares: **share_Interface +0.43 [CI 0.13..0.76]** and share_Enquiry
+  +0.42 [0.12..0.73]; Output and File — zeros.
+- Interpretation: +10 pp of the Interface share → **×1.10 to cost at the same AFP**.
 
-Ключевой нюанс: AFP уже платит за интерфейсы **повышенным** весом (EIF:
-5–10 очков против 3–6 у входов; дороже только ILF). Значимый положительный коэффициент
-поверх AFP означает: даже когда методика сознательно назначает интерфейсам
-премию, они всё равно стоят дороже — недооценка стыков переживает даже
-явную попытку заплатить за них повышенным весом. Это прямое эмпирическое
-эхо тезиса §11.4/9 о рёбрах, у которых нет строк.
+The key nuance: AFP already pays for interfaces with **increased** weight (EIF:
+5–10 points against 3–6 for inputs; only ILF is more expensive). A significant positive
+coefficient on top of AFP means: even when the method deliberately assigns interfaces
+a premium, they still cost more — the underestimation of seams survives even an
+explicit attempt to pay for them with increased weight. This is a direct empirical
+echo of the §11.4/9 thesis about the edges that have no lines.
 
-Ограничения пилота: элементы FP — функциональная, а не рабочая декомпозиция
-(это не ветки WBS); ΔR² мал; Enquiry-эффект без теории — не интерпретируем.
-Настоящая проверка возможна только на собственной истории с реальными
-WBS-векторами, и там признаков должно быть мало и они должны выбираться
-теорией (Interface-подобные), а не перебором — иначе §11.5.
+Pilot limitations: FP elements are a functional, not a work decomposition
+(they are not WBS branches); ΔR² is small; the Enquiry effect has no theory — it is
+not interpretable. A real check is possible only on one's own history with real
+WBS vectors, and there the features must be few and chosen by theory
+(Interface-like), not by search — otherwise §11.5.
 
-## Файлы
+## Files
 
 - data/ — china.arff, chinaOriginal.arff, desharnais.arff|csv,
-  kitchenham.arff|csv, maxwell.arff (зеркало PROMISE / DASE)
-- fit_piecewise.py — основной анализ (numpy, matplotlib; запуск: `py fit_piecewise.py`)
-- composition_china.py — пилот «состав как параметры» на China
-- loglog_fits.png — четыре log-log панели с прямой и хинж-фитом
+  kitchenham.arff|csv, maxwell.arff (a PROMISE / DASE mirror)
+- fit_piecewise.py — the main analysis (numpy, matplotlib; run: `py fit_piecewise.py`)
+- composition_china.py — the "composition as parameters" pilot on China
+- loglog_fits.png — four log-log panels with the straight-line and hinge fits

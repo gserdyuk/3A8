@@ -1,71 +1,71 @@
-﻿# BMS — Прогон №4 (эксперимент): Integration-aware bottom-up
+# BMS — Run #4 (experiment): Integration-aware bottom-up
 
-Дата: 2026-07-17. Проверка поправки метода из findings §9: WBS → дерево с узлами агрегации, на каждом узле — явный интеграционный пункт как % от суммы компонентной разработки детей. Ставка интеграции по решению автора: **15–20%** на узел.
+Date: 2026-07-17. A check of the method correction from findings §9: WBS → a tree with aggregation nodes, and at each node an explicit integration item as a % of the sum of the children's component development. The integration rate, by the author's decision: **15–20%** per node.
 
-**Проверяемое предсказание (зафиксировано до пересчёта):** результат заметно > 486 pd, но < 884 pd (калиброванный decomposition), т.к. поправка лечит одно слепое пятно (внутренние стыки), не трогая остальные (внешние айсберги, scope creep, overhead, корреляция).
+**A checkable prediction (fixed before recalculation):** the result is noticeably > 486 pd but < 884 pd (calibrated decomposition), because the correction cures one blind spot (internal seams) without touching the others (external icebergs, scope creep, overhead, correlation).
 
-## Дерево WBS
+## WBS tree
 
 ```
-BMS (система)                                ← узел агрегации (top)
-├── A. Платформа                    56.5 pd  ← узел
+BMS (system)                                 ← aggregation node (top)
+├── A. Platform                     56.5 pd  ← node
 │   ├── Setup CI/CD/IaC             15.8
-│   ├── SSO + роли                  12.7
-│   ├── Модель данных/БД/аудит      15.3
-│   └── Нотификации (email+SMS)     12.7
-├── B. Внешние интеграции           84.8 pd  ← узел
-│   ├── CTC (sync, merge, алерты)   26.7
+│   ├── SSO + roles                 12.7
+│   ├── Data model/DB/audit         15.3
+│   └── Notifications (email+SMS)    12.7
+├── B. External integrations        84.8 pd  ← node
+│   ├── CTC (sync, merge, alerts)   26.7
 │   ├── UPSA                         8.7
-│   ├── Hotel-агрегатор             36.7
+│   ├── Hotel aggregator            36.7
 │   └── Uber                        12.7
-├── C. Ядро бронирования            77.9 pd  ← узел
+├── C. Booking core                 77.9 pd  ← node
 │   ├── Search & prioritization     31.7
 │   ├── Workflow engine             23.0
-│   ├── Ручное бронирование          8.2
-│   ├── Смена отеля / changes UI     6.3
-│   └── Объединение транспорта       8.7
-├── D. Порталы                      63.7 pd  ← узел
+│   ├── Manual booking               8.2
+│   ├── Hotel change / changes UI    6.3
+│   └── Combining transport          8.7
+├── D. Portals                      63.7 pd  ← node
 │   ├── Employees                   18.7
 │   ├── Administration              29.2
 │   └── Suppliers                   15.8
-└── E. Reporting                    15.8 pd  (один лист — узла нет)
-Компонентная разработка: 298.7 pd
+└── E. Reporting                    15.8 pd  (a single leaf — no node)
+Component development: 298.7 pd
 ```
 
-Сквозные работы (вне дерева компонентов, % интеграции к ним не применяется): discovery 25.8, архитектура 15.8, UI/UX 25.8, NFR 14.8, security 8.7, **QA 29.2 (похудел с 40.8)**, UAT 16.7, деплой 8.2, PM 30.8 → **175.8 pd**.
+Cross-cutting work (outside the component tree, the integration % does not apply to it): discovery 25.8, architecture 15.8, UI/UX 25.8, NFR 14.8, security 8.7, **QA 29.2 (trimmed from 40.8)**, UAT 16.7, deployment 8.2, PM 30.8 → **175.8 pd**.
 
-**Против двойного счёта:** пункт №23 «QA: системное и интеграционное тестирование» (25/40/60, E=40.8) урезан до системной регрессии/E2E (18/28/45, E=29.2) — интеграционное тестирование стыков теперь живёт в явных интеграционных пунктах узлов (−11.6 pd из QA).
+**Against double counting:** item #23 "QA: system and integration testing" (25/40/60, E=40.8) is trimmed to system regression/E2E (18/28/45, E=29.2) — the integration testing of the seams now lives in the nodes' explicit integration items (−11.6 pd from QA).
 
-## Интеграционные пункты узлов
+## The nodes' integration items
 
-Интеграция узла = p × (сумма содержимого детей), p = 15–20%. Top-узел считается от компонентов + внутриузловой интеграции (стыкуются уже собранные подсистемы).
+A node's integration = p × (sum of the children's contents), p = 15–20%. The top node is computed from the components + intra-node integration (already-assembled subsystems are joined).
 
-| Узел | Что за стыки | p=15% | p=20% |
+| Node | What the seams are | p=15% | p=20% |
 |---|---|---:|---:|
-| A внутри | нотификации↔события, SSO↔все, аудит↔всё | 8.5 | 11.3 |
-| B внутри | общий адаптерный каркас, унификация ошибок/ретраев | 12.7 | 17.0 |
-| C внутри | search↔workflow↔данные (самая плотная связность) | 11.7 | 15.6 |
-| D внутри | общий design system, шаренные компоненты порталов | 9.6 | 12.7 |
-| **Top: сборка системы** | core↔интеграции (поиск по внешним системам, CTC-sync двигает workflow), порталы↔core, нотификации↔статусы, reporting↔данные всех подсистем | 51.2 | 71.1 |
-| **Итого интеграция** | | **93.6** | **127.6** |
+| A internal | notifications↔events, SSO↔all, audit↔all | 8.5 | 11.3 |
+| B internal | a common adapter frame, unification of errors/retries | 12.7 | 17.0 |
+| C internal | search↔workflow↔data (the densest connectivity) | 11.7 | 15.6 |
+| D internal | a common design system, shared portal components | 9.6 | 12.7 |
+| **Top: system assembly** | core↔integrations (search across external systems, CTC sync moves the workflow), portals↔core, notifications↔statuses, reporting↔data of all subsystems | 51.2 | 71.1 |
+| **Total integration** | | **93.6** | **127.6** |
 
-Честная оговорка: единый p на узел — грубость; правильнее выводить p из фактического числа/типа стыков на диаграмме (внутри B связность ниже, внутри C выше). Оставлено на следующую итерацию — для проверки предсказания достаточно диапазона 15–20%.
+An honest caveat: a single p per node is crude; it is more correct to derive p from the actual number/type of seams on the diagram (connectivity is lower inside B, higher inside C). Left for the next iteration — the 15–20% range is enough to test the prediction.
 
-## Результат
+## Result
 
 | | pd |
 |---|---:|
-| Компоненты | 298.7 |
-| Сквозные (QA урезан) | 175.8 |
-| Интеграция (15–20%) | 93.6–127.6 |
-| **Итого** | **568–602** (центр ~585) |
+| Components | 298.7 |
+| Cross-cutting (QA trimmed) | 175.8 |
+| Integration (15–20%) | 93.6–127.6 |
+| **Total** | **568–602** (center ~585) |
 
-## Сверка с предсказанием — сбылось
+## Check against the prediction — it held
 
-- **585 > 486** (+20%): внутренние стыки получили строки и цену.
-- **585 < 884**: разрыв с калиброванным decomposition остался — 300 pd, и это ровно те пятна, которые поправка лечить не обещала: scope creep (+114 в Шаге B), координация/overhead (+189), внешние айсберги (+61 — реальное качество чужих API, не наши стыки), PM/UAT (+34).
-- Интересная сверка с Шагом B: там «интеграционная» часть разрыва оценивалась сверху (от reference class) в +61 pd только для внешних айсбергов; integration-aware даёт +82…+116 net (93.6–127.6 минус 11.6 из QA) для внутренних рёбер — **это разные статьи**, в Шаге B внутренняя сборка сидела внутри множителя координации. Т.е. поправка не «догоняет» reference class, а переносит часть необъяснимого множителя в объяснимую структурную статью — ровно то, ради чего она задумана.
+- **585 > 486** (+20%): the internal seams got lines and a cost.
+- **585 < 884**: the gap with calibrated decomposition remained — 300 pd, and this is exactly the spots the correction did not promise to cure: scope creep (+114 in Step B), coordination/overhead (+189), external icebergs (+61 — the real quality of others' APIs, not our seams), PM/UAT (+34).
+- An interesting cross-check with Step B: there the "integration" part of the gap was estimated from above (from reference class) at +61 pd for external icebergs only; integration-aware gives +82…+116 net (93.6–127.6 minus 11.6 from QA) for the internal edges — **these are different items**; in Step B the internal assembly sat inside the coordination multiplier. I.e. the correction does not "catch up" to reference class but moves part of the unexplained multiplier into an explainable structural item — exactly what it was designed for.
 
-## Вывод для методологии
+## Conclusion for the methodology
 
-Integration-aware bottom-up принят как уточнение метода decomposition: (1) WBS — дерево, не список; (2) каждый узел агрегации несёт интеграционный пункт; (3) ставка узла — переносимый параметр (пока 15–20% из base rates, в Фазе 2 — мерить на истории; следующая итерация — выводить из фактического графа стыков вместо единого p); (4) пункты вида «интеграционное тестирование» при этом обязаны худеть — иначе двойной счёт.
+Integration-aware bottom-up is accepted as a refinement of the decomposition method: (1) the WBS is a tree, not a list; (2) each aggregation node carries an integration item; (3) the node's rate is a transferable parameter (for now 15–20% from base rates, in Phase 2 — measure on history; the next iteration — derive it from the actual graph of seams instead of a single p); (4) items of the "integration testing" kind must then be trimmed — otherwise double counting.

@@ -1,28 +1,28 @@
-﻿# BMS — Assumption Log (зафиксировано до прогонов, 2026-07-17)
+# BMS — Assumption Log (fixed before the runs, 2026-07-17)
 
-Допущения, закрывающие дыры РФП. Согласованы до начала оценки; все прогоны (decomposition, reference class) обязаны использовать одни и те же допущения — иначе их диапазоны несравнимы.
+Assumptions that close the RFP's gaps. Agreed before estimation begins; all runs (decomposition, reference class) must use the same assumptions — otherwise their ranges are not comparable.
 
-## A1. Scope оценки
-Дизайн + разработка + тестирование + деплой в прод **первого релиза**, покрывающего все функциональные требования РФП.
-- Входит: setup хостинга / DevOps / окружения (dev/stage/prod), UAT-поддержка.
-- **Не входит:** последующая эксплуатация (hosting & support), обучение пользователей, гарантийный период.
+## A1. Estimation scope
+Design + development + testing + production deployment of the **first release** covering all functional requirements of the RFP.
+- Included: hosting / DevOps / environment setup (dev/stage/prod), UAT support.
+- **Not included:** subsequent operation (hosting & support), user training, the warranty period.
 
 ## A2. Definition of Done
-Функционал работает в проде, UAT пройден, базовая документация (эксплуатационная + пользовательская) есть.
+The functionality works in production, UAT has passed, basic documentation (operational + user) exists.
 
-## A3. Предполагаемая команда
-1 PM/BA, 1 архитектор (part-time), 3–4 разработчика, 1 QA, 1 DevOps (part-time). Blended, преимущественно senior/middle. Команда типовая, ранее вместе не работала (консервативно).
+## A3. Assumed team
+1 PM/BA, 1 architect (part-time), 3–4 developers, 1 QA, 1 DevOps (part-time). Blended, predominantly senior/middle. A typical team that has not worked together before (conservatively).
 
-## A4. Внешние интеграции
-- CTC и UPSA имеют рабочие, документированные API.
-- «Intelligent search across multiple third-party systems» = интеграция с **1–2 агрегаторами** (GDS/Booking-class API), не десятки прямых интеграций с отелями.
-- SSO — по документации заказчика, стандартный протокол (SAML/OIDC).
+## A4. External integrations
+- CTC and UPSA have working, documented APIs.
+- "Intelligent search across multiple third-party systems" = integration with **1–2 aggregators** (a GDS/Booking-class API), not dozens of direct integrations with hotels.
+- SSO — per the client's documentation, a standard protocol (SAML/OIDC).
 
 ## A5. SMS
-Через готовый внешний шлюз (Twilio-класс), не собственная инфраструктура.
+Via a ready external gateway (Twilio-class), not our own infrastructure.
 
-## A6. Организационный контекст
-Заказчик — крупный enterprise; скорость согласований и доступность специалистов заказчика — типовые для enterprise. Учитывается только в reference class (decomposition по конструкции это не видит).
+## A6. Organizational context
+The client is a large enterprise; the speed of approvals and the availability of the client's specialists are typical for an enterprise. Accounted for only in reference class (decomposition, by construction, does not see it).
 
-## A7. Единицы
-Оценка в **person-days** (1 pd = 8 часов чистой работы). Перевод в календарь — отдельный шаг, не входит в прогоны методов.
+## A7. Units
+Estimation in **person-days** (1 pd = 8 hours of net work). Conversion to a calendar is a separate step, not part of the method runs.
