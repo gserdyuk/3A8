@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Russian-language local copies — kept locally, not published
+*_ru.md
