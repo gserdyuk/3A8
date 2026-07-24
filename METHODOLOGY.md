@@ -1,48 +1,48 @@
-﻿# Multi-Method AI-Assisted Estimation Framework
+# Multi-Method AI-Assisted Estimation Framework
 
-## 1. Проблема, которую решает фреймворк
+## 1. The problem the framework solves
 
-Классический Wideband Delphi устраняет anchoring bias за счёт **независимости экспертов** — разных людей с разным опытом и разной информированностью. При попытке перенести это на LLM выясняется, что:
+Classic Wideband Delphi removes anchoring bias through the **independence of experts** — different people with different experience and different information. Trying to carry this over to an LLM reveals that:
 
-- Одна модель в разных сессиях не даёт настоящей независимости — её "потолок незнания" систематический, а не случайный (недооценка интеграционных и организационных рисков, anchoring на формулировку запроса — см. Section 5 в архиве обсуждения).
-- Persona-инжиниринг (разные "роли" одной модели) даёт разнообразие фокуса, но не разнообразие *аппарата мышления* — под капотом работает один и тот же статистический механизм.
+- One model across different sessions does not provide genuine independence — its "ceiling of ignorance" is systematic, not random (underestimation of integration and organizational risks, anchoring on the phrasing of the request — see Section 5 in the discussion archive).
+- Persona engineering (different "roles" of one model) gives diversity of focus, but not diversity of the *reasoning apparatus* — under the hood the same statistical mechanism is at work.
 
-**Ключевая замена:** вместо независимости *экспертов* — независимость *техник оценки*. Разные методы (декомпозиция, аналогия, throughput-статистика, параметрические модели) имеют структурно разные, предсказуемые слепые пятна — не эмпирически случайные, а гарантированные конструкцией метода. Это делает декорреляцию ошибок надёжнее, чем у человеческой панели, и, что важно, *объяснимой заранее*.
+**The key substitution:** instead of independence of *experts* — independence of *estimation techniques*. Different methods (decomposition, analogy, throughput statistics, parametric models) have structurally different, predictable blind spots — not empirically random ones, but ones guaranteed by the construction of the method. This makes the decorrelation of errors more reliable than in a human panel and, importantly, *explainable in advance*.
 
-## 2. Методы и их конструктивные слепые пятна
+## 2. The methods and their constructive blind spots
 
-| Метод | Что учитывает хорошо | Что не может учитывать по конструкции |
+| Method | What it captures well | What it cannot capture by construction |
 |---|---|---|
-| **Decomposition (bottom-up + PERT)** | Специфику конкретных задач | Корреляцию рисков между задачами; системные/интеграционные риски; организационный overhead |
-| **Reference class forecasting** | Системные риски целиком, "outside view" | Специфику именно этой задачи/команды |
-| **Throughput Monte Carlo** (по истории спринтов) | Организационный overhead, фрагментацию времени, ceremony cost — автоматически, эмпирически | Причины сложности; не работает без истории; предполагает похожесть будущих задач на прошлые |
-| **Parametric (COCOMO-подобные)** | Независимость от субъективного суждения вообще | Качество зависит от калибровки на исторических данных; устаревают |
-| **ML/регрессия на исторических данных** | Семантические паттерны похожих задач | Объяснимость; новые типы задач вне обучающей выборки |
+| **Decomposition (bottom-up + PERT)** | The specifics of individual tasks | Correlation of risk across tasks; systemic/integration risks; organizational overhead |
+| **Reference class forecasting** | Systemic risk as a whole, the "outside view" | The specifics of this particular task/team |
+| **Throughput Monte Carlo** (from sprint history) | Organizational overhead, time fragmentation, ceremony cost — automatically, empirically | The causes of complexity; does not work without history; assumes future tasks resemble past ones |
+| **Parametric (COCOMO-like)** | Independence from subjective judgment altogether | Quality depends on calibration against historical data; models age |
+| **ML/regression on historical data** | Semantic patterns of similar tasks | Explainability; new task types outside the training set |
 
-Каждый метод — не более точный "конкурент" остальных, а датчик, чувствительный к своему классу сигналов и слепой к другим.
+Each method is not a more accurate "competitor" to the others, but a sensor tuned to its own class of signals and blind to the rest.
 
-## 3. Пайплайн
+## 3. The pipeline
 
-### Шаг A — независимые прогоны
-Каждый метод выдаёт **диапазон** (не точку) + explicit assumption log: что метод по конструкции не учёл. Log — не диагностика по ситуации, а статические метаданные метода (Section 2 таблица).
+### Step A — independent runs
+Each method produces a **range** (not a point) + an explicit assumption log: what the method, by construction, did not account for. The log is not a situational diagnosis but static metadata of the method (the Section 2 table).
 
-### Шаг B — диагностика расхождения
-Если методы разошлись, расхождение не усредняется — оно **интерпретируется** через известные слепые пятна:
-- decomposition < throughput → разница, вероятно, organizational overhead (ceremony + фрагментация)
-- decomposition < reference_class → вероятно, системный/интеграционный риск, не учтённый в WBS
-- throughput сильно шире по разбросу, чем decomposition → недооценённая корреляция рисков между задачами
+### Step B — diagnosing the divergence
+If the methods diverge, the divergence is not averaged — it is **interpreted** through the known blind spots:
+- decomposition < throughput → the difference is probably organizational overhead (ceremony + fragmentation)
+- decomposition < reference_class → probably a systemic/integration risk not captured in the WBS
+- throughput much wider in spread than decomposition → underestimated correlation of risk across tasks
 
-### Шаг C — перенос параметров (аналог "раунда 2" в Delphi)
-Конвергенция здесь **механическая, не эпистемическая**: методы не "меняют мнение", один метод калибрует параметр другого.
-Пример: измеренный из throughput focus factor (реальный throughput / номинальная сумма оценок за N прошлых спринтов) применяется как явный множитель к decomposition-оценке.
+### Step C — parameter transfer (the analog of Delphi's "round 2")
+Convergence here is **mechanical, not epistemic**: the methods do not "change their minds"; one method calibrates a parameter of another.
+Example: the focus factor measured from throughput (actual throughput / nominal sum of estimates over N past sprints) is applied as an explicit multiplier to the decomposition estimate.
 
-### Шаг D — финальный диапазон + объяснённый остаток
-Цель — не единое число, а диапазон с объяснением: какая часть разброса устранена переносом параметров, какая осталась необъяснённой (и это — честная мера неопределённости, а не шум для усреднения).
+### Step D — final range + explained residual
+The goal is not a single number but a range with an explanation: how much of the spread was removed by parameter transfer, and how much remained unexplained (and that is an honest measure of uncertainty, not noise to be averaged away).
 
-**Важно:** полная конвергенция после Шага C — не обязательно успех. Если методы отвечают на структурно разные вопросы, а сошлись в одну точку — либо совпадение, либо один метод силой продавлен под другой и потерял диагностическую независимость.
+**Important:** full convergence after Step C is not necessarily a success. If the methods answer structurally different questions yet converge to a single point — it is either a coincidence, or one method was forced under another and lost its diagnostic independence.
 
-## 4. Границы применимости
+## 4. Boundaries of applicability
 
-- Фреймворк даёт **диапазон с объяснением источников неопределённости**, не единственное число для контракта/бюджета.
-- Требует исторических данных (throughput, референс-проекты) — на проектах с нулевой историей работают только decomposition и reference class (по внешним данным), диапазон будет шире.
-- Не заменяет локальное/тацитное знание команды (специфика конкретных людей, организации) — это единственный вид неопределённости, который ни один из методов, включая LLM, структурно не покрывает.
+- The framework yields a **range with an explanation of the sources of uncertainty**, not a single number for a contract/budget.
+- It requires historical data (throughput, reference projects) — on projects with zero history only decomposition and reference class (from external data) work, and the range will be wider.
+- It does not replace the team's local/tacit knowledge (the specifics of particular people, of the organization) — this is the one kind of uncertainty that no method, the LLM included, structurally covers.
