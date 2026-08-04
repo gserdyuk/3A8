@@ -27,6 +27,7 @@ with an explained residual, not a single number.
 - `findings.md` — working log: *why* the methodology is built the way it is (sources, experiments).
 - `examples/` — worked cases: `BMS`, `FaxRxTx` (blind estimation).
 - `mars_model/` — hypothesis checks on open datasets (PROMISE); `results.md` + fitting code.
+- `PIPELINE.md` — the agent wrapper: who is allowed to see what, and which disciplines are machine-checkable.
 - `pitch_en.md` — a short project pitch.
 
 ## State
@@ -38,5 +39,6 @@ deliberately modest: this is a skeleton with checkable results.
 ## Next
 
 1. Validation on more real projects with known actuals.
-2. Agent wrapper: automating the pipeline as **isolated agents, one per method** —
-   deliberately not one model in several "roles".
+2. Agent wrapper — first version in place (`PIPELINE.md`, `.claude/agents/`): the pipeline
+   runs as **isolated agents with disjoint inputs**, deliberately not one model in several
+   "roles". Next: run a full case through it and compare against the hand-made runs.
