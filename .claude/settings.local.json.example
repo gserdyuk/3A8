@@ -1,0 +1,38 @@
+// ---------------------------------------------------------------------------
+// TEMPLATE — personal Claude Code settings for this project.
+//
+// To use it:
+//     cp .claude/settings.local.json.example .claude/settings.local.json
+// (PowerShell: Copy-Item .claude\settings.local.json.example .claude\settings.local.json)
+//
+// Then DELETE EVERY LINE STARTING WITH "//". Settings are plain JSON and do not
+// allow comments — a file with them is silently ignored, which looks exactly like
+// having no settings at all.
+//
+// The copy is gitignored on purpose: it holds what is true of your machine, not
+// of the project. The shared baseline everyone gets is .claude/settings.json —
+// put anything the whole team needs there instead, so it travels with the repo.
+//
+// The two files merge (project first, then yours); yours adds to the baseline
+// rather than replacing it. Empty is a perfectly good starting point — add a rule
+// when a prompt for the same command annoys you a second time.
+//
+// What belongs here:
+//   - allowances for tools you personally use (web search, a local formatter);
+//   - shell commands with paths that exist only on your machine;
+//   - directories outside the repository you want readable.
+// What does not:
+//   - one-off commands from a single conversation — they age into noise;
+//   - anything a teammate would also need — that belongs in settings.json;
+//   - secrets or tokens of any kind. This file is not encrypted, and one
+//     mistaken "git add -f" publishes it.
+// ---------------------------------------------------------------------------
+{
+  "permissions": {
+    "allow": [
+      // "WebSearch",
+      // "Bash(py -m pytest *)",
+      // "Read(//c/some/other/directory/**)"
+    ]
+  }
+}
