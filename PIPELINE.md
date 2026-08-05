@@ -16,6 +16,19 @@ The agents are hired for what they are **forbidden to see**, not for autonomy or
 
 The orchestrator assembles the inputs and is the only participant that touches files. Anything the orchestrator pastes into a prompt becomes part of that agent's world, so the matrix is a statement about **prompt contents**, not only about file permissions.
 
+## Method constants of the decomposition sensor
+
+Ten identical runs of the sensor (examples/BMS/run6_variance.md) showed ±17% spread between runs and a factor-of-two shift between specifications, with the price attached to a leaf carrying most of it. Three constants were therefore moved from the run's judgement into the method definition (2026-08-05):
+
+- **C1 — splitting rule:** split any item whose *most likely* estimate exceeds **10 person-days**; stop as soon as a piece is at or below it; never merge leaves to reach a size; never create a leaf below 1 person-day. A ceiling and no floor, because the inflation direction is one-way — the unpacking effect grows totals when work is cut finer, so splitting needs a limit and coarseness needs none. The rule is monotone: the tree only refines, the procedure terminates, and the result does not depend on the order of splits. A merge rule would break both properties (a merged leaf invites the next pass to re-split it) and would reintroduce the judgement call "merge with which neighbour". Most leaves land in 5–10 — a sprint-sized task, checkable by a human reader — but that is an expectation reported as a distribution, not a constraint.
+- **C2 — mandatory top-level branches:** analysis/design, platform, core domain, external integrations, interfaces, reporting, QA, infrastructure and release, **migration/coexistence/cutover**, documentation. A branch with no work is kept and marked "none, because …". The precedent is the **utility tree** of ATAM (SEI): its second level is a fixed vocabulary of quality attributes while the leaves stay project-specific, precisely so that trees of different projects are comparable and no standard category is dropped in silence. Same two jobs here. The migration branch was added last: branches 1–8 and 10 describe the *product*, and without a slot for the *project* work of moving off a predecessor, that work smears across its neighbours — on FaxRxTx it was ~19% of the estimate and it was what defined the class the other sensor chose.
+- **C3 — seam rate card:** plain call 1.5 pd, shared data 3 pd, shared workflow 5 pd; doubled at the top-level assembly node because a seam costs more when the parts joined are larger. Seams are counted, not estimated as a percentage; the 15% fallback is allowed only where seams genuinely cannot be enumerated, and must be declared.
+- **C4 — the static blind-spot list is given, not derived.** Both Step A sensors carry a fixed list of what their method cannot see in *any* project, reported verbatim and kept separate from the project-specific list. A constant presented as a finding is noise; a finding buried among constants is worse.
+
+The sensor also reports its own **instrument readings** (leaf count, the distribution of M across buckets, integration share, seam-counted versus fallback nodes) and a **completeness report** (which branches are filled, which are marked "none, because …", and filled ÷ *applicable*), so drift can be detected without re-reading the whole tree.
+
+**Not yet re-measured, and the direction is not the obvious one.** The 17% figure describes the *unconstrained* instrument. An earlier note here predicted that C1 would pull the level *down*, reasoning from a mean price per leaf of ~11 pd against a band midpoint of 7.5. That reasoning was wrong: splitting conserves the sum arithmetically (a 14-day leaf becomes 7 + 7), so capping M lowers the price per leaf and raises the leaf count by the same factor, leaving the total unchanged — and the unpacking effect then pushes finer trees *up*. The honest prediction is therefore: **the level may well rise; the spread should narrow.** Which means the level under the constrained instrument must be measured before any calibration is built on top of it.
+
 ## The two checkable disciplines
 
 ### 1. Provenance of the calibration parameters
@@ -25,6 +38,14 @@ The orchestrator assembles the inputs and is the only participant that touches f
 Written in prose (findings §11.1, step 3) this rests on good faith: the same session that sees a 48-unit gap can always talk itself into rates that sum to 48. The wrapper makes it structural: the rates are produced by `calibration-rates`, which is never shown the reference class output or the gap, and the `diagnostician` may only apply the supplied rates — never edit, add, or drop one. If the diagnostician finds a blind spot the rates do not cover, it requests another gap-blind round instead of filling the hole itself.
 
 This is checkable by **provenance, not by value**: no inspection of a rate's number can tell you whether it was fitted, but the data flow can.
+
+### 1a. The partition, and the cap on global multipliers
+
+A category may be a mandatory branch of the tree, or a blind spot the rate agent corrects for — **never both, and never neither**. If the work has a branch, correcting for it charges twice; if it has neither, it is priced nowhere. This partition is the pipeline's only mechanical protection against double counting, and the FaxRxTx overshoot was that failure in miniature. It became checkable only once the branch list was fixed (C2), because before that there was nothing to partition against.
+
+The rate agent also receives the **completeness report** and must state how it moved the rates. That report is gap-free — no class output, no target, no gap size — so passing it does not break gap-blindness. It is what turns "this tree looks thorough, charge it less for omissions" from a guess into a measurement, and it strikes directly at the cause of the ×4.2 overshoot.
+
+Finally, **at most two global multipliers.** Global corrections compound; targeted and additive ones do not. Five independently sourced globals once produced ×1.72 with nothing behind it. Everything beyond the two genuinely whole-project effects must be expressed as a targeted multiplier on named leaves or a pure addition.
 
 ### 2. The tail is not calibrated
 
@@ -60,7 +81,13 @@ The first version of these definitions carried `tools: []`, intended as "this ag
 
 This is the same lesson as F8 in findings §12, in a new place: **a restriction that has never been observed to bind is not a restriction.** Anything in this pipeline described as machine-enforced must be demonstrated firing, not merely written down.
 
-Current state: the definitions declare `tools: Glob` — the least capable tool available, which can list paths but cannot read file contents, so a sensor still cannot ingest a sibling's numbers. Whether the field binds at all is **unverified**, because agent definitions load at session start; check the registration line on the next fresh session, and if it does not read "Tools: Glob", the tool layer must be treated as absent and isolation rests entirely on prompt-layer refusal plus orchestrator discipline.
+Current state: the definitions declare `tools: Glob` — the least capable tool available, which can list paths but cannot read file contents, so a sensor cannot ingest a sibling's numbers.
+
+**Verified 2026-08-04, and this time by probe rather than by declaration.** A sensor was asked to enumerate its own tools and then to attempt a read of a repository file, with substitute routes forbidden. It reported exactly one tool, `Glob`, and reported the read as impossible at the capability level — there was no call to issue, hence no file-access error to quote. `Read`, `Bash`, `Grep`, `Write` and the rest are absent from its context.
+
+So the isolation now has two independent layers: a sensor **cannot** open a sibling's artifact, and **refuses** contaminated material that reaches it through the prompt. The residual capability is that `Glob` can still reveal file *names*; names carry no estimates, so this is accepted rather than fixed — writing it down so that a future reader knows it was a decision and not an oversight.
+
+One cosmetic inconsistency the probe surfaced: the agent's environment preamble still describes a shell tool that is not in its actual tool set. The tool set governs; the preamble text is stale. Worth knowing before it is mistaken for a leak.
 
 ## Running the pipeline
 

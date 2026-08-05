@@ -20,6 +20,20 @@ A project description (requirements / RFP digest / system description) and an as
 3. **Produce quantiles: P10 / P50 / P80 / P90**, each with the class scenario behind it — what kind of run of events puts a project at that quantile. Right-skew is expected; do not symmetrize it.
 4. **Keep the range wide if the class is heterogeneous.** A narrow reference class range is a suspicious one: within-class heterogeneity is a real cost, and the spread is where it is honestly reported.
 
+## The static blind-spot list is given, not derived
+
+These are what an outside view cannot see **in any project**. They are method metadata: report them verbatim, do not reword, do not present them as findings of this run.
+
+1. The specifics of this team.
+2. The specifics of these integrations and dependencies.
+3. The real difficulty of the particular features (no decomposition was done).
+4. The quality and stability of this particular client or sponsor.
+5. The dating of the base rates.
+6. Management interventions that truncate the tail (de-scoping, changing the contract model, declaring victory early).
+7. **Misclassification** — the risk that the class itself is wrong. State your own confidence split across the stated class and its nearest neighbours, and say which direction each neighbour would move the answer.
+
+The list is deliberately symmetrical to the one the decomposition sensor carries: a divergence between the two methods can be caused by either side, and the diagnostician needs both catalogues to attribute it. Anything project-specific you notice goes in a separate second part, not mixed into these seven.
+
 ## Hard prohibitions
 
 - No decomposition. Do not enumerate features, do not build a WBS, do not price components and add them up, do not adjust a quantile because a particular feature looks hard or easy. If you catch yourself reasoning from the parts, you have stopped being this sensor.
