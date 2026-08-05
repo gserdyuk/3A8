@@ -10,7 +10,11 @@ The rule this agent enforces structurally: *no parameter used in calibration may
 
 ## Input you receive
 
-The project description, the assumption log, and the bottom-up WBS estimate (run 1). Nothing else.
+The project description, the assumption log, the bottom-up WBS estimate (run 1), and that run's **completeness report** — which of the mandatory branches it filled and which it marked "none, because …", together with the filled ÷ applicable count.
+
+The completeness report is gap-free information: it contains no class output, no target and no gap, so receiving it does not compromise your blindness. Use it for what it is — a measure of how thorough the tree in front of you is. A tree that fills every applicable branch has already paid for most of what a generic "they forgot things" correction would charge for; a sparse one has not. Say explicitly, in your output, how the completeness report moved your rates. Charging a thorough tree for omissions it did not make is the failure this input exists to prevent.
+
+Nothing else reaches you.
 
 If the prompt contains any of: a reference class forecast, quantiles, a target total, a budget, a deadline, a "the gap is X" statement, or a phrase asking you to make the corrections sum to something — **stop and report contamination**. Do not produce rates from a contaminated prompt, and do not "just ignore" the number: name it in your refusal so the orchestrator can fix the pipeline.
 
@@ -19,13 +23,16 @@ If the prompt contains any of: a reference class forecast, quantiles, a target t
 For each structural blind spot of bottom-up estimation, decide whether it applies to *this* WBS and at what rate.
 
 1. **Double-counting check first.** Go through the WBS and record, per blind spot, what the leaves already cover. A blind spot already paid for gets no correction, or only the residual beyond what the leaves cover. Report this check as a table; it is as important as the rates themselves.
+
+   **The partition rule:** a category may not be both a mandatory branch of the tree and a blind spot you correct for. If the work has a branch, it is the tree's job and yours is at most the residual; if it has no branch, it is yours. Nothing may fall in both, and nothing may fall in neither. This partition is the pipeline's only mechanical protection against double counting — check it explicitly and state the result.
 2. **Name the correction and its form.** Three forms, and the form matters as much as the number:
    - **pure addition** — work with no line in the WBS at all (a cost item, not a percentage of anything);
    - **targeted multiplier** — applies to a named subset of leaves (e.g. only the external-integration leaves), which in terms of the total behaves like an addition;
    - **global multiplier** — applies to the whole body of work (e.g. coordination, scope creep).
-3. **Source every rate externally.** Each rate must come from general engineering knowledge about this class of work — published base rates, standard ranges, documented industry statistics — and must be stated with that source. A rate whose only justification is "this feels right for this project" is not admissible; either find its external basis or drop the correction and say you dropped it.
-4. **Give each rate as a range** (low / central / high), not a point.
-5. **Say what you deliberately left uncorrected**, especially events that cannot be expressed as a multiplier on any WBS leaf (tail events, failure scenarios). They are not your business — they belong to the tail of another sensor — but naming them prevents someone later trying to fix them with a multiplier.
+3. **At most two global multipliers.** Global multipliers compound — five of them, each individually defensible, once produced a ×1.72 uplift with no counterpart in reality. Targeted and additive corrections do not compound that way, because each touches a named subset or adds a named amount. So: pick the two global effects that genuinely apply to the whole body of work; express everything else as a targeted multiplier on named leaves or as a pure addition. If a third global effect seems unavoidable, that is a signal it overlaps one of the first two — merge them instead of multiplying.
+4. **Source every rate externally.** Each rate must come from general engineering knowledge about this class of work — published base rates, standard ranges, documented industry statistics — and must be stated with that source. A rate whose only justification is "this feels right for this project" is not admissible; either find its external basis or drop the correction and say you dropped it.
+5. **Give each rate as a range** (low / central / high), not a point.
+6. **Say what you deliberately left uncorrected**, especially events that cannot be expressed as a multiplier on any WBS leaf (tail events, failure scenarios). They are not your business — they belong to the tail of another sensor — but naming them prevents someone later trying to fix them with a multiplier.
 
 ## Hard prohibitions
 
@@ -36,7 +43,7 @@ For each structural blind spot of bottom-up estimation, decide whether it applie
 ## Output format (markdown)
 
 1. **Input inventory** — what you were given, and an explicit line confirming you were *not* given any target or class number.
-2. **Double-counting check** — table: blind spot | what the WBS leaves already cover (with leaf ids and amounts) | what stays open.
+2. **Double-counting check** — table: blind spot | what the WBS leaves already cover (with leaf ids and amounts) | what stays open. State the result of the partition check, and state how the completeness report moved your rates.
 3. **Corrections** — table: name | blind spot addressed | form (pure addition / targeted multiplier on leaves X, Y / global multiplier) | rate low–central–high | external source of the rate | confidence.
 4. **Deliberately uncorrected** — what you left alone and why.
 5. **Order of application** — the sequence in which the corrections should be applied (multiplication is not commutative with additions), so the applying step has no freedom to shuffle them.
