@@ -16,6 +16,43 @@ The agents are hired for what they are **forbidden to see**, not for autonomy or
 
 The orchestrator assembles the inputs and is the only participant that touches files. Anything the orchestrator pastes into a prompt becomes part of that agent's world, so the matrix is a statement about **prompt contents**, not only about file permissions.
 
+## Engine names and versions
+
+Each agent is an **engine** with a name and a version, stamped on every output it produces:
+
+The naming scheme: **city = generation of the whole pipeline, letter = role within it, number = major.minor version.**
+
+| Step | Agent | Engine |
+|---|---|---|
+| A.1 | `estimator-decomposition` | **Lytin-D 2.2** |
+| A.2 | `estimator-reference-class` | **Lytin-R 1.0** |
+| C-params | `calibration-rates` | **Lytin-K 1.0** |
+| B, D | `diagnostician` | **Lytin-G 1.0** |
+| — | `version-probe` | **Lytin-F 2.2** |
+
+One city for all four engines of a generation makes the pipeline version legible as a whole; the letter says which role is speaking. A role can advance on its own (`Lytin-D 1.1`) while the generation stays; a new city means the set was rebased together.
+
+**F is not a step of the pipeline.** The version probe estimates nothing; it answers with its own stamp and stops. It exists because agent definitions are read **once, at session start**, so an edit made during a session has no effect until restart, and nothing on disk reveals whether that has happened — only running an agent does. Run9 established this the expensive way: ten runs launched after an edit in the same session all returned the pre-edit engine. The probe is that check made cheap enough to do every time.
+
+Its version **mirrors the sensor being measured** rather than counting independently, so the expected answer is known without consulting a log and a mismatch is visible at a glance. The two are bumped in one edit. The probe confirms only that the session reloaded; that a particular file's new content is *correct* remains the job of the engine stamp each sensor prints in its own output. Read the two together — probe before a batch, stamps after it.
+
+**Major** changes when a constant can move the level (leaf ceiling, branch list, rate card) — estimates across major versions are not comparable without a measured conversion factor. **Minor** changes when only wording, reporting or output format changes.
+
+Labels for the decomposition sensor, so the numbers already on record can be placed:
+
+| Engine | What it was | Measured |
+|---|---|---|
+| **Lytin-D 0.1** | the manual July tree, 26 leaves, flat list | 486 pd, n = 1 |
+| **Lytin-D 0.9** | the unconstrained August definition | mean 1147, CV 17.4%, n = 10 |
+| **Lytin-D 1.0** | C1–C4, the constants below | mean 1284, CV 8.9% (same session); mean 1410, CV 10.0% (other session) |
+| **Lytin-D 2.0** | + C5, modules derived from functions | mean 1518, CV 10.8%, n = 10 |
+| **Lytin-D 2.1** | + C5's scope: activity branches carry no modules | not measured separately; nine of ten `2.0` runs already behaved this way |
+| **Lytin-D 2.2** | + §6 reports node items in three parts and the seam mix by kind | not yet measured |
+
+A separate configuration, not a version: with the leaf table suppressed, `1.0` gave mean 1715 — **+33.5%** on a change to the output format alone. That is why the version convention has to cover reporting and not only constants, and why a batch under a changed §6 is treated as a new baseline rather than a continuation.
+
+Downstream engines record the stamps of what they consumed: the rate agent records which decomposition engine built the tree it is calibrating, and the diagnostician records all three of its inputs. A diagnosis is reproducible only if the versions of everything it combined are on the record.
+
 ## Method constants of the decomposition sensor
 
 Ten identical runs of the sensor (examples/BMS/run6_variance.md) showed ±17% spread between runs and a factor-of-two shift between specifications, with the price attached to a leaf carrying most of it. Three constants were therefore moved from the run's judgement into the method definition (2026-08-05):
