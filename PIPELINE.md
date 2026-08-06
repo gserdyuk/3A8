@@ -24,17 +24,19 @@ The naming scheme: **city = generation of the whole pipeline, letter = role with
 
 | Step | Agent | Engine |
 |---|---|---|
-| A.1 | `estimator-decomposition` | **Lytin-D 2.2** |
+| A.1 | `estimator-decomposition` | **Lytin-D 3.0** |
 | A.2 | `estimator-reference-class` | **Lytin-R 1.0** |
 | C-params | `calibration-rates` | **Lytin-K 1.0** |
 | B, D | `diagnostician` | **Lytin-G 1.0** |
-| — | `version-probe` | **Lytin-F 2.2** |
+| — | `version-probe` | **Lytin-F 3.0** |
 
 One city for all four engines of a generation makes the pipeline version legible as a whole; the letter says which role is speaking. A role can advance on its own (`Lytin-D 1.1`) while the generation stays; a new city means the set was rebased together.
 
 **F is not a step of the pipeline.** The version probe estimates nothing; it answers with its own stamp and stops. It exists because agent definitions are read **once, at session start**, so an edit made during a session has no effect until restart, and nothing on disk reveals whether that has happened — only running an agent does. Run9 established this the expensive way: ten runs launched after an edit in the same session all returned the pre-edit engine. The probe is that check made cheap enough to do every time.
 
 Its version **mirrors the sensor being measured** rather than counting independently, so the expected answer is known without consulting a log and a mismatch is visible at a glance. The two are bumped in one edit. The probe confirms only that the session reloaded; that a particular file's new content is *correct* remains the job of the engine stamp each sensor prints in its own output. Read the two together — probe before a batch, stamps after it.
+
+**The probe must be edited, never created, for its answer to mean anything.** A newly created file appearing in the session proves only that the harness picks up *new* files; the question that matters is whether it re-reads *modified* ones, since that is what a sensor edit always is. A harness that scanned for new files while caching the content of known ones would pass a freshly created probe and still run the old sensor — which is run9's failure in a subtler form. On the cycle where the probe itself is introduced this hole is unavoidable, and the way to close it is a **bump-only cycle**: raise the version on both files with no other change, restart, and read the probe. From then on every ordinary bump is a modified file and the check is sound.
 
 **Major** changes when a constant can move the level (leaf ceiling, branch list, rate card) — estimates across major versions are not comparable without a measured conversion factor. **Minor** changes when only wording, reporting or output format changes.
 
@@ -47,7 +49,10 @@ Labels for the decomposition sensor, so the numbers already on record can be pla
 | **Lytin-D 1.0** | C1–C4, the constants below | mean 1284, CV 8.9% (same session); mean 1410, CV 10.0% (other session) |
 | **Lytin-D 2.0** | + C5, modules derived from functions | mean 1518, CV 10.8%, n = 10 |
 | **Lytin-D 2.1** | + C5's scope: activity branches carry no modules | not measured separately; nine of ten `2.0` runs already behaved this way |
-| **Lytin-D 2.2** | + §6 reports node items in three parts and the seam mix by kind | not yet measured |
+| **Lytin-D 2.3** | + §6 reports node items in three parts and the seam mix by kind | mean 1668, CV 9.85%, n = 10 |
+| **Lytin-D 3.0** | C3 replaced: integration is 20% of the leaf sum beneath each node, no seam counting | not yet measured |
+
+`2.2` carried exactly the change now labelled `2.3` and produced no runs at all. It was bumped without any further edit, on purpose: see the note on the probe above. A version with no measurement attached to it is not worth preserving as a separate row — it would be a number a future reader could never place against any data.
 
 A separate configuration, not a version: with the leaf table suppressed, `1.0` gave mean 1715 — **+33.5%** on a change to the output format alone. That is why the version convention has to cover reporting and not only constants, and why a batch under a changed §6 is treated as a new baseline rather than a continuation.
 
