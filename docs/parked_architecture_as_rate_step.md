@@ -17,7 +17,7 @@ its own or a module inside one.
 So the method would gain:
 
 - **two parameters** — `k_module` and `k_service`, or better `k_module` plus the *ratio* between them;
-- **one structural input** — where the boundary between them sits in the tree.
+- **one label per node** — whether that join crosses a service boundary or stays inside one.
 
 ## Why this shape is worth keeping
 
@@ -46,15 +46,34 @@ against — otherwise the method acquires two invented numbers in place of one. 
 `k_module` + a ratio is probably better than two absolute rates, since "crossing a network boundary costs
 n times an in-process one" should transfer between projects better than either rate alone.
 
-## The complication, written down now so it is not rediscovered
+## The boundary is a labelling of nodes, not a level of the tree
 
-"Which level of the tree" assumes the service boundary is a clean horizontal cut. It need not be. Three
-modules may live in one service while two neighbours are each their own. In the general case the boundary
-is not a level but a **labelling of nodes**.
+An earlier draft of this note proposed naming *the level* at which the service boundary sits. That is
+wrong, and the correct form is per-node labelling. Recorded here with the reasoning, so the inferior version
+is not re-invented.
 
-Starting with the level version is a reasonable simplification — but it is a simplification of the same
-kind as the uniform rate it replaces, and it should be called that in the text rather than presented as the
-whole truth.
+**A level assumes a clean horizontal cut, and reality need not oblige.** Three modules may live in one
+service while two neighbours are each their own. A level cannot say that; a label per node can.
+
+**A level has to be inferred; a label is stated.** A source says "the booking engine is a separate service",
+not "the boundary is at depth two". Deriving a level from such sentences means guessing — which is the very
+thing the first safeguard exists to prevent.
+
+**Labelling adds expressiveness without adding freedom, which is the non-obvious part.** One decision per
+tree versus N decisions per tree looks like a loss for repeatability. It is not, because of the safeguard
+above: every label is either taken from the source or defaults to `module`. A run with no architectural
+information labels everything `module` and lands exactly on the monolith case; a run with information
+labels what the source states. Neither run chooses anything.
+
+**And it is checkable at the point of disagreement.** The label is printed beside its node, as the
+function → module map already is, so a reader can dispute one node rather than the whole tree. It also
+becomes a third instrument reading — how many joins were labelled `service` — so that if a source is vague
+and runs diverge, the divergence is *visible in the readout* instead of hidden inside the total.
+
+**Two framings of the same label, both to appear in the rule text.** From the pricing side: do the children
+being joined sit in the same unit of deployment, or in different ones? From the construction side, which is
+how it will actually be used: when a part is split, is it split into modules or into services? They describe
+one node from two directions, and stating only one of them invites a reading where they come apart.
 
 ## Prerequisites before this is unparked
 
