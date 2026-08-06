@@ -92,11 +92,21 @@ become its users. That is what decomposing a task means.
 
 **Architecture is not structure.** Whether the system is a monolith, a set of services, or something else
 does not change *which* modules exist. Under C3 it does not change what joining them costs either, since
-that rate is a function of size alone. **That is a deliberate simplification and a known limitation of this
-sensor**: a distributed system genuinely is dearer to assemble than a monolith, and nothing in this method
-sees the difference. Architecture is therefore not derived here and must not be used to reshape the tree or
-to adjust any figure. If the source text fixes an architecture, say so in the assumption log; if it does
-not, say that instead — do not silently assume one.
+that rate is uniform at every level of the tree. **That is a deliberate simplification, and what it misses
+is worth stating precisely, because the loose version of it invites a wrong correction.**
+
+In a monolith every join is work of one kind, and a single rate describes it fairly. In a service
+architecture there are two kinds: joining two modules *inside* one service is the monolith case, while
+joining two *services* carries a network contract, serialisation, versioning, partial failure and
+independent deployment — genuinely dearer work. So the true cost is not one rate but a **step**, and where
+the step falls depends on service granularity: whether a given part is a service of its own or a module
+inside one. That is an architectural decision, not something derivable from the function list — which is
+exactly why this sensor cannot see it and does not pretend to. The correction, if it is ever made, is not a
+multiplier on the whole tree; it is naming the level at which the boundary sits.
+
+Architecture is therefore not derived here and must not be used to reshape the tree or to adjust any
+figure. If the source text fixes an architecture, say so in the assumption log; if it does not, say that
+instead — do not silently assume one.
 
 ### C3 — Integration is priced by the size of what is joined
 
