@@ -1,6 +1,42 @@
 # Proposal: C3 v2 (incremental assembly) + structure as an input
 
-Status: **draft for review, not applied.** Written 2026-08-06, after run8.
+Status: **superseded, 2026-08-06.** Kept as the record of a decision, not as a live proposal.
+
+**Part 2 was adopted** as C5 in `Lytin-D 2.0` and measured in run11: it closed the node-count parameter
+(CV 44.1% → 8.0% once `2.3` made the reading unambiguous) and broke the node↔integration link
+(corr 0.90 → −0.10).
+
+**Part 1 was not adopted, and its motivation is obsolete.** It was written to stop node count moving the
+total; C5 stopped that by a different route. Run12 then showed the residual sat in the *seam count*
+(108…173 on one project, 105% of the variance in integration cost) while the price per seam was stable to
+5% — so pairwise-versus-incremental was never the live question.
+
+**What was adopted instead, as `Lytin-D 3.0`:** integration is **20% of the sum of leaf E beneath each
+node**, with no seam counting at all. This takes the one idea from Part 1 that measurement supports — that
+the cost of joining should scale with the size of what is joined — and drops the machinery around it. The
+rate is stated as a named parameter so it can later be calibrated against outcomes, rather than hidden as
+three unmeasured numbers in a rate table.
+
+**Pre-registered predictions for the `3.0` batch**, recorded before any run:
+
+1. **Integration share becomes nearly constant** across runs; its CV collapses from 12.6% toward the small
+   residue left by variation in how much leaf weight sits under functional versus activity branches.
+2. **Level barely moves: +2%.** Computed, not hoped — 0.532 × Σ leaf E against a measured 33.3% share.
+   Undetectable at this sample size, which is the point: the measurement will be about spread, not level.
+3. **Total CV rises, roughly 9.85% → 12%.** The risky one. Basis: the old rule was accidentally damping
+   leaf-count variation (corr(leaf count, integration share) = −0.51), and strict proportionality removes
+   the damper. Caveat stated in advance: −0.51 on ten points is about two standard errors from zero.
+4. **Leaf count explains ≈100% of the variance**, against 120% with two cancelling factors before.
+
+Prediction 3 is informative either way. If it holds, repeatability was knowingly traded for correctness and
+the trade is repaid by pinning the splitting rule next. If it fails, the damper was an artifact of n = 10
+and the correctness came free.
+
+---
+
+*Original text follows, unchanged.*
+
+Written 2026-08-06, after run8.
 
 Motivation, in one line: run8 showed that 34% of the sensor's spread rides on the number of aggregation
 nodes (11…43 on one project, correlation with integration 0.90), and the diagnosis is that C3 prices
