@@ -50,7 +50,16 @@ Labels for the decomposition sensor, so the numbers already on record can be pla
 | **Lytin-D 2.0** | + C5, modules derived from functions | mean 1518, CV 10.8%, n = 10 |
 | **Lytin-D 2.1** | + C5's scope: activity branches carry no modules | not measured separately; nine of ten `2.0` runs already behaved this way |
 | **Lytin-D 2.3** | + §6 reports node items in three parts and the seam mix by kind | mean 1668, CV 9.85%, n = 10 |
-| **Lytin-D 3.0** | C3 replaced: integration is 20% of the leaf sum beneath each node, no seam counting | not yet measured |
+| **Lytin-D 3.0** | C3 replaced: integration is 20% of the leaf sum beneath each node, no seam counting | mean 1674, CV 10.86%, n = 10 |
+
+Read the level column across `1.0` and later with the reporting caveat in mind, not as a trend: the four
+comparable batches sit at 1284, 1410, 1518, 1668 and 1674, and only some of that movement is method. What
+the versions *did* buy is not visible in the level at all — it is visible in which parameter carries the
+spread. C1 closed the price of a leaf (own CV 15.9% → 5.6%), C5 closed the module list and with it the node
+count (44.1% → 8.2%), `3.0` closed the cost of integration (share CV 10.4% → 0.78%, 3% of variance). Each
+was confirmed by measurement; none narrowed the output, because the variance moved to the next unpinned
+parameter every time. **How finely a module is split into leaves is the only one left, and it now carries
+essentially all of it.**
 
 `2.2` carried exactly the change now labelled `2.3` and produced no runs at all. It was bumped without any further edit, on purpose: see the note on the probe above. A version with no measurement attached to it is not worth preserving as a separate row — it would be a number a future reader could never place against any data.
 
