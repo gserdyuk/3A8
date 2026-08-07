@@ -24,13 +24,25 @@ The naming scheme: **city = generation of the whole pipeline, letter = role with
 
 | Step | Agent | Engine |
 |---|---|---|
-| A.1 | `estimator-decomposition` | **Lytin-D 3.0** |
+| A.1 | `estimator-decomposition` | **Lytin-D 4.0** |
 | A.2 | `estimator-reference-class` | **Lytin-R 1.0** |
 | C-params | `calibration-rates` | **Lytin-K 1.0** |
 | B, D | `diagnostician` | **Lytin-G 1.0** |
-| — | `version-probe` | **Lytin-F 3.0** |
+| — | `version-probe` | **Lytin-F 4.0** |
 
 One city for all four engines of a generation makes the pipeline version legible as a whole; the letter says which role is speaking. A role can advance on its own (`Lytin-D 1.1`) while the generation stays; a new city means the set was rebased together.
+
+## The model is the second coordinate, and the orchestrator writes it
+
+An estimate is **not** a property of the pair (project × engine). It is a property of the triple **(project × engine × model)**, and until run16 the third element was never recorded.
+
+The measurement: `Lytin-D 4.0` run on the pinned BMS prompt, n=10 on each of two models, gave **1625 pd on one and 804 pd on the other — ×2.02, t = 14.70**. The same engine, the same constants, the same words. For scale, the largest effect any version of the method has ever produced is ×1.56 (no method → `3.0`), and the step from `2.3` to `3.0` was +0.4%. **The model outweighs the entire version history.**
+
+So every batch is stamped with both coordinates — `Lytin-D 4.0 × Opus 5` — and a batch on a different model is **a different instrument, not a replication**. Levels, rate cards and multipliers derived under one model do not transfer to another and expire when that model does.
+
+**The model half of the stamp is written by the orchestrator, never by the sensor.** The orchestrator chooses the model when it launches the agent, so it is the only participant that knows it as a fact; a sensor asked to name its own model would be reporting a belief, and this pipeline has already recorded an agent narrating an observation it never made (see the fabricated directory listing below). The two halves therefore have different provenance and should be read differently: the **engine** stamp is the sensor's self-report and proves the definition loaded, the **model** stamp is the orchestrator's record and proves what it ran on. Neither substitutes for the other.
+
+This convention deliberately changes no sensor definition, and therefore triggers no version bump — the engines already on record keep the measurements attached to them, and the model is annotated onto the existing batches from the launch record rather than back-derived from anything a sensor said.
 
 **F is not a step of the pipeline.** The version probe estimates nothing; it answers with its own stamp and stops. It exists because agent definitions are read **once, at session start**, so an edit made during a session has no effect until restart, and nothing on disk reveals whether that has happened — only running an agent does. Run9 established this the expensive way: ten runs launched after an edit in the same session all returned the pre-edit engine. The probe is that check made cheap enough to do every time.
 
@@ -51,6 +63,8 @@ Labels for the decomposition sensor, so the numbers already on record can be pla
 | **Lytin-D 2.1** | + C5's scope: activity branches carry no modules | not measured separately; nine of ten `2.0` runs already behaved this way |
 | **Lytin-D 2.3** | + §6 reports node items in three parts and the seam mix by kind | mean 1668, CV 9.85%, n = 10 |
 | **Lytin-D 3.0** | C3 replaced: integration is 20% of the leaf sum beneath each node, no seam counting | mean 1674, CV 10.86%, n = 10 |
+| **Lytin-D 4.0** | + C6, the split consistency check: estimate a node whole before splitting it, then compare against the sum of its leaves. Diagnostic only — it changes no figure | **× Opus 5:** mean 1625, CV 9.25%, n = 10 · **× Sonnet 5:** mean 804, CV 11.56%, n = 10 |
+| — | *no method at all, same pinned prompt (the baseline this table never had)* | **× Opus 5:** mean 1074, CV 8.55%, n = 10 · **× Sonnet 5:** mean 763, CV 20.92%, n = 10 |
 
 Read the level column across `1.0` and later with the reporting caveat in mind, not as a trend: the four
 comparable batches sit at 1284, 1410, 1518, 1668 and 1674, and only some of that movement is method. What
@@ -60,6 +74,29 @@ count (44.1% → 8.2%), `3.0` closed the cost of integration (share CV 10.4% →
 was confirmed by measurement; none narrowed the output, because the variance moved to the next unpinned
 parameter every time. **How finely a module is split into leaves is the only one left, and it now carries
 essentially all of it.**
+
+**Run14–run16 supplied the two things this reading was missing: a floor and a scale.** The floor is the
+baseline row above — with no method at all the spread is 8.55%, below every version ever measured, so the
+output CV was never going to narrow by pinning parameters; the variance was moving around inside a band that
+existed before the method did. The scale is the model: what the constants *did* buy is visible only across
+models, and it is sharper than the version table can show.
+
+| across Opus 5 and Sonnet 5 | ratio |
+|---|---:|
+| price per leaf (what C1 governs) | 1.015 — **t = 0.51, indistinguishable** |
+| integration share, implied multiplier (what C3 governs) | 1.026, 1.013 |
+| **leaf count (what nothing governs)** | **1.969 — t = 18.07** |
+
+Every pinned parameter holds across models to within 3%. The one unpinned parameter moves by a factor of
+two and drags the total with it. That is the real product of C1 and C3 — not a narrower output, but
+**parameters that survive a change of model** — and it also names the next constant and gives it a measured
+target rather than a guessed one.
+
+One further correction to how the constants should be described. On Opus the method changed the spread not
+at all (8.55% → 9.25%); on Sonnet it halved it (20.92% → 11.56%). **The constants are a floor, not a
+narrower**: they do nothing to an already-disciplined estimator and impose discipline on an undisciplined
+one. That property is invisible in any batch run on a single strong model, which is every batch before
+run15.
 
 `2.2` carried exactly the change now labelled `2.3` and produced no runs at all. It was bumped without any further edit, on purpose: see the note on the probe above. A version with no measurement attached to it is not worth preserving as a separate row — it would be a number a future reader could never place against any data.
 
