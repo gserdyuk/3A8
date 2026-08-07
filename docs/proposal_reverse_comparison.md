@@ -1,7 +1,22 @@
 # Comparing the tree back against the text
 
-Status: **design only. Nothing run, nothing implemented.** Predictions registered at the end, before any
-measurement, per the pattern that made C6's result readable.
+Status: **design only, and its reasoning is partly superseded — see the correction below.** Predictions
+registered at the end, before any measurement, per the pattern that made C6's result readable.
+
+> **Correction, same day, before anything here was run.** This file was written on the assumption that the
+> ×1.97 leaf-count gap was a mix of coverage and granularity, with granularity the harder half. That is
+> wrong, and the arithmetic settles it: splitting conserves the sum, so covering identical work in half the
+> leaves needs leaves of **13.3 pd** on average, which C1's ten-day ceiling does not permit and which no run
+> reported. **The gap is coverage.** A checked instance confirms it from the other side — where Sonnet split
+> *finer* than Opus it also totalled *lower* (13.83 against 18.00), so there is no free multiplier in
+> granularity.
+>
+> Two consequences for this document. First, mechanism **A (the behaviour inventory) is demoted**: it was
+> aimed at a granularity problem that turns out not to be the dominant one. Second, the local form of the
+> coverage check is better than the global one proposed here as mechanism B, and is now its own proposal —
+> `docs/proposal_C7_coverage_at_every_split.md`. **B survives, but for the other direction**: C7 can only
+> add work that is missing, and never remove work that traces to nothing in the text. That failure mode is
+> real, unaddressed by C7, and is what B is now for.
 
 ## Two mechanisms, not one
 

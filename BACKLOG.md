@@ -8,48 +8,63 @@ Convention: `- [ ]` open · `- [x]` done, with the commit or run that closed it.
 
 ---
 
-## Now — comparing the tree back against the text
+## Now — closing the last unpinned parameter
 
-Two mechanisms, often called the same thing, answering different questions. Keep them apart: one is a
-**statistic over many trees** aimed at a constant, the other is an **audit of one tree** aimed at its
-correctness. Design in `docs/proposal_reverse_comparison.md`.
+**The ×1.97 leaf-count gap is coverage, and the arithmetic settles it.** Splitting conserves the sum, so
+covering identical work in half the leaves needs leaves averaging **13.3 pd** — above C1's ten-day ceiling,
+and no run reported a leaf that heavy. Either C1 was violated or the trees cover different work. C1 was not
+violated.
 
-### A. The behaviour inventory — is leaf count derivable from the text?
+The mechanism: C1 is monotone *given a starting judgement*, and the judgement — *is this node above ten days?*
+— is free and self-reinforcing. Judged small → not split → stays small. Judged large → split → unpacking adds
++28.9% → larger still. C1 fixed the price of a leaf and left the **entry into splitting** free, and the total
+is price × count.
 
-The one unpinned parameter. Everything else in the sensor holds across models to within 3%; leaf count moves
-by ×1.97 (run16). Closing it is the difference between an instrument and a reading of a model.
+### C7 — coverage at every split *(first: it targets the dominant cause)*
 
-- [ ] **Measure the ruler before using it.** Build the inventory from the source text n=10 and measure the CV
-      of the count. If the inventory is as unstable as leaf count, the problem has been *relocated, not
-      solved*, and nothing downstream is worth building.
-- [ ] **Then measure it across models.** Cross-model stability is the property leaf count failed. Within-model
-      stability is only the precondition.
-- [ ] **Score the twenty existing trees against one inventory.** run16's Opus (157 leaves) and Sonnet (80) are
-      already on record; no new estimation runs are needed to find out whether one tracks the text and the
-      other does not — or whether both miss, in different directions.
-- [ ] **Only then decide whether a constant is possible**, and register predictions before running it.
+Children must account for everything their parent names; a node that cannot cover its own content with one
+leaf is split **regardless of size**. By induction, with the root checked against the source text, the tree
+covers the text — and the full text is read once, in one place, instead of being audited globally.
+Design and six registered predictions in `docs/proposal_C7_coverage_at_every_split.md`.
 
-### B. The full reverse audit — is *this* decomposition correct?
+- [ ] **Implement as `Lytin-D 5.0`** — major, because a second splitting trigger adds leaves and leaves are
+      priced. Batch the `run12` path removal into the same bump rather than spending a bump on it alone.
+- [ ] **Measure n=10 on each of two models** and score the six predictions. The one that matters: cross-model
+      ratio falls below 1.4, from 2.021. Above 1.7 the rule is reverted, not tuned.
+- [ ] **Watch prediction 2 as the honesty check.** The ratio can close for the wrong reason — by the rule
+      inflating both trees rather than repairing the deficient one. Only Sonnet gaining far more than Opus
+      distinguishes repair from inflation.
+- [ ] **Report leaves gained per branch.** C7 is expected to bind on branches 2–6 and be near-vacuous on
+      1, 7, 8, 9, 10, whose content the source text does not name. Equal gains across both would mean the
+      circularity flaw in the design is real.
 
-Take a completed WBS and read it against the **whole** source text, both directions, and judge the
-decomposition rather than count it. Distinct from C6, which compares a tree only against *itself*: this
-compares it against the thing it claims to describe. Two failure modes, and they are not symmetric —
+### B — the full reverse audit *(second: it covers the direction C7 cannot)*
 
-- **coverage:** something the text requires has no line in the tree (silent omission, the expensive kind);
-- **traceability:** something in the tree traces to nothing in the text (invented work, the kind that
-  inflates and looks thorough).
+C7 only **adds** work that is missing. It has no power to remove work that traces to nothing in the source —
+invented work, the failure that inflates a total while looking thorough. That direction needs an inspection,
+and it is what the audit is now for. Design in `docs/proposal_reverse_comparison.md` (mechanism B).
 
-- [ ] **Define the audit output**: a verdict per finding, not a score. Each finding names the text it came
-      from and the node it lands on, so it can be checked rather than believed.
-- [ ] **Run it on one Opus tree and one Sonnet tree from run16** — the same project, ×2 apart, both already
+- [ ] **Define the audit output**: named findings with citations, not a score. Each names the passage it came
+      from and the node it lands on, so it can be checked rather than believed. This is the audit's advantage
+      over any count — findings are falsifiable one at a time.
+- [ ] **Measure the auditor before trusting it.** The auditor is itself a model. Same tree, both models: if
+      the findings differ the way leaf counts did, the problem has been relocated again.
+- [ ] **Run it on one Opus tree and one Sonnet tree from run16** — same project, ×2 apart, both already
       written. If the audit cannot tell them apart it is not an audit.
-- [ ] **Settle branch 9 with it.** Whether migration work is in this RFP is exactly a coverage question, and
-      the two models answered it 10–0 in opposite directions. The audit is the instrument that decides it,
-      and it decides it from the text rather than by preference.
+- [ ] **Settle branch 9 with it.** Whether migration work is in this RFP is a coverage question the two models
+      answered 10–0 in opposite directions. The audit decides it from the text rather than by preference.
 - [ ] **Keep it out of the estimating run.** The auditor sees the text and the tree; the estimator never sees
-      the audit. If the run that built the tree also scores it, the tree gets adjusted to match and the
-      judgement C1 removed comes back — the same reason `calibration-rates` is kept blind to the gap it
-      explains.
+      the audit. Otherwise the tree gets adjusted to match and the judgement C1 removed comes back — the same
+      reason `calibration-rates` is kept blind to the gap it explains.
+
+### A — the behaviour inventory *(demoted: it targeted the wrong half)*
+
+Written when the gap was thought to be part coverage, part granularity. Granularity is now arithmetically
+excluded, so a ruler for counting behaviours is aimed at a problem that is not the dominant one. Kept because
+it may still be the right **unit of pricing** if C7 fails, but not run first.
+
+- [ ] **Hold until C7 reports.** If C7 closes the ratio, the count question is moot. If it does not, the
+      inventory becomes the way to stop pricing by artifact altogether.
 
 ## Next — validity
 
