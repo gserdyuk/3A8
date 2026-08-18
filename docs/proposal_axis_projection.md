@@ -1,6 +1,19 @@
 # Projection axes — decomposing the same system twice and comparing
 
-Status: **design only. Not implemented, not run.** Predictions registered at the end, before any measurement,
+Status: **implemented as `Lytin-D 5.0`, not yet run.** Predictions below were registered before the
+implementation and are committed in an earlier commit than any result.
+
+Pinned inputs, md5 of the LF form as run13 records them:
+
+| file | md5 |
+|---|---|
+| `examples/BMS/prompt_decomposition_BMS.txt` (unchanged base) | `c33affd709792dfe60531daa3cb42d65` |
+| `examples/BMS/prompt_decomposition_BMS_axisS.txt` | `196524bee339e2da35a293652ca9b00f` |
+| `examples/BMS/prompt_decomposition_BMS_axisP.txt` | `5de455cf8c165be500dc17bf2a09dac3` |
+
+Each axis file is the base prompt plus one declaration line and nothing else.
+
+**Original status line:** design only. Not implemented, not run. Predictions registered at the end, before any measurement,
 per the pattern that made C6's result readable.
 
 ## The idea
