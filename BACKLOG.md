@@ -8,7 +8,30 @@ Convention: `- [ ]` open · `- [x]` done, with the commit or run that closed it.
 
 ---
 
-## Now — closing the last unpinned parameter
+## Now — projection axes (decided 2026-08-18)
+
+**The frame is checked before anything inside the frame.** Different cuts of one system are partitions of
+one quantity, so they must sum alike — which makes a disagreement between projections *proof of error
+without a fact*. That is a class of evidence this project has never had, and it partly unblocks validity
+while BMS has no outcome and FaxRxTx has one.
+
+Design and six registered predictions in `docs/proposal_axis_projection.md`.
+
+- [ ] **Implement as `Lytin-D 5.0`**: C2 removed, axis declared in the prompt as an input coordinate. Batch
+      the `run12` path removal into the same bump. C1, C3, C5, C6 untouched.
+- [ ] **Add the post-hoc placement question** — where did testing, transition, documentation and environments
+      end up. "Nowhere" is a permitted answer. This replaces the completeness report, which loses its meaning
+      once the fixed branch list is gone, and it recovers what C2 could never see: whether QA sits in a phase
+      branch or inside every feature leaf.
+- [ ] **Run 2 axes × 2 models × n=5 = 20** and score the predictions. The one that matters: axis effect below
+      ×1.4 against a model effect of ×2.021. At ×1.7 or above the frame dominates and everything from C1 to
+      C7 is tuning inside the wrong thing.
+- [ ] **Check the control first.** Leaf-set overlap between axes above 90% means the axes are not distinct
+      and nothing else in the batch is worth reading.
+- [ ] **Answer the open question as a by-product** — is the first level stable within an axis. Instability
+      there would mean C2's fixity was load-bearing and something has to go back.
+
+## Then — closing the last unpinned parameter
 
 **The ×1.97 leaf-count gap is coverage, and the arithmetic settles it.** Splitting conserves the sum, so
 covering identical work in half the leaves needs leaves averaging **13.3 pd** — above C1's ten-day ceiling,
@@ -27,8 +50,9 @@ leaf is split **regardless of size**. By induction, with the root checked agains
 covers the text — and the full text is read once, in one place, instead of being audited globally.
 Design and six registered predictions in `docs/proposal_C7_coverage_at_every_split.md`.
 
-- [ ] **Implement as `Lytin-D 5.0`** — major, because a second splitting trigger adds leaves and leaves are
-      priced. Batch the `run12` path removal into the same bump rather than spending a bump on it alone.
+- [ ] **Implement as a major version after the axis batch** — number deliberately left open, since the axis
+      experiment takes `5.0` and may change what C7 should say. A second splitting trigger adds leaves and
+      leaves are priced, so it is major whenever it lands.
 - [ ] **Measure n=10 on each of two models** and score the six predictions. The one that matters: cross-model
       ratio falls below 1.4, from 2.021. Above 1.7 the rule is reverted, not tuned.
 - [ ] **Watch prediction 2 as the honesty check.** The ratio can close for the wrong reason — by the rule
