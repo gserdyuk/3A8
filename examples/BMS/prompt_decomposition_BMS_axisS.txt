@@ -1,0 +1,62 @@
+Estimate the effort for the project below.
+
+# RFP DIGEST — Booking Management System (June 2016)
+
+Issuer: a large IT services enterprise (19,000+ employees, offices in 26+ countries). Employees travel frequently between company and client offices. The company procured on average 5000 hotel rooms and 1000 taxis in 2015, mostly through a manual process requiring significant communication between employees, the travel department, and hotel and transport suppliers.
+
+## Project overview
+The client wants a Supplier to create a SaaS-based booking management system which the Supplier will then host and support. The system becomes the sole source of accurate hotel and transport bookings, with access for the travel department, transport suppliers and employees.
+
+Key aspects: cost reduction via centralised reporting; automation of manual processes; integration with the client's Cost Tracking Center (API), UPSA (API) and SSO (documentation); a common look and feel across the system; high configurability; high performance including critical situations such as major travel disruption.
+
+## Context diagram
+Inside the system: Employees Portal, Administration Portal, Suppliers Portal, Admin and Support.
+Actors: Employees (review and accept bookings; review and update trip details in the Cost Tracking Center), Travel Department (alerts and notifications, manage bookings, maintain configuration and rules, create reports), IT Support, Hotel suppliers (manual upload of available bookings), Transport suppliers (manual upload of pricing).
+External systems: Cost Tracking Center (sends hotel and transport requirements to the system), External Hotel Booking Systems (automatic search and booking), External Transport Booking Systems (automatic search and booking).
+
+## Functional requirements
+
+**Supplier search and prioritisation.** Intelligent search across multiple third-party systems and manually uploaded bookings, based on requirements specified in the system. Prioritisation based on matching to booking requirements and custom rules defined by the Travel Manager in the Administration Portal. Booking requirements are initially defined in the Cost Tracking Center and amendable in the Employees Portal or the Administration Portal. Prioritisation may change over time as requirements or rules change.
+
+**Approval and booking.** Robust approval and booking processes. Stages: Proposed, Accepted/Rejected, Approved/Declined, Booked/Cancelled, Paid. Stage changes supported by notifications via email and SMS. Ability to change and extend the booking process in future. Along with automatic booking, manual hotel booking managed by the Travel Manager through web forms.
+
+**Changes management.** Frequent integration to the Cost Tracking Center to update booking requirements. New requirements, changes and cancellations are driven by these updates. Merging according to a defined policy; on conflicts, alerts to the parties. Manual change of a selected hotel as required.
+
+**Third-party hotel suppliers.** Access to the system, manual upload of available bookings, pricing and other details. Booking handled manually.
+
+**Transport suppliers.** Only one transport supplier is integrated automatically (Uber); all others manual. Pick-up and drop-off locations initially loaded from the Cost Tracking Center, amendable in the Employees and Administration portals, with the ability to override.
+
+**Transport combining.** Combining of multiple transport bookings.
+
+**Third-party transport suppliers.** Access to the system, manual upload of pricing details. Booking handled manually.
+
+**Employees Portal.** View details and status of each booking; confirm hotel and transport reservations; view and print confirmed reservations; seamless access via SSO; capture feedback from employees associated with a particular booking.
+
+**Administration Portal.** Capabilities for the Travel Manager: system configuration, visibility of booking statuses, reporting; the front end to administer the system and control the configuration.
+
+**Reporting.** Booking details, suppliers reporting, financial reporting.
+
+## Non-functional requirements
+Modern web UI, fresh and intuitive; multiple display resolutions including mobile devices; a scalable high-performing database platform for large volumes; technologies kept up to date with periodic reviews and planned upgrades; high configurability for changes in legislation, internal policy, business process or organisation structure; screen loads under 2 seconds and report generation not excessive, with criteria defined at design stage; highly available and resilient; configuration management and version control across all environments and documents; robust release and patch promotion procedures; designed to grow in future; TLS 1.2 minimum for authenticated client traffic; customer data compliant with the Data Protection Act.
+
+## What the RFP does not contain
+Timelines, budget, selection criteria, submission procedure. Load volumes beyond the indirect figures above. Details of the Cost Tracking Center and UPSA APIs (only that an API exists) or of SSO (only "documentation"). Team composition, definition of done, or the post-launch support model beyond "the Supplier will host and support".
+
+# ASSUMPTION LOG (fixed before the runs)
+
+A1. Scope: design + development + testing + production deployment of the first release covering all functional requirements. Included: hosting/DevOps/environment setup (dev, stage, prod) and UAT support. Not included: subsequent operation, user training, the warranty period.
+
+A2. Definition of done: the functionality works in production, UAT has passed, basic documentation (operational and user) exists.
+
+A3. Assumed team: 1 PM/BA, 1 part-time architect, 3–4 developers, 1 QA, 1 part-time DevOps. Blended, predominantly senior/middle. A typical team that has not worked together before.
+
+A4. External integrations: the Cost Tracking Center and UPSA have working, documented APIs; "intelligent search across multiple third-party systems" means integration with 1–2 aggregators (a GDS/Booking-class API), not dozens of direct hotel integrations; SSO uses a standard protocol per the client's documentation.
+
+A5. SMS via a ready external gateway, not own infrastructure.
+
+A6. Organisational context: a large enterprise client; approval speed and the availability of the client's specialists are typical for an enterprise.
+
+A7. Units: person-days (1 pd = 8 hours of net work). Conversion to a calendar is a separate step, not part of this run.
+# PROJECTION AXIS (C2)
+
+Decompose along axis **S — subsystem / surface**: cut the product by the parts that get built and delivered.
