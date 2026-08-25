@@ -1,0 +1,237 @@
+{
+  "title": "BMS Estimate Readout",
+  "eyebrow": "3A8 &middot; estimate report &middot; case BMS &middot; corporate travel booking &middot; RFP stage",
+  "headline": "Four readings, one scale,",
+  "headline_em": "and the widest gap is inside one method",
+  "standfirst": "What the chain produces when a project arrives as a requirement list. No outcome exists for this case and none is expected &mdash; a training RFP cannot be checked against reality. Everything else here can be.",
+  "meta": [
+    "<b>73</b> obligations &mdash; 68 product, 5 work",
+    "<b>78</b> model elements &middot; <b>553</b> work items",
+    "chain assembled <b>22 Aug</b> &middot; outside view read <b>22 and 25 Aug</b>",
+    "unit <b>1 pd = 8 net hours</b> &mdash; leave, holidays and sickness not included"
+  ],
+  "chart": {
+    "axisMax": 3600,
+    "rawSum": 1342,
+    "rawSumLabel": "raw table sum 1342",
+    "calibration": {
+      "lo": 1611,
+      "hi": 2504,
+      "label": "calibration spread 1611–2504 · not percentiles"
+    },
+    "bottomUp": {
+      "mu": 1899,
+      "sd": 318
+    },
+    "outside": [
+      {
+        "id": "A",
+        "dash": "",
+        "floor": 375,
+        "q": [
+          [
+            488,
+            0.1
+          ],
+          [
+            788,
+            0.5
+          ],
+          [
+            1200,
+            0.8
+          ],
+          [
+            1538,
+            0.9
+          ]
+        ],
+        "tailDrawn": false
+      },
+      {
+        "id": "B",
+        "dash": "6 4",
+        "floor": 262,
+        "q": [
+          [
+            315,
+            0.1
+          ],
+          [
+            600,
+            0.5
+          ],
+          [
+            938,
+            0.8
+          ],
+          [
+            1238,
+            0.9
+          ]
+        ],
+        "tailDrawn": false
+      },
+      {
+        "id": "C",
+        "dash": "2 3",
+        "floor": 600,
+        "q": [
+          [
+            750,
+            0.1
+          ],
+          [
+            1275,
+            0.5
+          ],
+          [
+            2025,
+            0.8
+          ],
+          [
+            2550,
+            0.9
+          ],
+          [
+            3450,
+            0.95
+          ]
+        ],
+        "tailDrawn": true,
+        "beyondLabel": "C · P99 = 6375, off scale →"
+      }
+    ],
+    "axisLabel": "NET WORKING TIME — PERSON-DAYS OF 8 TASK HOURS",
+    "legend": [
+      {
+        "cls": "blue",
+        "text": "Outside view A &mdash; P50 788"
+      },
+      {
+        "cls": "blue dash",
+        "text": "Outside view B &mdash; P50 600"
+      },
+      {
+        "cls": "blue dot",
+        "text": "Outside view C &mdash; P50 1275"
+      },
+      {
+        "cls": "red",
+        "text": "Bottom-up, calibrated &mdash; P50 1899"
+      }
+    ],
+    "hint": "<b>Move the pointer across the chart.</b> A read line follows it and reports, at that many person-days, where the figure falls in each of the four distributions. That is the whole apparatus for choosing a number."
+  },
+  "tiles": [
+    {
+      "cls": "red",
+      "k": "Centre",
+      "v": "1899",
+      "unit": "pd",
+      "d": "15 192 net hours. The table-priced assembly of 1342 &times; the gap-blind Step C chain, <b>&times;1.415</b> &mdash; the figure comparable with the outside view."
+    },
+    {
+      "cls": "red",
+      "k": "Corridor &middot; P10&ndash;P90",
+      "v": "1492&ndash;2306",
+      "unit": "pd",
+      "d": "The drawn band. From the O/M/P in every rate cell, under a declared item correlation of <b>&rho; = 0.5</b>."
+    },
+    {
+      "cls": "",
+      "k": "Calibration spread",
+      "v": "1611&ndash;2504",
+      "unit": "pd",
+      "d": "A different quantity, and <b>not percentiles</b>: the centre at the low and high ends of the Step C rates."
+    },
+    {
+      "cls": "none",
+      "k": "Reserve",
+      "v": "None available",
+      "unit": "",
+      "d": "Against readings A and B the centre sits <b>above P90</b>. Against C, at ~P75. Replaced by conditionality plus priced options."
+    },
+    {
+      "cls": "blue",
+      "k": "Outside view &middot; P50",
+      "v": "600 &middot; 788 &middot; 1275",
+      "unit": "",
+      "d": "Three independent readings, in net working time. Reported as 800, 1050 and 1700 recorded days, converted at 0.75."
+    }
+  ],
+  "sections": [
+    {
+      "id": "how-to-read",
+      "title": "How to read the chart, and the one number that was declared",
+      "count": "the method",
+      "lead": "Both instruments produce a distribution. Only one of them did so without being asked.",
+      "html": "\n<p>The outside view produces quantiles natively; that is what the method is. The bottom-up can too,\nand always could: <b>every rate cell carries an optimistic, a most-likely and a pessimistic\nvalue.</b> The chain collapsed each cell to its expected value before summing, so the range existed\nat the leaf and was destroyed at the total. That is why this project reported a centre and no\ncorridor for so long.</p>\n<h4>Restoring it needs exactly one declared number</h4>\n<p>The width of a sum of 505 items depends on how strongly those items are correlated, and nothing in\nthe data says. Both ends are wrong: <b>independent</b> gives a P10&ndash;P90 of &times;1.04, which\nwould claim the total is known to &plusmn;1%; <b>perfectly correlated</b> gives &times;1.87.\n<b>&rho; = 0.5 is declared</b>, on the reasoning that the truth is certainly neither and far from\nboth. It matters less than it looks &mdash; across &rho; from 0.25 to 0.75, a threefold range, the\nband edges move about &plusmn;20%.</p>\n<h4>A distinction worth keeping straight</h4>\n<p>&Sigma;O&hellip;&Sigma;P &mdash; every optimistic end and every pessimistic end summed &mdash;\nspans &times;4.19 and was long quoted as the bottom-up's honest band. It is not a percentile band:\nit is <b>six sigma</b>, the absolute extremes. A P10&ndash;P90 is <b>2.56 sigma</b>. Even at perfect\ncorrelation the 80% interval is &times;1.87, not &times;4.19.</p>\n<h4>The three outside-view readings are not three repeats</h4>\n<p>A and B are repeats of one another &mdash; same input, same day. C was made three days later with\none assumption withheld and an additional question asked, so part of the distance between C and the\npair may be that difference rather than the sensor's own spread. All three were produced without ever\nseeing the product model, the work items or the rate table.</p>\n<p><b>Only the marked quantiles are readings; the curve between them is interpolation.</b> A and B\nwere asked for P10, P50, P80, P90 and a floor and stop there &mdash; their tails are hatched rather\nthan drawn, because inventing a P95 is the move this method exists to prevent. C was asked for the\ntail and answered: P95 = 3450, P99 = 6375 and off the scale. It declined to give an unconditional\nP99 at all, on the ground that beyond a point the project is stopped and restarted and effort ceases\nto be the right unit for what happened.</p>\n<h4>The unit, and the one conversion applied</h4>\n<p>Person-days of <b>8 net hours of work on the task</b>, 40 to the week. <b>Leave, public holidays\nand sickness are not in these numbers</b>, and neither is any notion of calendar or headcount.</p>\n<p>The declared premise: <i>time in an estimate by analogy contains the losses to meetings, and is\nalready clean of leave and days off.</i> All three readings confirmed this of themselves in writing,\neach reasoning in assigned working days and each flagging the mismatch with the unit label it was\ngiven. Their own conversions to strict 8-hour task-days: A &times;0.8, B &times;0.75&ndash;0.85,\nC &times;0.56&ndash;0.75. <b>The house factor 0.75 is applied to all three</b>; the bottom-up needs\nnone, having been priced in task hours to begin with.</p>\n<h4>Known direction of error</h4>\n<p>The bottom-up curve is a normal approximation. Rate cells are right-skewed and correlated sums\nkeep skew, so the true upper tail is <b>fatter</b> than drawn &mdash; which moves it further from the\noutside view, not closer.</p>",
+      "src": "docs/constants.md &middot; docs/instrument.md"
+    },
+    {
+      "id": "divergence",
+      "title": "Why the two methods disagree, and what was ruled out",
+      "count": "&times;1.49 &ndash; &times;3.17",
+      "lead": "At equal scope the calibrated bottom-up sits at ~P75 of one reading and above P90 of the other two. Steps B&ndash;D attributed the gap without closing it, and reported the explained share as <b>0%</b> in those words.",
+      "html": "\n<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">the class<br>vs itself</span><div class=\"body\">\n    <div class=\"t\">The largest single quantity in the comparison <span class=\"chip blue\">&times;2.12</span></div>\n    <div class=\"x\">The three outside-view medians span 600 to 1275 net days &mdash; wider than the distance from the bottom-up to any one of them. Before any unit conversion the raw medians are 800, 1050 and 1700 recorded days, so the conversion did not create it. <b>Part of it may be reading C's changed input, and n = 1 on that input cannot separate the two.</b></div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">D1</span><div class=\"body\">\n    <div class=\"t\">The recursive assembly convention</div>\n    <div class=\"x\">Integration priced at 20% of each subtree's leaf effort at all 18 parents &mdash; which <b>delivers 40.9% of leaf effort</b>, because a deep leaf enters every ancestor's base. It is the method's only free constant. <b>And it cannot carry the gap:</b> deleting it entirely still leaves the calibrated figure &times;1.08 to &times;2.29 above the outside-view medians.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">D4</span><div class=\"body\">\n    <div class=\"t\">Class assignment</div>\n    <div class=\"x\">Every reading flagged its own most likely error as <b>upward</b>. Reading C put 60% on the stated class and split the remaining 40% asymmetrically &mdash; 24 points move the answer up, 16 down, and the up-moves are larger. Misclassification adds right-skew on top of the class's own.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">D6</span><div class=\"body\">\n    <div class=\"t\">Unit provenance <span class=\"chip caution\">settled</span></div>\n    <div class=\"x\">Net versus recorded time, carried as two forks and applied in neither direction. <b>Resolved against the bottom-up:</b> the chain prices task-solving hours, the outside view reasons from recorded project time and converts at 0.75, and the gap widened rather than closing. Leave is deliberately not deducted &mdash; COCOMO's 152-hour person-month and every timesheet-based dataset removed it already.</div>\n  </div></div>\n</div>\n<h4>What Step C adds, and why the outside view already has it</h4>\n<ul>\n<li><b>H1, H2, H3</b> &mdash; the three named holes, added outright. The bottom-up refused to size them; the outside view includes them without knowing they exist, because it never decomposes.</li>\n<li><b>G1 &times;1.15</b> &mdash; scope volatility: obligations beyond the pinned list, RFP-stage under-specification, reading-change churn.</li>\n<li><b>G2 &times;1.12</b> &mdash; cross-company coordination friction. The assumption log states outright that this is visible <i>only</i> to the outside view.</li>\n<li><b>T1</b> &mdash; external-interface realisation risk, on the eight interface elements and their contract tests only, never on the integration line.</li>\n<li><b>A-RAMP</b> &mdash; the forming deficit of a new team: mobilisation is priced once, the productivity loss is not.</li>\n</ul>\n<blockquote>Full convergence after Step C is not necessarily a success. If the methods answer\nstructurally different questions yet converge to a single point, it is either a coincidence, or one\nmethod was forced under another and lost its diagnostic independence.</blockquote>\n<p>False convergence was checked in three frames and refused in all three &mdash; including a\nseductive near-match within 3%, flagged as exactly what a unit artefact looks like when it imitates\nagreement.</p>",
+      "src": "examples/BMS/run27_steps_BD.md"
+    },
+    {
+      "id": "obligations",
+      "title": "The 73 obligations this prices",
+      "count": "68 product &middot; 5 work",
+      "lead": "One entry per obligation <b>as the document words it</b>. Ids never change, so every artefact downstream still means what it meant. <b>No run may add, remove, split or merge an entry</b>; where one looks like it holds two, the run flags it and proceeds. That is what makes the list an external anchor rather than something the estimator can quietly reshape.",
+      "html": "<div class=\"tbl-scroll tbl-tall\"><table><thead><tr><th>id</th><th>obligation</th><th>kind</th></tr></thead><tbody>\n<tr><td class=\"tag\">R01</td><td>SaaS-based booking management system</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R04</td><td>The system is the sole source of accurate hotel and transport bookings</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R05</td><td>Access for the travel department, transport suppliers and employees to manage their confirmed bookings</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R06</td><td>Integration with EPAM's Cost Tracking Center via API</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R07</td><td>Integration with UPSA via API</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R08</td><td>Integration with SSO per the client's documentation</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R09</td><td>Common look and feel for all users</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R10</td><td>Clear business processes</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R11</td><td>Highly configurable solution that supports the client's evolution</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R12</td><td>Highly performant system supporting high demand</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R13</td><td>Support for critical instances such as major disruption situations</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R14</td><td>Admin and Support component *(named in the context diagram; no functional detail given anywhere in the RFP)*</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R15</td><td>Intelligent search across multiple third-party systems</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R16</td><td>Search across manually uploaded bookings</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R17</td><td>Search based on requirements specified in the system</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R18</td><td>Prioritisation based on matching to booking requirements</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R19</td><td>Prioritisation based on custom rules defined by the Travel Manager</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R20</td><td>Custom prioritisation rules are defined in the Administration Portal</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R21</td><td>Booking requirements are initially defined in the Cost Tracking Center</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R22</td><td>Booking requirements are amendable in the Employees Portal</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R23</td><td>Booking requirements are amendable in the Administration Portal</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R24</td><td>Prioritisation may change over time as requirements or rules change</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R25</td><td>Approval and booking process with stages Proposed, Accepted/Rejected, Approved/Declined, Booked/Cancelled, Paid</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R26</td><td>Stage changes supported by notifications via email</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R27</td><td>Stage changes supported by notifications via SMS</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R28</td><td>Ability to change and extend the booking process in future</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R29</td><td>Automatic booking</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R30</td><td>Manual hotel booking managed by the Travel Manager via web site forms</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R31</td><td>Frequent integration to the Cost Tracking Center to update booking requirements</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R32</td><td>New requirements, changes and cancellations are driven by CTC updates</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R33</td><td>Merging of incoming updates according to a defined policy</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R34</td><td>On merge conflicts, alerts to the parties</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R35</td><td>Manual change of a selected hotel as required</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R36</td><td>Third-party hotel suppliers have access to the system</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R37</td><td>Hotel suppliers manually upload available booking, pricing and other details</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R38</td><td>Hotel supplier booking is handled manually</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R39</td><td>One transport supplier (Uber) is integrated automatically</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R40</td><td>All other transport suppliers are manual</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R41</td><td>Pick-up and drop-off locations initially loaded from the Cost Tracking Center</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R42</td><td>Pick-up and drop-off locations amendable in the Employees Portal</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R43</td><td>Pick-up and drop-off locations amendable in the Administration Portal</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R44</td><td>Ability to override pick-up and drop-off locations</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R45</td><td>Combining of multiple transport bookings</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R46</td><td>Third-party transport suppliers have access to the system</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R47</td><td>Transport suppliers manually upload pricing details</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R48</td><td>Transport supplier booking is handled manually</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R49</td><td>View details and status of each booking</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R50</td><td>Confirm hotel and transport reservations</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R51</td><td>View and print confirmed reservations</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R52</td><td>Seamless access via SSO</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R53</td><td>Capture feedback from employees, associated to a particular booking</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R54</td><td>System configuration for the Travel Manager</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R55</td><td>Visibility of booking statuses for the Travel Manager</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R56</td><td>Reporting for the Travel Manager</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R57</td><td>Front end to administer the system and control the configuration</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R58</td><td>Booking details reporting</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R59</td><td>Suppliers reporting</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R60</td><td>Financial reporting</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R61</td><td>Modern web-based technologies, fresh / clean / intuitive UX</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R62</td><td>Multiple display resolutions including mobile and portable devices</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R63</td><td>Scalable, high-performing structured database platform for large volumes</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R65</td><td>High configurability for changes in legislation, policy, process, organisation structure</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R66</td><td>Screen loads under 2 seconds</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R67</td><td>Report generation not excessive; criteria defined at design stage</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R68</td><td>Highly available and resilient</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R71</td><td>Designed to grow in the future</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R72</td><td>TLS 1.2 minimum for all authenticated client traffic</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R73</td><td>Customer data compliant with the Data Protection Act</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">R02</td><td>The Supplier hosts the system</td><td class=\"q\"><b>work</b></td></tr>\n<tr><td class=\"tag\">R03</td><td>The Supplier supports the system</td><td class=\"q\"><b>work</b></td></tr>\n<tr><td class=\"tag\">R64</td><td>Keep technologies up to date; periodic reviews and planned upgrades</td><td class=\"q\"><b>work</b></td></tr>\n<tr><td class=\"tag\">R69</td><td>Configuration management and version control across all environments and documents</td><td class=\"q\"><b>work</b></td></tr>\n<tr><td class=\"tag\">R70</td><td>Robust release and patch promotion procedures minimising business impact</td><td class=\"q\"><b>work</b></td></tr>\n</tbody></table></div>",
+      "src": "examples/BMS/requirements_product.md &middot; requirements_work.md"
+    },
+    {
+      "id": "contradictions",
+      "title": "Four places the document contradicts itself",
+      "count": "4",
+      "lead": "Produced without being asked for, by instruments whose job was something else, and converged on across six independent runs. On the record this is the part that reproduces best.",
+      "html": "\n<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">R29 / R38</span><div class=\"body\">\n    <div class=\"t\">A direct contradiction <span class=\"chip red\">largest basis risk</span></div>\n    <div class=\"x\">R29 requires <b>automatic booking</b>. R38 says hotel supplier booking is <b>handled manually</b>. Both estimator pairs, independently, named this their largest risk of basis. <b>Reading taken:</b> automatic where an integration exists, manual elsewhere, failure falls back to the manual path.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">R05</span><div class=\"body\">\n    <div class=\"t\">An actor list that omits an actor it gives work to</div>\n    <div class=\"x\">The stated actors are the travel department, transport suppliers and employees &mdash; while R38 assigns booking work to <b>hotel suppliers</b>, who appear nowhere in the list.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">R13 / R14</span><div class=\"body\">\n    <div class=\"t\">Two obligations with nothing measurable in them</div>\n    <div class=\"x\">Availability and volume obligations that name no target. Nothing verifies them, because the document states no number to verify against.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">MD</span><div class=\"body\">\n    <div class=\"t\">Three model defects, converged on by independent instruments</div>\n    <div class=\"x\">The audit-trail store declares things it never names &middot; &ldquo;clear business processes&rdquo; names no component that could realise it &middot; two statements carry unmeasurable non-functional requirements. All three surfaced as <b>refusals</b> &mdash; work the sensors judged necessary and declined to invent.</div>\n  </div></div>\n</div>",
+      "src": "examples/BMS/run21_work_model_measurement.md &middot; open_questions.md"
+    },
+    {
+      "id": "two-ways",
+      "title": "Ten places it reads two ways &mdash; the questions for the client",
+      "count": "10, all unasked",
+      "lead": "Pinned before any run and consumed by every run. <b>Ask the client; if no answer comes, assume; declare the assumption; and when runs are compared afterwards, exclude the differences the open question causes.</b> All ten stand unasked here, because this document has no client behind it &mdash; which is precisely why the assumptions must be visible. In a live engagement the first move is to send this list.",
+      "html": "\n<div class=\"tbl-scroll\"><table><thead><tr><th>#</th><th>ids</th><th>the question</th><th>reading taken</th></tr></thead><tbody>\n<tr><td class=\"tag\">Q1</td><td class=\"tag\">R13</td><td>IT disruption, or a travel disruption with mass re-booking?</td><td class=\"q\">technical: resilience, disaster recovery, degraded operation</td></tr>\n<tr><td class=\"tag\">Q2</td><td class=\"tag\">R14</td><td>What is &ldquo;Admin and Support&rdquo;? Named in a diagram, no content anywhere.</td><td class=\"q\">an internal support console</td></tr>\n<tr><td class=\"tag\">Q3</td><td class=\"tag\">R15</td><td>One or two aggregator APIs, or direct integrations with many suppliers?</td><td class=\"q\">1&ndash;2 aggregators</td></tr>\n<tr><td class=\"tag\">Q4</td><td class=\"tag\">R02 R03 R64</td><td>Over what period do hosting, support and the currency programme run?</td><td class=\"q\">none available &mdash; the term is the missing parameter</td></tr>\n<tr><td class=\"tag\">Q5</td><td class=\"tag\">R29</td><td>&ldquo;Automatic booking&rdquo; &mdash; for which suppliers, and what on failure?</td><td class=\"q\">automatic where an integration exists; manual elsewhere</td></tr>\n<tr><td class=\"tag\">Q6</td><td class=\"tag\">R05</td><td>A capability of its own, or the umbrella over the three portals?</td><td class=\"q\">the umbrella; the portals realise it</td></tr>\n<tr><td class=\"tag\">Q7</td><td class=\"tag\">R10</td><td>&ldquo;Clear business processes&rdquo; &mdash; a property of the system, or a deliverable?</td><td class=\"q\">a property of the system</td></tr>\n<tr><td class=\"tag\">Q8</td><td class=\"tag\">R67</td><td>Report generation &ldquo;not excessive&rdquo; &mdash; what are the criteria?</td><td class=\"q\">none pinned; agreeing them is work</td></tr>\n<tr><td class=\"tag\">Q9</td><td class=\"tag\">R11 R65 R71</td><td>Three obligations or one stated three times?</td><td class=\"q\">R11 and R65 are one; R71 is distinct</td></tr>\n<tr><td class=\"tag\">Q10</td><td class=\"tag\">R37&hellip;R48</td><td>&ldquo;Handled manually&rdquo; &mdash; support it with screens, or merely not automate it?</td><td class=\"q\">support it: forms, uploads, status records</td></tr>\n</tbody></table></div>",
+      "src": "examples/BMS/open_questions.md"
+    },
+    {
+      "id": "defaults",
+      "title": "Eight defaults taken, and the price of each refused reading",
+      "count": "8",
+      "lead": "Each is a fork the document leaves open and the estimate had to close. <b>The reading taken is inside the centre; the reading refused is priced separately and enters only when its trigger fires.</b> Nothing is struck out &mdash; an obligation can be bounded, never deleted.",
+      "html": "\n<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">A4</span><div class=\"body\">\n    <div class=\"t\">Supplier search <span class=\"chip red\">worth an order of magnitude</span></div>\n    <div class=\"x\"><b>Taken:</b> 1&ndash;2 aggregator APIs. <b>Refused:</b> dozens of direct hotel integrations. If reversed: 12.8&ndash;51.6 d per integration plus 45&ndash;149 once &mdash; at N = 20 that is <b>+301 to +1181 days</b> on a centre of 1899.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">A5</span><div class=\"body\">\n    <div class=\"t\">SMS</div>\n    <div class=\"x\"><b>Taken:</b> a ready gateway. <b>Refused:</b> own SMS infrastructure and carrier agreements. If reversed: +60 to +239 d, less the gateway adapter.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">A8</span><div class=\"body\">\n    <div class=\"t\">&ldquo;Major disruption situations&rdquo;</div>\n    <div class=\"x\"><b>Taken:</b> technical resilience and disaster recovery. <b>Refused:</b> business mass re-booking during a strike or a volcano. If reversed: +112 to +288 d &mdash; and the sensor that flagged it called the refused reading <b>the largest single omission in this model</b>.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">A9</span><div class=\"body\">\n    <div class=\"t\">&ldquo;Admin and Support&rdquo;</div>\n    <div class=\"x\">Named in a diagram, given content nowhere. <b>Assumed:</b> an internal support console. <b>Not assumed:</b> a ticketing product, a help desk, a knowledge base, an SLA engine.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">scope &times;4</span><div class=\"body\">\n    <div class=\"t\">Four decisions in the technology declaration</div>\n    <div class=\"x\">Staged UAT rather than direct client acceptance &middot; dev/stage/prod rather than another environment count &middot; seeded data rather than migration &middot; operational and user documentation rather than operational only. Each a declared fork, each separately priceable.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">term</span><div class=\"body\">\n    <div class=\"t\">Not a default but a hole <span class=\"chip caution\">question for the client</span></div>\n    <div class=\"x\">Hosting, support and the technology-currency programme are <b>carried and not priced</b>, because an open-ended obligation has no effort figure until somebody says for how long.</div>\n  </div></div>\n</div>\n<h4>Prices for the refused readings</h4>\n<p>Client-facing option prices &mdash; not reserves, not contingency, not part of the centre or the\ncorridor. A row enters a total only when its trigger fires, at full magnitude with its netting rule.\n<b>No probability may be attached without a separately sourced act</b>: multiplying an option by a\nguessed likelihood turns a priced decision back into a hidden reserve.</p>\n<div class=\"tbl-scroll\"><table>\n<thead><tr><th>event &middot; the trigger is the refused reading</th><th>netting against the base</th><th class=\"num\">low</th><th class=\"num\">central</th><th class=\"num\">high</th></tr></thead>\n<tbody>\n<tr><td><span class=\"tag\">E-1</span> Direct supplier integrations instead of 1&ndash;2 aggregators</td><td class=\"q\">aggregator adapter stays by default; removal &minus;9.9 only on explicit substitution</td><td class=\"num\">12.8/ea + 45</td><td class=\"num\">23.6/ea + 124</td><td class=\"num\">51.6/ea + 149</td></tr>\n<tr><td class=\"q\" style=\"padding-left:34px\">&mdash; illustrative at N = 10 / 20 / 30 &middot; N is the client's number, never a central case</td><td class=\"q\">&mdash;</td><td class=\"num\">173 / 301 / 429</td><td class=\"num\">360 / 596 / 832</td><td class=\"num\">665 / 1181 / 1697</td></tr>\n<tr><td><span class=\"tag\">E-2</span> Own SMS infrastructure instead of a gateway</td><td class=\"q\">gateway adapter replaced, &minus;18&hellip;&minus;20</td><td class=\"num\">60</td><td class=\"num\">178</td><td class=\"num\">239</td></tr>\n<tr><td><span class=\"tag\">E-3</span> Disruption-response capability &middot; mass re-booking</td><td class=\"q\">none &mdash; purely additive; the technical reading stays</td><td class=\"num\">112</td><td class=\"num\">212</td><td class=\"num\">288</td></tr>\n<tr><td><span class=\"tag\">E-4</span> Configurable process engine</td><td class=\"q\">supersedes the narrow reading, &minus;5 / &minus;15 / &minus;40</td><td class=\"num\">117</td><td class=\"num\">192</td><td class=\"num\">252</td></tr>\n<tr><td><span class=\"tag\">X-13</span> Interaction &mdash; only if E-1 <i>and</i> E-3 both fire</td><td class=\"q\">&mdash;</td><td class=\"num\">12</td><td class=\"num\">22</td><td class=\"num\">37</td></tr>\n</tbody></table></div>\n<p style=\"margin-top:12px\">Deliberately unpriced by the round: the E-3 &times; E-4 interaction, whose\nsign cannot be sourced; money terms; schedule and team-shape consequences; and the tail failure\nscenarios of the options themselves.</p>",
+      "src": "examples/BMS/assumptions.md &middot; run28_raw/options.md"
+    },
+    {
+      "id": "not-in-number",
+      "title": "Five things in no number, by name",
+      "count": "5",
+      "lead": "Not oversights. Each is a thing the chain refused to price, with the reason it refused.",
+      "html": "\n<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">1</span><div class=\"body\">\n    <div class=\"t\">The continuing service <span class=\"chip caution\">awaiting a parameter</span></div>\n    <div class=\"x\">Running the hosted system, operating support, periodic technology reviews. Carried on both sides, awaiting <b>the term</b>. Priced by a rate per unit time once a term exists &mdash; a different instrument.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">2</span><div class=\"body\">\n    <div class=\"t\">The four refused readings <span class=\"chip red\">priced as options</span></div>\n    <div class=\"x\">Each is a step change, not a multiplier: not in the centre, priced above, entering only when its trigger fires.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">3</span><div class=\"body\">\n    <div class=\"t\">Three coverage verifications the rate agent returned</div>\n    <div class=\"x\">Is privacy work actually carried by the 68 obligations &middot; is the front-end baseline responsive or desktop-only &middot; is there truly no legacy data to migrate. <b>Any &ldquo;no&rdquo; becomes a new named hole, never a silent uplift.</b></div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">4</span><div class=\"body\">\n    <div class=\"t\">The structure axis</div>\n    <div class=\"x\">A second product model of the same requirements differs &times;1.65 in node count and was never priced. Unquantified width, named as such.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">5</span><div class=\"body\">\n    <div class=\"t\">Effort to calendar, and team availability</div>\n    <div class=\"x\">A separate step, deliberately. Person-days do not become dates without a team shape, and this report supplies no team shape.</div>\n  </div></div>\n</div>",
+      "src": "examples/BMS/estimate_BMS_2026-08-22.md"
+    },
+    {
+      "id": "provenance",
+      "title": "Where every number came from",
+      "count": "6 roles",
+      "lead": "Each sensor is an engine with a version, stamped on its own output. They are hired for what they are <b>forbidden to see</b>, not for autonomy.",
+      "html": "\n<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">1</span><div class=\"body\"><div class=\"t\">Product model</div><div class=\"x\">73 pinned obligations &rarr; 78 elements. Produces no effort figure of any kind.</div></div></div>\n  <div class=\"row\"><span class=\"idx\">2</span><div class=\"body\"><div class=\"t\">Work model</div><div class=\"x\">Crossed against a declared technology &rarr; 553 work items. May not invent an activity: work the product needs but no declared activity covers is reported as a <b>finding</b>.</div></div></div>\n  <div class=\"row\"><span class=\"idx\">3</span><div class=\"body\"><div class=\"t\">Size classes</div><div class=\"x\">Each element classified by counting named things, the enumeration being the justification. Refuses to run if shown any rate or price. Repeat agreement &times;1.008 on the total.</div></div></div>\n  <div class=\"row\"><span class=\"idx\">4</span><div class=\"body\"><div class=\"t\">Rate table <span class=\"chip caution\">uncalibrated</span></div><div class=\"x\">External norms, gap-blind: never saw a project total, a budget, or a gap a rate would explain. Calibrated against no outcome yet &mdash; the centre is norms passed through a measured size vector, not a validated cost.</div></div></div>\n  <div class=\"row\"><span class=\"idx\">5</span><div class=\"body\"><div class=\"t\">Outside view &times;3</div><div class=\"x\">Ran in parallel and in ignorance of all of the above. Every reading declined, unprompted, to read the repository whose path it could see, each naming anchoring as the reason. One also quarantined the obligation count it was given, on the ground that a count is a residue of decomposition.</div></div></div>\n  <div class=\"row\"><span class=\"idx\">6</span><div class=\"body\"><div class=\"t\">Steps B, C, D</div><div class=\"x\">Calibration parameters from a gap-blind source that never saw the outside view or the size of the gap; then the diagnosis, the only participant permitted to see more than one method's output.</div></div></div>\n</div>\n<h4>Two coordinates, not one</h4>\n<p>An estimate is a property of the triple <b>(project &times; engine &times; model)</b>. The model\ncoordinate was measured at &times;2.02 against version steps of +0.4% to +30% &mdash; it outweighs the\nentire version history &mdash; so a batch on a different model is a different instrument, not a\nreplication.</p>\n<h4>Protocol findings, recorded rather than quietly fixed</h4>\n<p>A stale sensor definition loaded in one run; and the launch harness prepends repository status and\ncommit subjects to every sensor, which each sensor has caught and quarantined by itself. That is a\nworkaround, not a mechanism.</p>",
+      "src": "PIPELINE.md &middot; docs/instrument.md"
+    }
+  ],
+  "footer": {
+    "brand": "3A8",
+    "brandsub": "TriAngulEight<br>an estimation instrument",
+    "fine": [
+      "<b>What this report is not.</b> Not a validated price, and not a price at all &mdash; it is work content in person-days. Converting it into money, calendar or headcount is the reader's act, using the reader's own figures. Every bottom-up number rests on a rate table of external industry norms calibrated against no outcome; the bottom-up stands on one product model of two; and this is a training document with no outcome, so nothing here has been checked against reality.",
+      "<b>What it is.</b> The estimate, its corridor, the disagreement between two structurally independent methods stated rather than averaged away, and &mdash; on the record, the part that reproduces best &mdash; the obligations, the contradictions, the questions and the defaults that the number is standing on."
+    ]
+  }
+}
