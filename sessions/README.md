@@ -20,3 +20,6 @@ The shape each record keeps, so they can be read in parallel:
 
 - [2026-08-20 — the Hotyn chain run end to end](2026-08-20_hotyn_chain_end_to_end.md)
 - [2026-08-21…22 — the course correction, the rate card, and the first deliverable](2026-08-22_course_correction_and_first_deliverable.md)
+- [2026-08-22…23 — the chain against a fact](2026-08-22_faxrxtx_validation.md)
+- [2026-08-23…25 — the units, the discipline, and the table fixed](2026-08-25_units_discipline_and_the_fixed_table.md)
+- [2026-08-25…26 — the constants counted, the report made a format, and the class returns](2026-08-26_the_report_becomes_a_format.md)
