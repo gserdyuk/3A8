@@ -51,12 +51,19 @@ The naming scheme: **city = generation of the whole pipeline, letter = role with
 | 1 · product model | `model-builder` | **Hotyn-M 1.1** |
 | 2 · work model | `work-crosser` | **Hotyn-W 1.1** |
 | 3 · size classes | `work-estimator` | **Hotyn-D 2.0** |
-| — · rates | `rate-table-author` | **Hotyn-K 1.0** |
-| 5 · outside view | `estimator-reference-class` | **Lytin-R 1.0** |
-| 6 · Step C rates | `rates-step-c` | **Lytin-K 1.0** |
-| 6 · Steps B, D | `diagnostician` | **Lytin-G 1.0** |
+| — · rates | `rate-table-author` | **Hotyn-K 1.1** |
+| 5 · outside view | `estimator-reference-class` | **Lytin-R 1.1** |
+| 6 · Step C rates | `rates-step-c` | **Lytin-K 1.1** |
+| 6 · Steps B, D | `diagnostician` | **Lytin-G 1.1** |
 | — | `version-probe` | **Lytin-F 5.0** |
 | *closed* | `estimator-decomposition` | *Lytin-D 4.0* |
+
+**All four number-producing roles moved to `.1` on 2026-08-26**, and the change is the same in each:
+a **required declaration** — unit, whether leave sits inside, whose roles are counted, and how far the
+role's own sources disagree with each other — stated before any figure. The diagnostician's `.1` is the
+consumer side of it: reconcile the declarations and size the units component of a gap *before*
+attributing the rest to method. Nothing about how any of them estimates has changed; readings from
+`.0` are the same instrument with a thinner report.
 
 Three roles keep a `Lytin` stamp inside a `Hotyn` chain, deliberately: the reference class, the Step C
 rate source and the diagnostician are **generation-agnostic by construction** — none of them ever sees

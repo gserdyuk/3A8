@@ -31,6 +31,15 @@ Record: `sessions/2026-08-25_units_discipline_and_the_fixed_table.md`.
 - [ ] **A corridor instrument** — still the only structural gap in the chain. Exit-criterion test 2
       still cannot be applied. The rate-sampling candidate is **withdrawn**: a fixed table is a constant
       and a constant has no dispersion between runs.
+- [ ] **The third instrument — parametric, and only if its numbers come from a table.** `METHODOLOGY.md`
+      has listed it since day one and it has never been built. The data is already in the repository:
+      `mars_model/` fits `China: Effort ≈ 27.1 × AFP^0.77` and `Kitchenham: ≈ 37.1 × AFP^0.67`, both in
+      person-hours over hundreds of real projects. Missing: a function-point count for either case.
+      **The author's condition, and it is the whole point:** a third instrument that samples its
+      magnitude from a model is a third voice with the same defect, and leaves the project where it was
+      with three instruments instead of two. It is worth building only if its level comes from those
+      fitted curves rather than from recall — which is exactly what separates it from the reference
+      class, whose shape is triple-sourced and whose level descends from a single remembered anchor.
 - [ ] **A second documented outcome, with its case profile collected first.**
 - [ ] **Catalogue defects from run 30**, untouched: `A10` cannot reach the system's own internal API;
       `A9` cannot reach an availability obligation carried by a `behaviour`.
