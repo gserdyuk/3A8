@@ -81,7 +81,7 @@ svg.plot text{font-family:"IBM Plex Mono",ui-monospace,monospace; fill:var(--mut
   font-size:12.5px; color:var(--muted)}
 .hint b{color:var(--ink-2); font-weight:500}
 
-.tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1px;
+.tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(185px,1fr)); gap:1px;
   background:var(--rule); border:1px solid var(--rule); border-radius:3px; overflow:hidden;
   margin-top:20px}
 .tile{background:var(--surface); padding:16px 18px 18px; display:flex; flex-direction:column; gap:4px}
@@ -94,6 +94,7 @@ svg.plot text{font-family:"IBM Plex Mono",ui-monospace,monospace; fill:var(--mut
 .tile .d{font-size:12px; color:var(--muted); margin-top:1px; line-height:1.45}
 .tile.red .v{color:var(--pen-red)} .tile.blue .v{color:var(--pen-blue)}
 .tile.none .v{font-size:17px; color:var(--caution)}
+.tiles > .tile:last-child{grid-column:1/-1}
 
 .acc{margin-top:34px; border:1px solid var(--rule); border-radius:3px; overflow:hidden;
   background:var(--rule)}
@@ -154,6 +155,10 @@ td.q{color:var(--ink-2)}
   font-family:Newsreader,Georgia,serif; font-size:16px; font-style:italic; color:var(--ink); max-width:66ch}
 .src-line{margin-top:18px; padding-top:12px; border-top:1px solid var(--rule);
   font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; color:var(--pen-blue)}
+.acc .panel a{color:var(--pen-blue); text-decoration:none;
+  border-bottom:1px solid color-mix(in srgb, var(--pen-blue) 35%, transparent)}
+.acc .panel a:hover{border-bottom-color:var(--pen-blue)}
+.row .t a{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12.5px}
 
 footer{margin-top:48px; padding:26px 0 8px; border-top:1px solid var(--rule-2);
   display:grid; grid-template-columns:minmax(190px,auto) 1fr; gap:28px 40px}
