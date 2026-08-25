@@ -120,7 +120,7 @@
         "text": "Bottom-up, calibrated &mdash; P50 1899"
       }
     ],
-    "hint": "<b>Move the pointer across the chart.</b> A read line follows it and reports, at that many person-days, where the figure falls in each of the four distributions. That is the whole apparatus for choosing a number."
+    "hint": "<b>Two views of the same four distributions.</b> Above, how likely each answer is &mdash; all curves on one scale, each enclosing the same area. Below, the same thing accumulated: <b>the chance of coming in at or under any figure</b>, which is what a number gets chosen against.<br><br><b>Move the pointer</b> and a read line crosses both panels, reporting the chance of exceeding that figure under each of the four. That is the whole apparatus for choosing a number."
   },
   "tiles": [
     {
