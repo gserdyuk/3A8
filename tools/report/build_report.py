@@ -394,19 +394,20 @@ def render(d, stamp_human, data_path):
     chart_json = json.dumps(d["chart"], ensure_ascii=False)
 
     return (
-'<title>%s</title>\n'
+'<title>%s &middot; %s</title>\n'
 '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
 '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
 '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&'
 'family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;'
-'0,6..72,600;1,6..72,400&display=swap">\n\n' % d["title"]
+'0,6..72,600;1,6..72,400&display=swap">\n\n' % (d["title"], stamp_human)
 + STYLE + r'''
 
 <div class="wrap">
 
 <header class="mast">
   <div class="eyebrow">''' + d["eyebrow"] + r'''</div>
-  <h1>''' + d["headline"] + r'''<br><em>''' + d["headline_em"] + r'''</em></h1>
+  <h1>''' + d["headline"] + r'''</h1>
+  <p class="stamp-line">''' + d["subject"] + r''' &middot; generated <b>''' + stamp_human + r'''</b></p>
   <p class="standfirst">''' + d["standfirst"] + r'''</p>
   <div class="mast-meta">
     ''' + meta + r'''
