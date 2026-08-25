@@ -75,6 +75,7 @@ h1 em{font-style:italic; color:var(--ink-2)}
 .lg i{width:22px; height:0; border-top-width:2px; border-top-style:solid; display:block; flex:none}
 .lg.blue i{border-color:var(--pen-blue)} .lg.red i{border-color:var(--pen-red)}
 .lg.dash i{border-top-style:dashed} .lg.dot i{border-top-style:dotted; border-top-width:3px}
+.lg.fact i{border-color:var(--ink); border-top-width:3px}
 svg.plot{width:100%; height:auto; display:block; overflow:visible}
 svg.plot text{font-family:"IBM Plex Mono",ui-monospace,monospace; fill:var(--muted)}
 .hint{margin:12px 0 0; padding-top:11px; border-top:1px solid var(--rule);
@@ -246,6 +247,7 @@ const cdfNormal = x => 0.5*(1+erf((x-CASE.bottomUp.mu)/(CASE.bottomUp.sd*Math.SQ
 
 const S = CASE.outside.map(sample), SW = normalSample();
 const DMAX = Math.max(...S.flat().map(p=>p[1]), ...SW.map(p=>p[1]));
+if(!isFinite(DMAX) || DMAX <= 0) throw new Error("no distribution to draw");
 const Y = d => AXIS_Y - (d / DMAX) * (AXIS_Y - PLOT_TOP);
 function at(pts, x){
   for(let j=1;j<pts.length;j++){
@@ -311,6 +313,17 @@ const beyond = CASE.outside.find(r=>r.beyondLabel);
 if(beyond) svg += `<text x="${X(XMAX)-4}" y="${AXIS_Y-10}" font-size="9.5" text-anchor="end"
   fill="var(--pen-blue)">${beyond.beyondLabel}</text>`;
 
+if(CASE.fact){
+  const f = CASE.fact;
+  svg += `<line x1="${X(f.value)}" y1="${PLOT_TOP-6}" x2="${X(f.value)}" y2="${AXIS_Y}"
+    stroke="var(--ink)" stroke-width="2"/>`;
+  svg += `<rect x="${X(f.value)-3}" y="${PLOT_TOP-10}" width="6" height="6" fill="var(--ink)"/>`;
+  const anchor = X(f.value) > W*0.6 ? "end" : "start";
+  const dx = anchor === "end" ? -9 : 9;
+  svg += `<text x="${X(f.value)+dx}" y="${PLOT_TOP+2}" font-size="11.5" text-anchor="${anchor}"
+    fill="var(--ink)" font-weight="600">${f.label}</text>`;
+}
+
 if(CASE.calibration){
   const BY = PLOT_TOP+262, cs = CASE.calibration;
   svg += `<line x1="${X(cs.lo)}" y1="${BY}" x2="${X(cs.hi)}" y2="${BY}"
@@ -348,6 +361,7 @@ function move(evt){
   const lines = [`${Math.round(v)} person-days · ${Math.round(v*8).toLocaleString("en")} h`];
   CASE.outside.forEach(r => lines.push(`${r.id}: ${pct(cdfOutside(r, v))}`));
   lines.push(`bottom-up: ${pct(cdfNormal(v))}`);
+  if(CASE.fact) lines.push(`outcome: ${(v/CASE.fact.value).toFixed(2)}×`);
 
   curT.textContent = "";
   lines.forEach((s,i)=>{
