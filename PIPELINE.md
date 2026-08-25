@@ -6,6 +6,30 @@ The agents are hired for what they are **forbidden to see**, not for autonomy or
 
 ## The visibility matrix
 
+### The `Hotyn` chain — current generation, in force since 2026-08-19
+
+What runs today. The three structural sensors produce **no effort figures of any kind**; the prices
+live in a table none of them may see. `docs/instrument.md` states what each step does; this matrix
+states what each may look at.
+
+| Step | Agent | Sees | Must never see |
+|---|---|---|---|
+| 1 · product model | `model-builder` | pinned product obligations, processing order, assumption log | any estimate, any prior tree, any budget/deadline/team size |
+| 2 · work model | `work-crosser` | the closed product model, the technology declaration and its parameters, the demanded-work list | any estimate, any prior work model, any cost anchor |
+| 3 · size classes | `work-estimator` | the work model and the pinned sizing rules | **any rate, price, person-day figure, budget, duration or prior estimate** |
+| — · rates | `rate-table-author` | a sanitized catalogue extract, one line of team grade | any run output, any total, any budget, **any gap a rate would explain** |
+| 4 · arithmetic | a script | classes × table | — (it has no judgement to contaminate) |
+| 5 · outside view | `estimator-reference-class` | project description, assumption log | the model, the work items, the table, any bottom-up number, any target |
+| 6 · Step C rates | `rates-step-c` | project description, assumption log, the bottom-up structure | the reference class result, the size of the gap, any target |
+| 6 · Steps B, D | `diagnostician` | everything above | the project's **actual outcome** |
+| reveal | the orchestrator (main session) | everything, including the actual outcome | — (opens `FACT.md` only after the estimate is written and closed) |
+
+The rate author is the strictest row and the reason the chain works: it prices **kinds of work**,
+never a project, and it has never seen a total. A rate written while looking at a gap it would explain
+is a fitted parameter wearing a table's clothes.
+
+### The `Lytin` pipeline — closed generation, kept for the record
+
 | Step | Agent | Sees | Must never see |
 |---|---|---|---|
 | A.1 | `estimator-decomposition` | project description, assumption log | any other method's numbers, any target/budget/deadline |
@@ -24,11 +48,19 @@ The naming scheme: **city = generation of the whole pipeline, letter = role with
 
 | Step | Agent | Engine |
 |---|---|---|
-| A.1 | `estimator-decomposition` | **Lytin-D 4.0** |
-| A.2 | `estimator-reference-class` | **Lytin-R 1.0** |
-| C-params | `calibration-rates` | **Lytin-K 1.0** |
-| B, D | `diagnostician` | **Lytin-G 1.0** |
-| — | `version-probe` | **Lytin-F 4.0** |
+| 1 · product model | `model-builder` | **Hotyn-M 1.1** |
+| 2 · work model | `work-crosser` | **Hotyn-W 1.1** |
+| 3 · size classes | `work-estimator` | **Hotyn-D 2.0** |
+| — · rates | `rate-table-author` | **Hotyn-K 1.0** |
+| 5 · outside view | `estimator-reference-class` | **Lytin-R 1.0** |
+| 6 · Step C rates | `rates-step-c` | **Lytin-K 1.0** |
+| 6 · Steps B, D | `diagnostician` | **Lytin-G 1.0** |
+| — | `version-probe` | **Lytin-F 5.0** |
+| *closed* | `estimator-decomposition` | *Lytin-D 4.0* |
+
+Three roles keep a `Lytin` stamp inside a `Hotyn` chain, deliberately: the reference class, the Step C
+rate source and the diagnostician are **generation-agnostic by construction** — none of them ever sees
+the chain, so none needs a port. `Lytin-D` is the sensor `Hotyn` replaced; it does not run.
 
 One city for all four engines of a generation makes the pipeline version legible as a whole; the letter says which role is speaking. A role can advance on its own (`Lytin-D 1.1`) while the generation stays; a new city means the set was rebased together.
 
@@ -180,6 +212,39 @@ One cosmetic inconsistency the probe surfaced: the agent's environment preamble 
 ## Running the pipeline
 
 Prompts are currently assembled by hand, which is the weakest link: every contamination test in this file describes a leak that a careless copy-paste would produce for real. The next hardening step is to assemble each agent's prompt from a fixed template with a whitelisted set of fields, so that a forbidden field cannot be pasted in rather than merely being refused after the fact. Until that exists, the refusal layer is the only thing standing between a sloppy prompt and a laundered estimate.
+
+### The `Hotyn` chain
+
+0. **Probe first.** Run `version-probe` before the first batch of a session: definitions are loaded at
+   session start, so an edited sensor can otherwise run under a version nobody intended. This has
+   caught a stale load once (run 23).
+1. **Prepare and pin the case directory:** requirement list with its md5, the split into product
+   obligations and demanded work, `assumptions.md`, the technology declaration with its parameters and
+   its visible scope decisions, and — from case 2 onward — the case profile. If a known actual exists,
+   seal it in `FACT.md` and paste it into nothing.
+2. **Run `model-builder`**, ≥ 2 repeats. Transcribe every reply verbatim into `run*_raw/`; the harness
+   does not persist subagent output. Check each reply **begins at section 1** — a truncated reply is
+   recovered by asking for a verbatim re-emission, never by re-running, because a re-run silently turns
+   n = 2 into n = 3 with one member discarded.
+3. **Close one model** — the orchestrator's decision, recorded — and **run `work-crosser`** on it, in
+   batches if the model is large.
+4. **Run `work-estimator`**, ≥ 2 repeats, on the work model. Its prompt must contain no rate, no price,
+   no person-day figure. Every divergence between repeats is adjudicated by written case law, not by
+   preference.
+5. **Run the assembly script.** It is the only thing that multiplies anything.
+6. **Run `estimator-reference-class`** in parallel and in ignorance of all of the above.
+7. **Run `rates-step-c`, then `diagnostician`.** Check the Step C prompt for class numbers before
+   sending it.
+8. The orchestrator writes the deliverable, closes it, **and only then opens `FACT.md`.** The assembly
+   document states in its own first paragraph that it was written before the fact was opened; that
+   sentence is the check.
+
+**Standing hazard, caught four times:** the harness prepends `gitStatus` and recent commit subjects to
+a subagent launch, and commit subjects have carried numbers. Every sensor so far has reported and
+quarantined it, which is a workaround, not a mechanism. Every sensor prompt carries an explicit
+quarantine paragraph until launches can be made from outside the repository.
+
+### The `Lytin` pipeline — closed, kept for the record
 
 1. Prepare the case directory: the project description and `assumptions.md`. If a known actual exists, seal it in `FACT.md` and do not paste it into any agent prompt until Step D is written.
 2. Run A.1 and A.2 — separate agent calls, each given only the description and the assumption log. They may run in parallel; they must not run in one context.

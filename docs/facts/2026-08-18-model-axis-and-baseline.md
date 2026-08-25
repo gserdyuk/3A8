@@ -3,6 +3,33 @@
 Covers: run14, run15, run16, the C6 prediction scoring, and the first half of run17.
 Repository state at close: `3e9c5d0`.
 
+> ### Superseded in part — read this first
+>
+> This pack was written on **2026-08-18**, while run17 was half finished. **Run17 was closed on
+> 2026-08-19 by a later session**, which measured axis P, reran axis S, attempted a third capability tier
+> (Haiku 4.5), and then **discontinued the axis comparison before the gating control was computed.**
+>
+> **Precedence rule, the same one the later records use: where this pack and a later record disagree, the
+> later record wins.** Later records: `examples/BMS/run17_axis_projection.md` (rewritten), 
+> `docs/facts_session_2026-08-19.md`, and `sessions/`.
+>
+> Specifically superseded here:
+>
+> - **§1** — the two `axis P` rows marked *outstanding* are stale; those batches exist.
+> - **§3.3** — predictions **1, 2 and the cross-axis half of 5** are recorded here as *outstanding*. They
+>   are not outstanding and they are not scored either: the comparison was **discontinued**, so the later
+>   record marks them **not evaluated**. That is a third state, and the distinction matters — an
+>   abandoned control is not a pending one.
+> - **§5** — several OPEN items have since been closed or overtaken, including axis P and the control.
+>
+> Everything in **§2 (derived)** and **§4 (readings)** rests on run14, run15, run16 and the first axis-S
+> batch, none of which the later session revised. Those stand unless a later record says otherwise.
+>
+> Also note a convention collision, unresolved: this pack sits in `docs/facts/`, while `sessions/README.md`
+> defines a nine-section session-record format and `docs/facts_session_2026-08-19.md` is a third variant.
+> Three conventions exist; the merge should pick one.
+
+
 ---
 
 # 1. MEASURED
