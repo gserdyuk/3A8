@@ -11,7 +11,7 @@
     "unit <b>1 pd = 8 net hours</b> &mdash; leave, holidays and sickness not included"
   ],
   "chart": {
-    "axisMax": 2400,
+    "axisMax": 5400,
     "rawSum": null,
     "rawSumLabel": "",
     "calibration": null,
@@ -23,7 +23,37 @@
       "value": 1663,
       "label": "the outcome &mdash; 1663"
     },
-    "outside": [],
+    "outside": [
+      {
+        "id": "class",
+        "dash": "2 3",
+        "floor": 776,
+        "q": [
+          [
+            970,
+            0.1
+          ],
+          [
+            1940,
+            0.5
+          ],
+          [
+            3118,
+            0.8
+          ],
+          [
+            4019,
+            0.9
+          ],
+          [
+            5266,
+            0.95
+          ]
+        ],
+        "tailDrawn": true,
+        "beyondLabel": "class · P99 = 8592, off scale →"
+      }
+    ],
     "axisLabel": "NET WORKING TIME — PERSON-DAYS OF 8 TASK HOURS",
     "legend": [
       {
@@ -31,11 +61,15 @@
         "text": "Bottom-up, table-priced &mdash; P50 1423, &rho; = 0.5"
       },
       {
+        "cls": "blue dot",
+        "text": "Outside view &mdash; P50 1940 (140 person-months)"
+      },
+      {
         "cls": "fact",
-        "text": "The documented outcome &mdash; 1663"
+        "text": "The documented outcome &mdash; 1663 (120 person-months)"
       }
     ],
-    "hint": "<b>Move the pointer across the chart.</b> A read line follows it and reports where that figure sits in the estimate's distribution, and what multiple it is of the outcome. <b>The outside view is not on this axis</b> &mdash; it reports in funded seats and this chart is in task hours, and the factor between them is not measured on this project. It is compared to the outcome separately, in the unit both of them share."
+    "hint": "<b>Move the pointer across the chart.</b> A read line follows it and reports where that figure sits in each distribution and what multiple it is of the outcome. The outside view is placed by the declared conversion &mdash; <b>one funded-seat person-month = 21 weekdays &times; 0.88 presence &times; 6 net task hours &divide; 8 = 13.86 person-days</b> &mdash; which is the same conversion the outcome is placed by, so the two keep their exact ratio whatever the convention."
   },
   "tiles": [
     {
@@ -95,7 +129,7 @@
       "title": "The outside view",
       "count": "&times;1.17 high",
       "lead": "The first reference-class reading on this case in this generation. It never saw the product model, the work items, the rate table or any number from the chain &mdash; and it produced its estimate in <b>the unit the outcome is natively recorded in</b>, which makes one comparison here exact and another impossible.",
-      "html": "\n<h4>What it says</h4>\n<div class=\"tbl-scroll\"><table>\n<thead><tr><th></th><th class=\"num\">P10</th><th class=\"num\">P50</th><th class=\"num\">P80</th><th class=\"num\">P90</th><th class=\"num\">P95</th><th class=\"num\">P99</th></tr></thead>\n<tbody>\n<tr><td>person-months, funded seats</td><td class=\"num\">70</td><td class=\"num\"><b>140</b></td><td class=\"num\">225</td><td class=\"num\">290</td><td class=\"num\">380</td><td class=\"num\">620</td></tr>\n<tr><td class=\"q\">ratio to its own median</td><td class=\"num q\">0.50</td><td class=\"num q\">1.00</td><td class=\"num q\">1.61</td><td class=\"num q\">2.07</td><td class=\"num q\">2.71</td><td class=\"num q\">4.43</td></tr>\n</tbody></table></div>\n\n<h4>The one comparison on this page that needs no conversion</h4>\n<p>Its unit is the <b>funded-seat person-month</b> &mdash; seats multiplied by elapsed time, all roles,\nleave inside, no focus factor applied. The outcome is recorded in exactly that unit: ten staffed heads\nfor about a year. Both sides are seats &times; time, so the comparison is direct and no convention\nenters it:</p>\n<blockquote>class 140 against an outcome of 120 &mdash; <b>&times;1.17 high</b>. The outcome sits at\nabout <b>P39</b> of the class distribution.</blockquote>\n<p>Every other comparison this project has made needed a conversion on one side or the other. This one\ndoes not, and it is the first.</p>\n\n<h4>Why it is not drawn on the chart above</h4>\n<p>The chart is in <b>net hours of work on the task</b>. This reading is in <b>funded seats</b>. Moving\nbetween them needs a focus factor &mdash; how much of a recorded working day is task work &mdash; and\nthat factor is not measured on this project by anybody. This report declares 0.75; the sensor declares\n0.5&ndash;0.7 and says so unprompted:</p>\n<blockquote>If a consumer's own bottom-up numbers are built from ideal engineering days, my numbers are\non a different scale from theirs and comparing them directly will manufacture a divergence that is\npurely a units artefact of roughly 1.4&times;&ndash;2&times;.</blockquote>\n<p><b>So the two instruments are not currently comparable to each other</b>, and drawing them on one\naxis would show a difference produced by the choice of a multiplier rather than by the estimates.\nEach is compared to the outcome instead, in the unit it natively produces.</p>\n\n<h4>The class it constructed</h4>\n<p>Not looked up &mdash; built for this project at run time, with membership stated as categories of\nwork that must be present and categories that must be absent:</p>\n<blockquote>Replacement of an already-operating revenue-bearing back-end system, built in-house by a\nproduct company's own blended team, where the central engineering difficulty is sustained-throughput\ndistributed processing with per-item delivery guarantees, in a pre-cloud era with hand-built\ninfrastructure, by a team new to the business domain, with a definition of done that requires parallel\noperation against the predecessor and its decommissioning.</blockquote>\n<p><b>55% confidence in that class</b>, with 20 points of the remainder moving the answer up and 25\npoints moving it down. It named misclassification as the largest single source of error in its own\nforecast &mdash; larger than the sampling error inside the class.</p>\n\n<h4>Its shape is triple-sourced; its level is single-sourced &mdash; and it says so</h4>\n<p>The ratios P10/P50 = 0.50 and P90/P50 = 2.07 fall out of three sources of different provenance that\nagree: the published cone of uncertainty, a systematic review of estimation studies, and a\nlarge-sample study of outcomes. <b>Every person-month of the level, by contrast, descends from one\nanchor</b> &mdash; team size multiplied by calendar duration.</p>\n<blockquote>If this forecast is wrong, the most probable failure is that A1 or A2 is wrong for this\nproject, and not that the ratios are wrong. Anyone reconciling this sensor against another should\nattack the level first and leave the ratios alone.</blockquote>\n\n<h4>The contamination residue it declared against itself</h4>\n<p>The input carried the calendar window &mdash; \"roughly 2007&ndash;2009\" &mdash; and its principal\nanchor is built as team &times; duration, so a duration hint is a live path into its level. It raised\nthis unprompted, bounded the possible nudge at &plusmn;15% on the median, said it could not bound it\ntighter, and recommended stripping the window from any future run. The duration band it used,\n12&ndash;24 months, is not pulled toward the hint; that is a fact about its declared anchor, not a\nmeasure of how much the hint mattered.</p>\n\n<h4>And a tail with its own truncation caveat</h4>\n<p>It refused to continue a lognormal past P90, on the ground that the extreme tail of IT outcomes is\nheavier than lognormal, and lifted P95 and P99 by hand. Then it cut against itself: a product company\nof this size <b>cannot fund</b> a 620-person-month rework of a system it already owns, so the class's\nown economics delete the project rather than fund it.</p>\n<blockquote>My P95 and P99 are probably too high as predictors of recorded effort, and about right as\npredictors of required effort. These two diverge only above P90; below it they coincide.</blockquote>",
+      "html": "\n<h4>What it says</h4>\n<div class=\"tbl-scroll\"><table>\n<thead><tr><th></th><th class=\"num\">P10</th><th class=\"num\">P50</th><th class=\"num\">P80</th><th class=\"num\">P90</th><th class=\"num\">P95</th><th class=\"num\">P99</th></tr></thead>\n<tbody>\n<tr><td>person-months, funded seats</td><td class=\"num\">70</td><td class=\"num\"><b>140</b></td><td class=\"num\">225</td><td class=\"num\">290</td><td class=\"num\">380</td><td class=\"num\">620</td></tr>\n<tr><td class=\"q\">ratio to its own median</td><td class=\"num q\">0.50</td><td class=\"num q\">1.00</td><td class=\"num q\">1.61</td><td class=\"num q\">2.07</td><td class=\"num q\">2.71</td><td class=\"num q\">4.43</td></tr>\n</tbody></table></div>\n\n<h4>The one comparison on this page that needs no conversion</h4>\n<p>Its unit is the <b>funded-seat person-month</b> &mdash; seats multiplied by elapsed time, all roles,\nleave inside, no focus factor applied. The outcome is recorded in exactly that unit: ten staffed heads\nfor about a year. Both sides are seats &times; time, so the comparison is direct and no convention\nenters it:</p>\n<blockquote>class 140 against an outcome of 120 &mdash; <b>&times;1.17 high</b>. The outcome sits at\nabout <b>P39</b> of the class distribution.</blockquote>\n<p>Every other comparison this project has made needed a conversion on one side or the other. This one\ndoes not, and it is the first.</p>\n\n<h4>How it is placed on the chart</h4>\n<p>The chart is in <b>net hours of work on the task</b> and this reading is in <b>funded seats</b>.\nThe conversion between them is not a guess &mdash; it is a ladder, and only its last rung is\ncontested:</p>\n<div class=\"tbl-scroll\"><table>\n<thead><tr><th>one funded seat, one year</th><th class=\"num\">days left</th><th>determined by</th></tr></thead>\n<tbody>\n<tr><td>calendar</td><td class=\"num\">365</td><td class=\"q\">arithmetic</td></tr>\n<tr><td>less weekends</td><td class=\"num\">261</td><td class=\"q\">arithmetic</td></tr>\n<tr><td>less public holidays, ~10</td><td class=\"num\">251</td><td class=\"q\">a fact of the case's country</td></tr>\n<tr><td>less annual leave, ~10&ndash;15</td><td class=\"num\">238</td><td class=\"q\">the organisation's policy</td></tr>\n<tr><td>less sickness, ~5</td><td class=\"num\"><b>233</b></td><td class=\"q\">the organisation's average</td></tr>\n</tbody></table></div>\n<p>That gives a presence fraction of <b>0.893</b>. The sensor's own figure is 19.3 &divide; 21.7 =\n<b>0.889</b>; this report declares <b>0.88</b>. Three independent sources, one number &mdash; this rung\nis closed.</p>\n<p>The last rung is <b>how many of a present day's eight nominal hours are work on the task</b>. What\ncomes out inside the day: standups, planning and review meetings, code review given and received,\ndesign discussion, context switching, waiting on other people, reading, rework, ordinary friction.\n<b>This project declares 6. The sensor declares 4.0&ndash;5.6.</b> That is the whole of the\ndisagreement, and it is worth &times;1.25 on where the blue curve sits &mdash; nothing else in the\nladder is open.</p>\n<blockquote>1 funded-seat person-month = 21 weekdays &times; 0.88 presence &times; 6 net task hours\n&divide; 8 = <b>13.86 person-days</b>.</blockquote>\n<p>That is the same conversion the outcome is placed by, which is why <b>the class and the outcome keep\ntheir exact ratio of &times;1.17 whatever convention is chosen</b> &mdash; both are funded seats, and\nthe factor cancels. It does not cancel against the bottom-up, which is native to task hours: at the\nsensor's own 4.8 hours the blue curve would sit at 1552 rather than 1940, left of the outcome instead\nof right of it.</p>\n\n<h4>The class it constructed</h4>\n<p>Not looked up &mdash; built for this project at run time, with membership stated as categories of\nwork that must be present and categories that must be absent:</p>\n<blockquote>Replacement of an already-operating revenue-bearing back-end system, built in-house by a\nproduct company's own blended team, where the central engineering difficulty is sustained-throughput\ndistributed processing with per-item delivery guarantees, in a pre-cloud era with hand-built\ninfrastructure, by a team new to the business domain, with a definition of done that requires parallel\noperation against the predecessor and its decommissioning.</blockquote>\n<p><b>55% confidence in that class</b>, with 20 points of the remainder moving the answer up and 25\npoints moving it down. It named misclassification as the largest single source of error in its own\nforecast &mdash; larger than the sampling error inside the class.</p>\n\n<h4>Its shape is triple-sourced; its level is single-sourced &mdash; and it says so</h4>\n<p>The ratios P10/P50 = 0.50 and P90/P50 = 2.07 fall out of three sources of different provenance that\nagree: the published cone of uncertainty, a systematic review of estimation studies, and a\nlarge-sample study of outcomes. <b>Every person-month of the level, by contrast, descends from one\nanchor</b> &mdash; team size multiplied by calendar duration.</p>\n<blockquote>If this forecast is wrong, the most probable failure is that A1 or A2 is wrong for this\nproject, and not that the ratios are wrong. Anyone reconciling this sensor against another should\nattack the level first and leave the ratios alone.</blockquote>\n\n<h4>The contamination residue it declared against itself</h4>\n<p>The input carried the calendar window &mdash; \"roughly 2007&ndash;2009\" &mdash; and its principal\nanchor is built as team &times; duration, so a duration hint is a live path into its level. It raised\nthis unprompted, bounded the possible nudge at &plusmn;15% on the median, said it could not bound it\ntighter, and recommended stripping the window from any future run. The duration band it used,\n12&ndash;24 months, is not pulled toward the hint; that is a fact about its declared anchor, not a\nmeasure of how much the hint mattered.</p>\n\n<h4>And a tail with its own truncation caveat</h4>\n<p>It refused to continue a lognormal past P90, on the ground that the extreme tail of IT outcomes is\nheavier than lognormal, and lifted P95 and P99 by hand. Then it cut against itself: a product company\nof this size <b>cannot fund</b> a 620-person-month rework of a system it already owns, so the class's\nown economics delete the project rather than fund it.</p>\n<blockquote>My P95 and P99 are probably too high as predictors of recorded effort, and about right as\npredictors of required effort. These two diverge only above P90; below it they coincide.</blockquote>",
       "src": "examples/FaxRxTx/run37_raw/RC37-1.md"
     },
     {

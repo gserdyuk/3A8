@@ -284,6 +284,7 @@ CASE.outside.forEach((r,i)=>{
 });
 
 CASE.outside.forEach((r,i)=>{
+  if(i === 0) svg += `<path d="${areaPath(S[i])}" fill="var(--pen-blue-fill)" stroke="none"/>`;
   svg += `<path d="${path(S[i])}" fill="none" stroke="var(--pen-blue)" stroke-width="1.9"
     ${r.dash?`stroke-dasharray="${r.dash}"`:''} stroke-linejoin="round" stroke-linecap="round"/>`;
   r.q.forEach(([x,p])=>{
