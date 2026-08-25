@@ -8,6 +8,25 @@ Convention: `- [ ]` open · `- [x]` done, with the commit or run that closed it.
 
 ---
 
+## Next session — named by the author, 2026-08-26
+
+Both start cold. Everything they need is written down: `docs/instrument.md` for what runs,
+`docs/constants.md` for every constant the method has, `PIPELINE.md` for who may see what, and
+`sessions/2026-08-26_the_report_becomes_a_format.md` for where this left off.
+
+- [ ] **1. A third case.** The gate needs four documented outcomes and has one. Before any estimate
+      exists, pin the **case profile** — team grade and domain experience, declared overheads and what
+      is inside them, the presence fraction, the process, and the staffing of every stage the method
+      prices separately. Case 1 was admitted on conventions supplied afterwards and therefore sets the
+      floor, not the standard; cases 2–4 are held to the stricter rule. A case whose conditions arrive
+      after its number can be learned from and cannot score.
+- [ ] **2. The third instrument — parametric.** See the item under *Now* below, with the author's
+      condition attached: it is worth building **only if its level comes from a table rather than from
+      recall.** The reference class already demonstrates the failure mode — its shape is triple-sourced
+      and stable across four readings, its level descends from a single remembered anchor and spans
+      ×2.12. A third instrument that samples its magnitude the same way is a third voice with the same
+      defect.
+
 ## Now — adjudicate what is already written down (settled 2026-08-25)
 
 **The units are settled on both sides and the table is fixed.** `docs/rate_table.md` is a **set of
