@@ -1,0 +1,11 @@
+run	model	SigmaE	leaves	SigmaLeafE	integration	share	multiplier	modules	branches	C6checks	C6out	C6mean	gates
+RO-1	opus	1444.88	124	938.99	505.88	35.0	1.539	26	8	33	7	3.90	pass
+RO-2	opus	1221.30	115	792.10	429.20	35.1	1.542	27	8	28	8	1.83	pass
+RO-3	opus	1326.03	123	850.60	475.43	35.9	1.559	37	9	41	5	5.20	pass
+RO-4	opus	1349.60	108	861.60	488.00	36.2	1.566	28	10	29	15	8.96	pass
+RO-5	opus	1486.07	133	946.00	540.07	36.3	1.571	39	10	39	26	20.50	pass
+RS-1	sonnet	422.58	45	287.20	135.38	32.0	1.471	24	6	11	9	26.00	pass
+RS-2	sonnet	600.02	71	388.97	211.04	35.2	1.543	16	6	19	12	13.10	pass
+RS-3	sonnet	746.80	84	483.04	263.76	35.3	1.546	16	5	21	9	-7.50	pass
+RS-4	sonnet	649.40	63	442.20	207.20	31.9	1.470	29	5	17	3	1.90	pass-with-note
+RS-5	sonnet	461.40	41	309.65	151.77	32.9	1.490	19	5	7	3	10.10	pass
