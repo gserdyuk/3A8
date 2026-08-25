@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How wrong can an estimate be?</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+  *{box-sizing:border-box}
+  body{background:#E9EDF1; margin:0; padding:32px 16px;
+       font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  .card{
+    --c-paper:#F4F7FA; --c-ink:#15212E; --c-soft:#4A5B6D; --c-line:#C7D2DC;
+    --c-band:#2E7D74; --c-alert:#BC3F1E;
+    max-width:1080px; margin:0 auto;
+    background:var(--c-paper); color:var(--c-ink);
+    border:1px solid #D8E0E7; border-radius:8px;
+    padding:44px 48px 30px; box-shadow:0 1px 4px rgba(21,33,46,.10);
+  }
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace; font-size:12.5px; font-weight:600; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--c-band); margin:0 0 10px;
+    display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  }
+  .eyebrow span:last-child{color:var(--c-soft); font-weight:400}
+  .card h1{font-size:34px; line-height:1.12; font-weight:700; margin:0 0 6px; letter-spacing:-.01em; text-wrap:balance}
+  .card .sub{font-size:16.5px; color:var(--c-soft); margin:0 0 26px; max-width:62ch; line-height:1.45}
+  .chart{border:1px solid var(--c-line); border-radius:6px; background:#FBFDFE; padding:10px 8px 2px; overflow-x:auto}
+  .chart svg{display:block; width:100%; height:auto; min-width:640px}
+  .chart-cap{
+    font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--c-soft);
+    padding:8px 10px 10px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  }
+  .cols{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:26px}
+  @media (max-width:760px){.cols{grid-template-columns:1fr}}
+  .blk h2{
+    font-size:13px; font-family:"IBM Plex Mono",monospace; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--c-soft); margin:0 0 12px; padding-bottom:8px; border-bottom:2px solid var(--c-ink);
+  }
+  .warn{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px}
+  .warn li{padding-left:18px; border-left:3px solid var(--c-alert); font-size:14.5px; line-height:1.5}
+  .warn b{display:block; margin-bottom:2px}
+  .rules{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px}
+  .rules li{font-size:14.5px; line-height:1.5; padding-left:26px; position:relative}
+  .rules li::before{content:"▸"; position:absolute; left:2px; top:0; color:var(--c-band); font-weight:700}
+  .card footer{
+    margin-top:28px; padding-top:14px; border-top:1px solid var(--c-line);
+    font-family:"IBM Plex Mono",monospace; font-size:11.5px; line-height:1.6; color:var(--c-soft);
+    display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  }
+  .card footer .sig{color:var(--c-ink); font-weight:600; white-space:nowrap}
+  @media (max-width:600px){.card{padding:28px 20px 22px}.card h1{font-size:27px}}
+</style>
+</head>
+<body>
+
+<article class="card">
+  <p class="eyebrow"><span>Field card · software estimation</span><span>accuracy by stage</span></p>
+  <h1>How wrong can an&nbsp;estimate&nbsp;be?</h1>
+  <p class="sub">The honest spread of an estimate against the eventual actual, stage by stage — and three things the “cone of uncertainty” does not tell you.</p>
+
+  <div class="chart">
+    <svg viewBox="0 0 960 352" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cone of uncertainty: estimation error range by stage, log scale">
+      <rect x="225" y="14" width="120" height="292" fill="rgba(233,178,66,.22)"/>
+      <g stroke="#C7D2DC" stroke-width="1">
+        <line x1="70" y1="20"  x2="930" y2="20"/>
+        <line x1="70" y1="85"  x2="930" y2="85"/>
+        <line x1="70" y1="112" x2="930" y2="112"/>
+        <line x1="70" y1="188" x2="930" y2="188"/>
+        <line x1="70" y1="215" x2="930" y2="215"/>
+        <line x1="70" y1="280" x2="930" y2="280"/>
+      </g>
+      <line x1="70" y1="150" x2="930" y2="150" stroke="#4A5B6D" stroke-width="1" stroke-dasharray="5 4"/>
+      <g font-family="IBM Plex Mono,monospace" font-size="12" fill="#4A5B6D">
+        <text x="62" y="24"  text-anchor="end">×4</text>
+        <text x="62" y="89"  text-anchor="end">×2</text>
+        <text x="62" y="116" text-anchor="end">×1.5</text>
+        <text x="62" y="154" text-anchor="end">×1</text>
+        <text x="62" y="192" text-anchor="end">×0.67</text>
+        <text x="62" y="219" text-anchor="end">×0.5</text>
+        <text x="62" y="284" text-anchor="end">×0.25</text>
+      </g>
+      <polygon points="70,20 285,85 500,112 715,129 930,141 930,160 715,171 500,188 285,215 70,280"
+               fill="rgba(46,125,116,.16)" stroke="#2E7D74" stroke-width="2" stroke-linejoin="round"/>
+      <g font-family="IBM Plex Mono,monospace" font-size="12.5" font-weight="600" fill="#2E7D74">
+        <text x="285" y="76" text-anchor="middle">×2</text>
+        <text x="500" y="103" text-anchor="middle">×1.5</text>
+        <text x="715" y="121" text-anchor="middle">×1.25</text>
+        <text x="880" y="133" text-anchor="middle">×1.1</text>
+        <text x="285" y="232" text-anchor="middle">×0.5</text>
+        <text x="500" y="205" text-anchor="middle">×0.67</text>
+        <text x="715" y="188" text-anchor="middle">×0.8</text>
+        <text x="880" y="177" text-anchor="middle">×0.9</text>
+      </g>
+      <circle cx="285" cy="85" r="5" fill="#B97F14"/>
+      <circle cx="285" cy="215" r="5" fill="#B97F14"/>
+      <g font-family="IBM Plex Sans,sans-serif" font-size="13.5" font-weight="600" fill="#B97F14">
+        <text x="292" y="52">Fixed price usually gets signed here:</text>
+        <text x="292" y="69">the honest spread is ×0.5 to ×2</text>
+      </g>
+      <g font-family="IBM Plex Sans,sans-serif" font-size="13" fill="#15212E">
+        <text x="70"  y="326" text-anchor="start">Concept</text>
+        <text x="285" y="326" text-anchor="middle" font-weight="700">Business case / RFP</text>
+        <text x="500" y="326" text-anchor="middle">Requirements done</text>
+        <text x="715" y="326" text-anchor="middle">UI design done</text>
+        <text x="930" y="326" text-anchor="end">Detailed design</text>
+      </g>
+      <g font-family="IBM Plex Mono,monospace" font-size="11" fill="#4A5B6D">
+        <text x="70" y="344" text-anchor="start">×0.25–×4</text>
+        <text x="285" y="344" text-anchor="middle" font-weight="600">×0.5–×2</text>
+        <text x="500" y="344" text-anchor="middle">×0.67–×1.5</text>
+        <text x="715" y="344" text-anchor="middle">×0.8–×1.25</text>
+        <text x="930" y="344" text-anchor="end">~×0.9–×1.1</text>
+      </g>
+    </svg>
+    <div class="chart-cap"><span>“Cone of uncertainty”: Boehm 1981 → McConnell 2006</span><span>log scale · actual ÷ estimate</span></div>
+  </div>
+
+  <div class="cols">
+    <section class="blk">
+      <h2>What the cone won’t tell you</h2>
+      <ul class="warn">
+        <li><b>It does not narrow by itself.</b> The cone is the best case (Little, 2006). Narrowing is bought with questions, prototypes, re-estimation — with work, not with time.</li>
+        <li><b>The error is asymmetric.</b> Average overrun is +30–40% (Moløkken&nbsp;&amp;&nbsp;Jørgensen, 2003); about 1&nbsp;project in&nbsp;6 is a black swan at ~+200% (Flyvbjerg&nbsp;&amp;&nbsp;Budzier, 2011). The right tail is longer.</li>
+        <li><b>Part of the “error” isn’t error.</b> Scope drift: you built a different project than you estimated. An estimate without its assumption list is an estimate of nobody knows what.</li>
+      </ul>
+    </section>
+    <section class="blk">
+      <h2>Operating rules</h2>
+      <ul class="rules">
+        <li>An early estimate is a <b>range, not a point</b>. A point at RFP stage is naivety — or a negotiating position.</li>
+        <li><b>P50 is not a promise</b>: half of all projects exceed the median. By definition.</li>
+        <li>Make the corridor <b>asymmetric</b>: P90 sits farther from the center than P10.</li>
+        <li>An honest 80% interval <b>must miss</b> ~1 time in 5. An interval that never misses is uselessly wide.</li>
+        <li>Size the tail reserve from <b>similar-project statistics</b>, not “+20% for risks” on top of a WBS.</li>
+        <li>Keep <b>assumptions and open questions next to the number</b> — or every argument about a miss becomes an argument about what was estimated.</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    <span>Boehm, Software Engineering Economics, 1981 · McConnell, Software Estimation, 2006 · Little, IEEE Software 23(3), 2006 · Moløkken &amp; Jørgensen, ISESE, 2003 · Flyvbjerg &amp; Budzier, HBR, 2011</span>
+    <span class="sig">Gennadiy Serdyuk</span>
+  </footer>
+</article>
+
+</body>
+</html>

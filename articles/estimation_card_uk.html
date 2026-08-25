@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Наскільки можна помилитися в оцінці?</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+  *{box-sizing:border-box}
+  body{background:#E9EDF1; margin:0; padding:32px 16px;
+       font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  .card{
+    --c-paper:#F4F7FA; --c-ink:#15212E; --c-soft:#4A5B6D; --c-line:#C7D2DC;
+    --c-band:#2E7D74; --c-alert:#BC3F1E;
+    max-width:1080px; margin:0 auto;
+    background:var(--c-paper); color:var(--c-ink);
+    border:1px solid #D8E0E7; border-radius:8px;
+    padding:44px 48px 30px; box-shadow:0 1px 4px rgba(21,33,46,.10);
+  }
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace; font-size:12.5px; font-weight:600; letter-spacing:.16em;
+    text-transform:uppercase; color:var(--c-band); margin:0 0 10px;
+    display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  }
+  .eyebrow span:last-child{color:var(--c-soft); font-weight:400}
+  .card h1{font-size:34px; line-height:1.12; font-weight:700; margin:0 0 6px; letter-spacing:-.01em; text-wrap:balance}
+  .card .sub{font-size:16.5px; color:var(--c-soft); margin:0 0 26px; max-width:62ch; line-height:1.45}
+  .chart{border:1px solid var(--c-line); border-radius:6px; background:#FBFDFE; padding:10px 8px 2px; overflow-x:auto}
+  .chart svg{display:block; width:100%; height:auto; min-width:640px}
+  .chart-cap{
+    font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--c-soft);
+    padding:8px 10px 10px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  }
+  .cols{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:26px}
+  @media (max-width:760px){.cols{grid-template-columns:1fr}}
+  .blk h2{
+    font-size:13px; font-family:"IBM Plex Mono",monospace; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--c-soft); margin:0 0 12px; padding-bottom:8px; border-bottom:2px solid var(--c-ink);
+  }
+  .warn{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px}
+  .warn li{padding-left:18px; border-left:3px solid var(--c-alert); font-size:14.5px; line-height:1.5}
+  .warn b{display:block; margin-bottom:2px}
+  .rules{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px}
+  .rules li{font-size:14.5px; line-height:1.5; padding-left:26px; position:relative}
+  .rules li::before{content:"▸"; position:absolute; left:2px; top:0; color:var(--c-band); font-weight:700}
+  .card footer{
+    margin-top:28px; padding-top:14px; border-top:1px solid var(--c-line);
+    font-family:"IBM Plex Mono",monospace; font-size:11.5px; line-height:1.6; color:var(--c-soft);
+    display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  }
+  .card footer .sig{color:var(--c-ink); font-weight:600; white-space:nowrap}
+  @media (max-width:600px){.card{padding:28px 20px 22px}.card h1{font-size:27px}}
+</style>
+</head>
+<body>
+
+<article class="card">
+  <p class="eyebrow"><span>Польова картка · оцінка ПЗ</span><span>точність за стадіями</span></p>
+  <h1>Наскільки можна помилитися в&nbsp;оцінці?</h1>
+  <p class="sub">Чесний розкид оцінки відносно майбутнього факту — за стадіями проєкту. І три речі, про які «конус невизначеності» мовчить.</p>
+
+  <div class="chart">
+    <svg viewBox="0 0 960 352" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Конус невизначеності: діапазон помилки оцінки за стадіями, логарифмічна шкала">
+      <rect x="225" y="14" width="120" height="292" fill="rgba(233,178,66,.22)"/>
+      <g stroke="#C7D2DC" stroke-width="1">
+        <line x1="70" y1="20"  x2="930" y2="20"/>
+        <line x1="70" y1="85"  x2="930" y2="85"/>
+        <line x1="70" y1="112" x2="930" y2="112"/>
+        <line x1="70" y1="188" x2="930" y2="188"/>
+        <line x1="70" y1="215" x2="930" y2="215"/>
+        <line x1="70" y1="280" x2="930" y2="280"/>
+      </g>
+      <line x1="70" y1="150" x2="930" y2="150" stroke="#4A5B6D" stroke-width="1" stroke-dasharray="5 4"/>
+      <g font-family="IBM Plex Mono,monospace" font-size="12" fill="#4A5B6D">
+        <text x="62" y="24"  text-anchor="end">×4</text>
+        <text x="62" y="89"  text-anchor="end">×2</text>
+        <text x="62" y="116" text-anchor="end">×1.5</text>
+        <text x="62" y="154" text-anchor="end">×1</text>
+        <text x="62" y="192" text-anchor="end">×0.67</text>
+        <text x="62" y="219" text-anchor="end">×0.5</text>
+        <text x="62" y="284" text-anchor="end">×0.25</text>
+      </g>
+      <polygon points="70,20 285,85 500,112 715,129 930,141 930,160 715,171 500,188 285,215 70,280"
+               fill="rgba(46,125,116,.16)" stroke="#2E7D74" stroke-width="2" stroke-linejoin="round"/>
+      <g font-family="IBM Plex Mono,monospace" font-size="12.5" font-weight="600" fill="#2E7D74">
+        <text x="285" y="76" text-anchor="middle">×2</text>
+        <text x="500" y="103" text-anchor="middle">×1.5</text>
+        <text x="715" y="121" text-anchor="middle">×1.25</text>
+        <text x="880" y="133" text-anchor="middle">×1.1</text>
+        <text x="285" y="232" text-anchor="middle">×0.5</text>
+        <text x="500" y="205" text-anchor="middle">×0.67</text>
+        <text x="715" y="188" text-anchor="middle">×0.8</text>
+        <text x="880" y="177" text-anchor="middle">×0.9</text>
+      </g>
+      <circle cx="285" cy="85" r="5" fill="#B97F14"/>
+      <circle cx="285" cy="215" r="5" fill="#B97F14"/>
+      <g font-family="IBM Plex Sans,sans-serif" font-size="13.5" font-weight="600" fill="#B97F14">
+        <text x="292" y="52">Fixed price зазвичай підписують тут:</text>
+        <text x="292" y="69">чесний розкид — від ×0.5 до ×2</text>
+      </g>
+      <g font-family="IBM Plex Sans,sans-serif" font-size="13" fill="#15212E">
+        <text x="70"  y="326" text-anchor="start">Ідея</text>
+        <text x="285" y="326" text-anchor="middle" font-weight="700">Бізнес-кейс / RFP</text>
+        <text x="500" y="326" text-anchor="middle">Вимоги готові</text>
+        <text x="715" y="326" text-anchor="middle">UI-дизайн готовий</text>
+        <text x="930" y="326" text-anchor="end">Детальний дизайн</text>
+      </g>
+      <g font-family="IBM Plex Mono,monospace" font-size="11" fill="#4A5B6D">
+        <text x="70" y="344" text-anchor="start">×0.25–×4</text>
+        <text x="285" y="344" text-anchor="middle" font-weight="600">×0.5–×2</text>
+        <text x="500" y="344" text-anchor="middle">×0.67–×1.5</text>
+        <text x="715" y="344" text-anchor="middle">×0.8–×1.25</text>
+        <text x="930" y="344" text-anchor="end">~×0.9–×1.1</text>
+      </g>
+    </svg>
+    <div class="chart-cap"><span>«Конус невизначеності»: Boehm 1981 → McConnell 2006</span><span>шкала логарифмічна · факт ÷ оцінка</span></div>
+  </div>
+
+  <div class="cols">
+    <section class="blk">
+      <h2>Про що конус мовчить</h2>
+      <ul class="warn">
+        <li><b>Він не звужується сам.</b> Конус — найкращий випадок (Little, 2006). Звуження купується питаннями, прототипом, переоцінкою — роботою, а не часом.</li>
+        <li><b>Помилка асиметрична.</b> Середнє перевищення +30–40% (Moløkken&nbsp;&amp;&nbsp;Jørgensen, 2003); кожен ~6-й проєкт — «чорний лебідь» із ~+200% (Flyvbjerg&nbsp;&amp;&nbsp;Budzier, 2011). Правий хвіст довший за лівий.</li>
+        <li><b>Частина «помилки» — не помилка.</b> Скоуп-дрейф: збудували не той проєкт, який оцінювали. Оцінка без списку припущень — оцінка невідомо чого.</li>
+      </ul>
+    </section>
+    <section class="blk">
+      <h2>Правила поводження</h2>
+      <ul class="rules">
+        <li>Рання оцінка — <b>діапазон, а не точка</b>. Точка на стадії RFP — наївність або переговорна позиція.</li>
+        <li><b>P50 — не обіцянка</b>: медіану перевищує половина проєктів. За означенням.</li>
+        <li>Коридор — <b>асиметричний</b>: P90 далі від центру, ніж P10.</li>
+        <li>Чесний 80%-й інтервал <b>мусить промахуватися</b> ~1 раз із 5. Інтервал «без промахів» — просто безглуздо широкий.</li>
+        <li>Резерв під хвіст — зі <b>статистики схожих проєктів</b>, а не «+20% на ризики» поверх WBS.</li>
+        <li><b>Припущення та відкриті питання — поруч із числом</b>, інакше суперечка про промах стане суперечкою про те, що оцінювали.</li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    <span>Boehm, Software Engineering Economics, 1981 · McConnell, Software Estimation, 2006 · Little, IEEE Software 23(3), 2006 · Moløkken &amp; Jørgensen, ISESE, 2003 · Flyvbjerg &amp; Budzier, HBR, 2011</span>
+    <span class="sig">Геннадій Сердюк</span>
+  </footer>
+</article>
+
+</body>
+</html>
