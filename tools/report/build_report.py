@@ -187,23 +187,67 @@ footer .stamp{grid-column:1/-1; margin-top:8px; padding-top:14px; border-top:1px
 CHART_JS = r'''<script>
 const CASE = __CHART__;
 
-const W = 900, H = 440, M = {l:14, r:14, t:14, b:52};
-const XMAX = CASE.axisMax, PW = W - M.l - M.r, AXIS_Y = H - M.b, PLOT_TOP = M.t + 6;
-const X = v => M.l + (v / XMAX) * PW;
+const W = 900, H = 580, M = {l:46, r:14, b:52};
+const XMAX = CASE.axisMax, PW = W - M.l - M.r;
+const DEN_TOP = 30, DEN_BOT = 262;          // upper panel — probability density
+const CDF_TOP = 320, CDF_BOT = 528;         // lower panel — cumulative probability
+const X  = v => M.l + (v / XMAX) * PW;
 const XINV = px => (px - M.l) / PW * XMAX;
+const Yc = p => CDF_BOT - p * (CDF_BOT - CDF_TOP);
 
-function segs(run){
-  const pts = [[run.floor,0], ...run.q], out = [];
+function erf(z){
+  const t=1/(1+0.3275911*Math.abs(z));
+  const y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-z*z);
+  return z>=0?y:-y;
+}
+const Phi = z => 0.5*(1+erf(z/Math.SQRT2));
+
+/* ---------- the two readings a run can be asked for ---------- */
+function segsOf(run){
+  const pts = [[run.floor != null ? run.floor : run.q[0][0]*0.999, 0], ...run.q], out = [];
   for(let i=1;i<pts.length;i++){
     const [x0,p0]=pts[i-1], [x1,p1]=pts[i];
     out.push({x0,x1,p0,p1,d:(p1-p0)/(x1-x0)});
   }
   return out;
 }
+function pdfOutside(run, x){
+  if(run.lognormal){
+    if(x <= 0) return 0;
+    const L = run.lognormal;
+    return Math.exp(-Math.pow(Math.log(x)-Math.log(L.median),2)/(2*L.sigma*L.sigma))
+           /(x*L.sigma*Math.sqrt(2*Math.PI));
+  }
+  for(const g of segsOf(run)) if(x>=g.x0 && x<=g.x1) return g.d;
+  return 0;
+}
+function cdfOutside(run, x){
+  const last = run.q[run.q.length-1][0];
+  if(x >= last) return null;
+  if(run.lognormal){
+    if(x <= 0) return 0;
+    return Phi((Math.log(x)-Math.log(run.lognormal.median))/run.lognormal.sigma);
+  }
+  const g0 = segsOf(run);
+  if(x <= g0[0].x0) return 0;
+  for(const g of g0) if(x <= g.x1) return g.p0 + (g.p1-g.p0)*(x-g.x0)/(g.x1-g.x0);
+  return null;
+}
+const pdfNormal = x => Math.exp(-0.5*Math.pow((x-CASE.bottomUp.mu)/CASE.bottomUp.sd,2))
+                       /(CASE.bottomUp.sd*Math.sqrt(2*Math.PI));
+const cdfNormal = x => Phi((x-CASE.bottomUp.mu)/CASE.bottomUp.sd);
+
+/* ---------- sampling ---------- */
+function rangeOutside(run){
+  const last = run.q[run.q.length-1][0];
+  const lo = run.lognormal ? Math.max(1, run.lognormal.median*Math.exp(-3.4*run.lognormal.sigma))
+                           : (run.floor != null ? run.floor : run.q[0][0]);
+  return [lo, last];
+}
 function smooth(arr){
   let cur = arr;
   for(let pass=0; pass<2; pass++){
-    const k = 26;
+    const k = 20;
     cur = cur.map((_,i)=>{
       let a=0,n=0;
       for(let j=Math.max(0,i-k); j<=Math.min(cur.length-1,i+k); j++){ a+=cur[j][1]; n++; }
@@ -212,144 +256,147 @@ function smooth(arr){
   }
   return cur;
 }
-function sample(run){
-  const sg = segs(run), out = [];
-  const lo = run.floor, hi = run.q[run.q.length-1][0], N = 300;
-  for(let i=0;i<=N;i++){
-    const x = lo + (hi-lo)*i/N;
-    let d = 0;
-    for(const s of sg){ if(x>=s.x0 && x<=s.x1){ d = s.d; break; } }
-    out.push([x,d]);
-  }
-  return smooth(out);
+function densOutside(run){
+  const [lo,hi] = rangeOutside(run), out = [], N = 360;
+  for(let i=0;i<=N;i++){ const x = lo+(hi-lo)*i/N; out.push([x, pdfOutside(run,x)]); }
+  return run.lognormal ? out : smooth(out);
 }
-function normalSample(){
-  const B = CASE.bottomUp, out=[], lo=Math.max(0,B.mu-3.6*B.sd), hi=B.mu+3.6*B.sd, N=300;
-  for(let i=0;i<=N;i++){
-    const x=lo+(hi-lo)*i/N;
-    out.push([x, Math.exp(-0.5*Math.pow((x-B.mu)/B.sd,2))/(B.sd*Math.sqrt(2*Math.PI))]);
-  }
+function densBottomUp(){
+  const B = CASE.bottomUp, out=[], N=360;
+  const lo = Math.max(0,B.mu-3.6*B.sd), hi = Math.min(XMAX, B.mu+3.6*B.sd);
+  for(let i=0;i<=N;i++){ const x=lo+(hi-lo)*i/N; out.push([x, pdfNormal(x)]); }
   return out;
 }
-function cdfOutside(run, x){
-  if(x <= run.floor) return 0;
-  const sg = segs(run), last = sg[sg.length-1];
-  if(x >= last.x1) return null;
-  for(const s of sg) if(x <= s.x1) return s.p0 + (s.p1-s.p0)*(x-s.x0)/(s.x1-s.x0);
-  return null;
-}
-function erf(z){
-  const t=1/(1+0.3275911*Math.abs(z));
-  const y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-z*z);
-  return z>=0?y:-y;
-}
-const cdfNormal = x => 0.5*(1+erf((x-CASE.bottomUp.mu)/(CASE.bottomUp.sd*Math.SQRT2)));
-
-const S = CASE.outside.map(sample), SW = normalSample();
-const DMAX = Math.max(...S.flat().map(p=>p[1]), ...SW.map(p=>p[1]));
-if(!isFinite(DMAX) || DMAX <= 0) throw new Error("no distribution to draw");
-const Y = d => AXIS_Y - (d / DMAX) * (AXIS_Y - PLOT_TOP);
-function at(pts, x){
-  for(let j=1;j<pts.length;j++){
-    if(x <= pts[j][0]){
-      const [x0,d0]=pts[j-1], [x1,d1]=pts[j];
-      return d0 + (d1-d0)*((x-x0)/(x1-x0 || 1));
-    }
+function cumOutside(run){
+  const [lo,hi] = rangeOutside(run), out = [], N = 360;
+  for(let i=0;i<=N;i++){
+    const x = lo+(hi-lo)*i/N, c = cdfOutside(run,x);
+    if(c !== null) out.push([x,c]);
   }
-  return pts[pts.length-1][1];
+  out.push([hi, run.q[run.q.length-1][1]]);
+  return out;
 }
-const path = pts => pts.map(([x,d],i)=>`${i?"L":"M"} ${X(x).toFixed(1)} ${Y(d).toFixed(1)}`).join(" ");
-const areaPath = pts => `M ${X(pts[0][0]).toFixed(1)} ${AXIS_Y} ` + path(pts).slice(1) +
-  ` L ${X(pts[pts.length-1][0]).toFixed(1)} ${AXIS_Y} Z`;
-
-let svg = `<defs><pattern id="tail" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-  <line x1="0" y1="0" x2="0" y2="7" stroke="var(--pen-blue)" stroke-width="1" opacity=".3"/></pattern></defs>`;
-
-const STEP = XMAX > 2400 ? 200 : 100, MAJOR = STEP * 3;
-for(let v=0; v<=XMAX; v+=STEP){
-  const major = v % MAJOR === 0;
-  svg += `<line x1="${X(v).toFixed(1)}" y1="${PLOT_TOP-6}" x2="${X(v).toFixed(1)}" y2="${AXIS_Y}"
-    stroke="var(--rule)" stroke-width="1" opacity="${major?1:.45}"/>`;
-  if(major) svg += `<text x="${X(v).toFixed(1)}" y="${AXIS_Y+18}" font-size="11" text-anchor="middle">${v}</text>`;
-  else svg += `<line x1="${X(v).toFixed(1)}" y1="${AXIS_Y}" x2="${X(v).toFixed(1)}" y2="${AXIS_Y+4}" stroke="var(--rule-2)" stroke-width="1"/>`;
+function cumBottomUp(){
+  const B = CASE.bottomUp, out=[], N=360;
+  const lo = Math.max(0,B.mu-3.6*B.sd), hi = Math.min(XMAX, B.mu+3.6*B.sd);
+  for(let i=0;i<=N;i++){ const x=lo+(hi-lo)*i/N; out.push([x, cdfNormal(x)]); }
+  return out;
 }
-svg += `<text x="${X(XMAX)}" y="${AXIS_Y+36}" font-size="10" text-anchor="end" letter-spacing="1.4">${CASE.axisLabel}</text>`;
 
-CASE.outside.forEach((r,i)=>{
-  if(r.tailDrawn) return;
-  const p90 = r.q[r.q.length-1][0], last = at(S[i],p90);
-  svg += `<path d="M ${X(p90)} ${AXIS_Y} L ${X(p90)} ${Y(last).toFixed(1)}
-    Q ${X((p90+XMAX)/2)} ${Y(last*.45).toFixed(1)} ${X(XMAX)} ${(AXIS_Y-5).toFixed(1)} L ${X(XMAX)} ${AXIS_Y} Z"
-    fill="url(#tail)" stroke="none"/>`;
+const DENS = CASE.outside.map(densOutside), DENB = densBottomUp();
+const DMAX = Math.max(...DENS.flat().map(p=>p[1]), ...DENB.map(p=>p[1]));
+const Yd = d => DEN_BOT - (d / DMAX) * (DEN_BOT - DEN_TOP);
+
+const dpath = pts => pts.map(([x,d],i)=>`${i?"L":"M"} ${X(x).toFixed(1)} ${Yd(d).toFixed(1)}`).join(" ");
+const darea = pts => `M ${X(pts[0][0]).toFixed(1)} ${DEN_BOT} ` + dpath(pts).slice(1) +
+  ` L ${X(pts[pts.length-1][0]).toFixed(1)} ${DEN_BOT} Z`;
+const cpath = pts => pts.map(([x,p],i)=>`${i?"L":"M"} ${X(x).toFixed(1)} ${Yc(p).toFixed(1)}`).join(" ");
+const esc = t => String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+
+let svg = "";
+
+/* ---------- grid, shared x ---------- */
+const STEP = XMAX > 2400 ? 600 : 300;
+for(let v=0; v<=XMAX; v+=STEP/3){
+  const major = v % STEP === 0, op = major ? 1 : .45;
+  svg += `<line x1="${X(v).toFixed(1)}" y1="${DEN_TOP-6}" x2="${X(v).toFixed(1)}" y2="${DEN_BOT}"
+    stroke="var(--rule)" stroke-width="1" opacity="${op}"/>`;
+  svg += `<line x1="${X(v).toFixed(1)}" y1="${CDF_TOP-6}" x2="${X(v).toFixed(1)}" y2="${CDF_BOT}"
+    stroke="var(--rule)" stroke-width="1" opacity="${op}"/>`;
+  if(major) svg += `<text x="${X(v).toFixed(1)}" y="${CDF_BOT+18}" font-size="11" text-anchor="middle">${v}</text>`;
+}
+svg += `<text x="${X(XMAX)}" y="${CDF_BOT+36}" font-size="10" text-anchor="end" letter-spacing="1.4">${CASE.axisLabel}</text>`;
+
+/* ---------- panel captions ---------- */
+svg += `<text x="0" y="14" font-size="9.5" letter-spacing="1.2">HOW LIKELY EACH ANSWER IS \u2014 BOTH CURVES ON ONE SCALE, EQUAL AREAS</text>`;
+svg += `<text x="0" y="${CDF_TOP-16}" font-size="9.5" letter-spacing="1.2">CHANCE OF COMING IN AT OR UNDER</text>`;
+
+/* ---------- horizontal grid on the cumulative panel ---------- */
+[0,.10,.25,.50,.75,.90,1].forEach(p=>{
+  svg += `<line x1="${M.l}" y1="${Yc(p).toFixed(1)}" x2="${W-M.r}" y2="${Yc(p).toFixed(1)}"
+    stroke="var(--rule)" stroke-width="1" opacity="${p===0.5?1:.6}" ${p===0.5?'stroke-dasharray="4 4"':''}/>`;
+  svg += `<text x="${M.l-8}" y="${(Yc(p)+3.5).toFixed(1)}" font-size="10.5" text-anchor="end">${Math.round(p*100)}%</text>`;
 });
 
+/* ---------- the outside-view readings ---------- */
 CASE.outside.forEach((r,i)=>{
-  if(i === 0) svg += `<path d="${areaPath(S[i])}" fill="var(--pen-blue-fill)" stroke="none"/>`;
-  svg += `<path d="${path(S[i])}" fill="none" stroke="var(--pen-blue)" stroke-width="1.9"
+  if(i === 0) svg += `<path d="${darea(DENS[i])}" fill="var(--pen-blue-fill)" stroke="none"/>`;
+  svg += `<path d="${dpath(DENS[i])}" fill="none" stroke="var(--pen-blue)" stroke-width="1.9"
+    ${r.dash?`stroke-dasharray="${r.dash}"`:''} stroke-linejoin="round" stroke-linecap="round"/>`;
+  svg += `<path d="${cpath(cumOutside(r))}" fill="none" stroke="var(--pen-blue)" stroke-width="2"
     ${r.dash?`stroke-dasharray="${r.dash}"`:''} stroke-linejoin="round" stroke-linecap="round"/>`;
   r.q.forEach(([x,p])=>{
-    svg += `<circle cx="${X(x).toFixed(1)}" cy="${Y(at(S[i],x)).toFixed(1)}" r="3"
-      fill="var(--surface)" stroke="var(--pen-blue)" stroke-width="1.7"/>`;
+    svg += `<circle cx="${X(x).toFixed(1)}" cy="${Yd(pdfOutside(r,x)).toFixed(1)}" r="2.8"
+      fill="var(--surface)" stroke="var(--pen-blue)" stroke-width="1.6"/>`;
+    svg += `<circle cx="${X(x).toFixed(1)}" cy="${Yc(p).toFixed(1)}" r="2.8"
+      fill="var(--surface)" stroke="var(--pen-blue)" stroke-width="1.6"/>`;
   });
-  const mx = r.q[1][0];
-  svg += `<text x="${X(mx)}" y="${(Y(at(S[i],mx))-11).toFixed(1)}" font-size="11"
-    text-anchor="middle" fill="var(--pen-blue)" font-weight="500">${r.id}</text>`;
+  const [mx,mp] = r.q[Math.min(1,r.q.length-1)];
+  svg += `<text x="${X(mx)+9}" y="${(Yc(mp)-7).toFixed(1)}" font-size="11" fill="var(--pen-blue)" font-weight="500">${esc(r.id)}</text>`;
 });
 
-svg += `<path d="${areaPath(SW)}" fill="var(--pen-red-fill)" stroke="none"/>`;
-svg += `<path d="${path(SW)}" fill="none" stroke="var(--pen-red)" stroke-width="2.2" stroke-linejoin="round"/>`;
-[CASE.bottomUp.mu-1.2816*CASE.bottomUp.sd, CASE.bottomUp.mu, CASE.bottomUp.mu+1.2816*CASE.bottomUp.sd]
-  .forEach(x=>{
-    svg += `<circle cx="${X(x).toFixed(1)}" cy="${Y(at(SW,x)).toFixed(1)}" r="3"
-      fill="var(--surface)" stroke="var(--pen-red)" stroke-width="1.7"/>`;
+/* ---------- the bottom-up ---------- */
+svg += `<path d="${darea(DENB)}" fill="var(--pen-red-fill)" stroke="none"/>`;
+svg += `<path d="${dpath(DENB)}" fill="none" stroke="var(--pen-red)" stroke-width="2.2" stroke-linejoin="round"/>`;
+svg += `<path d="${cpath(cumBottomUp())}" fill="none" stroke="var(--pen-red)" stroke-width="2.4" stroke-linejoin="round"/>`;
+[[CASE.bottomUp.mu-1.2816*CASE.bottomUp.sd,.10],[CASE.bottomUp.mu,.50],[CASE.bottomUp.mu+1.2816*CASE.bottomUp.sd,.90]]
+  .forEach(([x,p])=>{
+    svg += `<circle cx="${X(x).toFixed(1)}" cy="${Yd(pdfNormal(x)).toFixed(1)}" r="2.8" fill="var(--surface)" stroke="var(--pen-red)" stroke-width="1.6"/>`;
+    svg += `<circle cx="${X(x).toFixed(1)}" cy="${Yc(p).toFixed(1)}" r="2.8" fill="var(--surface)" stroke="var(--pen-red)" stroke-width="1.6"/>`;
   });
 
+/* ---------- the raw table sum ---------- */
 if(CASE.rawSum){
-  svg += `<line x1="${X(CASE.rawSum)}" y1="${AXIS_Y}" x2="${X(CASE.rawSum)}" y2="${AXIS_Y-28}"
+  svg += `<line x1="${X(CASE.rawSum)}" y1="${DEN_BOT}" x2="${X(CASE.rawSum)}" y2="${DEN_BOT-24}"
     stroke="var(--pen-red)" stroke-width="1.3" stroke-dasharray="3 3" opacity=".7"/>`;
-  svg += `<text x="${X(CASE.rawSum)}" y="${AXIS_Y-33}" font-size="9.5" text-anchor="middle"
+  svg += `<text x="${X(CASE.rawSum)}" y="${DEN_BOT-29}" font-size="9.5" text-anchor="middle"
     fill="var(--pen-red)" opacity=".8">${CASE.rawSumLabel}</text>`;
 }
-const beyond = CASE.outside.find(r=>r.beyondLabel);
-if(beyond) svg += `<text x="${X(XMAX)-4}" y="${AXIS_Y-10}" font-size="9.5" text-anchor="end"
-  fill="var(--pen-blue)">${beyond.beyondLabel}</text>`;
 
+/* ---------- a documented outcome, through both panels ---------- */
 if(CASE.fact){
   const f = CASE.fact;
-  svg += `<line x1="${X(f.value)}" y1="${PLOT_TOP-6}" x2="${X(f.value)}" y2="${AXIS_Y}"
-    stroke="var(--ink)" stroke-width="2"/>`;
-  svg += `<rect x="${X(f.value)-3}" y="${PLOT_TOP-10}" width="6" height="6" fill="var(--ink)"/>`;
+  svg += `<line x1="${X(f.value)}" y1="${DEN_TOP-6}" x2="${X(f.value)}" y2="${DEN_BOT}" stroke="var(--ink)" stroke-width="2"/>`;
+  svg += `<line x1="${X(f.value)}" y1="${CDF_TOP-6}" x2="${X(f.value)}" y2="${CDF_BOT}" stroke="var(--ink)" stroke-width="2"/>`;
   const anchor = X(f.value) > W*0.6 ? "end" : "start";
-  const dx = anchor === "end" ? -9 : 9;
-  svg += `<text x="${X(f.value)+dx}" y="${PLOT_TOP+2}" font-size="11.5" text-anchor="${anchor}"
-    fill="var(--ink)" font-weight="600">${f.label}</text>`;
-}
-
-if(CASE.calibration){
-  const BY = PLOT_TOP+262, cs = CASE.calibration;
-  svg += `<line x1="${X(cs.lo)}" y1="${BY}" x2="${X(cs.hi)}" y2="${BY}"
-    stroke="var(--pen-red)" stroke-width="1.4" stroke-dasharray="5 4"/>`;
-  [cs.lo,cs.hi].forEach(v=>{
-    svg += `<line x1="${X(v)}" y1="${BY-6}" x2="${X(v)}" y2="${BY+6}" stroke="var(--pen-red)" stroke-width="1.4"/>`;
+  svg += `<text x="${X(f.value)+(anchor==="end"?-9:9)}" y="${DEN_TOP+8}" font-size="11.5"
+    text-anchor="${anchor}" fill="var(--ink)" font-weight="600">${f.label}</text>`;
+  CASE.outside.forEach(r=>{
+    const c = cdfOutside(r, f.value);
+    if(c !== null) svg += `<circle cx="${X(f.value)}" cy="${Yc(c).toFixed(1)}" r="4.2" fill="var(--pen-blue)"/>`;
   });
-  svg += `<text x="${X(cs.lo)}" y="${BY-11}" font-size="10.5" fill="var(--pen-red)">${cs.label}</text>`;
+  svg += `<circle cx="${X(f.value)}" cy="${Yc(cdfNormal(f.value)).toFixed(1)}" r="4.2" fill="var(--pen-red)"/>`;
 }
 
-svg += `<line x1="${M.l}" y1="${AXIS_Y}" x2="${W-M.r}" y2="${AXIS_Y}" stroke="var(--rule-2)" stroke-width="1.5"/>`;
+/* ---------- the calibration spread ---------- */
+if(CASE.calibration){
+  const BY = DEN_BOT - 14, cs = CASE.calibration;
+  svg += `<line x1="${X(cs.lo)}" y1="${BY}" x2="${X(cs.hi)}" y2="${BY}" stroke="var(--pen-red)" stroke-width="1.4" stroke-dasharray="5 4"/>`;
+  [cs.lo,cs.hi].forEach(v=>{ svg += `<line x1="${X(v)}" y1="${BY-5}" x2="${X(v)}" y2="${BY+5}" stroke="var(--pen-red)" stroke-width="1.4"/>`; });
+  svg += `<text x="${X(cs.lo)}" y="${BY-9}" font-size="10.5" fill="var(--pen-red)">${cs.label}</text>`;
+}
+
+const beyond = CASE.outside.find(r=>r.beyondLabel);
+if(beyond) svg += `<text x="${X(XMAX)-4}" y="${Yc(0.965).toFixed(1)}" font-size="9.5" text-anchor="end" fill="var(--pen-blue)">${beyond.beyondLabel}</text>`;
+
+svg += `<line x1="${M.l}" y1="${DEN_BOT}" x2="${W-M.r}" y2="${DEN_BOT}" stroke="var(--rule-2)" stroke-width="1.5"/>`;
+svg += `<line x1="${M.l}" y1="${CDF_BOT}" x2="${W-M.r}" y2="${CDF_BOT}" stroke="var(--rule-2)" stroke-width="1.5"/>`;
+svg += `<line x1="${M.l}" y1="${CDF_TOP-6}" x2="${M.l}" y2="${CDF_BOT}" stroke="var(--rule-2)" stroke-width="1.5"/>`;
+
 svg += `<g id="cursor" style="display:none">
-  <line id="cur-line" y1="${PLOT_TOP-6}" y2="${AXIS_Y}" stroke="var(--ink)" stroke-width="1" opacity=".55"/>
+  <line id="cur-a" y1="${DEN_TOP-6}" y2="${DEN_BOT}" stroke="var(--ink)" stroke-width="1" opacity=".5"/>
+  <line id="cur-b" y1="${CDF_TOP-6}" y2="${CDF_BOT}" stroke="var(--ink)" stroke-width="1" opacity=".5"/>
   <g><rect id="cur-bg" rx="2" fill="var(--surface)" stroke="var(--rule-2)" stroke-width="1"/>
   <text id="cur-t" font-size="11"></text></g></g>`;
-svg += `<rect id="hit" x="${M.l}" y="${PLOT_TOP-6}" width="${PW}" height="${AXIS_Y-PLOT_TOP+6}"
-  fill="transparent" style="cursor:crosshair"/>`;
+svg += `<rect id="hit" x="${M.l}" y="${DEN_TOP-6}" width="${PW}" height="${CDF_BOT-DEN_TOP+6}" fill="transparent" style="cursor:crosshair"/>`;
 
 const plot = document.getElementById("plot");
 plot.innerHTML = svg;
 
-const cursor = document.getElementById("cursor"), curLine = document.getElementById("cur-line"),
-      curBg = document.getElementById("cur-bg"), curT = document.getElementById("cur-t"),
-      hit = document.getElementById("hit");
-const pct = v => v === null ? "past its last quantile" : "P" + Math.round(v*100);
+const cursor=document.getElementById("cursor"), curA=document.getElementById("cur-a"),
+      curB=document.getElementById("cur-b"), curBg=document.getElementById("cur-bg"),
+      curT=document.getElementById("cur-t"), hit=document.getElementById("hit");
+const over = c => c === null ? "past its last quantile" : (100-Math.round(c*100)) + "% chance of exceeding";
 
 function move(evt){
   const pt = plot.createSVGPoint(), src = evt.touches ? evt.touches[0] : evt;
@@ -357,24 +404,26 @@ function move(evt){
   const loc = pt.matrixTransform(plot.getScreenCTM().inverse());
   const v = Math.max(0, Math.min(XMAX, XINV(loc.x)));
   cursor.style.display = "";
-  curLine.setAttribute("x1", X(v)); curLine.setAttribute("x2", X(v));
+  [curA,curB].forEach(l=>{ l.setAttribute("x1", X(v)); l.setAttribute("x2", X(v)); });
 
-  const lines = [`${Math.round(v)} person-days · ${Math.round(v*8).toLocaleString("en")} h`];
-  CASE.outside.forEach(r => lines.push(`${r.id}: ${pct(cdfOutside(r, v))}`));
-  lines.push(`bottom-up: ${pct(cdfNormal(v))}`);
-  if(CASE.fact) lines.push(`outcome: ${(v/CASE.fact.value).toFixed(2)}×`);
+  const lines = [`if the answer is ${Math.round(v)} person-days`];
+  CASE.outside.forEach(r => lines.push(`${r.id}: ${over(cdfOutside(r, v))}`));
+  lines.push(`bottom-up: ${over(cdfNormal(v))}`);
+  if(CASE.fact) lines.push(`outcome: ${(v/CASE.fact.value).toFixed(2)}\u00d7`);
 
   curT.textContent = "";
-  lines.forEach((s,i)=>{
-    const t = document.createElementNS("http://www.w3.org/2000/svg","tspan");
-    t.textContent = s; t.setAttribute("x", 0); t.setAttribute("dy", i ? 15 : 0);
-    if(i===0) t.setAttribute("font-weight","600");
-    t.setAttribute("fill", i===0 ? "var(--ink)" : (i===lines.length-1 ? "var(--pen-red)" : "var(--pen-blue)"));
-    curT.appendChild(t);
+  lines.forEach((t,i)=>{
+    const e = document.createElementNS("http://www.w3.org/2000/svg","tspan");
+    e.textContent = t; e.setAttribute("x", 0); e.setAttribute("dy", i ? 15 : 0);
+    if(i===0) e.setAttribute("font-weight","600");
+    const isFact = CASE.fact && i===lines.length-1;
+    const isBU   = i===lines.length-(CASE.fact?2:1);
+    e.setAttribute("fill", i===0 ? "var(--ink)" : isFact ? "var(--ink-2)" : isBU ? "var(--pen-red)" : "var(--pen-blue)");
+    curT.appendChild(e);
   });
-  const bw = 182, bh = 16 + lines.length*15;
+  const bw = 232, bh = 16 + lines.length*15;
   const flip = X(v) + bw + 14 > W - M.r;
-  const bx = flip ? X(v) - bw - 10 : X(v) + 10, by = PLOT_TOP + 4;
+  const bx = flip ? X(v) - bw - 10 : X(v) + 10, by = DEN_TOP + 26;
   curBg.setAttribute("x", bx); curBg.setAttribute("y", by);
   curBg.setAttribute("width", bw); curBg.setAttribute("height", bh);
   curT.setAttribute("transform", `translate(${bx+11},${by+19})`);
@@ -433,7 +482,7 @@ def render(d, stamp_human, data_path):
   <div class="chart-legend">
       ''' + legend + r'''
   </div>
-  <svg class="plot" id="plot" viewBox="0 0 900 440" role="img"
+  <svg class="plot" id="plot" viewBox="0 0 900 580" role="img"
     aria-label="Estimate distributions plotted on one net-working-time scale in person-days of eight task hours."></svg>
   <p class="hint">''' + d["chart"]["hint"] + r'''</p>
 </div>
