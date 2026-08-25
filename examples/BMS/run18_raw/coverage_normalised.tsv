@@ -1,0 +1,44 @@
+state	pairing	pairsA	pairsB	inter	union	jaccard	maxJaccard	jOverMax	overlapCoef	agreementPct
+as_recorded	HM-SA_vs_HM-SB	44	21	9	56	0.161	0.477	0.34	0.429	98.2
+as_recorded	HM-OA_vs_HM-OB	183	71	54	200	0.270	0.388	0.70	0.761	94.4
+as_recorded	HM-SA_vs_HM-OA	44	183	41	186	0.220	0.240	0.92	0.932	94.5
+as_recorded	HM-SB_vs_HM-OB	21	71	15	77	0.195	0.296	0.66	0.714	97.6
+normalised	HM-SA_vs_HM-SB	44	21	9	56	0.161	0.477	0.34	0.429	98.2
+normalised	HM-OA_vs_HM-OB	183	75	56	202	0.277	0.410	0.68	0.747	94.4
+normalised	HM-SA_vs_HM-OA	44	183	41	186	0.220	0.240	0.92	0.932	94.5
+normalised	HM-SB_vs_HM-OB	21	75	15	81	0.185	0.280	0.66	0.714	97.5
+normalised_cap3	HM-SA_vs_HM-SB	38	21	9	50	0.180	0.553	0.33	0.429	98.4
+normalised_cap3	HM-OA_vs_HM-OB	44	48	17	75	0.227	0.917	0.25	0.386	97.8
+normalised_cap3	HM-SA_vs_HM-OA	38	44	18	64	0.281	0.864	0.33	0.474	98.2
+normalised_cap3	HM-SB_vs_HM-OB	21	48	10	59	0.169	0.438	0.39	0.476	98.1
+
+# pairs added by M7 normalisation
+model	pairsBefore	pairsAfter	added
+HM-SA	44	44	none — every single-child collapse was already recorded by a partial-coverage mark
+HM-SB	21	21	none — both single-child parents cover nothing
+HM-OA	183	183	not computable — models.md records no parent pointers for this run
+HM-OB	71	75	R25-R29, R29-R45, R29-R50, R45-R48
+
+# coverage-set profile, nodes declaring two or more requirements
+model	nodes2plus	maxSetSize	meanSetSize	pairs
+HM-SA	28	4	2.29	44
+HM-SB	18	3	2.11	21
+HM-OA	45	9	3.18	183
+HM-OB	31	5	2.61	71
+
+# recompute: python examples/BMS/run18_raw/coverage_metric.py
+
+# input-ambiguity component (A11). filter = union of the runs' own ambiguity flags, 19 of 73 requirements
+basis	pairing	pairsA	pairsB	jaccard	overlapCoef
+all73	HM-SA_vs_HM-SB	44	21	0.161	0.429
+excl_pair_flags	HM-SA_vs_HM-SB	31	11	0.135	0.455
+excl_all19	HM-SA_vs_HM-SB	26	8	0.172	0.625
+all73	HM-OA_vs_HM-OB	183	75	0.277	0.747
+excl_pair_flags	HM-OA_vs_HM-OB	119	47	0.297	0.809
+excl_all19	HM-OA_vs_HM-OB	87	41	0.362	0.829
+all73	HM-SA_vs_HM-OA	44	183	0.220	0.932
+excl_pair_flags	HM-SA_vs_HM-OA	37	141	0.254	0.973
+excl_all19	HM-SA_vs_HM-OA	26	87	0.284	0.962
+all73	HM-SB_vs_HM-OB	21	75	0.185	0.714
+excl_pair_flags	HM-SB_vs_HM-OB	9	45	0.174	0.889
+excl_all19	HM-SB_vs_HM-OB	8	41	0.167	0.875

@@ -1,0 +1,8 @@
+554ea3608dd0602f0ddf2f7e7b82178c  requirements.md (LF form)
+
+Pinned 2026-08-19. Computed before this file existed, so it is the md5 of requirements.md itself,
+not of this pin file. Recompute with:
+    tr -d "" < requirements.md | md5sum
+
+N = 73. Two declared processing orders are inside requirements.md: order A (top-down by breadth of
+impact) and order B (exact reverse of A, the adversarial case).

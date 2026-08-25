@@ -1,0 +1,34 @@
+473d9789f000da3cbf563c4f008fd9d5  requirements_pinned.md    (N = 52, LF form)
+abaa0717f73c73b137bfc89777410ac8  requirements_product.md   (N = 47, LF form)
+8458f7d23c6eb30959e1a043980a89d1  requirements_work.md      (N =  5, LF form)
+
+Pinned 2026-08-22. Recompute with:
+
+    tr -d '' < requirements_pinned.md | md5sum
+
+## A rename, and why the pins above are not the ones the sensors were launched against
+
+The parent list was first written as `requirements.md`. On a case-insensitive filesystem that name
+collides with `REQUIREMENTS.md`, the pre-existing synthetic draft SYSTEM.md's closing note tells us to
+ignore - and it overwrote it. `REQUIREMENTS.md` has been restored from git unchanged, and the parent
+list renamed to `requirements_pinned.md`.
+
+The rename edited one reference line in the header of each of the three files. **No obligation row
+moved, no id changed, no text of any entry changed**; `diff` against the launched form shows only the
+path. The values the runs of 2026-08-22 were launched against were:
+
+    290cab6f9db1c2fdf5cbbef2fd0d78b8  requirements.md          (N = 52)
+    306046dc6cab35147040224e7a4e9662  requirements_product.md  (N = 47)
+    b25463f3a0a56d227e3348b76e35d26c  requirements_work.md     (N =  5)
+
+Both sets are recorded because a pin whose value silently changed is worse than no pin. Runs 29-32
+cite the launched values; anything from here on cites the values at the top of this file.
+
+Sources of the extraction: SYSTEM.md (a participant's recollection, fixed) + assumptions.md (A1-A9).
+REQUIREMENTS.md is NOT a source - SYSTEM.md's closing note declares it a draft of a different task.
+
+Two declared processing orders: order A (the source's own order, §1 -> §6 -> assumption log) and
+order B (the exact reverse of A, the adversarial case).
+
+The split that produced the two halves: requirements_split.md.
+FACT.md is sealed from every sensor and from the orchestrator until the assembly is written down.
