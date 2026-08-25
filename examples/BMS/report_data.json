@@ -1,8 +1,7 @@
 {
-  "title": "BMS Estimate Readout",
-  "eyebrow": "3A8 &middot; estimate report &middot; case BMS &middot; corporate travel booking &middot; RFP stage",
-  "headline": "Four readings, one scale,",
-  "headline_em": "and the widest gap is inside one method",
+  "title": "Project estimate",
+  "eyebrow": "3A8 &middot; TriAngulEight",
+  "headline": "Project estimate",
   "standfirst": "What the chain produces when a project arrives as a requirement list. No outcome exists for this case and none is expected &mdash; a training RFP cannot be checked against reality. Everything else here can be.",
   "meta": [
     "<b>73</b> obligations &mdash; 68 product, 5 work",
@@ -241,5 +240,6 @@
       "<b>What this report is not.</b> Not a validated price, and not a price at all &mdash; it is work content in person-days. Converting it into money, calendar or headcount is the reader's act, using the reader's own figures. Every bottom-up number rests on a rate table of external industry norms calibrated against no outcome; the bottom-up stands on one product model of two; and this is a training document with no outcome, so nothing here has been checked against reality.",
       "<b>What it is.</b> The estimate, its corridor, the disagreement between two structurally independent methods stated rather than averaged away, and &mdash; on the record, the part that reproduces best &mdash; the obligations, the contradictions, the questions and the defaults that the number is standing on."
     ]
-  }
+  },
+  "subject": "Case BMS &middot; corporate travel booking &middot; RFP stage"
 }
