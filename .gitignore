@@ -224,5 +224,6 @@ ru/
 # Claude Code local permissions (machine-specific)
 .claude/settings.local.json
 
-# a DevOps training task that happens to live here; it belongs to another repository
+# examples which shall not go to repo
 examples/CICD/
+examples/syn
