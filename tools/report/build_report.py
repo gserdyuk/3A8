@@ -25,6 +25,7 @@ STYLE = r'''<style>
   --rule:#D2D7C9; --rule-2:#BFC5B4;
   --pen-blue:#20456B; --pen-blue-fill:rgba(32,69,107,.10);
   --pen-red:#9E3B26; --pen-red-fill:rgba(158,59,38,.13);
+  --pen-teal:#1F6E5B; --pen-teal-fill:rgba(31,110,91,.10);
   --caution:#7A5A12;
   --shadow:0 1px 2px rgba(22,26,21,.07), 0 8px 24px -12px rgba(22,26,21,.18);
 }
@@ -35,6 +36,7 @@ STYLE = r'''<style>
     --rule:#2E3329; --rule-2:#3D4436;
     --pen-blue:#82ACD8; --pen-blue-fill:rgba(130,172,216,.13);
     --pen-red:#DD9078; --pen-red-fill:rgba(221,144,120,.16);
+    --pen-teal:#79C2AB; --pen-teal-fill:rgba(121,194,171,.13);
     --caution:#C9A758;
     --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -14px rgba(0,0,0,.7);
   }
@@ -45,6 +47,7 @@ STYLE = r'''<style>
   --rule:#2E3329; --rule-2:#3D4436;
   --pen-blue:#82ACD8; --pen-blue-fill:rgba(130,172,216,.13);
   --pen-red:#DD9078; --pen-red-fill:rgba(221,144,120,.16);
+  --pen-teal:#79C2AB; --pen-teal-fill:rgba(121,194,171,.13);
   --caution:#C9A758;
   --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -14px rgba(0,0,0,.7);
 }
@@ -74,6 +77,7 @@ h1 em{font-style:italic; color:var(--ink-2)}
 .lg{display:flex; align-items:center; gap:9px}
 .lg i{width:22px; height:0; border-top-width:2px; border-top-style:solid; display:block; flex:none}
 .lg.blue i{border-color:var(--pen-blue)} .lg.red i{border-color:var(--pen-red)}
+.lg.teal i{border-color:var(--pen-teal)}
 .lg.dash i{border-top-style:dashed} .lg.dot i{border-top-style:dotted; border-top-width:3px}
 .lg.fact i{border-color:var(--ink); border-top-width:3px}
 svg.plot{width:100%; height:auto; display:block; overflow:visible}
@@ -94,6 +98,7 @@ svg.plot text{font-family:"IBM Plex Mono",ui-monospace,monospace; fill:var(--mut
   font-weight:400; letter-spacing:0}
 .tile .d{font-size:12px; color:var(--muted); margin-top:1px; line-height:1.45}
 .tile.red .v{color:var(--pen-red)} .tile.blue .v{color:var(--pen-blue)}
+.tile.teal .v{color:var(--pen-teal)}
 .tile.none .v{font-size:17px; color:var(--caution)}
 .tiles > .tile:last-child{grid-column:1/-1}
 
@@ -237,6 +242,22 @@ const pdfNormal = x => Math.exp(-0.5*Math.pow((x-CASE.bottomUp.mu)/CASE.bottomUp
                        /(CASE.bottomUp.sd*Math.sqrt(2*Math.PI));
 const cdfNormal = x => Phi((x-CASE.bottomUp.mu)/CASE.bottomUp.sd);
 
+/* ---------- the parametric instrument, if the case carries one ---------- */
+const PARAM = CASE.parametric || [];
+const pdfParam = (r,x) => x<=0 ? 0 :
+  Math.exp(-Math.pow(Math.log(x)-Math.log(r.median),2)/(2*r.sigma*r.sigma))
+  /(x*r.sigma*Math.sqrt(2*Math.PI));
+const cdfParam = (r,x) => x<=0 ? 0 : Phi((Math.log(x)-Math.log(r.median))/r.sigma);
+
+/* the log panel appears when the instruments' medians span more than this */
+const LOG_RATIO_THRESHOLD = 4;
+const WINDOW_PD = 100;               /* vertical unit of the density panel: chance per this window */
+const medOutside = r => r.lognormal ? r.lognormal.median
+  : (r.q.find(([x,p]) => p >= 0.5) || r.q[r.q.length-1])[0];
+const MEDIANS = [CASE.bottomUp.mu, ...CASE.outside.map(medOutside), ...PARAM.map(r=>r.median)];
+const MED_RATIO = Math.max(...MEDIANS)/Math.min(...MEDIANS);
+const LOGON = MED_RATIO > LOG_RATIO_THRESHOLD;
+
 /* ---------- sampling ---------- */
 function rangeOutside(run){
   const last = run.q[run.q.length-1][0];
@@ -308,7 +329,7 @@ for(let v=0; v<=XMAX; v+=STEP/3){
 svg += `<text x="${X(XMAX)}" y="${CDF_BOT+36}" font-size="10" text-anchor="end" letter-spacing="1.4">${CASE.axisLabel}</text>`;
 
 /* ---------- panel captions ---------- */
-svg += `<text x="0" y="14" font-size="9.5" letter-spacing="1.2">HOW LIKELY EACH ANSWER IS \u2014 BOTH CURVES ON ONE SCALE, EQUAL AREAS</text>`;
+svg += `<text x="0" y="14" font-size="9.5" letter-spacing="1.2">HOW LIKELY EACH ANSWER IS \u2014 ONE SCALE, EQUAL AREAS \u00b7 VERTICAL: CHANCE PER ${WINDOW_PD}-PD WINDOW</text>`;
 svg += `<text x="0" y="${CDF_TOP-16}" font-size="9.5" letter-spacing="1.2">CHANCE OF COMING IN AT OR UNDER</text>`;
 
 /* ---------- horizontal grid on the cumulative panel ---------- */
@@ -317,6 +338,18 @@ svg += `<text x="0" y="${CDF_TOP-16}" font-size="9.5" letter-spacing="1.2">CHANC
     stroke="var(--rule)" stroke-width="1" opacity="${p===0.5?1:.6}" ${p===0.5?'stroke-dasharray="4 4"':''}/>`;
   svg += `<text x="${M.l-8}" y="${(Yc(p)+3.5).toFixed(1)}" font-size="10.5" text-anchor="end">${Math.round(p*100)}%</text>`;
 });
+
+/* ---------- vertical ticks on the density panel: chance per window ----------
+   height × window is a local approximation; for a curve narrower than the
+   window it overshoots, which the hint says. The exact mass is the CDF panel. */
+const wmax = DMAX*WINDOW_PD;
+const wstep = wmax>0.45?0.15:wmax>0.24?0.10:wmax>0.12?0.05:0.02;
+for(let wv=wstep; wv<=wmax*1.001; wv+=wstep){
+  const y = Yd(wv/WINDOW_PD);
+  svg += `<line x1="${M.l}" y1="${y.toFixed(1)}" x2="${W-M.r}" y2="${y.toFixed(1)}"
+    stroke="var(--rule)" stroke-width="1" opacity=".5"/>`;
+  svg += `<text x="${M.l-8}" y="${(y+3.5).toFixed(1)}" font-size="10.5" text-anchor="end">${Math.round(wv*100)}%</text>`;
+}
 
 /* ---------- the outside-view readings ---------- */
 CASE.outside.forEach((r,i)=>{
@@ -344,6 +377,30 @@ svg += `<path d="${cpath(cumBottomUp())}" fill="none" stroke="var(--pen-red)" st
     svg += `<circle cx="${X(x).toFixed(1)}" cy="${Yd(pdfNormal(x)).toFixed(1)}" r="2.8" fill="var(--surface)" stroke="var(--pen-red)" stroke-width="1.6"/>`;
     svg += `<circle cx="${X(x).toFixed(1)}" cy="${Yc(p).toFixed(1)}" r="2.8" fill="var(--surface)" stroke="var(--pen-red)" stroke-width="1.6"/>`;
   });
+
+/* ---------- the parametric instrument ---------- */
+/* Drawn last among curves; the density scale belongs to the two standing
+   instruments and is NOT rescaled for it — a needle is clipped at the panel
+   top and says so, and the log panel below carries it in full. */
+let paramClipped = false;
+PARAM.forEach((r,i)=>{
+  const lo = Math.max(0.5, r.median*Math.exp(-3.4*r.sigma));
+  const hi = Math.min(XMAX, r.median*Math.exp(3.4*r.sigma));
+  const dpts=[], cpts=[], N=360;
+  for(let j=0;j<=N;j++){
+    const x = lo*Math.pow(hi/lo, j/N);
+    dpts.push([x, pdfParam(r,x)]); cpts.push([x, cdfParam(r,x)]);
+  }
+  if(Math.max(...dpts.map(p=>p[1])) > DMAX) paramClipped = true;
+  const dp = dpts.map(([x,d],j)=>`${j?"L":"M"} ${X(x).toFixed(1)} ${Math.max(DEN_TOP,Yd(d)).toFixed(1)}`).join(" ");
+  svg += `<path d="${dp}" fill="none" stroke="var(--pen-teal)" stroke-width="1.9"
+    ${r.dash?`stroke-dasharray="${r.dash}"`:''} stroke-linejoin="round" stroke-linecap="round"/>`;
+  svg += `<path d="${cpath(cpts)}" fill="none" stroke="var(--pen-teal)" stroke-width="2"
+    ${r.dash?`stroke-dasharray="${r.dash}"`:''} stroke-linejoin="round" stroke-linecap="round"/>`;
+  svg += `<text x="${(X(r.median)+9).toFixed(1)}" y="${(Yc(0.5)-7-i*15).toFixed(1)}" font-size="11"
+    fill="var(--pen-teal)" font-weight="500">${esc(r.id)}</text>`;
+});
+if(paramClipped) svg += `<text x="${M.l+6}" y="${DEN_TOP+10}" font-size="9.5" fill="var(--pen-teal)">parametric — off this density scale; drawn in full on the log panel below</text>`;
 
 /* ---------- the raw table sum ---------- */
 if(CASE.rawSum){
@@ -383,6 +440,75 @@ svg += `<line x1="${M.l}" y1="${DEN_BOT}" x2="${W-M.r}" y2="${DEN_BOT}" stroke="
 svg += `<line x1="${M.l}" y1="${CDF_BOT}" x2="${W-M.r}" y2="${CDF_BOT}" stroke="var(--rule-2)" stroke-width="1.5"/>`;
 svg += `<line x1="${M.l}" y1="${CDF_TOP-6}" x2="${M.l}" y2="${CDF_BOT}" stroke="var(--rule-2)" stroke-width="1.5"/>`;
 
+/* ---------- the log panel — added, never replacing the linear one, when the
+   instruments' medians span more than LOG_RATIO_THRESHOLD ---------- */
+const LOG_TOP = 596, LOG_BOT = 792, HFULL = LOGON ? 848 : 580;
+if(LOGON){
+  const lastQ = Math.max(...CASE.outside.map(r=>r.q[r.q.length-1][0]), XMAX);
+  const LXMIN = Math.max(1, Math.min(...MEDIANS)/8), LXMAX = lastQ;
+  const Xl = v => M.l + (Math.log(v)-Math.log(LXMIN))/(Math.log(LXMAX)-Math.log(LXMIN))*PW;
+  const LOG_WINDOW = Math.log(10)/10;   /* vertical unit: chance per ×1.26 (0.1 decade) */
+  const gOf = (f,x) => LOG_WINDOW * x * f(x);
+
+  /* sample every curve in log space */
+  const lcurves = [];
+  const sample = (f, lo, hi) => { const o=[],N=420;
+    for(let j=0;j<=N;j++){ const x=lo*Math.pow(hi/lo,j/N); o.push([x,gOf(f,x)]); } return o; };
+  lcurves.push({pts: sample(pdfNormal, Math.max(LXMIN,CASE.bottomUp.mu-3.6*CASE.bottomUp.sd),
+                            Math.min(LXMAX,CASE.bottomUp.mu+3.6*CASE.bottomUp.sd)),
+                pen:"--pen-red", w:2.2, dash:null});
+  CASE.outside.forEach(r=>{
+    const [lo,hi] = rangeOutside(r);
+    lcurves.push({pts: sample(x=>pdfOutside(r,x), Math.max(LXMIN,lo), Math.min(LXMAX,hi)),
+                  pen:"--pen-blue", w:1.9, dash:r.dash||null});
+  });
+  PARAM.forEach(r=>{
+    lcurves.push({pts: sample(x=>pdfParam(r,x), Math.max(LXMIN,r.median*Math.exp(-3.4*r.sigma)),
+                              Math.min(LXMAX,r.median*Math.exp(3.4*r.sigma))),
+                  pen:"--pen-teal", w:1.9, dash:r.dash||null, label:r.id, med:r.median});
+  });
+  const LMAX = Math.max(...lcurves.map(c=>Math.max(...c.pts.map(p=>p[1]))));
+  const Yl = g => LOG_BOT - (g/LMAX)*(LOG_BOT-LOG_TOP);
+
+  svg += `<text x="0" y="${LOG_TOP-16}" font-size="9.5" letter-spacing="1.2">THE SAME MASS ON A LOG AXIS — ADDED BECAUSE THE MEDIANS SPAN ×${Math.round(MED_RATIO)} · VERTICAL: CHANCE PER ×1.26 WINDOW</text>`;
+
+  /* decade grid */
+  for(let e=Math.ceil(Math.log10(LXMIN)); e<=Math.floor(Math.log10(LXMAX)); e++){
+    [1,2,5].forEach(m=>{
+      const v = m*Math.pow(10,e);
+      if(v<LXMIN || v>LXMAX) return;
+      const major = m===1;
+      svg += `<line x1="${Xl(v).toFixed(1)}" y1="${LOG_TOP-6}" x2="${Xl(v).toFixed(1)}" y2="${LOG_BOT}"
+        stroke="var(--rule)" stroke-width="1" opacity="${major?1:.45}"/>`;
+      if(major || m===5) svg += `<text x="${Xl(v).toFixed(1)}" y="${LOG_BOT+18}" font-size="11" text-anchor="middle">${v}</text>`;
+    });
+  }
+  /* horizontal ticks: chance per log-window */
+  const lstep = LMAX>0.45?0.15:LMAX>0.24?0.10:0.05;
+  for(let lv=lstep; lv<=LMAX*1.001; lv+=lstep){
+    svg += `<line x1="${M.l}" y1="${Yl(lv).toFixed(1)}" x2="${W-M.r}" y2="${Yl(lv).toFixed(1)}"
+      stroke="var(--rule)" stroke-width="1" opacity=".5"/>`;
+    svg += `<text x="${M.l-8}" y="${(Yl(lv)+3.5).toFixed(1)}" font-size="10.5" text-anchor="end">${Math.round(lv*100)}%</text>`;
+  }
+  /* curves */
+  lcurves.forEach(c=>{
+    const d = c.pts.map(([x,g],j)=>`${j?"L":"M"} ${Xl(x).toFixed(1)} ${Yl(g).toFixed(1)}`).join(" ");
+    svg += `<path d="${d}" fill="none" stroke="var(${c.pen})" stroke-width="${c.w}"
+      ${c.dash?`stroke-dasharray="${c.dash}"`:''} stroke-linejoin="round" stroke-linecap="round"/>`;
+    if(c.label){
+      const peak = Math.max(...c.pts.map(p=>p[1]));
+      svg += `<text x="${Xl(c.med).toFixed(1)}" y="${(Yl(peak)-7).toFixed(1)}" font-size="10.5"
+        text-anchor="middle" fill="var(${c.pen})" font-weight="500">${esc(c.label)}</text>`;
+    }
+  });
+  /* the fact through the log panel */
+  if(CASE.fact){
+    svg += `<line x1="${Xl(CASE.fact.value).toFixed(1)}" y1="${LOG_TOP-6}" x2="${Xl(CASE.fact.value).toFixed(1)}" y2="${LOG_BOT}" stroke="var(--ink)" stroke-width="2"/>`;
+  }
+  svg += `<line x1="${M.l}" y1="${LOG_BOT}" x2="${W-M.r}" y2="${LOG_BOT}" stroke="var(--rule-2)" stroke-width="1.5"/>`;
+  svg += `<line x1="${M.l}" y1="${LOG_TOP-6}" x2="${M.l}" y2="${LOG_BOT}" stroke="var(--rule-2)" stroke-width="1.5"/>`;
+}
+
 svg += `<g id="cursor" style="display:none">
   <line id="cur-a" y1="${DEN_TOP-6}" y2="${DEN_BOT}" stroke="var(--ink)" stroke-width="1" opacity=".5"/>
   <line id="cur-b" y1="${CDF_TOP-6}" y2="${CDF_BOT}" stroke="var(--ink)" stroke-width="1" opacity=".5"/>
@@ -391,6 +517,7 @@ svg += `<g id="cursor" style="display:none">
 svg += `<rect id="hit" x="${M.l}" y="${DEN_TOP-6}" width="${PW}" height="${CDF_BOT-DEN_TOP+6}" fill="transparent" style="cursor:crosshair"/>`;
 
 const plot = document.getElementById("plot");
+plot.setAttribute("viewBox", `0 0 ${W} ${HFULL}`);
 plot.innerHTML = svg;
 
 const cursor=document.getElementById("cursor"), curA=document.getElementById("cur-a"),
@@ -406,19 +533,18 @@ function move(evt){
   cursor.style.display = "";
   [curA,curB].forEach(l=>{ l.setAttribute("x1", X(v)); l.setAttribute("x2", X(v)); });
 
-  const lines = [`if the answer is ${Math.round(v)} person-days`];
-  CASE.outside.forEach(r => lines.push(`${r.id}: ${over(cdfOutside(r, v))}`));
-  lines.push(`bottom-up: ${over(cdfNormal(v))}`);
-  if(CASE.fact) lines.push(`outcome: ${(v/CASE.fact.value).toFixed(2)}\u00d7`);
+  const lines = [[`if the answer is ${Math.round(v)} person-days`, "var(--ink)", true]];
+  CASE.outside.forEach(r => lines.push([`${r.id}: ${over(cdfOutside(r, v))}`, "var(--pen-blue)"]));
+  lines.push([`bottom-up: ${over(cdfNormal(v))}`, "var(--pen-red)"]);
+  PARAM.forEach(r => lines.push([`${r.id}: ${over(cdfParam(r, v))}`, "var(--pen-teal)"]));
+  if(CASE.fact) lines.push([`outcome: ${(v/CASE.fact.value).toFixed(2)}\u00d7`, "var(--ink-2)"]);
 
   curT.textContent = "";
-  lines.forEach((t,i)=>{
+  lines.forEach(([t,fill,bold],i)=>{
     const e = document.createElementNS("http://www.w3.org/2000/svg","tspan");
     e.textContent = t; e.setAttribute("x", 0); e.setAttribute("dy", i ? 15 : 0);
-    if(i===0) e.setAttribute("font-weight","600");
-    const isFact = CASE.fact && i===lines.length-1;
-    const isBU   = i===lines.length-(CASE.fact?2:1);
-    e.setAttribute("fill", i===0 ? "var(--ink)" : isFact ? "var(--ink-2)" : isBU ? "var(--pen-red)" : "var(--pen-blue)");
+    if(bold) e.setAttribute("font-weight","600");
+    e.setAttribute("fill", fill);
     curT.appendChild(e);
   });
   const bw = 232, bh = 16 + lines.length*15;
