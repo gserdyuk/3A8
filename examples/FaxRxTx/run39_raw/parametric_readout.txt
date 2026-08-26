@@ -1,0 +1,70 @@
+=== HP39-1 ===
+UFP = 78 from 16 classified items:
+  EI   Low      x2
+  EIF  Low      x2
+  EO   Low      x2
+  EQ   Low      x4
+  ILF  Low      x6
+AFP = UFP x VAF = 78 x 1.0 = 78   (VAF declared 1.0 by ruling)
+
+== China: Effort ~ 27.1 * AFP^0.768   (n=499, R2=0.46; recorded 27.1 * AFP^0.768)
+   residual quantile factors (P10/P50/P90): x0.28 / x1.04 / x3.16
+                   recorded p-h    net task h    table pd  staffed pm
+   P10                      219           164        20.5         1.4
+   P50                      804           603        75.4         5.3
+   P90                     2438          1828       228.5        16.0
+
+== Kitchenham: Effort ~ 37.1 * AFP^0.672   (n=145, R2=0.53; recorded 37.1 * AFP^0.672)
+   residual quantile factors (P10/P50/P90): x0.47 / x1.00 / x2.11
+                   recorded p-h    net task h    table pd  staffed pm
+   P10                      323           242        30.3         2.1
+   P50                      692           519        64.8         4.5
+   P90                     1465          1099       137.4         9.6
+
+Declaration (required of every number-producing role, session 2026-08-25..26):
+  unit      : native - recorded timesheet person-hours of the source datasets;
+              converted columns as headed, factors: x0.75 recorded->net task h;
+              /8 net h -> table pd; /6 net h per present day,
+              x1.1 leave, /21 -> staffed person-months
+  losses    : leave/holidays/sickness EXCLUDED from recorded hours (booked elsewhere);
+              within-day overheads INCLUDED - hence the 0.75 (docs/constants.md 5a-5b)
+  roles     : whatever the contributing organisations booked; inconsistent across them
+              (a documented weakness of the data - ISBSG resource-level problem)
+  disagree  : China vs Kitchenham levels differ; both rows reported, neither chosen
+  scope     : functional size only - the sensor's outside-scope list bounds the number
+
+=== HP39-2 ===
+UFP = 82 from 17 classified items:
+  EI   Average  x1
+  EI   Low      x2
+  EIF  Low      x2
+  EO   Low      x2
+  EQ   Low      x4
+  ILF  Low      x6
+AFP = UFP x VAF = 82 x 1.0 = 82   (VAF declared 1.0 by ruling)
+
+== China: Effort ~ 27.1 * AFP^0.768   (n=499, R2=0.46; recorded 27.1 * AFP^0.768)
+   residual quantile factors (P10/P50/P90): x0.28 / x1.04 / x3.16
+                   recorded p-h    net task h    table pd  staffed pm
+   P10                      228           171        21.3         1.5
+   P50                      835           627        78.3         5.5
+   P90                     2533          1900       237.5        16.6
+
+== Kitchenham: Effort ~ 37.1 * AFP^0.672   (n=145, R2=0.53; recorded 37.1 * AFP^0.672)
+   residual quantile factors (P10/P50/P90): x0.47 / x1.00 / x2.11
+                   recorded p-h    net task h    table pd  staffed pm
+   P10                      334           251        31.3         2.2
+   P50                      715           536        67.0         4.7
+   P90                     1515          1136       142.0         9.9
+
+Declaration (required of every number-producing role, session 2026-08-25..26):
+  unit      : native - recorded timesheet person-hours of the source datasets;
+              converted columns as headed, factors: x0.75 recorded->net task h;
+              /8 net h -> table pd; /6 net h per present day,
+              x1.1 leave, /21 -> staffed person-months
+  losses    : leave/holidays/sickness EXCLUDED from recorded hours (booked elsewhere);
+              within-day overheads INCLUDED - hence the 0.75 (docs/constants.md 5a-5b)
+  roles     : whatever the contributing organisations booked; inconsistent across them
+              (a documented weakness of the data - ISBSG resource-level problem)
+  disagree  : China vs Kitchenham levels differ; both rows reported, neither chosen
+  scope     : functional size only - the sensor's outside-scope list bounds the number
