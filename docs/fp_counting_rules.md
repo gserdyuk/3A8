@@ -1,14 +1,16 @@
 # The parametric instrument — function-point counting rules
 
-**Version 0.1-frame, 2026-08-26.** The third instrument. `METHODOLOGY.md` has listed it since day
-one; the author's condition, stated 2026-08-25, is what finally shapes it: **it is worth building
-only if its level comes from a table rather than from recall.** A third instrument that samples its
-magnitude from a model is a third voice with the same defect as the reference class — whose shape is
-triple-sourced and stable while its level descends from a single remembered anchor and spans ×2.12.
+**Version 0.2, 2026-08-26** (0.1-frame same day; bumped when §4's tables were pinned from run 38).
+The third instrument. `METHODOLOGY.md` has listed it since day one; the author's condition, stated
+2026-08-25, is what finally shapes it: **it is worth building only if its level comes from a table
+rather than from recall.** A third instrument that samples its magnitude from a model is a third
+voice with the same defect as the reference class — whose shape is triple-sourced and stable while
+its level descends from a single remembered anchor and spans ×2.12.
 
 This file is the frame: the procedure, the provenance discipline, and the declarations. The numeric
-tables it needs (§4) are **not written here** — they are pinned from gap-blind first-approximation
-runs, and until that happens the instrument cannot produce a number.
+tables it needs (§4) are **not written here** — they are pinned at `tools/parametric/weights.tsv`
+and `tools/parametric/thresholds.md` from gap-blind first-approximation runs (run 38, n=2, exact
+agreement on every cell; transcripts in `tools/parametric/run38_raw/`).
 
 ---
 
@@ -70,9 +72,14 @@ Two tables are required and **neither may be written by the orchestrator**:
 Both are stated by **`Hotyn-N 1.0`** (`.claude/agents/fp-norms-author.md`), gap-blind, from the
 published standard only, at **n ≥ 2 independent runs**; agreement between runs is the check, the
 same way three independent `Hotyn-K` runs confirming "1 pd = 8 net hours" was the check on the
-table's unit. The pinned values go to `tools/parametric/weights.tsv` and
-`tools/parametric/thresholds.md` with the run transcripts named, and this file's version moves to
-0.2 when that happens.
+table's unit.
+
+**Done, 2026-08-26 — run 38, n=2, on `claude-fable-5`: exact agreement on every numeric cell.**
+Both runs named the same standard (IFPUG CPM 4.x / ISO/IEC 20926, unadjusted), stated identical
+threshold matrices (18 boundary values) and an identical weight table (15 cells), independently
+flagged the same commonly-misremembered rule (EQ shares the EO/EQ matrix, takes the EI weight
+row), and declined the adjustment factor per the ruling. Pinned: `tools/parametric/weights.tsv`,
+`tools/parametric/thresholds.md`; transcripts verbatim in `tools/parametric/run38_raw/`.
 
 ## 5. Declarations
 
