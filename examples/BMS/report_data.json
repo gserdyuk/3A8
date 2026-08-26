@@ -118,9 +118,27 @@
       {
         "cls": "red",
         "text": "Bottom-up, calibrated &mdash; P50 1899"
+      },
+      {
+        "cls": "teal",
+        "text": "Parametric &mdash; UFP 195/213 &times; China/Kitchenham curves &middot; P50 120&ndash;163 pd (run 40)"
       }
     ],
-    "hint": "<b>Two views of the same four distributions.</b> Above, how likely each answer is &mdash; all curves on one scale, each enclosing the same area. Below, the same thing accumulated: <b>the chance of coming in at or under any figure</b>, which is what a number gets chosen against.<br><br><b>Move the pointer</b> and a read line crosses both panels, reporting the chance of exceeding that figure under each of the four. That is the whole apparatus for choosing a number."
+    "hint": "<b>Two views of the same four distributions.</b> Above, how likely each answer is &mdash; all curves on one scale, each enclosing the same area. Below, the same thing accumulated: <b>the chance of coming in at or under any figure</b>, which is what a number gets chosen against.<br><br><b>Move the pointer</b> and a read line crosses both panels, reporting the chance of exceeding that figure under each of the four. That is the whole apparatus for choosing a number.<br><br><b>The third instrument</b> &mdash; the parametric: function points counted from the same pinned requirement list, priced by curves fitted on 644 open projects &mdash; is drawn in teal. Its mass sits far left: on this pipeline&rsquo;s inputs the count stays on the enumeration floor (an RFP names workflows richly and fields almost never), so its size axis is small against what a specification-level count would give. This case has no outcome, so the gap to the other instruments is a distance, not a score. The density panel&rsquo;s vertical axis reads as <b>chance per 100-pd window</b>; height &times; window is a local approximation and overshoots for a curve narrower than the window &mdash; the exact mass is always the cumulative panel. The log panel at the bottom appears whenever the instruments&rsquo; medians span more than &times;4: it redraws the same distributions, equal areas kept, as chance per &times;1.26 window.",
+    "parametric": [
+      {
+        "id": "parametric · China",
+        "median": 152.4,
+        "sigma": 0.95,
+        "dash": "6 3"
+      },
+      {
+        "id": "parametric · Kitchenham",
+        "median": 120.0,
+        "sigma": 0.59,
+        "dash": "2 3"
+      }
+    ]
   },
   "tiles": [
     {
@@ -152,6 +170,13 @@
       "d": "Against readings A and B the centre sits <b>above P90</b>. Against C, at ~P75. Replaced by conditionality plus priced options."
     },
     {
+      "cls": "teal",
+      "k": "Parametric · P50",
+      "v": "120&ndash;163",
+      "unit": "pd",
+      "d": "the third instrument, on the enumeration floor by construction — 21–22 of 73 requirements outside its declared scope (run 40)"
+    },
+    {
       "cls": "blue",
       "k": "Outside view &middot; P50",
       "v": "600 &middot; 788 &middot; 1275",
@@ -175,6 +200,14 @@
       "lead": "At equal scope the calibrated bottom-up sits at ~P75 of one reading and above P90 of the other two. Steps B&ndash;D attributed the gap without closing it, and reported the explained share as <b>0%</b> in those words.",
       "html": "\n<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">the class<br>vs itself</span><div class=\"body\">\n    <div class=\"t\">The largest single quantity in the comparison <span class=\"chip blue\">&times;2.12</span></div>\n    <div class=\"x\">The three outside-view medians span 600 to 1275 net days &mdash; wider than the distance from the bottom-up to any one of them. Before any unit conversion the raw medians are 800, 1050 and 1700 recorded days, so the conversion did not create it. <b>Part of it may be reading C's changed input, and n = 1 on that input cannot separate the two.</b></div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">D1</span><div class=\"body\">\n    <div class=\"t\">The recursive assembly convention</div>\n    <div class=\"x\">Integration priced at 20% of each subtree's leaf effort at all 18 parents &mdash; which <b>delivers 40.9% of leaf effort</b>, because a deep leaf enters every ancestor's base. It is the method's only free constant. <b>And it cannot carry the gap:</b> deleting it entirely still leaves the calibrated figure &times;1.08 to &times;2.29 above the outside-view medians.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">D4</span><div class=\"body\">\n    <div class=\"t\">Class assignment</div>\n    <div class=\"x\">Every reading flagged its own most likely error as <b>upward</b>. Reading C put 60% on the stated class and split the remaining 40% asymmetrically &mdash; 24 points move the answer up, 16 down, and the up-moves are larger. Misclassification adds right-skew on top of the class's own.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">D6</span><div class=\"body\">\n    <div class=\"t\">Unit provenance <span class=\"chip caution\">settled</span></div>\n    <div class=\"x\">Net versus recorded time, carried as two forks and applied in neither direction. <b>Resolved against the bottom-up:</b> the chain prices task-solving hours, the outside view reasons from recorded project time and converts at 0.75, and the gap widened rather than closing. Leave is deliberately not deducted &mdash; COCOMO's 152-hour person-month and every timesheet-based dataset removed it already.</div>\n  </div></div>\n</div>\n<h4>What Step C adds, and why the outside view already has it</h4>\n<ul>\n<li><b>H1, H2, H3</b> &mdash; the three named holes, added outright. The bottom-up refused to size them; the outside view includes them without knowing they exist, because it never decomposes.</li>\n<li><b>G1 &times;1.15</b> &mdash; scope volatility: obligations beyond the pinned list, RFP-stage under-specification, reading-change churn.</li>\n<li><b>G2 &times;1.12</b> &mdash; cross-company coordination friction. The assumption log states outright that this is visible <i>only</i> to the outside view.</li>\n<li><b>T1</b> &mdash; external-interface realisation risk, on the eight interface elements and their contract tests only, never on the integration line.</li>\n<li><b>A-RAMP</b> &mdash; the forming deficit of a new team: mobilisation is priced once, the productivity loss is not.</li>\n</ul>\n<blockquote>Full convergence after Step C is not necessarily a success. If the methods answer\nstructurally different questions yet converge to a single point, it is either a coincidence, or one\nmethod was forced under another and lost its diagnostic independence.</blockquote>\n<p>False convergence was checked in three frames and refused in all three &mdash; including a\nseductive near-match within 3%, flagged as exactly what a unit artefact looks like when it imitates\nagreement.</p>",
       "src": "examples/BMS/run27_steps_BD.md"
+    },
+    {
+      "id": "parametric",
+      "title": "The parametric instrument",
+      "count": "&times;8&ndash;11 below the chain",
+      "lead": "The third instrument, run 2026-08-27: <b>function points</b> counted from the pinned requirement list by a sensor that never sees weights or effort, priced by effort curves fitted on 644 open projects, corridor from the curves&rsquo; own residual scatter. It lands at <b>P50 120&ndash;163 pd</b> against the chain&rsquo;s raw 1342&ndash;1353 and the class&rsquo;s 600&ndash;1275. This case has no outcome: the gap is a cross-instrument distance, not a score &mdash; and the instrument&rsquo;s own output says where it comes from.",
+      "html": "<h4>The reading</h4><div class=\"tbl-scroll\"><table><thead><tr><th>curve</th><th class=\"num\">P10</th><th class=\"num\">P50</th><th class=\"num\">P90</th><th>source of the corridor</th></tr></thead><tbody><tr><td>China (n=499)</td><td class=\"num\">42</td><td class=\"num\">152</td><td class=\"num\">462</td><td class=\"q\">empirical P10&ndash;P90 of the fit residuals</td></tr><tr><td>Kitchenham (n=145)</td><td class=\"num\">56</td><td class=\"num\">120</td><td class=\"num\">254</td><td class=\"q\">same, one-company data, tighter</td></tr></tbody></table></div><p>All figures in table person-days of 8 net hours, converted from the curves&rsquo; native recorded timesheet hours by the declared &times;0.75 and &divide;8. Count repeat spread: <b>&times;1.092</b> (UFP 195 vs 213, two independent runs).</p><h4>The strongest agreement this sensor has shown</h4><p>The two runs&rsquo; <b>data-function inventories are identical</b> &mdash; 14 of 14 groups, the same identities, the same 9-internal / 5-external split. The transaction inventories (33 vs 38) differ only by split/merge and EO-vs-EQ type calls, every one of which both runs named in their own doubts.</p><h4>The floor holds even on an RFP</h4><p>92 of 99 classified items are <i>Low</i>. Both runs, unprompted, in almost the same words: <i>&ldquo;the RFP names workflows and sources far more richly than it names fields.&rdquo;</i> Against run 39 (FaxRxTx, a participant&rsquo;s recollection) the item count grows &times;2.5 with the document&rsquo;s process density &mdash; but the complexity axis does not move, because no pre-contract document enumerates data elements. On this pipeline&rsquo;s inputs the instrument is, in effect, a weighted item count &mdash; its size axis is systematically small against a specification-level count (the chain&rsquo;s raw total, read back through the China curve, implies ~3,500 AFP where ~200 were counted; the same &times;17 gap as on FaxRxTx).</p><h4>Out of its declared scope</h4><p>21&ndash;22 of 73 requirements &mdash; the delivery and quality obligations: hosting and support (R01&ndash;R03), performance and resilience (R12/R13/R66/R68), configurability as an attribute (R11/R65), security and compliance (R72/R73), and the process demands (R64, R69&ndash;R71). A functional-size instrument cannot see them by construction; the boundary list is the half of its output that survives the level&rsquo;s miss.</p><h4>Provenance</h4><p>Weights and thresholds: two gap-blind <span class=\"tag\">Hotyn-N 1.0</span> runs, exact agreement (run 38, IFPUG CPM 4.x / ISO 20926). Count: two <span class=\"tag\">Hotyn-P 1.0</span> runs on the pinned list, weights never shown, A3 (team) and A7 (units) withheld (run 40). Level: curves refitted from <span class=\"tag\">mars_model/data</span> at every script run. Arithmetic: <span class=\"tag\">tools/parametric/parametric.py</span>, deterministic.</p>",
+      "src": "examples/BMS/run40_raw/ &middot; tools/parametric/run38_raw/ &middot; docs/fp_counting_rules.md"
     },
     {
       "id": "obligations",
