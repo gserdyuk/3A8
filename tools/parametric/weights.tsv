@@ -1,0 +1,17 @@
+# pinned from run 38 (Hotyn-N 1.0 x2, exact agreement) - IFPUG CPM 4.x / ISO/IEC 20926, unadjusted
+# component	complexity	points
+ILF	Low	7
+ILF	Average	10
+ILF	High	15
+EIF	Low	5
+EIF	Average	7
+EIF	High	10
+EI	Low	3
+EI	Average	4
+EI	High	6
+EO	Low	4
+EO	Average	5
+EO	High	7
+EQ	Low	3
+EQ	Average	4
+EQ	High	6
