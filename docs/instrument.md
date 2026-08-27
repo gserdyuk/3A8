@@ -24,10 +24,14 @@ conversion.
 > working days per month. How an organisation behaves is a true and important fact about that
 > organisation and not a fact about the work.
 >
-> **If you need days of presence, convert with your own figures:** divide by the effective task hours
-> your working day delivers — commonly 5 to 6, never 8 — then add your own allowance for leave.
+> **If you need days of presence, convert by the pinned convention** (`docs/constants.md` §4a,
+> author's ruling 2026-08-27): **6 net task hours per present day, ×1.10 for leave, 21 days a month**
+> — so 1 staffed person-month ≈ 114.5 net task hours. A case whose organisation is known to differ
+> states its own value in its case profile *before* any estimate exists; absent that, this is it.
+> The conversion lives in the comparison layer and in no rate row.
 
-In the WBS part, time appears **in this declaration and nowhere else**. That is a statement about a
+In the WBS part, time appears **in this declaration and nowhere else** — the presence conversion
+above is a reporting convention, not a rate, and no sensor ever sees it. That is a statement about a
 finite body of text and code, so it is mechanically checkable. The method's full constant list, and
 what was removed to get to it, is `docs/constants.md`.
 

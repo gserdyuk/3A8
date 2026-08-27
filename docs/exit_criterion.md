@@ -1,5 +1,13 @@
 # Exit criterion — when the instrument is fit for use
 
+> **SUPERSEDED 2026-08-27 by `docs/status_2026-08-27.md` §6c (v2.0).** The ×1.3-on-the-fact gate below
+> is withdrawn: the interquartile spread of 46 professional companies estimating one and the same
+> requirement specification is ×1.9–2.6 (Jørgensen & Grimstad 2011), so v1.0 demanded roughly twice the
+> agreement half the professional market can reach with itself. v2.0 keeps the provenance rule
+> unchanged and replaces the other two tests with repeatability, position against the human corridor,
+> and calibratability. **This file is kept as the record of what was believed and why it changed** —
+> per house rule, a threshold is never silently edited.
+
 **Version 1.0, approved by the author 2026-08-21.** Proposed in
 `docs/review_2026-08-21_running_in_circles.md` §7.1; this file is the pinned record. Changing a
 threshold is a version bump with a stated reason, never a silent edit — and never an edit made while

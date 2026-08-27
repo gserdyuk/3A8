@@ -39,7 +39,9 @@ A correction to a pinned profile is a new dated section, never an edit in place.
 
 | field | value |
 |---|---|
+| **net task hours a present day delivers — a number, not a description.** Default if not stated: **6** (`docs/constants.md` §4a). Run 41 showed this one figure deciding which of two instruments is closer to a fact, so `unknown` here is expensive | |
 | what a booked day contains — meetings, coordination, review; declared share or `unknown` | |
+| leave, holidays, sickness as a factor on present days. Default if not stated: **×1.10** | |
 | what is booked to the project and what elsewhere — training, support, presale | |
 
 ### 3. Process
