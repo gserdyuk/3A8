@@ -8,6 +8,60 @@ Convention: `- [ ]` open · `- [x]` done, with the commit or run that closed it.
 
 ---
 
+## TODO — the three actions, set 2026-08-27
+
+From `docs/status_2026-08-27.md` §7, which also states the goal and the boundaries these serve, and
+carries exit criterion **v2.0** (§6c) replacing v1.0. Ordered; 1 and 2 are independent of each other.
+
+- [x] **1. DONE 2026-08-27 — run 42. End-to-end repeatability.** Cross and size **`HM29-OA2`** (87 nodes against `HM29-OA1`'s 97)
+      with `Hotyn-W 1.1` → `Hotyn-D 2.0` → the assembly script, no rate changed, and report the
+      whole-chain spread against the OA1 centre of **1423.2 table pd**. The ×1.03 everyone quotes is
+      *classification* repeats on top of one fixed product model; `run31` says outright that no
+      repeatability reading exists for step 1 on this case. **Gate test 1 is empty until this exists.**
+      **Pre-registered 2026-08-27, before the measurement.** The comparator is *not* the baseline's
+      quoted max/min of 1.722 - that is the worst of 45 pairs among 10 runs and grows with n. For a
+      2-run measurement the like-for-like figure is run 41's **mean pairwise ratio 1.168** (median
+      1.143, 80th pct 1.333). So: **under 1.17 beats the no-method instrument on equal terms; under
+      1.30 passes gate v2.0 test 1.** Declared expectation, scoreable afterwards: the two models
+      already differ x1.115 in node count (97 vs 87), so if price tracks node count the ratio lands
+      near 1.11-1.12; if `C3` (20% at every parent, hence depth-sensitive) amplifies, it goes above.
+      Which of the two is the thing worth learning.
+      **Result: x1.0532** — OA2 priced at 1351.3 table pd against OA1's centre of 1423.2, nothing
+      changed but the model. **Both pre-registered comparators passed**: 3.0x tighter than the
+      no-method baseline's own pairwise agreement, 5.1x inside gate v2.0 test 1, 12-18x inside the
+      market's interquartile spread. The declared expectation of x1.11-1.12 was wrong in the
+      conservative direction. Decomposition: element leaf 58% of the gap, C3 18% (derivative),
+      **model-bracket step 24% and pure arithmetic**, demanded-work branches **exactly zero**.
+      `examples/FaxRxTx/run42_measurement.md`.
+- [ ] **1a. The same measurement on BMS — now the cheapest thing that could overturn run 42.**
+      Run 42 was taken on the **favourable** case: the two FaxRxTx models agreed to x1.024 on their
+      anchored part, while **the BMS pair differs by x1.56 in structure size** (Jaccard 0.31 against
+      FaxRxTx's 0.41). Gate test 1 asks for repeatability, not repeatability on the case that flatters
+      it. Cross and price BMS's second product model the same way, with no rate changed.
+- [x] **2. DONE 2026-08-27 — run 41. The no-method baseline on FaxRxTx.** n = 10, `SYSTEM.md` + `assumptions.md` in the prompt,
+      no method of any kind, `tool_uses: 0` so `FACT.md` cannot be reached, output in the form the fact
+      is recorded in. The BMS analogue is `run14`. Answers the question the project has never asked:
+      **does the apparatus buy anything over a bare draw from the corpus**, measured against a fact
+      rather than against another version of itself.
+      **Result: accuracy is undecidable here, and the reason is a constant.** In one shared unit the
+      baseline is 20 244 net task hours and the chain 11 386. The fact is presence (2 291 present
+      days), so comparing needs the day-yield constant - and it decides the winner: at this project's
+      declared 5-6 net h/day the **chain** is closer (x1.21 vs x1.47); at the baseline's own assumed
+      ~7 the baseline is; the crossover is 6.63. An earlier x1.14 reading for the baseline is
+      **withdrawn** - it mixed two constants. Baseline CV 13.75%, max/min 1.722, n=10 - and that is currently the project's
+      **only** end-to-end repeatability figure, because the chain's x1.03 is classification repeats
+      on a fixed product model. `examples/FaxRxTx/run41_baseline_no_method.md`. This makes item 1
+      the load-bearing measurement of the project.
+- [ ] **3. Write to Jørgensen** — `magnej@simula.no`, the address is in the paper — for the five
+      requirement specifications and the anonymised individual estimates of the 46 companies
+      (`docs/status_2026-08-27.md` §3). The only route to **gate test 2**. The author sends this.
+      **Drafted 2026-08-27; the text lives with the author, not in this repository.** Three things it
+      has to carry, recorded here because they are the methodology and not the wording: the measurement
+      is named as *position within the human distribution* and never as accuracy; our estimates are
+      offered **before** theirs arrive, so the comparison cannot be tuned afterwards; and the
+      confidentiality of the original specifications is faced with fallbacks, the smallest workable ask
+      being **one specification with its estimates**.
+
 ## Next session — named by the author, 2026-08-26
 
 Both start cold. Everything they need is written down: `docs/instrument.md` for what runs,
