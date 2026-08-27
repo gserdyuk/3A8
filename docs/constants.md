@@ -121,8 +121,8 @@ behaves and were never properties of the work:
 | removed | what it was | where it belongs now |
 |---|---|---|
 | 40 hours to the week | a restatement of 5 × 8 — nothing in the chain counts weeks | the unit statement, as a gloss |
-| 5–6 effective hours per assigned day | within-day yield: meetings, coordination, review, interruption | the reader's conversion |
-| leave allowance (×1.10 / presence 0.88–0.91) | annual leave, holidays, sickness | the reader's conversion, or an outcome record |
+| 5–6 effective hours per assigned day | within-day yield: meetings, coordination, review, interruption | **§4a since 2026-08-27** — pinned at 6 for the comparison layer, still absent from every rate row |
+| leave allowance (×1.10 / presence 0.88–0.91) | annual leave, holidays, sickness | **§4a since 2026-08-27** — pinned at ×1.10 for the comparison layer, or an outcome record |
 | 21 working days per month | a calendar convention | the reader's conversion |
 | `DEM_UNIT = 6/8` | a rescaling applied mid-assembly to eleven case-specific rows | **removed from the script 2026-08-25.** Those eleven rows still hold a *converted* value, not one derived in the operative unit; re-derivation is owed and parked with the outcome-comparison work |
 
@@ -130,6 +130,68 @@ behaves and were never properties of the work:
 declaration — and nowhere else. Since that is a statement about a finite body of text and code, it is
 **mechanically checkable**, and it belongs with the other checkable disciplines in `PIPELINE.md`
 rather than with the things everyone promises to remember.
+
+---
+
+## 4a. The presence conversion — pinned by the author, 2026-08-27
+
+**The ruling.** *"We can settle on 6 hours a day + 10% loss to leave. Instead of guessing how the
+organisation behaves — use this assumption, now and later."*
+
+| constant | value |
+|---|---|
+| net task hours delivered by one **present** day | **6** |
+| leave, public holidays, sickness | **×1.10** on present days to reach assigned days |
+| assigned days per month | **21** |
+
+Together: **1 staffed person-month = 21 ÷ 1.10 × 6 ≈ 114.5 net task hours**, and conversely
+1 000 net task hours ≈ 8.73 staffed person-months.
+
+### Why this does not re-open §4
+
+§4 removed these numbers **from the WBS part**, and that stands unchanged: no sensor sees them, no
+rate-table row contains them, the table is still denominated in net task hours, and time still appears
+in exactly one place inside the method. What §4 did was hand them to "the reader's conversion" — and
+the cost of that turned out to be that **the conversion got re-argued every time it was needed, after
+the numbers were already on the table.** Run 41 is the demonstration: the same batch scores 9 of 10 on
+the corridor under one yield and 5 of 10 under another, and the two candidate instruments swap places
+at 6.63.
+
+So this is not a method parameter returning. It is the **comparison layer** — the step that puts an
+estimate next to a fact recorded as presence — being given a pinned default instead of an open slot.
+It lives here and in the report, never in a rate row.
+
+### Provenance, and why choosing it now is not fitting it to a result
+
+The obvious objection is that 6 was pinned immediately after a table in which 5–6 favours one
+instrument. The record must let a later reader check that, so:
+
+1. **The value is not new and was not derived today.** Three gap-blind `Hotyn-K 1.0` runs on
+   2026-08-25 put a real working day's yield at **5–6 net task hours**, and §1 of this file has said
+   "commonly 5 to 6, never 8" since. Run 41 did not produce it; run 41 only made its absence expensive.
+2. **Within that band, 6 is the end least favourable to the chain.** At 5 net hours the chain sits at
+   ×0.99 of the FaxRxTx fact; at 6 it sits at ×0.83. Anyone fitting a constant to rescue a result
+   would have chosen 5. The author chose the conservative end.
+
+### What it settles, immediately
+
+| | net task hours | against the fact |
+|---|---:|---|
+| FaxRxTx fact, 120 staffed pm | **13 745** | — |
+| Hotyn chain | 11 386 | **×1.21 low** |
+| no-method baseline, run 41 mean | 20 244 | **×1.47 high** |
+
+Under the pinned convention the chain is the closer of the two, and the ×1.14 reading that briefly
+put the baseline ahead is withdrawn (`examples/FaxRxTx/run41_baseline_no_method.md` §1).
+
+### Standing rule from here
+
+Any figure recorded as **presence** — heads × months, staffed person-months, an outcome from a
+timesheet system that counts attendance — converts by this constant and no other, and the conversion
+is named wherever it is used. A case whose organisation is known to differ **states its own value in
+its case profile before any estimate exists**; absent that statement, this is the value. Changing it
+is a dated amendment with a stated reason, never a silent edit, and never an edit made while looking
+at a result the change would rescue.
 
 ---
 
