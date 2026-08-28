@@ -52,6 +52,19 @@ carries exit criterion **v2.0** (§6c) replacing v1.0. Ordered; 1 and 2 are inde
       **only** end-to-end repeatability figure, because the chain's x1.03 is classification repeats
       on a fixed product model. `examples/FaxRxTx/run41_baseline_no_method.md`. This makes item 1
       the load-bearing measurement of the project.
+- [x] **DONE 2026-08-28 — run 43. The no-method baseline, run a second time.** Author's hypothesis on
+      seeing the three-curve chart — *"I suspect it is volatile"* — **confirmed**. Ten more runs of the
+      identical pinned prompt: mean 138.0 against batch 1's 120.5, **level shift ×1.145, t = 2.22 on
+      18 df**. Within-batch CV barely moved (13.47% vs 13.75%), so **a single batch reports a
+      well-behaved instrument and is silent about the thing that moves**. Across all twenty runs the
+      medians span **×1.85** while each run's own declared P10–P90 is **×1.51** — the instability is
+      wider than the confidence. **20 of 20 medians sit above the documented outcome; 1 of 20 corridors
+      reaches down to it.** `examples/FaxRxTx/run43_second_baseline_batch.md`.
+- [ ] **1b. The symmetric control on the chain — now the obvious gap.** Run 42 measured the chain
+      across two product models **in one session**; run 43 measured the baseline across two batches
+      **on two days**. Those are different axes. Re-run the whole chain a day later on the same pinned
+      product model and compare levels. Until it exists, the ×1.05-against-×1.145 comparison is
+      cross-model against cross-batch, and says less than it appears to.
 - [ ] **3. Write to Jørgensen** — `magnej@simula.no`, the address is in the paper — for the five
       requirement specifications and the anonymised individual estimates of the 46 companies
       (`docs/status_2026-08-27.md` §3). The only route to **gate test 2**. The author sends this.
