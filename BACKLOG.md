@@ -75,6 +75,48 @@ carries exit criterion **v2.0** (§6c) replacing v1.0. Ordered; 1 and 2 are inde
       confidentiality of the original specifications is faced with fallbacks, the smallest workable ask
       being **one specification with its estimates**.
 
+## `examples/syn` — what is actually in it, recorded 2026-08-28
+
+**Correction to a pushed commit message.** `6e551ab` calls the `fact.md` in `examples/syn` a
+documented outcome and says it would be the project's second. **It is not an outcome.** It is an
+**estimate**: the number the group preparing the proposal agreed on. History is not rewritten here, so
+the correction lives in this entry.
+
+**What that makes it, and it is worth more than an outcome would be on one axis.** A number the whole
+proposing group converged on is a **human Delphi result on a real RFP** — and `METHODOLOGY.md` §1
+opens by naming Wideband Delphi as the thing this project substitutes for. Until now the only human
+scale available was Jørgensen's 46 companies, which needs a letter and someone else's goodwill. This
+one is on disk, on a specification we can run ourselves.
+
+| gate test | can `syn` score it | why |
+|---|---|---|
+| **2 — position against human estimators on the same text** | **yes** | this is exactly that measurement, and the first the project can make unaided |
+| **B/D — a second voice in the divergence** | **yes**, after ours is closed | a human panel is a different apparatus, not another run of ours |
+| **3 — calibratability** | **no** | fitting a correction to someone's opinion is not calibration. Outcomes still stand at 1 |
+
+**One point, not a corridor.** One group gives a number; it cannot say whether that group is typical.
+Jørgensen's data is what turns a point into a corridor, so this does not retire the letter — it gives
+a first reading while the letter travels.
+
+**A caveat from the very paper we lean on.** This number was prepared as a **bid**. Jørgensen &
+Grimstad deliberately told their participants *"your company will not be considered for the
+development of the software"*, explicitly to keep the wish to win a bidding round out of the numbers,
+because it *"has repeatedly been found to lead to over-optimistic effort estimates."* A proposal
+estimate is not a neutral estimate, and the direction of its skew is documented.
+
+**Handling, unchanged from a sealed outcome and for a sharper reason.** An outcome opened early is
+merely wasted; **an estimate seen early cannot be unseen** — it is precisely the anchor the whole
+pipeline exists to exclude, from the sensors and from the orchestrator alike. The file keeps its name
+by the author's decision; the safeguard is `docs/case_profile.md` §5, which already requires the
+provenance of the comparison figure to be declared **before** the number is opened. Declaring it there
+as *a group-consensus bid estimate* prevents anyone scoring test 3 on it later.
+
+- [ ] **Run `syn`, in this order and no other.** (1) A gap-blind extractor reads the proposal document
+      and emits **only case-profile fields**, striking every effort, cost and duration figure and
+      reporting what it struck — the pattern `Hotyn-N` and run 42's batch C already follow. (2) The
+      profile committed. (3) The requirement list pinned with its md5. (4) The chain run blind and the
+      estimate closed. (5) **Only then** the group's number opened and the distance reported.
+
 ## Next session — named by the author, 2026-08-26
 
 Both start cold. Everything they need is written down: `docs/instrument.md` for what runs,
