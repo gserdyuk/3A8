@@ -102,6 +102,13 @@ The ruling is checkable against the fitting rule rather than merely asserted: **
 5–6 band it is the end least favourable to the chain** — at 5 the chain would read ×0.99. A constant
 chosen to rescue this result would have been 5.
 
+> **Superseded in part, 2026-08-28 (run 43).** A second batch of ten, identical prompt, identical
+> model, a day later, came in at a mean of **138.0 pm against this batch's 120.5 — the level moved
+> ×1.145, t = 2.22 on 18 df.** The ×1.47 below is therefore **one draw from a moving level, not the
+> instrument's level.** Across all twenty runs the medians span ×1.85 while each run declares a
+> corridor of ×1.51: the instrument is less stable than it is confident.
+> `examples/FaxRxTx/run43_second_baseline_batch.md`.
+
 **Correction to the record, 2026-08-27.** The first reading of this batch reported the baseline at
 ×1.14 and concluded it beat the chain. That reading took the baseline through **the runs' own**
 staffing statements (which embed a ≈7-hour day) while taking the chain through **this project's**
