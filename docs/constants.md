@@ -138,11 +138,22 @@ rather than with the things everyone promises to remember.
 **The ruling.** *"We can settle on 6 hours a day + 10% loss to leave. Instead of guessing how the
 organisation behaves — use this assumption, now and later."*
 
+**The rule, in the author's words:** *bring every calculation to person-days at 6 hours a day;
+exclude leave at 10%; exclude public holidays — and if they are not stated, they are zero.*
+
 | constant | value |
 |---|---|
 | net task hours delivered by one **present** day | **6** |
-| leave, public holidays, sickness | **×1.10** on present days to reach assigned days |
+| leave | **×1.10** on present days |
+| public holidays | **as the case states them. Not stated = 0.** |
+| sickness | **as the case states it. Not stated = 0.** |
 | assigned days per month | **21** |
+
+**Nothing is deducted that the case did not declare.** That clause is the whole of the ruling's
+practical effect, and it is what closes the question rather than merely settling it: a deduction has
+to be stated by the case before it can be taken. On both cases in this project, holidays and sickness
+are unstated, so both are zero and the factor is exactly **×1.10** — identical to the figure already
+in use, so no number anywhere recomputes.
 
 Together: **1 staffed person-month = 21 ÷ 1.10 × 6 ≈ 114.5 net task hours**, and conversely
 1 000 net task hours ≈ 8.73 staffed person-months.
@@ -160,6 +171,22 @@ at 6.63.
 So this is not a method parameter returning. It is the **comparison layer** — the step that puts an
 estimate next to a fact recorded as presence — being given a pinned default instead of an open slot.
 It lives here and in the report, never in a rate row.
+
+### What this retires: the 0.88 presence fraction
+
+`examples/FaxRxTx/report_data.json` and `docs/the_unit_of_the_rate_table.md` place figures using a
+presence fraction of **0.88**, built as a ladder: 261 weekdays less ~10 public holidays, less ~10–15
+leave, less ~5 sickness = 233. Three sources agreed on it (the ladder 0.893, the reference-class
+sensor's own 19.3 ÷ 21.7 = 0.889) and it was reasonable when written.
+
+**Under this ruling it is wrong, and for a reason worth keeping:** the ~10 holidays and ~5 sick days
+were **never stated by the case**. They came from what such an organisation typically has. The ruling
+says a deduction must be declared before it is taken, so both are zero and the fraction is 1 ÷ 1.10.
+
+The two artefacts above still carry 0.88 and will until they are next rebuilt; they are ×1.033 apart
+from this convention, which moves the FaxRxTx outcome from 1663 to about 1718 table pd. **Recorded
+rather than silently corrected**, because the report is a dated artefact and rewriting a published
+figure in place is the thing this project does not do.
 
 ### Provenance, and why choosing it now is not fitting it to a result
 
