@@ -584,6 +584,8 @@ def render(d, stamp_human, data_path):
     chart_json = json.dumps(d["chart"], ensure_ascii=False)
 
     return (
+'<meta charset="utf-8">\n'
+'<meta name="viewport" content="width=device-width, initial-scale=1">\n'
 '<title>%s &middot; %s</title>\n'
 '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
 '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
