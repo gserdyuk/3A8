@@ -65,7 +65,7 @@ carries exit criterion **v2.0** (§6c) replacing v1.0. Ordered; 1 and 2 are inde
       **on two days**. Those are different axes. Re-run the whole chain a day later on the same pinned
       product model and compare levels. Until it exists, the ×1.05-against-×1.145 comparison is
       cross-model against cross-batch, and says less than it appears to.
-- [ ] **3. Write to Jørgensen** — `magnej@simula.no`, the address is in the paper — for the five
+- [x] **3. SENT 2026-08-28. Write to Jørgensen** — `magnej@simula.no`, the address is in the paper — for the five
       requirement specifications and the anonymised individual estimates of the 46 companies
       (`docs/status_2026-08-27.md` §3). The only route to **gate test 2**. The author sends this.
       **Drafted 2026-08-27; the text lives with the author, not in this repository.** Three things it
@@ -74,6 +74,34 @@ carries exit criterion **v2.0** (§6c) replacing v1.0. Ordered; 1 and 2 are inde
       offered **before** theirs arrive, so the comparison cannot be tuned afterwards; and the
       confidentiality of the original specifications is faced with fallbacks, the smallest workable ask
       being **one specification with its estimates**.
+      **Sent by the author 2026-08-28. Awaiting a reply — nothing here depends on one arriving.**
+      If it does, it turns `syn`'s single point into a corridor and makes gate test 2 scoreable at
+      the width the market actually has. If it does not, `syn` still gives the first reading.
+
+## Paused 2026-08-28 — where to pick it up
+
+The project is set aside for a while. Everything needed to restart cold is written down and nothing
+is held in anyone's head.
+
+**Read in this order:** `docs/status_2026-08-27.md` — the goal, the boundaries and exit criterion
+v2.0 · `docs/instrument.md` — what actually runs · `docs/constants.md` — every constant, including
+§4a's presence conversion · `PIPELINE.md` — who may see what.
+
+**Standing at the pause:**
+
+| gate v2.0 | state |
+|---|---|
+| 1 — repeatability | **passes on FaxRxTx, ×1.0532** (run 42). Unmeasured on BMS, whose model pair is far less stable — item 1a |
+| 2 — position against human estimators | scale in hand (Jørgensen's 46 companies); a first local point available in `examples/syn`; letter sent 2026-08-28 |
+| 3 — calibratability | 1 documented outcome of the 3 it needs. `syn` does **not** add one — it is an estimate |
+
+**The two cheapest things that could overturn what is recorded:** item 1a, the same repeatability
+measurement on BMS, because run 42 was taken on the favourable case; and item 1b, whether the chain's
+level drifts between sessions the way the no-method baseline's did by ×1.145 in a day.
+
+**What the pause does not change.** Nothing here is fitted to an outcome, no threshold was moved while
+looking at a result it would rescue, and every comparator was pre-registered before its measurement.
+A cold reader can check all three.
 
 ## `examples/syn` — what is actually in it, recorded 2026-08-28
 
