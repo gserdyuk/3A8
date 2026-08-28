@@ -225,5 +225,7 @@ ru/
 .claude/settings.local.json
 
 # examples which shall not go to repo
-examples/CICD/
 examples/syn
+
+# papers and articles kept beside the project, never published from it
+literature/
