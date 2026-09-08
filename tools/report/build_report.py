@@ -312,7 +312,10 @@ function cumBottomUp(){
 }
 
 const DENS = CASE.outside.map(densOutside), DENB = densBottomUp();
-const DMAX = Math.max(...DENS.flat().map(p=>p[1]), ...DENB.map(p=>p[1]));
+/* the density scale belongs to the standing instruments and the no-method family alike;
+   a family of many thin curves that peaks above the panel would be clipped into a fringe */
+const DENN_PEAK = NOMETH.map(r => pdfParam(r, r.median*Math.exp(-r.sigma*r.sigma)));
+const DMAX = Math.max(...DENS.flat().map(p=>p[1]), ...DENB.map(p=>p[1]), ...DENN_PEAK);
 const Yd = d => DEN_BOT - (d / DMAX) * (DEN_BOT - DEN_TOP);
 
 const dpath = pts => pts.map(([x,d],i)=>`${i?"L":"M"} ${X(x).toFixed(1)} ${Yd(d).toFixed(1)}`).join(" ");
