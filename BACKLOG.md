@@ -93,6 +93,15 @@ carries exit criterion **v2.0** (§6c) replacing v1.0. Ordered; 1 and 2 are inde
 - [x] **Case 3 run end to end, 2026-09-08 — runs 44–48**, deliverable `examples/SAS/estimate_SAS_2026-09-08.md`
       and the report. Centre 57 600 net task hours (raw chain 38 118 × Step C ×1.51); the two class
       readings ×1.82 apart after conversion, the chain between them raw and above both calibrated.
+- [x] **DONE 2026-09-08 — run 49. The no-method baseline on SAS, n = 10.** Author's request, made
+      after the deliverable. Mean 169 pm at 168 h (28 400 net task hours) = **×0.75 of the raw chain,
+      ×0.49 of the calibrated centre** — the inverse of FaxRxTx, where the baseline sat ×1.78 above.
+      Spread ×1.92 across runs, CV 25.5%, twice the FaxRxTx batches; every run's declared corridor
+      (×2.2) is wider than the spread, the opposite of run 43. Drawn on the report as ten thin curves.
+      `examples/SAS/run49_baseline_no_method.md`.
+- [ ] **Run 50 — the second SAS baseline batch, a day later.** The control on the level (run 43 moved
+      ×1.145 in a day). Same pinned prompt, md5 `9d71b4c7039e5adcd5477c75c7439732`, n = 10, then the
+      difference of means with its t-test. A reminder is scheduled for 2026-09-09 10:00.
 - [ ] **The functional size of SAS, counted gap-blind, then `Lytin-R` re-run with it declared.** The
       diagnosis's first lever (`run48_raw/diagnosis.md` §7): the two class readings closed the size
       regime two ways and diverged ×1.6–2.2 on it. The project's counter `Hotyn-P 1.0` (runs 38–40) is
