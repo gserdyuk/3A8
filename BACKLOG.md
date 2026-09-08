@@ -102,6 +102,13 @@ carries exit criterion **v2.0** (§6c) replacing v1.0. Ordered; 1 and 2 are inde
 - [ ] **Run 50 — the second SAS baseline batch, a day later.** The control on the level (run 43 moved
       ×1.145 in a day). Same pinned prompt, md5 `9d71b4c7039e5adcd5477c75c7439732`, n = 10, then the
       difference of means with its t-test. A reminder is scheduled for 2026-09-09 10:00.
+- [ ] **Run 51 — the whole chain a day later on SAS**, the symmetric control run 43 §5 called the
+      obvious next one and item 1b names: model ×1, crossing ×7, sizing ×7 (one repeat), the same
+      prompts by md5, the same script, against 38 118 h. **Pre-registered comparators:** ×1.05 (the chain
+      across two product models, run 42) and ×1.145 (the no-method level across days, run 43). Recorded
+      before the run: the measurement is day *plus* structure, since the product model will differ
+      (today's pair: Jaccard 0.45); separating them would mean re-crossing OA1 as well. Reminder set
+      with run 50 for 2026-09-09.
 - [ ] **The functional size of SAS, counted gap-blind, then `Lytin-R` re-run with it declared.** The
       diagnosis's first lever (`run48_raw/diagnosis.md` §7): the two class readings closed the size
       regime two ways and diverged ×1.6–2.2 on it. The project's counter `Hotyn-P 1.0` (runs 38–40) is
