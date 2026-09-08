@@ -90,6 +90,30 @@ carries exit criterion **v2.0** (§6c) replacing v1.0. Ordered; 1 and 2 are inde
       version bump. Until one is chosen, every long-reply sensor run is checked for its first line and
       the loss recorded in the raw file's header.
 - [ ] **Case 3 has no outcome** (author, 2026-09-08). It scores gate tests 1 and 2 only.
+- [x] **Case 3 run end to end, 2026-09-08 — runs 44–48**, deliverable `examples/SAS/estimate_SAS_2026-09-08.md`
+      and the report. Centre 57 600 net task hours (raw chain 38 118 × Step C ×1.51); the two class
+      readings ×1.82 apart after conversion, the chain between them raw and above both calibrated.
+- [ ] **The functional size of SAS, counted gap-blind, then `Lytin-R` re-run with it declared.** The
+      diagnosis's first lever (`run48_raw/diagnosis.md` §7): the two class readings closed the size
+      regime two ways and diverged ×1.6–2.2 on it. The project's counter `Hotyn-P 1.0` (runs 38–40) is
+      the instrument; expectation to register before running: the class-vs-class ×1.82 collapses to
+      about ×1.2.
+- [ ] **A narrow gap-blind round on the level of rate table v0.1-h** — is it comparable with an external
+      productivity norm, at what factor, from what source. Requested by the diagnostician; the one
+      uncovered spot that acts multiplicatively on the whole centre. Applies to all three cases.
+- [ ] **The assembly declares no roles.** `assemble_sas.py` prints unit and losses; the diagnostician had
+      to infer role coverage from the activity composition and said so. Add a roles line (every vendor
+      role the catalogue's activities imply; client-side effort excluded) to the assembly output and to
+      `docs/instrument.md` §0.
+- [ ] **The coverage report should state both element counts.** "1 650 items over 245 elements" (all
+      elements, parents included) beside "187 sized" (sizeable leaves); the diagnostician refused to
+      reconcile them, correctly, because the brief did not.
+- [ ] **Language drift.** The diagnostician answered an English prompt in Russian, taking the language of
+      the memory index the harness injects. Content unaffected; the injection debt above now has a
+      second symptom.
+- [ ] **Catalogue 1.4 findings from SAS**, for the 1.5 bump: statement-only subtrees and per-parent test
+      activities · migration counts of run-time-written stores (§3a's two framings of the driver) · the
+      GIN/LN twin enumeration precedent · the fourth environment's `E1` mapping (test = M).
 
 ## Paused 2026-08-28 — where to pick it up
 

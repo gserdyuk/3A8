@@ -1,0 +1,155 @@
+<div class="tbl-scroll tbl-tall"><table><thead><tr><th>id</th><th>obligation</th><th>kind</th></tr></thead><tbody>
+<tr><td class="tag">I-1</td><td>A web-based application solution for members to create, manage and share data related to prefixes, Global Item Numbers (GIN) and Location Numbers (LN), replacing the applications currently available to members</td><td class="q">product</td></tr>
+<tr><td class="tag">I-2</td><td>Three integrated modules &mdash; Product (GIN), Location (LN), Access Data &mdash; using the same data and system architecture and running on the same development platform</td><td class="q">product</td></tr>
+<tr><td class="tag">I-3</td><td>Identifier rules: a GIN is 12 or 14 digits and an LN is 13 digits, each formed as the company's licensed prefix (6&ndash;9 digits) plus a serial part, with a check digit</td><td class="q">product</td></tr>
+<tr><td class="tag">I-4</td><td>An application architecture aligned with the existing enterprise architecture, maintainable by X-Customer resources, and scalable and sustainable given the projected member and application growth</td><td class="q">product</td></tr>
+<tr><td class="tag">I-5</td><td>The final design accommodates future expansion &mdash; data other than GIN or LN, and sharing privileges down to field level &mdash; while that expansion itself stays out of scope</td><td class="q">product</td></tr>
+<tr><td class="tag">I-6</td><td>Functionality available to all members based on permissions, regardless of which module they use; data and functions are shared across modules</td><td class="q">product</td></tr>
+<tr><td class="tag">I-7</td><td>All functionality is validated against X-Customer Standards and business rules, which will be defined as part of the project</td><td class="q">product</td></tr>
+<tr><td class="tag">I-8</td><td>The Access Data module allows users to search for, view and export prefix, GIN and LN data &mdash; the subscribe side of the publish-and-subscribe model &mdash; and contains no editing functionality</td><td class="q">product</td></tr>
+<tr><td class="tag">I-9</td><td>A client's subscription determines which data can be viewed and which export options are available</td><td class="q">product</td></tr>
+<tr><td class="tag">I-10</td><td>Non-members (the general public) can search a limited data set but cannot export</td><td class="q">product</td></tr>
+<tr><td class="tag">I-11</td><td>X-Customer-owned data as well as data published by data owners can be accessed in the Access Data module</td><td class="q">product</td></tr>
+<tr><td class="tag">W-1</td><td>Project component 1, Requirements and Design, performed by the vendor</td><td class="q">work</td></tr>
+<tr><td class="tag">W-2</td><td>Project component 2, Development and Testing, performed by the vendor</td><td class="q">work</td></tr>
+<tr><td class="tag">W-3</td><td>Project component 3, Implementation, performed by the vendor</td><td class="q">work</td></tr>
+<tr><td class="tag">W-4</td><td>Project component 4, Post-production Support and Transition, performed by the vendor</td><td class="q">work</td></tr>
+<tr><td class="tag">G-1</td><td>Allow assignment of user roles and tasks</td><td class="q">product</td></tr>
+<tr><td class="tag">G-1.1</td><td>Each member is assigned a company administrator with the ability to add and edit other users in their company</td><td class="q">product</td></tr>
+<tr><td class="tag">G-1.2</td><td>The company admin can assign roles and tasks to users</td><td class="q">product</td></tr>
+<tr><td class="tag">G-1.3</td><td>User roles include Super-User, Approver, Editor, View-only; other roles may be added</td><td class="q">product</td></tr>
+<tr><td class="tag">G-1.4</td><td>A customer-level "Super-User" role with access to manage all data</td><td class="q">product</td></tr>
+<tr><td class="tag">G-2</td><td>Present a role-driven UI based on user role</td><td class="q">product</td></tr>
+<tr><td class="tag">G-3</td><td>Implement a workflow for new and edited records</td><td class="q">product</td></tr>
+<tr><td class="tag">G-3.1</td><td>The company admin can designate Editor and Approver roles and the rules for record approval</td><td class="q">product</td></tr>
+<tr><td class="tag">G-3.2</td><td>Editors and Approvers are notified of a change in approval status</td><td class="q">product</td></tr>
+<tr><td class="tag">G-3.3</td><td>Users can easily find records requiring their action</td><td class="q">product</td></tr>
+<tr><td class="tag">G-4</td><td>A user's password can be reset by the user, the company admin, or the X-Customer help desk</td><td class="q">product</td></tr>
+<tr><td class="tag">G-5</td><td>Lock records so that only one user at a time can edit a record</td><td class="q">product</td></tr>
+<tr><td class="tag">G-6</td><td>Display a user dashboard or start screen with notifications, reports, prefix data and other information</td><td class="q">product</td></tr>
+<tr><td class="tag">G-6.1</td><td>A prefix capacity counter displays how many numeric indicators (GINs or LNs) have been used and how many are available</td><td class="q">product</td></tr>
+<tr><td class="tag">G-7</td><td>Allow users to generate reports</td><td class="q">product</td></tr>
+<tr><td class="tag">G-7.1</td><td>Customise, schedule, run and view reports for adds, changes and deletes</td><td class="q">product</td></tr>
+<tr><td class="tag">G-7.2</td><td>View usage reports by hour, day, week, month and year <i>(current reporting utilises 3scale)</i></td><td class="q">product</td></tr>
+<tr><td class="tag">G-7.3</td><td>Run report data history</td><td class="q">product</td></tr>
+<tr><td class="tag">G-7.4</td><td>Run audit reports</td><td class="q">product</td></tr>
+<tr><td class="tag">G-8</td><td>Provide notifications to users in various formats &mdash; email, SMS and/or onscreen</td><td class="q">product</td></tr>
+<tr><td class="tag">G-8.1</td><td>Global notifications (e.g. scheduled server downtime)</td><td class="q">product</td></tr>
+<tr><td class="tag">G-8.2</td><td>Member-specific notifications (e.g. a user opts to be notified when records are updated or added)</td><td class="q">product</td></tr>
+<tr><td class="tag">G-8.3</td><td>Member-to-member and member-to-X-Customer notifications (e.g. a user can challenge record data)</td><td class="q">product</td></tr>
+<tr><td class="tag">G-8.5</td><td>A user can set communication preferences for the method and frequency of notifications received outside the system</td><td class="q">product</td></tr>
+<tr><td class="tag">G-9</td><td>Users can send application feedback to X-Customer, routed to a single X-Customer contact or a feedback tracking system</td><td class="q">product</td></tr>
+<tr><td class="tag">G-10</td><td>Display contextual help to the user</td><td class="q">product</td></tr>
+<tr><td class="tag">G-10.1</td><td>Help content may be customised by industry</td><td class="q">product</td></tr>
+<tr><td class="tag">G-10.2</td><td>Help content is maintained by X-Customer non-technical resources</td><td class="q">product</td></tr>
+<tr><td class="tag">G-11</td><td>Link to training &mdash; external videos, webinars, quick-start guides &mdash; from within the application</td><td class="q">product</td></tr>
+<tr><td class="tag">G-12</td><td>Allow import and export of records, as referenced in the Product, Location and Data Access modules</td><td class="q">product</td></tr>
+<tr><td class="tag">G-12.1</td><td>Import and export formats include at least Excel, CSV, Numbers, XML, tab-delimited, iDocs, and through the API</td><td class="q">product</td></tr>
+<tr><td class="tag">G-12.2</td><td>Import and export must include PC and Mac formats</td><td class="q">product</td></tr>
+<tr><td class="tag">G-12.3</td><td>A user can select one or more records to be imported or exported</td><td class="q">product</td></tr>
+<tr><td class="tag">G-12.4</td><td>All records are validated upon import</td><td class="q">product</td></tr>
+<tr><td class="tag">G-13</td><td>A publish (select for sharing by the data owner) and subscribe (request viewing by data consumers) model with multiple share/view functions</td><td class="q">product</td></tr>
+<tr><td class="tag">G-13.1</td><td>The data owner can publish records at any level in the hierarchy</td><td class="q">product</td></tr>
+<tr><td class="tag">G-13.2</td><td>The data owner can publish (grant access to view) a basic or a full set of record attributes</td><td class="q">product</td></tr>
+<tr><td class="tag">G-13.3</td><td>The data owner can publish data for a group of records</td><td class="q">product</td></tr>
+<tr><td class="tag">G-13.4</td><td>The data owner can share records with an individual, a user-defined group, a controlled group managed by X-Customer, or the public</td><td class="q">product</td></tr>
+<tr><td class="tag">G-13.5</td><td>Based on subscription, a data consumer can view published data</td><td class="q">product</td></tr>
+<tr><td class="tag">G-13.6</td><td>Based on subscription, a data consumer can request access to view data from the data owner</td><td class="q">product</td></tr>
+<tr><td class="tag">G-13.7</td><td>The data owner can approve or reject view requests</td><td class="q">product</td></tr>
+<tr><td class="tag">P-1</td><td>Create GIN records individually, via import, through a step-by-step wizard, or by cloning an existing record; records include required and non-required attributes that may vary by industry</td><td class="q">product</td></tr>
+<tr><td class="tag">P-1.1</td><td>Incomplete records can be saved as Draft</td><td class="q">product</td></tr>
+<tr><td class="tag">P-2</td><td>Assign a GIN to a record automatically or manually at any point during record creation; a check digit is assigned automatically</td><td class="q">product</td></tr>
+<tr><td class="tag">P-2.1</td><td>Users can opt for auto-assign or manual</td><td class="q">product</td></tr>
+<tr><td class="tag">P-2.2</td><td>A user can reserve GINs to hold them out from auto-assign</td><td class="q">product</td></tr>
+<tr><td class="tag">P-3</td><td>Set a preference for how GINs are assigned (auto-assign or manual)</td><td class="q">product</td></tr>
+<tr><td class="tag">P-4</td><td>Edit record attributes before finalising</td><td class="q">product</td></tr>
+<tr><td class="tag">P-5</td><td>Edit record attributes manually or via import</td><td class="q">product</td></tr>
+<tr><td class="tag">P-5.1</td><td>Some attributes cannot be edited, based on status (e.g. once a product has gone to market)</td><td class="q">product</td></tr>
+<tr><td class="tag">P-5.2</td><td>If a GIN changes but the product attributes did not, a reference is kept back to the old number</td><td class="q">product</td></tr>
+<tr><td class="tag">P-6</td><td>Upload product images and add them to records</td><td class="q">product</td></tr>
+<tr><td class="tag">P-7</td><td>View, filter and sort all records in a single view</td><td class="q">product</td></tr>
+<tr><td class="tag">P-7.1</td><td>Select individual records to take any action (edit, export, etc.)</td><td class="q">product</td></tr>
+<tr><td class="tag">P-7.2</td><td>Select multiple records and apply the same action to all selected records</td><td class="q">product</td></tr>
+<tr><td class="tag">P-8</td><td>View, filter and sort all GINs in a single view</td><td class="q">product</td></tr>
+<tr><td class="tag">P-9</td><td>View potential duplicate records and easily remove or edit duplicates</td><td class="q">product</td></tr>
+<tr><td class="tag">P-9.1</td><td>Alert the user of possible duplicate records during creation, and run duplicate reports for completed records</td><td class="q">product</td></tr>
+<tr><td class="tag">P-10</td><td>View and manage the status of a record or GIN</td><td class="q">product</td></tr>
+<tr><td class="tag">P-10.1</td><td>The system or the user assigns a status to each GIN (currently Reserved, In Use, For Reuse, Available); GIN status may update to reflect record status</td><td class="q">product</td></tr>
+<tr><td class="tag">P-10.2</td><td>The system or the user can assign a status to each record</td><td class="q">product</td></tr>
+<tr><td class="tag">P-10.3</td><td>If a GIN is no longer in use, display the date it was taken out of use and when it becomes available for reuse; rules may vary by industry and product type</td><td class="q">product</td></tr>
+<tr><td class="tag">P-11</td><td>Create, edit and view a hierarchy of GINs (e.g. each → case → pallet) manually, via import, or via a visual format such as drag-and-drop</td><td class="q">product</td></tr>
+<tr><td class="tag">P-11.1</td><td>Hierarchies can have pre-defined levels</td><td class="q">product</td></tr>
+<tr><td class="tag">P-11.2</td><td>Imports can include full records with hierarchy information, or hierarchy information for existing records</td><td class="q">product</td></tr>
+<tr><td class="tag">P-11.3</td><td>The system checks that each item type can physically fit into the next item type in the hierarchy (height and weight)</td><td class="q">product</td></tr>
+<tr><td class="tag">P-11.4</td><td>A user can change the item level on a record while creating a hierarchy</td><td class="q">product</td></tr>
+<tr><td class="tag">P-11.5</td><td>If the status of a record within a hierarchy changes, the user is notified if it affects the status of other records in the hierarchy</td><td class="q">product</td></tr>
+<tr><td class="tag">P-12</td><td>Export and print hierarchies in a user-friendly format</td><td class="q">product</td></tr>
+<tr><td class="tag">P-13</td><td>Generate and view X-Customer Standard supported barcodes of various types and sizes</td><td class="q">product</td></tr>
+<tr><td class="tag">P-14</td><td>Export and print X-Customer Standard supported barcodes in standard image formats</td><td class="q">product</td></tr>
+<tr><td class="tag">P-15</td><td>Create, save, export and print Product Information Sheets for each record, with all record attributes and images</td><td class="q">product</td></tr>
+<tr><td class="tag">P-15.1</td><td>Users can select from and edit multiple page-layout templates for product sheets</td><td class="q">product</td></tr>
+<tr><td class="tag">P-16</td><td>Create a digital GIN that can be embedded in a web site</td><td class="q">product</td></tr>
+<tr><td class="tag">P-17</td><td>Permission records for publishing; published records are viewed within the Data Access module</td><td class="q">product</td></tr>
+<tr><td class="tag">P-18</td><td>Transfer record ownership to another member</td><td class="q">product</td></tr>
+<tr><td class="tag">P-19</td><td>Use an external system (e.g. QuickBooks, SAP) to create and manage data and import it into the application solution</td><td class="q">product</td></tr>
+<tr><td class="tag">L-1</td><td>Create LN records individually, via import, through a step-by-step wizard, or by cloning an existing record; records include required and non-required attributes that may vary by industry</td><td class="q">product</td></tr>
+<tr><td class="tag">L-1.1</td><td>Incomplete records can be saved as Draft</td><td class="q">product</td></tr>
+<tr><td class="tag">L-2</td><td>Assign an LN to a record automatically or manually at any point during record creation; a check digit is assigned automatically</td><td class="q">product</td></tr>
+<tr><td class="tag">L-2.1</td><td>Some industries automatically assign LNs from a shared pool</td><td class="q">product</td></tr>
+<tr><td class="tag">L-2.2</td><td>The prefix licensee can opt for auto-assign or manual</td><td class="q">product</td></tr>
+<tr><td class="tag">L-2.3</td><td>The prefix licensee can reserve LNs to hold them out from auto-assign</td><td class="q">product</td></tr>
+<tr><td class="tag">L-3</td><td>Set a preference for how LNs are assigned (auto-assign or manual)</td><td class="q">product</td></tr>
+<tr><td class="tag">L-4</td><td>Edit record attributes before finalising</td><td class="q">product</td></tr>
+<tr><td class="tag">L-5</td><td>Edit record attributes manually or via import</td><td class="q">product</td></tr>
+<tr><td class="tag">L-5.1</td><td>If an LN changes but the location attributes do not, a reference is kept back to the old number</td><td class="q">product</td></tr>
+<tr><td class="tag">L-6</td><td>View, filter and sort all records in a single view</td><td class="q">product</td></tr>
+<tr><td class="tag">L-6.1</td><td>Select individual records to take any action (edit, export, etc.)</td><td class="q">product</td></tr>
+<tr><td class="tag">L-6.2</td><td>Select multiple records and apply the same action to all selected records</td><td class="q">product</td></tr>
+<tr><td class="tag">L-7</td><td>View, filter and sort all LNs in a single view</td><td class="q">product</td></tr>
+<tr><td class="tag">L-8</td><td>View potential duplicate records and easily remove or edit duplicates</td><td class="q">product</td></tr>
+<tr><td class="tag">L-8.1</td><td>Alert the user of possible duplicate records during creation, and run duplicate reports for completed records</td><td class="q">product</td></tr>
+<tr><td class="tag">L-9</td><td>View and manage the status of a record or LN</td><td class="q">product</td></tr>
+<tr><td class="tag">L-9.1</td><td>The system or the user assigns a status to each LN; LN status may update to reflect record status</td><td class="q">product</td></tr>
+<tr><td class="tag">L-9.2</td><td>The system or the user can assign a status to each record</td><td class="q">product</td></tr>
+<tr><td class="tag">L-9.3</td><td>If an LN is no longer in use, display the date it was taken out of use and when it becomes available for reuse; rules may vary by industry</td><td class="q">product</td></tr>
+<tr><td class="tag">L-10</td><td>Create, edit and view a hierarchy of LNs manually, via import, or via a visual format such as drag-and-drop</td><td class="q">product</td></tr>
+<tr><td class="tag">L-10.1</td><td>Hierarchies can have an unlimited number of levels and be organised by various attributes</td><td class="q">product</td></tr>
+<tr><td class="tag">L-10.2</td><td>Imports can include full records with hierarchy information, or hierarchy information for existing records</td><td class="q">product</td></tr>
+<tr><td class="tag">L-10.3</td><td>If the status of a record within a hierarchy changes, the user is notified if it affects the status of other records in the hierarchy</td><td class="q">product</td></tr>
+<tr><td class="tag">L-11</td><td>Export and print hierarchies in a user-friendly format</td><td class="q">product</td></tr>
+<tr><td class="tag">L-12</td><td>Permission records for publishing; published records are viewed within the Data Access module</td><td class="q">product</td></tr>
+<tr><td class="tag">L-13</td><td>Record annual verification of records</td><td class="q">product</td></tr>
+<tr><td class="tag">L-14</td><td>Transfer record ownership to another member</td><td class="q">product</td></tr>
+<tr><td class="tag">L-15</td><td>Use an external system (e.g. QuickBooks, SAP) to create and manage data and import it into the application solution</td><td class="q">product</td></tr>
+<tr><td class="tag">D-1</td><td>Search for prefix, GIN and LN records</td><td class="q">product</td></tr>
+<tr><td class="tag">D-1.1</td><td>Several fields are available for search (e.g. name, city)</td><td class="q">product</td></tr>
+<tr><td class="tag">D-1.2</td><td>Advanced search and filter options are available</td><td class="q">product</td></tr>
+<tr><td class="tag">D-2</td><td>Request access to a basic or full record (subscribe to the record)</td><td class="q">product</td></tr>
+<tr><td class="tag">D-2.1</td><td>The request is sent to the data owner, who must approve before the data becomes available</td><td class="q">product</td></tr>
+<tr><td class="tag">D-3</td><td>Request to be added to a controlled group</td><td class="q">product</td></tr>
+<tr><td class="tag">D-4</td><td>View basic and full records and their hierarchies</td><td class="q">product</td></tr>
+<tr><td class="tag">D-5</td><td>Export one or more records to any format detailed in the General Requirements</td><td class="q">product</td></tr>
+<tr><td class="tag">D-6</td><td>Print one or more records</td><td class="q">product</td></tr>
+<tr><td class="tag">D-7</td><td>Perform all Access Data functions via the web interface or the API</td><td class="q">product</td></tr>
+<tr><td class="tag">D-8</td><td>Easily access information on how to pay for ad hoc access to data</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-2</td><td>Data marts (non-transactional) to support data access; transactional and non-transactional databases scalable for the projected growth (company prefixes 500 000 → 700 000 records, GIN 10 000 000 → 70 000 000, LN 550 000 → 3 500 000, by 2024); data latency is currently overnight and must support near-real-time updates</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-3</td><td>Claims-based authentication and authorisation; user accounts and roles defined in an enterprise Identity Management system enabling single sign-on; the IdM solution is not finalised and will support claims-based standards such as OAuth and SAML</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-4</td><td>A service-oriented architecture: REST (preferred) or SOAP web services integrate functionality and data across the suite instead of direct database access or copying; REST APIs available to members and compatible with an API management solution (currently 3scale)</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-5</td><td>Adherence to X-Customer technical standards &mdash; coding, database connection and naming, integration, approved technologies and products; a deviation requires an impact analysis (technical, operational, support, financial) by the project core team at no cost to X-Customer</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-6</td><td>The architecture is designed to be cloud-ready</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-7</td><td>Web-based, built on industry-standard web design patterns, frameworks and components, with no client-side software installation; roughly 38 000 users today, approximately 256 000 by 2024, up to 10% of them concurrent</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-8</td><td>Highly available with a 99.9% service level; a failover process developed and tested, with the hardware and software needs identified, and failover monitoring that notifies administrators of a failure</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-9</td><td>Backup and disaster recovery procedures that comply with X-Customer policies and procedures</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-10</td><td>Appropriate security configuration, processes and procedures, with a security design and the components, frameworks, libraries and tools used to secure the application solution</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-11</td><td>Deployment to four environments &mdash; development, test, staging/pre-production, production &mdash; with appropriate deployment processes</td><td class="q">work</td></tr>
+<tr><td class="tag">NFR-12</td><td>Migration of the current application data, including users, to the new solution</td><td class="q">work</td></tr>
+<tr><td class="tag">NFR-13</td><td>Accessible on Internet Explorer 9 and above, and on the current and previous versions of Chrome, Firefox, Safari and Edge</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-14</td><td>Response times, 95% of the time under load: login under 2 s at 250 concurrent users; navigation under 1 s at 250; transactions (saves, form generation) under 2 s at 50; searches under 3 s at 150; API responses under 1 s at 250</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-15</td><td>Exceptions may be made for some time-consuming transactions (e.g. barcode generation); performance testing processes ensure the response times are met at the appropriate user load</td><td class="q">work</td></tr>
+<tr><td class="tag">NFR-16</td><td>Business process workflows: record approval (records entered via UI or import are submitted, reviewed, rejected or approved), record validation (identifiers, auto-generated or manual, comply with X-Customer Standards), record verification (attributes entered via UI or import are verified for accuracy)</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-17</td><td>Near-real-time event notifications when system errors occur</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-18</td><td>Near-real-time event notification when critical business functions fail</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-19</td><td>Detailed logging for troubleshooting and process verification</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-20</td><td>An audit trail of all activity taking place at any point in the system</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-21</td><td>WCAG 2.0 Level A compliance, within reasonable accommodation</td><td class="q">product</td></tr>
+</tbody></table></div>

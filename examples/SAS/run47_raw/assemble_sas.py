@@ -194,6 +194,7 @@ def assemble(rep):
     sizes, kinds, special = READINGS[rep]
     leafE = defaultdict(float)
     byact = defaultdict(float)
+    sds = []
     holes = []
     for act, el in ITEMS:
         cls = CLS.get(el, '?')
@@ -232,6 +233,7 @@ def assemble(rep):
             continue
         leafE[el] += E(cell)
         byact[act] += E(cell)
+        sds.append((cell[2] - cell[0]) / 6.0)
     parents = [e for e in ORDER if e in KIDS]
     c3 = {p: C3_RATE * sum(leafE.get(x, 0.0) for x in sub(p)) for p in parents}
     n_model = len(ORDER)                     # 246 -> bracket L
@@ -266,7 +268,14 @@ def assemble(rep):
         assert cell is not None, lab
     once_total = sum(E(c) for _, c in once)
     tl, tc3 = sum(leafE.values()), sum(c3.values())
-    return dict(leafE=leafE, c3=c3, once=once, once_total=once_total, holes=holes, byact=byact,
+    # corridor: O/M/P restored per item, equicorrelated at rho = 0.5 (declared, docs/constants.md 5e);
+    # C3 is a fixed multiple of the element items so its sd scales with theirs; once items add their own
+    once_sd = [(c[2] - c[0]) / 6.0 for _, c in once]
+    rho = 0.5
+    var_el = (1 - rho) * sum(x * x for x in sds) + rho * sum(sds) ** 2
+    var_once = (1 - rho) * sum(x * x for x in once_sd) + rho * sum(once_sd) ** 2
+    sd_total = (var_el ** 0.5) * (1 + tc3 / tl) + var_once ** 0.5
+    return dict(sd=sd_total, p10=tl + tc3 + once_total - 1.2816 * sd_total, p90=tl + tc3 + once_total + 1.2816 * sd_total,leafE=leafE, c3=c3, once=once, once_total=once_total, holes=holes, byact=byact,
                 leaf_total=tl, c3_total=tc3, total=tl + tc3 + once_total, bracket=bracket, n_si=n_si)
 
 
@@ -284,6 +293,7 @@ if __name__ == '__main__':
         print('  C3 all parents:                               %.1f h   of which root C3: %.1f' % (a['c3_total'], a['c3'][ROOT_ID]))
         print('  once + per-environment layer [%s]:            %.1f h' % (a['bracket'], a['once_total']))
         print('  GRAND TOTAL:                                  %.0f net person-hours  (= %.1f pd at 8 h)' % (a['total'], a['total'] / 8))
+        print('  corridor, rho = 0.5:  sd %.0f h · P10 %.0f · P90 %.0f  (x%.2f / x%.2f of the centre)' % (a['sd'], a['p10'], a['p90'], a['p10'] / a['total'], a['p90'] / a['total']))
         print('  named holes (%d):' % len(a['holes']))
         for h in a['holes']:
             print('     ', h)

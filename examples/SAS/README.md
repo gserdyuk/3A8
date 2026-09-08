@@ -35,8 +35,9 @@ that no outcome is known (`case_profile.md` §5).
 | 2 | `requirements_pinned.md` (N = 153) · `requirements_split.md` · `requirements_product.md` (N = 146) · `requirements_work.md` (N = 7) | **pinned 2026-09-08**, md5 in `requirements.pin.txt` |
 | 2 | `assumptions.md` v1 · `assumptions_product.md` · `open_questions.md` | **approved 2026-09-08** — 21 assumptions and 22 questions, one reading each |
 | 2 | `technology_declaration.md` | **approved 2026-09-08** — `D-TEAM` confirmed by the profile; `SA-PENTEST`, test = M, cycles 2/2/2 |
-| 3 | sensor runs | **none.** Nothing has been launched |
-| 4 | `FACT.md` | will not exist: no known outcome (author, 2026-09-08). Gate test 3 cannot be scored on this case |
+| 3 | sensor runs | **run 44** product model n = 2 (`run44_product_model_measurement.md`) · **run 45** crossing, seven batches (`run45_work_model.md`) · **run 46** reference class n = 2 (`run46_reference_class.md`) · **run 47** size classes n = 2 and the assembly (`run47_sizing_and_assembly.md`) · **run 48** Step C rates, gap-blind, and Steps B–D (`run48_steps_BD.md`) |
+| 4 | the deliverable | **`estimate_SAS_2026-09-08.md`** and `reports/` (built from `report_data.json`) — written 2026-09-08 knowing no outcome will open |
+| 5 | `FACT.md` | will not exist: no known outcome (author, 2026-09-08). Gate test 3 cannot be scored on this case |
 
 ## File map
 
@@ -52,3 +53,6 @@ that no outcome is known (`case_profile.md` §5).
 | `open_questions.md` | the register, Q1–Q22 |
 | `technology_declaration.md` | one choice per catalogue dimension, parameters, W6 outcome |
 | `case_profile.md` | the case conditions, pinned before any number |
+| `run44_product_model_measurement.md` … `run48_steps_BD.md` | one record per run; raw sensor output verbatim under `run*_raw/` |
+| `estimate_SAS_2026-09-08.md` | the deliverable: centre, corridor, reserve, what is not in any number, what moves the answer |
+| `report_data.json`, `reports/` | the report's data file and the built HTML, one file per build, never overwritten |

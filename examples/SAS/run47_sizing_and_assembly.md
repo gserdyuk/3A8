@@ -66,7 +66,10 @@ dev S · test M (declared) · stage M · prod L; G5m twice; S2/S3 **XL** (45 sur
 | **total, net person-hours** | **38 069** | **38 168** |
 | in table person-days (8 h) | 4 759 | 4 771 |
 
-**Repeat spread ×1.0026 · centre 38 118 net task hours.** C3 is 34.3% of the total (BMS 27.7%, FaxRxTx
+**Repeat spread ×1.0026 · centre 38 118 net task hours.** The chain's own corridor, from the O/M/P
+of every priced item summed at ρ = 0.5 (`docs/constants.md` §5e, the declared convention): sd ≈ 6 330 h,
+**P10 ≈ 30 000 · P90 ≈ 46 200 net task hours (×0.79 / ×1.21 of the centre)** — the same ×1.5 P10–P90
+width the earlier cases showed, because the rate table's cells set it, not the case. C3 is 34.3% of the total (BMS 27.7%, FaxRxTx
 27.4%); delivered against leaf effort it is 54% — the tree is one level deeper than the earlier cases
 (mean depth 2.6 against ~2.0), which is `docs/constants.md` §3's structural factor showing itself.
 
