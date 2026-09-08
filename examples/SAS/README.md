@@ -35,7 +35,7 @@ that no outcome is known (`case_profile.md` §5).
 | 2 | `requirements_pinned.md` (N = 153) · `requirements_split.md` · `requirements_product.md` (N = 146) · `requirements_work.md` (N = 7) | **pinned 2026-09-08**, md5 in `requirements.pin.txt` |
 | 2 | `assumptions.md` v1 · `assumptions_product.md` · `open_questions.md` | **approved 2026-09-08** — 21 assumptions and 22 questions, one reading each |
 | 2 | `technology_declaration.md` | **approved 2026-09-08** — `D-TEAM` confirmed by the profile; `SA-PENTEST`, test = M, cycles 2/2/2 |
-| 3 | sensor runs | **run 44** product model n = 2 (`run44_product_model_measurement.md`) · **run 45** crossing, seven batches (`run45_work_model.md`) · **run 46** reference class n = 2 (`run46_reference_class.md`) · **run 47** size classes n = 2 and the assembly (`run47_sizing_and_assembly.md`) · **run 48** Step C rates, gap-blind, and Steps B–D (`run48_steps_BD.md`) |
+| 3 | sensor runs | **run 44** product model n = 2 (`run44_product_model_measurement.md`) · **run 45** crossing, seven batches (`run45_work_model.md`) · **run 46** reference class n = 2 (`run46_reference_class.md`) · **run 47** size classes n = 2 and the assembly (`run47_sizing_and_assembly.md`) · **run 48** Step C rates, gap-blind, and Steps B–D (`run48_steps_BD.md`) · **run 49** the no-method baseline n = 10 (`run49_baseline_no_method.md`) |
 | 4 | the deliverable | **`estimate_SAS_2026-09-08.md`** and `reports/` (built from `report_data.json`) — written 2026-09-08 knowing no outcome will open |
 | 5 | `FACT.md` | will not exist: no known outcome (author, 2026-09-08). Gate test 3 cannot be scored on this case |
 

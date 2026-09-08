@@ -26,6 +26,7 @@ STYLE = r'''<style>
   --pen-blue:#20456B; --pen-blue-fill:rgba(32,69,107,.10);
   --pen-red:#9E3B26; --pen-red-fill:rgba(158,59,38,.13);
   --pen-teal:#1F6E5B; --pen-teal-fill:rgba(31,110,91,.10);
+  --pen-ochre:#A8781E;
   --caution:#7A5A12;
   --shadow:0 1px 2px rgba(22,26,21,.07), 0 8px 24px -12px rgba(22,26,21,.18);
 }
@@ -37,6 +38,7 @@ STYLE = r'''<style>
     --pen-blue:#82ACD8; --pen-blue-fill:rgba(130,172,216,.13);
     --pen-red:#DD9078; --pen-red-fill:rgba(221,144,120,.16);
     --pen-teal:#79C2AB; --pen-teal-fill:rgba(121,194,171,.13);
+    --pen-ochre:#D9B25C;
     --caution:#C9A758;
     --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -14px rgba(0,0,0,.7);
   }
@@ -48,6 +50,7 @@ STYLE = r'''<style>
   --pen-blue:#82ACD8; --pen-blue-fill:rgba(130,172,216,.13);
   --pen-red:#DD9078; --pen-red-fill:rgba(221,144,120,.16);
   --pen-teal:#79C2AB; --pen-teal-fill:rgba(121,194,171,.13);
+  --pen-ochre:#D9B25C;
   --caution:#C9A758;
   --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -14px rgba(0,0,0,.7);
 }
@@ -78,6 +81,7 @@ h1 em{font-style:italic; color:var(--ink-2)}
 .lg i{width:22px; height:0; border-top-width:2px; border-top-style:solid; display:block; flex:none}
 .lg.blue i{border-color:var(--pen-blue)} .lg.red i{border-color:var(--pen-red)}
 .lg.teal i{border-color:var(--pen-teal)}
+.lg.ochre i{border-color:var(--pen-ochre); border-top-width:1px}
 .lg.dash i{border-top-style:dashed} .lg.dot i{border-top-style:dotted; border-top-width:3px}
 .lg.fact i{border-color:var(--ink); border-top-width:3px}
 svg.plot{width:100%; height:auto; display:block; overflow:visible}
@@ -99,6 +103,7 @@ svg.plot text{font-family:"IBM Plex Mono",ui-monospace,monospace; fill:var(--mut
 .tile .d{font-size:12px; color:var(--muted); margin-top:1px; line-height:1.45}
 .tile.red .v{color:var(--pen-red)} .tile.blue .v{color:var(--pen-blue)}
 .tile.teal .v{color:var(--pen-teal)}
+.tile.ochre .v{color:var(--pen-ochre)}
 .tile.none .v{font-size:17px; color:var(--caution)}
 .tiles > .tile:last-child{grid-column:1/-1}
 
@@ -244,6 +249,8 @@ const cdfNormal = x => Phi((x-CASE.bottomUp.mu)/CASE.bottomUp.sd);
 
 /* ---------- the parametric instrument, if the case carries one ---------- */
 const PARAM = CASE.parametric || [];
+/* the no-method family, if the case carries one: many thin lognormals, one per bare run; never pooled */
+const NOMETH = CASE.nomethod || [];
 const pdfParam = (r,x) => x<=0 ? 0 :
   Math.exp(-Math.pow(Math.log(x)-Math.log(r.median),2)/(2*r.sigma*r.sigma))
   /(x*r.sigma*Math.sqrt(2*Math.PI));
@@ -254,7 +261,7 @@ const LOG_RATIO_THRESHOLD = 4;
 const WINDOW_PD = 100;               /* vertical unit of the density panel: chance per this window */
 const medOutside = r => r.lognormal ? r.lognormal.median
   : (r.q.find(([x,p]) => p >= 0.5) || r.q[r.q.length-1])[0];
-const MEDIANS = [CASE.bottomUp.mu, ...CASE.outside.map(medOutside), ...PARAM.map(r=>r.median)];
+const MEDIANS = [CASE.bottomUp.mu, ...CASE.outside.map(medOutside), ...PARAM.map(r=>r.median), ...NOMETH.map(r=>r.median)];
 const MED_RATIO = Math.max(...MEDIANS)/Math.min(...MEDIANS);
 const LOGON = MED_RATIO > LOG_RATIO_THRESHOLD;
 
@@ -402,6 +409,22 @@ PARAM.forEach((r,i)=>{
 });
 if(paramClipped) svg += `<text x="${M.l+6}" y="${DEN_TOP+10}" font-size="9.5" fill="var(--pen-teal)">parametric — off this density scale; drawn in full on the log panel below</text>`;
 
+/* ---------- the no-method family ---------- */
+/* One thin curve per bare run, drawn under the standing instruments' scale and
+   never pooled: the family is the reading, a pooled curve would hide its spread. */
+NOMETH.forEach(r=>{
+  const lo = Math.max(0.5, r.median*Math.exp(-3.4*r.sigma));
+  const hi = Math.min(XMAX, r.median*Math.exp(3.4*r.sigma));
+  const dpts=[], cpts=[], N=240;
+  for(let j=0;j<=N;j++){
+    const x = lo*Math.pow(hi/lo, j/N);
+    dpts.push([x, pdfParam(r,x)]); cpts.push([x, cdfParam(r,x)]);
+  }
+  const dp = dpts.map(([x,d],j)=>`${j?"L":"M"} ${X(x).toFixed(1)} ${Math.max(DEN_TOP,Yd(d)).toFixed(1)}`).join(" ");
+  svg += `<path d="${dp}" fill="none" stroke="var(--pen-ochre)" stroke-width="0.9" opacity=".75" stroke-linejoin="round"/>`;
+  svg += `<path d="${cpath(cpts)}" fill="none" stroke="var(--pen-ochre)" stroke-width="0.9" opacity=".75" stroke-linejoin="round"/>`;
+});
+
 /* ---------- the raw table sum ---------- */
 if(CASE.rawSum){
   svg += `<line x1="${X(CASE.rawSum)}" y1="${DEN_BOT}" x2="${X(CASE.rawSum)}" y2="${DEN_BOT-24}"
@@ -466,6 +489,11 @@ if(LOGON){
     lcurves.push({pts: sample(x=>pdfParam(r,x), Math.max(LXMIN,r.median*Math.exp(-3.4*r.sigma)),
                               Math.min(LXMAX,r.median*Math.exp(3.4*r.sigma))),
                   pen:"--pen-teal", w:1.9, dash:r.dash||null, label:r.id, med:r.median});
+  });
+  NOMETH.forEach(r=>{
+    lcurves.push({pts: sample(x=>pdfParam(r,x), Math.max(LXMIN,r.median*Math.exp(-3.4*r.sigma)),
+                              Math.min(LXMAX,r.median*Math.exp(3.4*r.sigma))),
+                  pen:"--pen-ochre", w:0.9, dash:null});
   });
   const LMAX = Math.max(...lcurves.map(c=>Math.max(...c.pts.map(p=>p[1]))));
   const Yl = g => LOG_BOT - (g/LMAX)*(LOG_BOT-LOG_TOP);
@@ -537,6 +565,11 @@ function move(evt){
   CASE.outside.forEach(r => lines.push([`${r.id}: ${over(cdfOutside(r, v))}`, "var(--pen-blue)"]));
   lines.push([`bottom-up: ${over(cdfNormal(v))}`, "var(--pen-red)"]);
   PARAM.forEach(r => lines.push([`${r.id}: ${over(cdfParam(r, v))}`, "var(--pen-teal)"]));
+  if(NOMETH.length){
+    const ps = NOMETH.map(r => 1-cdfParam(r, v)).sort((a,b)=>a-b);
+    const md = ps[Math.floor(ps.length/2)], k = ps.filter(p=>p>0.5).length;
+    lines.push([`no-method, ${NOMETH.length} runs: median ${Math.round(100*md)}% over · ${k} of ${NOMETH.length} put it above`, "var(--pen-ochre)"]);
+  }
   if(CASE.fact) lines.push([`outcome: ${(v/CASE.fact.value).toFixed(2)}\u00d7`, "var(--ink-2)"]);
 
   curT.textContent = "";

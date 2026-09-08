@@ -3,6 +3,7 @@
 import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import report_static as st
+NOMETH = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "run49_raw", "curves_pd.json"), encoding="utf-8"))
 
 H = 8.0
 def pd(h): return round(h / H)
@@ -36,13 +37,15 @@ d = {
    {"id": "RC46-1", "dash": "", "floor": pd(rc1[0.1] ** 2 / rc1[0.5]), "q": [[pd(v), q] for q, v in rc1.items()], "tailDrawn": False},
    {"id": "RC46-2", "dash": "6 4", "floor": pd(rc2[0.1] ** 2 / rc2[0.5]), "q": [[pd(v), q] for q, v in rc2.items()], "tailDrawn": False}
   ],
+  "nomethod": NOMETH,
   "axisLabel": "NET WORKING TIME \u2014 PERSON-DAYS OF 8 TASK HOURS",
   "legend": [
    {"cls": "blue", "text": "Outside view RC46-1 &mdash; P50 %d (380 person-months at 168 recorded h)" % pd(rc1[0.5])},
    {"cls": "blue dash", "text": "Outside view RC46-2 &mdash; P50 %d (215 person-months at 152 charged h)" % pd(rc2[0.5])},
-   {"cls": "red", "text": "Bottom-up, calibrated &mdash; P50 %d" % pd(cal_c)}
+   {"cls": "red", "text": "Bottom-up, calibrated &mdash; P50 %d" % pd(cal_c)},
+   {"cls": "ochre", "text": "No method &mdash; ten bare runs, one thin curve each, medians 2 730&ndash;5 250 (run 49)"}
   ],
-  "hint": "<b>Two views of the same three distributions.</b> Above, how likely each answer is &mdash; all curves on one scale, each enclosing the same area, so the bottom-up looks taller only because its mass is packed into a narrower range. Below, the same thing accumulated: <b>the chance of coming in at or under any figure</b>, which is what a number gets chosen against.<br><br><b>Move the pointer</b> and a read line crosses both panels, reporting the chance of exceeding that figure under each instrument. The two outside-view curves are <b>one sensor run twice on identical input</b>; each declared its own person-month and both are placed by the house factor of 0.75 task hours per recorded hour, which both declarations contain. The calibrated bottom-up sits at about P63 of one reading and above P90 of the other &mdash; the diagnosis names that contradiction and does not resolve it. The bottom-up's width is the rate table's optimistic-to-pessimistic spread under a declared &rho; = 0.5, scaled by the calibration; it is a convention, not a measurement, and three times narrower than either class reading. Neither reading gave a floor; below P10 each curve is extended to P10&sup2;/P50 &mdash; the same ratio as P10 to P50 &mdash; as a drawing convention, so that the tenth of the mass below P10 is not drawn as a spike. The density panel&rsquo;s vertical axis reads as <b>chance per 100-pd window</b>; the exact mass is always the cumulative panel."
+  "hint": "<b>Two views of the same three distributions.</b> Above, how likely each answer is &mdash; all curves on one scale, each enclosing the same area, so the bottom-up looks taller only because its mass is packed into a narrower range. Below, the same thing accumulated: <b>the chance of coming in at or under any figure</b>, which is what a number gets chosen against.<br><br><b>Move the pointer</b> and a read line crosses both panels, reporting the chance of exceeding that figure under each instrument. The two outside-view curves are <b>one sensor run twice on identical input</b>; each declared its own person-month and both are placed by the house factor of 0.75 task hours per recorded hour, which both declarations contain. The calibrated bottom-up sits at about P63 of one reading and above P90 of the other &mdash; the diagnosis names that contradiction and does not resolve it. The bottom-up's width is the rate table's optimistic-to-pessimistic spread under a declared &rho; = 0.5, scaled by the calibration; it is a convention, not a measurement, and three times narrower than either class reading. Neither reading gave a floor; below P10 each curve is extended to P10&sup2;/P50 &mdash; the same ratio as P10 to P50 &mdash; as a drawing convention, so that the tenth of the mass below P10 is not drawn as a spike. <b>The ten thin ochre curves</b> are the no-method baseline (run 49): the same document and assumption log handed to a bare agent with no method, ten times, each run's own P10&ndash;P90 fitted as a lognormal. They are drawn as a family and never pooled, because their spread between runs (&times;1.9 on the median) is the reading; their mean sits at &times;0.75 of the raw chain and &times;0.49 of the calibrated centre, and inside the lower class reading. The density panel&rsquo;s vertical axis reads as <b>chance per 100-pd window</b>; the exact mass is always the cumulative panel."
  },
  "tiles": [
   {"cls": "red", "k": "Centre", "v": "%d" % pd(cal_c), "unit": "pd", "d": "57 600 net task hours &asymp; 503 staffed person-months. The table-priced assembly of %d &times; the gap-blind Step C chain, <b>&times;1.51</b> &mdash; the figure comparable with the outside view." % pd(raw)},
@@ -50,6 +53,7 @@ d = {
   {"cls": "", "k": "Calibration spread", "v": "%d&ndash;%d" % (pd(cal_lo), pd(cal_hi)), "unit": "pd", "d": "A different quantity, and <b>not percentiles</b>: the centre at the low and high ends of the Step C rates. 48 100 &ndash; 74 100 net task hours."},
   {"cls": "none", "k": "Reserve", "v": "Unresolved", "unit": "", "d": "Two P90s of one sensor that differ &times;2: %d and %d pd. The centre sits at ~P63 of one and <b>above P90</b> of the other. Nothing averaged." % (pd(rc2[0.9]), pd(rc1[0.9]))},
   {"cls": "", "k": "Repeat spread", "v": "&times;1.0026", "unit": "", "d": "Two independent size classifications, 85% class agreement, priced from the same table: 38 069 and 38 168 net task hours. Not a measure of precision, the diagnosis says: a symmetric cancellation is the likelier reading."},
+  {"cls": "ochre", "k": "No method &middot; 10 runs", "v": "2 730&ndash;5 250", "unit": "pd", "d": "Medians of ten bare runs on the same text, mean 3 553 pd (169 person-months at 168 h). Spread &times;1.92 between runs, CV 25.5% &mdash; twice FaxRxTx's; each run declares a &times;2.2 corridor of its own. Sits at &times;0.75 of the raw chain."},
   {"cls": "blue", "k": "Outside view &middot; P50", "v": "%d &middot; %d" % (pd(rc2[0.5]), pd(rc1[0.5])), "unit": "pd", "d": "Two readings of one sensor, in net working time: 215 and 380 person-months in their own declared units. <b>&times;1.95 apart</b> after conversion, &times;1.77 before it &mdash; units explain 4&ndash;7% of the gap."}
  ],
  "sections": []
@@ -68,6 +72,10 @@ DIV = """
   <div class="row"><span class="idx">one way</span><div class="body">
     <div class="t">Calibration points up, so it cannot meet both readings</div>
     <div class="x">Every Step C correction is upward &mdash; the bottom-up's known systematic is omission. Against the higher reading the gap is explained 100% with a +12 900 h overshoot. Against the lower, <b>explained share 0%</b> and the gap widens &times;2.43. The class-vs-class gap is addressed by no rate at all. Stated in those words rather than closed by adjustment.</div>
+  </div></div>
+  <div class="row"><span class="idx">no method</span><div class="body">
+    <div class="t">Ten bare runs land below the chain, not above it <span class="chip">&times;0.75</span></div>
+    <div class="x">On FaxRxTx the no-method baseline sat &times;1.78 <b>above</b> the chain; here its mean is &times;0.75 <b>below</b> the raw chain and &times;0.49 below the calibrated centre, inside the lower class reading. The ten medians spread &times;1.92 (CV 25.5%, twice the FaxRxTx batches), and every run declares a corridor (&times;2.2) wider than that spread &mdash; the opposite of run 43's finding. Six of ten corridors cover the raw chain; two of ten cover the calibrated centre. One batch is one draw of the level (run 43 moved &times;1.145 in a day); a second batch is scheduled.</div>
   </div></div>
   <div class="row"><span class="idx">level</span><div class="body">
     <div class="t">The rate table's level <span class="chip caution">round requested</span></div>
@@ -136,7 +144,7 @@ d["sections"] = [
  {"id": "two-ways", "title": "Variant readings", "count": "22, all unasked", "lead": "Pinned before any run and consumed by every run. <b>Ask the client; if no answer comes, assume; declare the assumption; and when runs are compared afterwards, exclude the differences the open question causes.</b> All stand unasked here, because this document has no client behind it.", "html": st.QS, "src": "examples/SAS/open_questions.md"},
  {"id": "defaults", "title": "Defaults", "count": "8", "lead": "Each is a fork the document leaves open and the estimate had to close. <b>The reading taken is inside the centre; the reading refused is not.</b>", "html": st.DEFAULTS, "src": "examples/SAS/assumptions.md &middot; technology_declaration.md"},
  {"id": "not-in-number", "title": "Estimate gaps", "count": "6", "lead": "Not oversights. Each is a thing the chain refused to price, with the reason it refused.", "html": NOT_IN, "src": "examples/SAS/estimate_SAS_2026-09-08.md"},
- {"id": "provenance", "title": "Where every number came from", "count": "6 roles", "lead": "Each sensor is an engine with a version, stamped on its own output. They are hired for what they are <b>forbidden to see</b>, not for autonomy.", "html": st.PROVENANCE, "src": "PIPELINE.md &middot; docs/instrument.md"},
+ {"id": "provenance", "title": "Where every number came from", "count": "7 roles", "lead": "Each sensor is an engine with a version, stamped on its own output. They are hired for what they are <b>forbidden to see</b>, not for autonomy.", "html": st.PROVENANCE, "src": "PIPELINE.md &middot; docs/instrument.md"},
  {"id": "methodology", "title": "Methodology", "count": "the documents", "lead": "This report is one output of a method that is written down. Nothing below is specific to this case; every file states what it is for, what it may not do, and what would change it.", "html": st.METHODOLOGY, "src": "the report format: tools/report/build_report.py"}
 ]
 
