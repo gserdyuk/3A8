@@ -1,0 +1,17 @@
+2a890e8f235b14cde95be6496351dca8  requirements_pinned.md     (N = 153, LF form)
+db9fdc8ff77844f0b9bbb3881d292587  requirements_product.md    (N = 146, LF form)
+e12b2ab136d0eacaffbab0d930a1a1b9  requirements_work.md       (N =   7, LF form)
+2540cfb1fca7a90a9f9c5cfb937718f1  assumptions_product.md     (v1, LF form)
+
+Computed 2026-09-08 after the three lists were closed. Approved by the author 2026-09-08; the
+case is pinned by the commit that carries this file. Earlier draft md5 of assumptions_product.md:
+2fad45c3d2f554581ed5b8be496cf7d7 (wording of the status line only; no reading changed). If any
+entry changes from here on, this file is recomputed and the old values are kept. Recompute with:
+
+    tr -d '\r' < requirements_pinned.md | md5sum
+
+Sources of the extraction: rfp_text_raw.txt (pypdf extraction of Graduate_Work_-_RFP.pdf).
+The split that produced the two halves: requirements_split.md.
+Two declared processing orders: order A (the RFP's own order, I -> G -> P -> L -> D -> NFR) and
+order B (the exact reverse of A, the adversarial case).
+No FACT.md exists; whether a comparison figure exists at all is case_profile.md section 5.
