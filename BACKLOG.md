@@ -78,6 +78,19 @@ carries exit criterion **v2.0** (§6c) replacing v1.0. Ordered; 1 and 2 are inde
       If it does, it turns `syn`'s single point into a corridor and makes gate test 2 scoreable at
       the width the market actually has. If it does not, `syn` still gives the first reading.
 
+## Resumed 2026-09-08 — case 3, `examples/SAS`
+
+- [ ] **A sensor reply longer than the harness relays whole loses its head, and the recovery is gone.**
+      Run 44: both `Hotyn-M 1.1` replies (~55 KB each) arrived without §1–§3; `SendMessage` is disabled
+      in the session, so run 29's verbatim re-emission cannot be requested, and a re-run is not a
+      recovery. Options, none taken yet: a sensor that writes its reply to a file (needs `Write`, which
+      breaks the "cannot read a sibling's artefact" isolation unless scoped to one path); a smaller
+      input per launch (the product list cannot be split — the skeleton reads it as a set); or
+      §-ordered emission with the trace first and the model last, which is a format change and a
+      version bump. Until one is chosen, every long-reply sensor run is checked for its first line and
+      the loss recorded in the raw file's header.
+- [ ] **Case 3 has no outcome** (author, 2026-09-08). It scores gate tests 1 and 2 only.
+
 ## Paused 2026-08-28 — where to pick it up
 
 The project is set aside for a while. Everything needed to restart cold is written down and nothing
