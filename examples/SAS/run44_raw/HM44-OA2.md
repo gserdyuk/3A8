@@ -1,10 +1,195 @@
 <!-- ORCHESTRATOR HEADER, added at transcription 2026-09-08. Not part of the sensor's reply.
 run: 44 · reading: HM44-OA2 · engine (sensor's own stamp): Hotyn-M 1.1 · model (launch record): the harness's
 `opus` alias, i.e. Claude Opus 5 · order A · prompt identical to HM44-OA1 · tool_uses: 0.
-RECEIVED TRUNCATED AT THE HEAD: the reply reached the orchestrator inside the pass-1 accretion row for P-17.
-Sections 1 (contamination check), 2 (skeleton log) and pass 1 of section 3 up to P-17 are permanently absent
-from this record, for the reason stated in HM44-OA1's header. What follows is the reply exactly as received,
-from its first surviving fragment. -->
+PROVENANCE OF THIS TEXT: the reply reached the orchestrator truncated at the head (inside the pass-1 accretion
+row for P-17). The complete text below was recovered later the same day from the harness's own transcript of
+the agent (the task output file), which held the full assistant message; it is the same text the sensor
+emitted, not a re-emission and not a re-run. HM44-OA1's transcript file was empty and could not be recovered
+the same way. -->
+
+# SAS — product model (`Hotyn-M 1.1`)
+
+## 1. Contamination check
+
+**Clean, with one quarantine.** The pasted input contains a pinned obligation list (N = 146), a declared processing order (order A), and an assumption projection. It contains no effort figure, no budget, no deadline, no duration, no team size, no cost anchor and no pre-existing tree. The harness prepended ambient repository information (a git status line, a branch name, recent commit subjects, a memory index, a working-directory path). **That material was quarantined: not read as input, not acted on, not used in any judgement here.** Per the quarantine instruction it is reported rather than treated as a stop condition. No repository file was read. The run proceeds on the pasted input alone.
+
+---
+
+## 2. Skeleton log
+
+Read as a set, not a sequence. Nothing attached; no coverage assigned. All nodes `posited`; all `implied` at this stage.
+
+| id | name | intended scope |
+|---|---|---|
+| S-0 | SAS member application solution | root of the modelled artefact |
+| S-1 | Platform & architecture | the shared technical substrate the three modules stand on |
+| S-1.1 | Architecture & technical standards | composition, alignment, extensibility, standards, cloud-readiness |
+| S-1.2 | Data stores | transactional store, non-transactional read store, feed between them |
+| S-1.3 | Service & API layer | internal services and externally exposed APIs |
+| S-1.4 | Web client foundation | delivery channel, browser reach, accessibility |
+| S-1.5 | Operational design | availability, failover, backup/recovery, security, performance targets |
+| S-2 | Identity & access | who the user is, what they may do |
+| S-2.1 | Company & user administration | company admin, user accounts, administrative scopes |
+| S-2.2 | Roles & permissions | role catalogue, role/task assignment, permission evaluation |
+| S-2.3 | Authentication & IdM integration | claims, single sign-on, password reset initiation |
+| S-2.4 | Role-driven UI presentation | what the interface shows per role |
+| S-3 | Shared record services | behaviour common to GIN and LN records |
+| S-3.1 | Record workflow & approval | submit, review, approve/reject, verification, action lists |
+| S-3.2 | Record locking | concurrent-edit exclusion |
+| S-3.3 | Validation & business rules | rule evaluation against X-Customer Standards |
+| S-3.4 | Record status | record status model, draft, editability by status |
+| S-3.5 | Record ownership | who owns a record and transfer of it |
+| S-3.6 | Duplicate detection | alerts and duplicate resolution |
+| S-3.7 | Record list & view framework | list, filter, sort, selection, bulk action |
+| S-3.8 | Hierarchy framework | hierarchy model, editing, impact, export |
+| S-4 | Identifier management | prefixes, GINs, LNs as numbers |
+| S-4.1 | Prefix registry & capacity | licensed prefix data and capacity reporting |
+| S-4.2 | Identifier assignment | rules, pools, auto/manual, check digit, preferences |
+| S-4.3 | Identifier status lifecycle | reservation, status, retirement, reuse, back-references |
+| S-5 | Product (GIN) module | what is specific to product records |
+| S-5.1 | GIN record management | GIN creation, attributes, images |
+| S-5.2 | GIN hierarchy | each/case/pallet levels and their rules |
+| S-5.3 | Barcodes | symbology generation, view, export/print |
+| S-5.4 | Product information sheets | sheet generation and layouts |
+| S-5.5 | Digital GIN | embeddable representation |
+| S-6 | Location (LN) module | what is specific to location records |
+| S-6.1 | LN record management | LN creation and attributes |
+| S-6.2 | LN hierarchy | depth and organisation rules for locations |
+| S-6.3 | Location verification | annual verification recording |
+| S-7 | Access Data module | the subscribe side: search, view, output |
+| S-7.1 | Search & discovery | search entry points and filters |
+| S-7.2 | Published record viewing | rendering of what a consumer is entitled to |
+| S-7.3 | Consumer access requests | requests for records and for group membership |
+| S-7.4 | Public (non-member) access | anonymous, limited use |
+| S-7.5 | Access Data output | print and export from the module |
+| S-8 | Publish & subscribe | the owner side of sharing and the entitlement it creates |
+| S-8.1 | Publication by data owner | what is published and at what scope |
+| S-8.2 | Share targets & groups | individuals, user groups, controlled groups, public |
+| S-8.3 | View request approval | owner decision on consumer requests |
+| S-8.4 | Subscription entitlement | what a subscription grants |
+| S-9 | Import & export | record movement in and out |
+| S-9.1 | Format adapters | one adapter per file format |
+| S-9.2 | Import processing | ingestion, validation, staging, update modes |
+| S-9.3 | Export processing | extraction and production of output |
+| S-10 | Reporting & dashboard | what the user is shown and can generate |
+| S-10.1 | Dashboard | start screen panels |
+| S-10.2 | Report engine | definitions, scheduling, history, audit reports |
+| S-11 | Notifications & communication | messages out of the system and between users |
+| S-11.1 | Notification engine & channels | composition, routing, email/SMS/onscreen |
+| S-11.2 | Notification types | global, member-specific, member-to-member |
+| S-11.3 | Communication preferences | user choice of method and frequency |
+| S-11.4 | Application feedback | feedback capture and routing |
+| S-12 | Help & training | in-application guidance |
+| S-12.1 | Contextual help | help surfaced in context |
+| S-12.2 | Help content authoring | editing and industry variants |
+| S-12.3 | Training links | links out to training material |
+| S-13 | Configuration & reference data | what X-Customer maintains rather than codes |
+| S-13.1 | Industry configuration | per-industry attribute, rule and content variation |
+| S-13.2 | System configuration | rule sets and system-wide settings |
+| S-14 | Audit, logging & monitoring | the record of what happened and alerts when it goes wrong |
+| S-14.1 | Audit trail | activity record |
+| S-14.2 | Application logging | troubleshooting and process verification |
+| S-14.3 | Monitoring & event alerts | error, failure and failover alerting |
+
+**Skeleton size: 69 nodes.** Stop condition met: every requirement in the pinned list has at least one plausible attachment point.
+
+---
+
+## 3. Accretion log
+
+Order A, one row per requirement per pass. `amb` = flagged as apparently holding more than one obligation (flagged and proceeded; not resolved).
+
+### Pass 1
+
+| req | pass | verdict | covering node(s) | added (parent) | missing part (partial) | reason | amb |
+|---|---|---|---|---|---|---|---|
+| I-1 | 1 | deferred | — | — | — | roll-up over module, sharing and delivery structure that no node yet realises; retry next pass | |
+| I-2 | 1 | not covered | A-001, A-002 | A-001 Single-platform module composition (S-1.1); A-002 Unified domain data model (S-1.2) | — | organisation statement: one platform, one data model, three modules | ✔ |
+| I-3 | 1 | not covered | A-003 | A-003 Identifier format & check-digit rules (S-4.2) | — | the digit-length, prefix and check-digit rules are a stated rule set | |
+| I-4 | 1 | not covered | A-004, A-005 | A-004 Enterprise-architecture alignment & maintainability design (S-1.1); A-005 Scalability & growth design (S-1.1) | — | property the design must hold, per assumption P3 | ✔ |
+| I-5 | 1 | not covered | A-006 | A-006 Extensibility design — further data types, field-level sharing (S-1.1) | — | accommodation only; the expansion itself is out of scope (P1) | |
+| I-6 | 1 | not covered | A-007, A-008 | A-007 Cross-module permission evaluation (S-2.2); A-008 Common record service layer (S-3) | — | one authorisation mechanism across modules, one shared service layer (P3) | |
+| I-7 | 1 | not covered | A-009, A-010 | A-009 Configurable validation rule set (S-13.2); A-010 Validation service on all record operations (S-3.3) | — | rules as configuration, validation as behaviour (P3) | |
+| I-8 | 1 | deferred | — | — | — | roll-up over Access Data functions not yet realised; retry next pass | |
+| I-9 | 1 | not covered | A-011, A-012 | A-011 Subscription entitlement model (S-8.4); A-012 Entitlement enforcement on view and export (S-7) | — | the subscription defines scope; something must enforce it | |
+| I-10 | 1 | not covered | A-013 | A-013 Anonymous public search, limited set, no export (S-7.4) | — | anonymous case of the same module (P3) | |
+| I-11 | 1 | deferred | — | — | — | needs the access-path structure of D-1/D-4 before the data set can be placed against it | |
+| G-1 | 1 | not covered | A-014, A-015 | A-014 Role assignment to users (S-2.2); A-015 Task assignment to users (S-2.2) | — | "roles and tasks" are two assignments; tasks are workflow responsibilities (P3) | ✔ |
+| G-1.1 | 1 | not covered | A-016, A-017 | A-016 Company administrator designation (S-2.1); A-017 User account administration in a company (S-2.1) | — | designation and the administration it enables are distinct | |
+| G-1.2 | 1 | partially covered | A-014, A-015, A-018 | A-018 Company-scoped administration rights (S-2.1) | the restriction of the admin's reach to their own company | assignment mechanism already exists; its scoping did not | |
+| G-1.3 | 1 | not covered | A-019 | A-019 Configurable role catalogue with the four named roles (S-2.2) | — | "other roles may be added" = configurable set (P3) | |
+| G-1.4 | 1 | not covered | A-020 | A-020 X-Customer-level Super-User scope (S-2.2) | — | a scope above any single company | |
+| G-2 | 1 | not covered | A-021 | A-021 Role-driven UI composition (S-2.4) | — | interface composed from role | |
+| G-3 | 1 | not covered | A-022 | A-022 Record approval workflow (S-3.1) | — | the workflow itself | |
+| G-3.1 | 1 | partially covered | A-014, A-023 | A-023 Approval rule configuration per company (S-3.1) | the rules for record approval | role designation is A-014; the rules were nowhere | |
+| G-3.2 | 1 | not covered | A-024, A-025 | A-024 Approval-status change notification trigger (S-3.1); A-025 Notification delivery engine (S-11.1) | — | a status change must raise an event and something must deliver it | |
+| G-3.3 | 1 | not covered | A-026 | A-026 Action queue, "records requiring my action" (S-3.1) | — | finding one's own pending work | |
+| G-4 | 1 | not covered | A-027, A-028 | A-027 Password reset initiation, self/admin/help desk, executed by IdM (S-2.3); A-028 Help-desk cross-company user-support scope (S-2.1) | — | three initiators, one of which is not a company user and needs its own scope | |
+| G-5 | 1 | not covered | A-029 | A-029 Record edit lock (S-3.2) | — | single-writer exclusion | |
+| G-6 | 1 | not covered | A-030 | A-030 User dashboard with notification, report and prefix panels (S-10.1) | — | "and other information" names nothing and adds nothing (P3) | |
+| G-6.1 | 1 | not covered | A-031 | A-031 Prefix capacity counter (S-4.1) | — | used vs available indicators against the licensed prefix | |
+| G-7 | 1 | not covered | A-032 | A-032 Report generation service (S-10.2) | — | the generation capability | |
+| G-7.1 | 1 | partially covered | A-032, A-033, A-034, A-035 | A-033 Report definition & customisation (S-10.2); A-034 Report scheduling (S-10.2); A-035 Change-activity report set (S-10.2) | customisation, scheduling, and the adds/changes/deletes definitions | running and viewing existed; the rest did not | ✔ |
+| G-7.2 | 1 | not covered | A-036 | A-036 API usage reports from the API-management analytics feed (S-10.2) | — | figures are read from 3scale, not produced here (P2) | |
+| G-7.3 | 1 | not covered | A-037 | A-037 Report run history (S-10.2) | — | history of runs is its own store | |
+| G-7.4 | 1 | not covered | A-038 | A-038 Audit report set over the audit trail (S-10.2) | — | reports whose source is the audit trail | |
+| G-8 | 1 | partially covered | A-025, A-039, A-040, A-041 | A-039 Email channel adapter (S-11.1); A-040 SMS channel adapter (S-11.1); A-041 Onscreen notification centre (S-11.1) | the three delivery channels | the engine existed from G-3.2; the channels did not | |
+| G-8.1 | 1 | not covered | A-042 | A-042 Global broadcast notifications (S-11.2) | — | X-Customer to all users | |
+| G-8.2 | 1 | not covered | A-043 | A-043 Member subscription to record-event notifications (S-11.2) | — | user opts in to record events | |
+| G-8.3 | 1 | not covered | A-044 | A-044 Member-to-member and member-to-X-Customer messages, incl. record challenge (S-11.2) | — | two directions stated in one entry | ✔ |
+| G-8.5 | 1 | not covered | A-045 | A-045 User communication preferences (S-11.3) | — | method and frequency held per user | |
+| G-9 | 1 | not covered | A-046 | A-046 Feedback submission and routing to a configured address (S-11.4) | — | delivered by email to one address (P3) | |
+| G-10 | 1 | not covered | A-047 | A-047 Contextual help display (S-12.1) | — | help surfaced in context | |
+| G-10.1 | 1 | not covered | A-048, A-049 | A-048 Industry-variant help content (S-12.2); A-049 Industry configuration store (S-13.1) | — | the variant content and the industry dimension it is keyed by | |
+| G-10.2 | 1 | not covered | A-050 | A-050 In-application help content editor for non-technical staff (S-12.2) | — | authoring without technical resources | |
+| G-11 | 1 | not covered | A-051 | A-051 Configurable training link set (S-12.3) | — | links only; training material is out of scope (P1) | |
+| G-12 | 1 | not covered | A-052, A-053 | A-052 Record import service (S-9.2); A-053 Record export service (S-9.3) | — | the two directions | |
+| G-12.1 | 1 | not covered | A-054–A-060 | A-054 Excel adapter, A-055 CSV, A-056 Numbers, A-057 XML, A-058 Tab-delimited, A-059 IDoc (all S-9.1); A-060 API import/export path (S-1.3) | — | six formats, each its own adapter, plus the API (P3) | ✔ |
+| G-12.2 | 1 | not covered | A-061 | A-061 PC/Mac encoding and line-ending handling (S-9.1) | — | variants inside the adapters, not further formats (P3); no node yet handled them | |
+| G-12.3 | 1 | not covered | A-062 | A-062 Record selection for import/export, single and multiple (S-9) | — | selection is distinct from the transfer | |
+| G-12.4 | 1 | partially covered | A-010, A-063 | A-063 Import validation step (S-9.2) | validation applied at the point of import | the rule evaluation existed; its application on import did not | |
+| G-13 | 1 | not covered | A-064, A-065 | A-064 Publication service (S-8.1); A-065 Subscription service (S-8.4) | — | the two sides of the stated model | |
+| G-13.1 | 1 | not covered | A-066 | A-066 Publication at any hierarchy level (S-8.1) | — | level-independent publication | |
+| G-13.2 | 1 | not covered | A-067 | A-067 Basic/full attribute scope of publication (S-8.1) | — | the scope choice | |
+| G-13.3 | 1 | not covered | A-068 | A-068 Bulk publication for a set of records (S-8.1) | — | group publication | |
+| G-13.4 | 1 | not covered | A-069, A-070, A-071 | A-069 Share targets: individual, group, controlled group, public (S-8.2); A-070 User-defined sharing groups (S-8.2); A-071 X-Customer-controlled groups registry & membership (S-8.2) | — | four targets, two of which are group constructs that must exist | ✔ |
+| G-13.5 | 1 | partially covered | A-011, A-065, A-072 | A-072 Published-record view, basic/full (S-7.2) | the viewing itself | entitlement existed; nothing rendered the data | |
+| G-13.6 | 1 | not covered | A-073 | A-073 View-access request by consumer (S-7.3) | — | the request path | |
+| G-13.7 | 1 | not covered | A-074 | A-074 View-request approval/rejection by owner (S-8.3) | — | the owner decision | |
+| P-1 | 1 | partially covered | A-075, A-076, A-077, A-078, A-052, A-049 | A-075 GIN record creation, individual (S-5.1); A-076 GIN creation wizard (S-5.1); A-077 GIN record cloning (S-5.1); A-078 GIN attribute model, required/optional, industry-varied (S-5.1) | individual creation, wizard, cloning, the attribute model | the import path and the industry dimension existed; the GIN-specific creation and attributes did not | ✔ |
+| P-1.1 | 1 | not covered | A-079 | A-079 Draft state for incomplete records (S-3.4) | — | shared node: draft is identical for both record kinds | |
+| P-2 | 1 | partially covered | A-003, A-080, A-081, A-082 | A-080 Identifier assignment engine, auto/manual, at any point (S-4.2); A-081 Automatic check-digit computation (S-4.2); A-082 GIN pool within licensed prefix (S-4.2) | the assignment act, the check-digit computation, the GIN pool | I-3 gave the rules only | ✔ |
+| P-2.1 | 1 | not covered | A-083 | A-083 GIN assignment-mode preference (S-4.2) | — | the stored choice | |
+| P-2.2 | 1 | not covered | A-084 | A-084 Identifier reservation, held out from auto-assign (S-4.3) | — | shared node: reservation is identical for GIN and LN | |
+| P-3 | 1 | covered | A-083 | — | — | P-3 and P-2.1 state the same obligation; one node realises both ids, no addition | |
+| P-4 | 1 | not covered | A-085 | A-085 Record edit before finalisation (S-3) | — | shared node: pre-commit editing is common to both kinds | |
+| P-5 | 1 | partially covered | A-085, A-052, A-086 | A-086 Update of existing records via import (S-9.2) | update-by-import semantics | manual editing and import ingestion existed; updating existing records by import did not | |
+| P-5.1 | 1 | not covered | A-087 | A-087 Status-based attribute editability rules (S-3.4) | — | stated for product records only; no LN twin in the list | |
+| P-5.2 | 1 | not covered | A-088 | A-088 Identifier-change back-reference (S-4.3) | — | shared node: the same back-reference serves P-5.2 and L-5.1 | |
+| P-6 | 1 | not covered | A-089 | A-089 Product image upload and attachment (S-5.1) | — | images are product-only in the list | |
+| P-7 | 1 | not covered | A-090 | A-090 Record list view with filter and sort (S-3.7) | — | shared node across both record kinds | |
+| P-7.1 | 1 | not covered | A-091 | A-091 Single-record selection and action (S-3.7) | — | shared node | |
+| P-7.2 | 1 | not covered | A-092 | A-092 Multi-record selection and bulk action (S-3.7) | — | shared node | |
+| P-8 | 1 | not covered | A-093 | A-093 GIN inventory view (S-5) | — | a view over identifiers, not records; per-kind | |
+| P-9 | 1 | not covered | A-094 | A-094 Duplicate review and resolution (S-3.6) | — | shared node | |
+| P-9.1 | 1 | not covered | A-095, A-096 | A-095 Duplicate alert during creation (S-3.6); A-096 Duplicate report over completed records (S-3.6) | — | two different moments stated in one entry | ✔ |
+| P-10 | 1 | not covered | A-097 | A-097 Record/identifier status view and management (S-3.4) | — | shared node | |
+| P-10.1 | 1 | not covered | A-098, A-099 | A-098 GIN status model, Reserved/In Use/For Reuse/Available (S-4.3); A-099 Record-status → identifier-status propagation (S-4.3) | — | the value set is per-kind; the propagation is shared | ✔ |
+| P-10.2 | 1 | not covered | A-100 | A-100 Record status model (S-3.4) | — | shared node | |
+| P-10.3 | 1 | partially covered | A-101, A-102, A-049 | A-101 Retirement and reuse dates (S-4.3); A-102 Reuse-interval rules by industry and product type (S-13.1) | the dates displayed and the rules that set them | the industry store existed; the reuse rules and dates did not | |
+| P-11 | 1 | partially covered | A-103, A-104, A-105 | A-103 Hierarchy model, manual create/edit/view (S-3.8); A-104 Visual drag-and-drop hierarchy editor (S-3.8); A-105 Hierarchy import path (S-9.2) | manual editing, the visual editor, the hierarchy import path | generic import existed; nothing carried hierarchy | |
+| P-11.1 | 1 | not covered | A-106 | A-106 GIN hierarchy level scheme — each, case, pallet (S-5.2) | — | pre-defined levels are per-kind (P3) | |
+| P-11.2 | 1 | partially covered | A-105, A-107 | A-107 Import modes: full record with hierarchy, or hierarchy-only (S-9.2) | the two import modes | the path existed, the mode distinction did not | |
+| P-11.3 | 1 | not covered | A-108 | A-108 Physical-fit check between adjacent levels, height and weight (S-5.2) | — | product-only rule | |
+| P-11.4 | 1 | not covered | A-109 | A-109 Item-level change during hierarchy creation (S-5.2) | — | item level exists only in the GIN scheme | |
+| P-11.5 | 1 | partially covered | A-110, A-025 | A-110 Hierarchy status-impact evaluation and notification (S-3.8) | the impact evaluation across the hierarchy | delivery existed; nothing decided that an impact occurred | |
+| P-12 | 1 | partially covered | A-053, A-111 | A-111 Hierarchy export and print layout (S-3.8) | the user-friendly hierarchy layout | record export existed; hierarchy shape did not | |
+| P-13 | 1 | not covered | A-112, A-113 | A-112 Barcode generation via barcode library, four symbologies, selectable sizes (S-5.3); A-113 Barcode preview (S-5.3) | — | generation and viewing are two obligations in one entry; library is used, not built (P2) | ✔ |
+| P-14 | 1 | not covered | A-114 | A-114 Barcode export and print as PNG and SVG (S-5.3) | — | image output distinct from generation | |
+| P-15 | 1 | not covered | A-115 | A-115 Product Information Sheet generate, save, export, print (S-5.4) | — | one artefact with four operations on it | ✔ |
+| P-15.1 | 1 | not covered | A-116 | A-116 Product sheet layout templates, selectable and editable (S-5.4) | — | templates are their own content | |
+| P-16 | 1 | not covered | A-117 | A-117 Digital GIN embeddable snippet, QR plus structured markup (S-5.5) | — | no resolver service behind it (P3) | |
+| P-17 | 1 | covered | A-064, A-072 | — | — | publication service plus the
 
 Access Data view already realise this; no addition |  |
 | P-18 | 1 | not covered | A-118 | A-118 Record ownership transfer (S-3.5) | — | shared node; transfer is identical for both kinds | |
@@ -705,7 +890,3 @@ Flagged and proceeded; not resolved, not split, not merged.
 - **Boundaries held, per P1.** No prefix-licensing workflow, no payment flow, no training module, no generic any-data-type engine, and no legacy-loading component appears. The structure did not need them; where it came close — I-1's "data related to prefixes", D-8, G-11, I-5 — the obligation was placed against capacity reporting and pool draw, an informational page, a link set, and an extensibility statement respectively.
 - **Two external exchanges are modelled as the exchange only:** A-036 reads usage figures from the API-management analytics feed, and A-146 registers the member-facing API with it; A-027 initiates a reset that the IdM executes; A-039 and A-040 hand off to the client's relay and an external gateway; A-112 calls a barcode library. Nothing behind those boundaries is a node.
 - **A-167 was added in accretion pass 2**, not pass 1: I-11 could not be judged until the Access Data access path existed, which is a deferral in the M5 sense and the sole reason accretion needed a second pass.
-agentId: a90410050d76c8ee2 (use SendMessage with to: 'a90410050d76c8ee2', summary: '<5-10 word recap>' to continue this agent)
-<usage>subagent_tokens: 105586
-tool_uses: 0
-duration_ms: 923618</usage>

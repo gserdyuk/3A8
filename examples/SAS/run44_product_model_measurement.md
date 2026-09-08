@@ -24,20 +24,27 @@ recovery could not be applied: **`SendMessage` is disabled in this session**, so
 addressed after their first reply. A re-run is not a recovery (it turns n = 2 into n = 3 with a member
 discarded), so the record stands as received.
 
-What is permanently absent from both: §1 (the contamination check as the sensor wrote it), §2 (the
+What was absent from both as received: §1 (the contamination check as the sensor wrote it), §2 (the
 skeleton log) and all or most of §3 (the accretion log — the place where the `covered` verdicts, this
-engine's remaining freedom, are written). What is complete in both: §4 completion log, §5 convergence
+engine's remaining freedom, are written). What was complete in both: §4 completion log, §5 convergence
 trace, **§6 the final model with every parent**, §7 empty skeleton nodes, §7b normalisation, **§7c
 coverage completeness per requirement**, §8 instrument readings, §9 assumption log.
 
-Consequences, stated plainly. The contamination check is attested only by the harness (`tool_uses: 0`)
-and by the sensors' §8 and §9 texts, not by the section itself. The skeleton is recoverable in content
-from §6 (every node carries its provenance label) but not in the order it was posited. The accretion
-verdicts are lost as a log and survive only as their result, the coverage sets. Everything the
-downstream chain consumes — the tree, its parents, its coverage — is intact, so **the run is usable;
-the instrument's own trace is not.** The cause is the same as run 29's: a reply longer than what the
-harness relays whole, and this input is three times run 29's. Debt: a way to launch a sensor whose
-long reply survives transit, recorded in `BACKLOG.md`.
+**Recovered later the same day, for OA2 only.** The harness keeps a transcript file per agent, and
+OA2's held the complete assistant message — the same text the sensor emitted, not a re-emission and
+not a re-run. `HM44-OA2.md` now carries all nine sections and its header says where the text came
+from. OA1's transcript file was empty, so OA1 stands as received: sections 1–3 lost. (The transcript
+files of the seven crossing runs of run 45 behaved the same way — four survived, three were empty —
+and the cause is not known; the raw file headers say which is which.)
+
+Consequences, stated plainly. For OA1 the contamination check is attested only by the harness
+(`tool_uses: 0`) and by the sensor's §8 and §9 texts, not by the section itself; its skeleton is
+recoverable in content from §6 (every node carries its provenance label) but not in the order it was
+posited; its accretion verdicts are lost as a log and survive only as their result, the coverage sets.
+Everything the downstream chain consumes — the tree, its parents, its coverage — is intact in both, so
+**the run is usable; one member's own trace is not.** The cause is the same as run 29's: a reply
+longer than what the harness relays whole, and this input is three times run 29's. Debt: a way to
+launch a sensor whose long reply survives transit, recorded in `BACKLOG.md`.
 
 ---
 
