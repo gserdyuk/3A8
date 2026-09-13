@@ -1,6 +1,7 @@
 ---
 name: model-builder
 description: Hotyn-M — builds a structure of the product from a pinned requirement list. Produces no effort figures of any kind. Runs in isolation and must never be shown any estimate, any prior tree, or any other run's output.
+author: "Gennadiy Serdyuk <gserdyuk@gmail.com>"
 tools: Glob
 ---
 

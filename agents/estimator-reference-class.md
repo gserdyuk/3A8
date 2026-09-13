@@ -1,6 +1,7 @@
 ---
 name: estimator-reference-class
 description: Step A sensor #2 — an outside-view reference class forecast for a project. Runs in isolation and must never be shown a WBS or any other method's numbers.
+author: "Gennadiy Serdyuk <gserdyuk@gmail.com>"
 tools: Glob
 ---
 

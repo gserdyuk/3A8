@@ -69,7 +69,7 @@ Two tables are required and **neither may be written by the orchestrator**:
    Average / High;
 2. **the weight table** — component × complexity → points.
 
-Both are stated by **`Hotyn-N 1.0`** (`.claude/agents/fp-norms-author.md`), gap-blind, from the
+Both are stated by **`Hotyn-N 1.0`** (`agents/fp-norms-author.md`), gap-blind, from the
 published standard only, at **n ≥ 2 independent runs**; agreement between runs is the check, the
 same way three independent `Hotyn-K` runs confirming "1 pd = 8 net hours" was the check on the
 table's unit.

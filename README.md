@@ -97,3 +97,22 @@ interrogated** — the largest single error in the project's only outcome compar
 1. Adjudicate what is already written down — the named holes and the declared scope forks.
 2. A corridor instrument, so the second of the three tests becomes scoreable at all.
 3. A second documented outcome, with its case profile collected **first**.
+
+## Install as a Claude Code plugin
+
+The repository is a Claude Code plugin: the sensor definitions live in
+`agents/` and register as `3a8:<name>`.
+
+```text
+/plugin marketplace add gserdyuk/3A8
+/plugin install 3a8@3a8
+```
+
+Working inside a clone: `claude --plugin-dir .` Inventory check:
+`claude --plugin-dir . plugin details 3a8`. The agents are not a pick-and-mix
+set — who may see what is in [`PIPELINE.md`](PIPELINE.md), the run order in
+[`docs/instrument.md`](docs/instrument.md).
+
+## Maintainer
+
+Gennadiy Serdyuk <gserdyuk@gmail.com> (at EPAM: gennadiy_serdyuk@epam.com)

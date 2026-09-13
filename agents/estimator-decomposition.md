@@ -1,6 +1,7 @@
 ---
 name: estimator-decomposition
 description: Step A sensor #1 — a bottom-up WBS + PERT estimate of a project from its description. Runs in isolation and must never be shown any other method's numbers.
+author: "Gennadiy Serdyuk <gserdyuk@gmail.com>"
 tools: Glob
 ---
 

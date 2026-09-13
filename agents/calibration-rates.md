@@ -1,6 +1,7 @@
 ---
 name: calibration-rates
-description: Step C parameter source — proposes named calibration corrections to a WBS from external base rates. Runs gap-blind: it must never be shown the reference class result or any target number.
+description: "Step C parameter source — proposes named calibration corrections to a WBS from external base rates. Runs gap-blind: it must never be shown the reference class result or any target number."
+author: "Gennadiy Serdyuk <gserdyuk@gmail.com>"
 tools: Glob
 ---
 

@@ -1,6 +1,7 @@
 ---
 name: rates-step-c
 description: Step C parameter source — proposes named calibration corrections to a bottom-up estimate from external base rates. Runs gap-blind - it must never be shown the reference class result or any target number. (Registered copy of calibration-rates, whose registration silently fails; content identical.)
+author: "Gennadiy Serdyuk <gserdyuk@gmail.com>"
 tools: Glob
 ---
 
