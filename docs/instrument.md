@@ -216,14 +216,15 @@ steps of +0.4% to +30%. A batch on a different model is a different instrument, 
 
 | role | engine | definition |
 |---|---|---|
-| product model | **`Hotyn-M 1.1`** | `.claude/agents/model-builder.md` |
-| work model | **`Hotyn-W 1.1`** | `.claude/agents/work-crosser.md` |
-| size classes | **`Hotyn-D 2.0`** | `.claude/agents/work-estimator.md` |
-| rate table | **`Hotyn-K 1.0`** | `.claude/agents/rate-table-author.md` |
-| outside view | **`Lytin-R 1.0`** | `.claude/agents/estimator-reference-class.md` |
-| Step C rates | **`Lytin-K 1.0`** | `.claude/agents/rates-step-c.md` |
-| Steps B, D | **`Lytin-G 1.0`** | `.claude/agents/diagnostician.md` |
-| version probe | **`Lytin-F 5.0`** | `.claude/agents/version-probe.md` |
+| product model | **`Hotyn-M 1.1`** | `agents/model-builder.md` |
+| work model | **`Hotyn-W 1.1`** | `agents/work-crosser.md` |
+| size classes | **`Hotyn-D 2.0`** | `agents/work-estimator.md` |
+| rate table | **`Hotyn-K 1.0`** | `agents/rate-table-author.md` |
+| outside view | **`Lytin-R 1.0`** | `agents/estimator-reference-class.md` |
+| Step C rates | **`Lytin-K 1.0`** | `agents/rates-step-c.md` |
+| Steps B, D | **`Lytin-G 1.0`** | `agents/diagnostician.md` |
+| version probe | *manifest of every agent's stamp* | `agents/version-probe.md` |
 
-The probe is run before the first batch of a session: an edited definition is loaded at session start,
-so a sensor can otherwise run under a version nobody intended.
+The probe is called by hand, apart from any run, to confirm that edited definitions have loaded: they are
+read at session start, so a sensor can otherwise run under a version nobody intended. It answers with every
+agent's stamp; `tools/check_probe.py` keeps that list equal to the stamps on disk.

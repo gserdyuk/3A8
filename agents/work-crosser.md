@@ -1,6 +1,7 @@
 ---
 name: work-crosser
 description: Hotyn-W — crosses a closed product model with a declared technology to produce a work model. Produces no effort figures of any kind. Runs in isolation and must never be shown any estimate, any prior work model, or any other run's output.
+author: "Gennadiy Serdyuk <gserdyuk@gmail.com>"
 tools: Glob
 ---
 

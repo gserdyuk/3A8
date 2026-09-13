@@ -1,6 +1,7 @@
 ---
 name: work-estimator
 description: Hotyn-D 2.0 — sizes an existing work model by CLASSIFYING, not pricing. Produces no person-day figures of any kind; prices live in a pinned rate table it must never see. Runs in isolation and must never be shown any estimate, any rate, any budget, or any other run's output.
+author: "Gennadiy Serdyuk <gserdyuk@gmail.com>"
 tools: Glob
 ---
 

@@ -2,7 +2,7 @@
 
 The methodology (METHODOLOGY.md) says the methods must be independent sensors. In practice, running two methods in one conversation does not produce two sensors: the second run is anchored by the first (findings §1, §9). This file specifies the pipeline as a set of **isolated agents with disjoint inputs**, and states which disciplines are enforced by machinery rather than by good faith.
 
-The agents are hired for what they are **forbidden to see**, not for autonomy or throughput. Their definitions live in `.claude/agents/`.
+The agents are hired for what they are **forbidden to see**, not for autonomy or throughput. Their definitions live in `agents/`.
 
 ## The visibility matrix
 
@@ -55,7 +55,7 @@ The naming scheme: **city = generation of the whole pipeline, letter = role with
 | 5 · outside view | `estimator-reference-class` | **Lytin-R 1.1** |
 | 6 · Step C rates | `rates-step-c` | **Lytin-K 1.1** |
 | 6 · Steps B, D | `diagnostician` | **Lytin-G 1.1** |
-| — | `version-probe` | **Lytin-F 5.0** |
+| — | `version-probe` | *manifest of every stamp above* |
 | *closed* | `estimator-decomposition` | *Lytin-D 4.0* |
 
 **All four number-producing roles moved to `.1` on 2026-08-26**, and the change is the same in each:
@@ -85,7 +85,7 @@ This convention deliberately changes no sensor definition, and therefore trigger
 
 **F is not a step of the pipeline.** The version probe estimates nothing; it answers with its own stamp and stops. It exists because agent definitions are read **once, at session start**, so an edit made during a session has no effect until restart, and nothing on disk reveals whether that has happened — only running an agent does. Run9 established this the expensive way: ten runs launched after an edit in the same session all returned the pre-edit engine. The probe is that check made cheap enough to do every time.
 
-Its version **mirrors the sensor being measured** rather than counting independently, so the expected answer is known without consulting a log and a mismatch is visible at a glance. The two are bumped in one edit. The probe confirms only that the session reloaded; that a particular file's new content is *correct* remains the job of the engine stamp each sensor prints in its own output. Read the two together — probe before a batch, stamps after it.
+Its answer is **the manifest of every agent's engine stamp**, one line per definition file, so the expected answer is what is on disk and a stale session shows up as the line that differs. Editing any agent bumps its stamp in its own file and its line in the probe, in one edit; `tools/check_probe.py` fails if the two disagree. Until 2026-09-13 the probe instead mirrored the one decomposition sensor (`Lytin-F` ↔ `Lytin-D`); with many `Hotyn` agents nobody bumped the mirror and the answer froze at `Lytin-F 5.0`, so probe readings recorded after 2026-08-18 confirm nothing about later edits. The probe confirms only that the session reloaded; that a particular file's new content is *correct* remains the job of the engine stamp each sensor prints in its own output.
 
 **The probe must be edited, never created, for its answer to mean anything.** A newly created file appearing in the session proves only that the harness picks up *new* files; the question that matters is whether it re-reads *modified* ones, since that is what a sensor edit always is. A harness that scanned for new files while caching the content of known ones would pass a freshly created probe and still run the old sensor — which is run9's failure in a subtler form. On the cycle where the probe itself is introduced this hole is unavoidable, and the way to close it is a **bump-only cycle**: raise the version on both files with no other change, restart, and read the probe. From then on every ordinary bump is a modified file and the check is sound.
 
@@ -222,7 +222,8 @@ Prompts are currently assembled by hand, which is the weakest link: every contam
 
 ### The `Hotyn` chain
 
-0. **Probe first.** Run `version-probe` before the first batch of a session: definitions are loaded at
+0. **Probe by hand when in doubt** — not a step of the run. After editing an agent and restarting, call
+   `version-probe` on its own and compare its manifest with the stamps on disk: definitions are loaded at
    session start, so an edited sensor can otherwise run under a version nobody intended. This has
    caught a stale load once (run 23).
 1. **Prepare and pin the case directory:** requirement list with its md5, the split into product

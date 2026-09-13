@@ -1,0 +1,13 @@
+{
+  "name": "3a8",
+  "version": "0.1.0",
+  "description": "3A8 (TriAngulEight): software estimation factory. Four isolated sensors plus a reference class; the magnitude comes from a pinned rate table, the model only chooses rows; divergence between methods is diagnosed, not averaged.",
+  "author": {
+    "name": "Gennadiy Serdyuk",
+    "email": "gserdyuk@gmail.com"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/gserdyuk/3A8",
+  "repository": "https://github.com/gserdyuk/3A8",
+  "keywords": ["estimation", "effort", "wideband-delphi", "reference-class", "sdlc", "planning"]
+}

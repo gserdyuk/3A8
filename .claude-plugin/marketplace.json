@@ -1,0 +1,19 @@
+{
+  "name": "3a8",
+  "owner": {
+    "name": "Gennadiy Serdyuk",
+    "email": "gserdyuk@gmail.com"
+  },
+  "metadata": {
+    "description": "Marketplace for the 3A8 estimation factory plugin."
+  },
+  "plugins": [
+    {
+      "name": "3a8",
+      "description": "3A8 (TriAngulEight): software estimation factory with isolated sensors and a pinned rate table.",
+      "source": "./",
+      "category": "productivity",
+      "homepage": "https://github.com/gserdyuk/3A8"
+    }
+  ]
+}

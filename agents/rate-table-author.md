@@ -1,6 +1,7 @@
 ---
 name: rate-table-author
 description: Hotyn-K — writes the rate table, O/M/P person-days per (activity × element class × size class) cell, from external base rates only. Gap-blind - must never be shown any run output, any Hotyn or Lytin estimate, any project total, any budget, or any gap a rate would explain.
+author: "Gennadiy Serdyuk <gserdyuk@gmail.com>"
 tools: Glob
 ---
 

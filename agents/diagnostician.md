@@ -1,6 +1,7 @@
 ---
 name: diagnostician
 description: Steps B and D — diagnoses the divergence between estimation methods, applies the pre-supplied calibration rates, and reports the final range with its explained and unexplained residual. Must never be shown the project's actual outcome.
+author: "Gennadiy Serdyuk <gserdyuk@gmail.com>"
 tools: Glob
 ---
 

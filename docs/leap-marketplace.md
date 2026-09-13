@@ -7,42 +7,51 @@ expected layout in advance.
 
 ## 1. To do before submission
 
-- [ ] **Agents to the repository root.** The crawler looks for
-      `agents/<name>/agent.md`; the 12 agents of 3A8 live in
-      `.claude/agents/*.md`. Make `agents/` the canonical location, one folder
-      per agent (`agents/diagnostician/agent.md`, etc.), and keep
-      `.claude/agents/` for Claude Code. Symlinks are unreliable on Windows;
-      simpler to keep copies plus a small sync script in `tools/`, or move
-      them and point `.claude/settings.json` at the new path.
-- [ ] **Agent frontmatter.** Add `author: "Gennadiy Serdyuk <gserdyuk@gmail.com>"`
+- [x] **Agents to the repository root — the repo is now a Claude Code plugin**
+      (done 2026-09-13). `.claude-plugin/plugin.json` + `marketplace.json` in
+      the root; the 12 agents moved from `.claude/agents/` to a flat `agents/`.
+      Claude Code (plugin) and the marketplace crawler read the same folder,
+      so there is no second copy and no sync script. Agents register as
+      `3a8:<name>`. Use: `claude --plugin-dir .` inside a clone, or
+      `/plugin marketplace add gserdyuk/3A8` + `/plugin install 3a8@3a8`
+      anywhere. Verified with `claude --plugin-dir . plugin details 3a8`:
+      12 agents listed. Living docs (PIPELINE.md, docs/instrument.md,
+      rate_table.md, status, fp_counting_rules) point to `agents/`; session
+      records, facts, archive and run transcripts keep the old path as history.
+      Precedent: CodeMie sdlc-factory uses exactly this layout.
+- [x] **Agent frontmatter.** (done 2026-09-13; one description had an unquoted colon, now quoted) Add `author: "Gennadiy Serdyuk <gserdyuk@gmail.com>"`
       to all 12 files. Today they carry only `name`, `description`, `tools`.
       Email decision: one address per field, never two. Skills and agents
       are reused outside EPAM, so they carry the git identity (gmail). The
       EPAM address goes into `FACTORY.md` `authors` only (see 2.3): that is
       the file the marketplace card is built from. The crawler does not
       validate the domain, and published assets exist with no email at all.
-- [ ] **Maintainer line in README.** One human-readable line with both
+- [x] **Maintainer line in README.** One human-readable line with both
       addresses, e.g. `Maintainer: Gennadiy Serdyuk <gserdyuk@gmail.com>
       (at EPAM: gennadiy_serdyuk@epam.com)`. No parser touches it. If some
       commits are ever made with the EPAM address, add a `.mailmap` so
       `git log` and GitHub show one person.
-- [ ] **LICENSE.** The repository has none. Choose one (twotakt uses
+- [x] **LICENSE.** (done 2026-09-13, Apache 2.0) The repository has none. Choose one (twotakt uses
       Apache 2.0) and add it before the EPAM GitLab copy is refreshed.
-- [ ] **Package as a factory.** Create `factories/3a8/FACTORY.md` (template
+- [x] **Package as a factory.** (done 2026-09-13, `factories/3a8/FACTORY.md`) Create `factories/3a8/FACTORY.md` (template
       in 2.3). Key fields: `sdlc_phase: Planning & Analysis`,
       `support_level: Self-Serve`. Use cases:
       - Effort estimation from an RFP or a requirement list
       - Diagnosing divergence between estimation methods
       - Calibration on completed projects with known outcomes
-- [ ] **State the isolation discipline.** In the FACTORY.md body say
+- [x] **State the isolation discipline.** (done 2026-09-13, section in FACTORY.md) In the FACTORY.md body say
       explicitly that the agents are not a pick-and-mix set: who may see what
       is defined by `PIPELINE.md`, and the run order by `docs/instrument.md`.
       Otherwise the catalog presents 12 agents "to choose from" and the
       method breaks.
-- [ ] **Hide internal agents.** For agents not meant for outside use (e.g.
-      `version-probe`) set `discoverable: false` in the frontmatter.
-- [ ] **Validate YAML** of every frontmatter block with `yaml.safe_load()`.
-- [ ] **Folder names** — letters, digits, `-`, `_` only.
+- [x] **Hide internal agents — resolved by the flat layout.** The crawler
+      registers agents only from `agents/<name>/`; flat `agents/<name>.md`
+      files are not picked up as separate assets (CodeMie's seven agents are
+      absent from the Agents tab for this reason). Only the factory goes to
+      the catalog, which is what the isolation discipline wants. No
+      `discoverable: false` needed.
+- [x] **Validate YAML** (done 2026-09-13, `tools/check_frontmatter.py`, run with `PYTHONUTF8=1 py tools/check_frontmatter.py`) of every frontmatter block with `yaml.safe_load()`.
+- [x] **Folder names** — letters, digits, `-`, `_` only.
 
 ## 2. Getting the project into EPAM GitLab and the LEAP Marketplace
 
@@ -138,10 +147,12 @@ Email to SpecialEPM-EASEFeedback@epam.com, one folder URL per asset type
 plus the owner:
 
 ```
-agents:    https://git.epam.com/gennadiy_serdyuk/3A8/-/tree/main/agents
 factories: https://git.epam.com/gennadiy_serdyuk/3A8/-/tree/main/factories
 owner:     Gennadiy Serdyuk
 ```
+
+Only the factory is submitted. The agents are deliberately not submitted as
+separate assets (see checklist item on hiding internal agents).
 
 Published within a few working days. After that the repository is
 re-crawled automatically on every push; no resubmission needed. Check it

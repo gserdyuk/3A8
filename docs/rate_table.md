@@ -28,7 +28,7 @@
 > Kept deliberately un-averaged: every priced run so far (BMS 23–25, FaxRxTx 29–31) used these
 > constants, and replacing them with an averaged table would make all of it incomparable.
 
-**Produced 2026-08-21 by `Hotyn-K 1.0` × Fable 5** (`.claude/agents/rate-table-author.md`; the
+**Produced 2026-08-21 by `Hotyn-K 1.0` × Fable 5** (`agents/rate-table-author.md`; the
 model half of the stamp is orchestrator-recorded — the launch carried no model override, so the role
 inherited the session model, Fable 5; noted 2026-08-22 after the author caught the missing stamp).
 Gap-blind by construction: its input was a sanitized extract of catalogue 1.2 — activities, classes,
