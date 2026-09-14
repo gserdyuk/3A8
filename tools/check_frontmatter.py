@@ -2,6 +2,7 @@
 import re, sys, glob, yaml
 
 REQUIRED = {"agent": ["name", "description", "author"],
+            "skill": ["name", "description", "author"],
             "factory": ["name", "description", "owner", "authors"]}
 SUPPORT = {"Self-Serve", "Best Effort Support", "Dedicated Capacity"}
 
@@ -12,6 +13,7 @@ def frontmatter(path):
 
 bad = 0
 targets = [(p, "agent") for p in glob.glob("agents/*.md") + glob.glob("agents/*/*.md")]
+targets += [(p, "skill") for p in glob.glob("skills/*/SKILL.md")]
 targets += [(p, "factory") for p in glob.glob("factories/*/FACTORY.md")]
 for path, kind in targets:
     try:
@@ -22,7 +24,7 @@ for path, kind in targets:
         print(f"FAIL {path}: no frontmatter"); bad += 1; continue
     missing = [k for k in REQUIRED[kind] if k not in fm]
     problems = [f"missing {k}" for k in missing]
-    if kind == "agent" and "author" in fm and "<" not in str(fm["author"]):
+    if kind in ("agent", "skill") and "author" in fm and "<" not in str(fm["author"]):
         problems.append("author has no <email>")
     if kind == "factory":
         if fm.get("support_level") not in SUPPORT:

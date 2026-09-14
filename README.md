@@ -98,6 +98,22 @@ interrogated** — the largest single error in the project's only outcome compar
 2. A corridor instrument, so the second of the three tests becomes scoreable at all.
 3. A second documented outcome, with its case profile collected **first**.
 
+## Entry points
+
+Four things you can invoke; everything else in `agents/` is an internal sensor that runs only
+inside one of these, blind to the others.
+
+| invoke | what it does | engine(s) | gives |
+|---|---|---|---|
+| `/3a8:estimate-product` | **the current instrument, bottom-up half** — product model → work model → size classes, then a script joins classes to the pinned rate table | `Hotyn-M`, `Hotyn-W`, `Hotyn-D` + script | net person-hours, layers, named holes |
+| `/3a8:estimate-reference-class` | **the outside view** — the class of projects, never the parts of this one | `Lytin-R` | P10 / P50 / P80 / P90, blind-spot list |
+| `/3a8:estimate-wbs` | **one-sensor bottom-up WBS + PERT** — the closed `Lytin` generation, kept for quick readings and comparison; the magnitude is sampled by the model | `Lytin-D` | WBS with O/M/P, PERT total |
+| `/3a8:estimate` | **the whole instrument** — the two halves above in ignorance of each other, then diagnosis, gap-blind calibration, a range with an explained residual | + `Lytin-K`, `Lytin-G` | centre, corridor, residual, what is in no number |
+
+Each entry is a skill in `skills/`: the orchestrator's run order, what to paste into which sensor,
+what the sensor must never see, and where the raw output goes. The sensors read no files; the
+orchestrator pastes, records the model, and keeps the record.
+
 ## Install as a Claude Code plugin
 
 The repository is a Claude Code plugin: the sensor definitions live in

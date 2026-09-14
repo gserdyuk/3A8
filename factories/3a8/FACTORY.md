@@ -72,14 +72,18 @@ the record.
 1. The repository is a Claude Code plugin. Install it into any project:
    `/plugin marketplace add gserdyuk/3A8`, then `/plugin install 3a8@3a8`.
    For work inside a clone, start Claude Code with `claude --plugin-dir .`
-   The agents live in `agents/` and register as `3a8:<name>`.
-2. Read [`docs/instrument.md`](../../docs/instrument.md) for the current
-   chain and what is pinned where.
+2. Four entry points, each a skill that carries the orchestrator's run order:
+   - `/3a8:estimate-product` — the current instrument, bottom-up half
+     (product model → work model → size classes → rate-table join), net person-hours;
+   - `/3a8:estimate-reference-class` — the outside view, P10 / P50 / P80 / P90;
+   - `/3a8:estimate-wbs` — one-sensor bottom-up WBS + PERT (closed generation, quick reading);
+   - `/3a8:estimate` — the whole instrument: both halves in ignorance of each other,
+     diagnosis, gap-blind calibration, a range with an explained residual.
 3. Pin the case profile **before** any estimate exists
-   (see [`docs/exit_criterion.md`](../../docs/exit_criterion.md)).
-4. Follow the steps in order. Raw sensor output is transcribed verbatim under
-   `examples/<case>/run*_raw/`; the report is built by
-   `tools/report/build_report.py`.
+   (see [`docs/exit_criterion.md`](../../docs/exit_criterion.md) and
+   [`docs/case_profile.md`](../../docs/case_profile.md)).
+4. Raw sensor output is transcribed verbatim under `examples/<case>/run*_raw/`;
+   the report is built by `tools/report/build_report.py`.
 
 Worked cases in `examples/`: **FaxRxTx** (real project, outcome sealed before
 the estimate, ×1.21 against actual), **BMS** (training RFP, full deliverable
