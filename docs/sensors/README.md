@@ -6,7 +6,7 @@ the person looking at the panel, and the diagnostician that needs both sides' bl
 
 | note | curve | engines | invoked by |
 |---|---|---|---|
-| [`bottom-up-model.md`](bottom-up-model.md) | the chain's centre, drawn with its repeat spread | `Hotyn-M`, `Hotyn-W`, `Hotyn-D`, `Hotyn-K` + script | `/3a8:estimate-product` |
+| [`bottom-up-model.md`](bottom-up-model.md) | a bell around the calibrated centre, built on an assumed ρ = 0.5 between items | `Hotyn-M`, `Hotyn-W`, `Hotyn-D`, `Hotyn-K` + script | `/3a8:estimate-product` |
 | [`reference-class.md`](reference-class.md) | one curve per class reading, never pooled | `Lytin-R` | `/3a8:estimate-reference-class` |
 | [`bottom-up-direct.md`](bottom-up-direct.md) | a family of one-sensor readings | `Lytin-D` (closed generation) | `/3a8:estimate-wbs` |
 | [`parametric.md`](parametric.md) | level from a size count, corridor from real-project residuals | `Hotyn-P`, `Hotyn-N` + script | by hand, `tools/parametric/parametric.py` |
@@ -37,6 +37,26 @@ being pushed; the agent file records what it does today. When the two differ, th
 of three things — an idea not yet implemented, an addition made without an idea, or a property that
 arrived by accident — and the note is where that gets named. Nothing here is a spec; when a bump
 lands, section 8 empties into section 7 with a date, and section 1 is not rewritten.
+
+## What each width includes — and what it leaves out although it is known
+
+The curves are comparable on the axis (one unit after conversion) and each declares a width. They
+are not comparable in what the width contains. Recorded 2026-09-14 from the five notes' sections 3
+and 5; every figure has its run there.
+
+| curve | inside the width | outside it, though measured or known |
+|---|---|---|
+| bottom-up, the chain | co-variation of the rate cells' O/M/P at an assumed ρ = 0.5 | structure spread at step 1 (×1.02–×1.56); the rate table being one sample (×1.38–×1.50 on re-generation); team grade (×2–3 between bands); named holes and findings; the apparatus repeat (×1.05) |
+| reference class | heterogeneity of the class — where projects like this land | the level's uncertainty between readings (×1.95–×2.12); each reading is drawn alone, the distance between them is not a width |
+| bottom-up direct | the model's sampling of the magnitude (CV ≈ 10%) | the ×2 shift when the model changes |
+| parametric | residual scatter of real projects around the size–effort curve | the level sitting on the enumeration floor (×20 against the one fact) |
+| no-method baseline | the model's sampling within one batch | the level shift between batches (×1.145) |
+
+Consequence for the chain: even if ρ = 0.5 holds, its bell is a lower bound of its own uncertainty
+— four known sources are outside it, and one of them, the table's sampling, is about the size of the
+whole bell. The class bell is honestly wide and does not know where it stands. The panel therefore
+answers "how wide is each estimate by its own rules"; it does not yet answer "how uncertain is the
+project", and no curve claims to. A legend line per curve should carry both columns.
 
 ## Two rules
 

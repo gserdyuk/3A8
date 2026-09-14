@@ -78,6 +78,52 @@ carries exit criterion **v2.0** (§6c) replacing v1.0. Ordered; 1 and 2 are inde
       If it does, it turns `syn`'s single point into a corridor and makes gate test 2 scoreable at
       the width the market actually has. If it does not, `syn` still gives the first reading.
 
+## Proposal 2026-09-14 — how the five curves are used: level from the chain, shape from the class
+
+Five curves sit on the panel and each declares a width, but the widths contain different things
+(`docs/sensors/README.md`, "What each width includes"). They are not to be pooled or averaged. The
+session of 2026-08-26 (§9) named the division of labour and recorded that nobody had decided it.
+This is the proposal to decide it, written before case 4 so that it can be scored rather than fitted.
+
+- [ ] **Take level from the chain, shape from the class.** The chain's centre is the most stable
+      position in the project (repeat ×1.05); its own bell says little about shape. The class's shape
+      is triple-sourced and stable across four readings (P10/P50 within ×1.18, P90/P50 within ×1.06)
+      while its level spans ×2.12. So:
+      ```
+      centre  = chain × Step C calibration (as today)
+      shape   = the class's distribution of actual / early-estimate ratios (its relative anchors),
+                applied multiplicatively to the centre
+      tail    = P90 from the class, and "non-delivery beyond P90" left unnumbered, as the sensor states it
+      ```
+      The class's **absolute** anchors — where the readings differ ×1.95 — do not enter the number.
+      They go to the diagnosis: the centre sitting at P35 of one reading and P80 of the other is a fact
+      to be explained through blind spots, not averaged.
+- [ ] **Do not count twice.** Once the class shape is applied to the centre, the chain's ρ = 0.5 bell
+      is not added on top: it is the co-variation of rate cells, a smaller part of the same uncertainty.
+      The four known sources outside that bell (structure spread ×1.02–×1.56, the table being one
+      sample ×1.38–×1.50, team grade ×2–3, holes and findings) are uncertainty of the **level**; report
+      them as a band on where the centre stands, not as shape.
+- [ ] **Controls stay controls.** The no-method baseline answers "did the instrument buy anything over
+      a bare prompt"; the direct WBS answers "what the closed generation gave"; the parametric's residual
+      corridor corroborates or contradicts the class's shape while its level sits on the enumeration
+      floor. All three stay on the panel; none enters the estimate.
+- [ ] **The deliverable is the cumulative curve, and the human picks the point.** "Chance of coming
+      in at or under X" is what the lower panel already draws. P50 or P80 for a commitment is a risk
+      decision the instrument does not make. The diagnostician's output becomes the recommendation
+      under the chart — why the centre is where it is, and what residual it could not explain — not a
+      range of its own.
+- [ ] **What changes in the code and the format:** the diagnostician stops issuing a range; a script
+      applies the class's relative-anchor distribution to the calibrated centre and writes the curve;
+      the deliverable's "corridor" row stops being the rates' band. Depends on the generic assembler
+      (item above) for the centre and on a fixed output form for the class's relative anchors.
+- [ ] **Registered prediction, to be scored on case 4 (first case with an outcome pinned before the
+      estimate):** the outcome lands inside the class-shaped P10–P90 around the chain's centre, and
+      the centre is within ×1.3 of it. On the one fact on record the two halves already read ×1.21
+      (chain) and ~P39 (class shape, run 37); that is n = 1 and proves nothing. If case 4 lands outside
+      the shaped corridor, the division of labour is wrong, not the width.
+
+---
+
 ## Added 2026-09-14 — the entry points exist, one step of them is still handwork
 
 - [ ] **A generic assembler, `tools/assemble.py`.** Step 4 of the chain (`docs/instrument.md` §3) is

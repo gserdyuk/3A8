@@ -7,8 +7,8 @@ it may become. **This note is expected to disagree with the code** — the disag
 what came from the idea, what was added, and what arrived by accident.
 
 Engines: `Hotyn-M` (product model) · `Hotyn-W` (work model) · `Hotyn-D` (size classes) · `Hotyn-K`
-(rate table) · a script (arithmetic). Invoked by `/3a8:estimate-product`. Curve on the panel: the
-chain's centre with its repeat spread.
+(rate table) · a script (arithmetic). Invoked by `/3a8:estimate-product`. Curve on the panel: a bell
+around the calibrated centre, built on an assumed ρ = 0.5 between items.
 
 ---
 
@@ -53,13 +53,32 @@ project's parts**, and about nothing outside them.
 
 ## 3. What the width of its curve means
 
-**Instrument repeat, not project risk.** The chain produces one number per run. Drawn on the panel it
-is given a spread from its own repeats — ×1.03 from classification, ×1.05 end to end — and that
-width is how much the *apparatus* moves when run again on the same input. It says nothing about
-where the project will land. **The chain declares no P10–P90** (`docs/instrument.md` §4): summing O
-and P across ~580 items assumes perfect correlation and spans ×4.3; leaf independence gives a band
-both earlier generations flagged as an artefact; neither is an interval. A reader who takes the
-chain's curve as a risk corridor has been misled by the drawing.
+**A bell built on an assumed correlation of ρ = 0.5 between items.** The chain produces one number
+per run; the panel draws it as a normal around the calibrated centre with sd ≈ 0.166 × centre —
+P10–P90 of ×1.54 — obtained by restoring the O/M/P of every rate cell (the assembly had collapsed
+each to E before summing) and summing them as equicorrelated items at ρ = 0.5
+(`sessions/2026-08-26_the_report_becomes_a_format.md`). The assumption may be true or not: the
+correlation between items has not been measured.
+
+Why 0.5, and what other values would do:
+
+| ρ | P10–P90 of the sum, ~580 items | |
+|---|---|---|
+| 0, independent | ×1.04 | variance averages away; the band both earlier generations flagged as an artefact |
+| **0.25 … 0.75** | **edges move about ±20%** | the width changes slowly over this threefold range, so its middle, 0.5, was taken |
+| 1, perfectly correlated | ×1.87 | 2.56 σ; ΣO…ΣP (×4.19) is *six* sigma of the same sum, not a percentile band |
+
+0.5 was chosen from that slow change of width across 0.25–0.75, not from the FaxRxTx outcome.
+
+Two other widths exist and are **not** what the bell shows: the repeat spread of the apparatus
+(×1.03 from classification, ×1.05 end to end) is narrower and is a property of the instrument; the
+dispersion of outcomes of projects like this is the class curve's width, not this one's. The
+deliverable reports a third band as its corridor — the spread of the calibration rates, low /
+central / high — which is the rates' band and not a percentile either
+(`examples/SAS/estimate_SAS_2026-09-08.md` §1).
+
+`docs/instrument.md` §4 predated the session of 2026-08-26 and said the chain declares no P10–P90 —
+stale on this point from that day; brought in line 2026-09-14.
 
 ## 4. What it sees and what it must never see
 
@@ -124,7 +143,8 @@ the BMS pair differs by ×1.56 in structure size and has not been priced end to 
 
 | idea | would move | where it lives |
 |---|---|---|
-| **A corridor.** The one gate test that cannot be scored. Not ΣO…ΣP, not leaf independence; the correlation between items has never been measured | report (adds an interval) | `docs/status_2026-08-27.md` §5, `BACKLOG.md` "Next — validity" |
+| **A measured ρ instead of an assumed one.** The bell rests on ρ = 0.5 taken from the slow change of width across 0.25–0.75; the correlation between items has not been measured. A measured ρ would say whether the assumption holds | report (the bell's width) | `sessions/2026-08-26_…` §9, `docs/status_2026-08-27.md` §5 |
+| **Shape from the class, level from the chain** — the division of labour the session named and nobody has decided: the class's shape is triple-sourced and stable, its level spans ×2.12; the chain's level is repeatable and its width is a convention | report (which curve carries which quantity) | `sessions/2026-08-26_…` §9 |
 | **Calibrate the table against outcomes**, evidence beside each changed cell; FaxRxTx's ×8.5 stage is the first candidate | level | `docs/rate_table.md` status paragraph |
 | **The reverse audit** — the brake on over-counting the construction lacks; designed, never run; the auditor is itself a model and must be measured first | level (down) | `docs/proposal_reverse_comparison.md`, `BACKLOG.md` B |
 | **Team grade as an input** the table reads, instead of a line it assumes | level | `docs/team_grade_as_an_input.md` |
