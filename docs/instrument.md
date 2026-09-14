@@ -161,10 +161,15 @@ different questions and land on one point have either coincided or lost their in
 
 ## 4. What the chain does not have
 
-- **A corridor.** It declares no P10–P90. `ΣO…ΣP` assumes perfect correlation across ~580 items and
-  spans ×4.3; leaf independence gives an absurdly narrow band both earlier generations flagged as an
-  artefact. Neither is an 80% interval, and the correlation between them has never been measured.
-  Consequence: **one of the exit criterion's three tests cannot be scored at all.**
+- **A measured corridor.** The bell the report draws for the bottom-up is built on an assumed
+  correlation between items of **ρ = 0.5** — every rate cell's O/M/P summed as equicorrelated
+  items, P10–P90 of ×1.54 (session 2026-08-26). The assumption may be true or not: the
+  correlation between items has not been measured. The value was chosen because the bell's width
+  changes slowly across ρ = 0.25–0.75 (edges move about ±20% over that threefold range), so the
+  middle of that range was taken; it was not derived from the FaxRxTx outcome. Outside the range
+  the width does move: ρ = 0 gives ×1.04, ρ = 1 gives ×1.87. `ΣO…ΣP` (×4.19) is six sigma of
+  the same sum, not a percentile band. Consequence: the corridor test of the exit criterion is
+  scored against an assumed ρ, not a measured one.
 - **A calibrated table.** The rates are external norms, fixed as constants by decision, calibrated
   against no outcome yet.
 - **A brake on over-counting.** The design only adds — accretion and completion add, the crossing
