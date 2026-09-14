@@ -76,6 +76,7 @@ Current state of every claim, including which documents are stale and how:
 - [`docs/exit_criterion.md`](docs/exit_criterion.md) — when the instrument is fit for use.
 - [`docs/rate_table.md`](docs/rate_table.md) · [`docs/technology_catalogue.md`](docs/technology_catalogue.md) — the pinned constants and the declaration vocabulary.
 - [`findings.md`](findings.md) — the working log: *why* the methodology is built the way it is.
+- `docs/sensors/` — one note per curve on the panel: how each sensor was conceived, what its width means, what was measured, what we want to change. Expected to disagree with the code; that is what they record.
 - [`BACKLOG.md`](BACKLOG.md) — open work, cheapest first. `sessions/` — one record per working session.
 - `examples/` — worked cases: `BMS`, `FaxRxTx`. Raw sensor output is transcribed verbatim under `run*_raw/`.
 - `mars_model/` — hypothesis checks on open datasets (PROMISE); results and fitting code.
