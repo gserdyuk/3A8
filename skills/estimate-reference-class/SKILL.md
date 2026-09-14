@@ -40,7 +40,7 @@ corridor. Measured repeat spread: P50s ×1.31 apart, narrowing toward the tail.
 
 ## Keep and report
 
-1. Raw replies verbatim: `examples/<case>/run<N>_raw/LR<N>-<repeat>.md` + `MANIFEST.md`.
+1. Raw replies verbatim: `examples/<case>/run<N>_raw/RC<N>-<repeat>.md` + `MANIFEST.md`.
 2. Run record `examples/<case>/run<N>_reference_class.md`: engine stamp as printed, model as
    launched, the class and its membership test, the quantiles **with the sensor's declared unit**
    (it declares unit, leave inclusion and whose roles are counted before any figure), the
