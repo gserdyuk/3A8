@@ -52,6 +52,10 @@ expected layout in advance.
       `discoverable: false` needed.
 - [x] **Validate YAML** (done 2026-09-13, `tools/check_frontmatter.py`, run with `PYTHONUTF8=1 py tools/check_frontmatter.py`) of every frontmatter block with `yaml.safe_load()`.
 - [x] **Folder names** — letters, digits, `-`, `_` only.
+- [x] **Entry points as skills** (done 2026-09-14). `skills/estimate-product`,
+      `estimate-reference-class`, `estimate-wbs`, `estimate`: the orchestrator's
+      run order per method, invoked as `/3a8:<name>`. These are the public
+      surface of the factory and the assets the catalog lists individually.
 
 ## 2. Getting the project into EPAM GitLab and the LEAP Marketplace
 
@@ -147,12 +151,15 @@ Email to SpecialEPM-EASEFeedback@epam.com, one folder URL per asset type
 plus the owner:
 
 ```
+skills:    https://git.epam.com/gennadiy_serdyuk/3A8/-/tree/main/skills
 factories: https://git.epam.com/gennadiy_serdyuk/3A8/-/tree/main/factories
 owner:     Gennadiy Serdyuk
 ```
 
-Only the factory is submitted. The agents are deliberately not submitted as
-separate assets (see checklist item on hiding internal agents).
+The factory and the four entry-point skills (`skills/estimate*`) are submitted.
+The agents are deliberately not submitted as separate assets (see checklist
+item on hiding internal agents): they are internal sensors that only make sense
+inside an entry point.
 
 Published within a few working days. After that the repository is
 re-crawled automatically on every push; no resubmission needed. Check it

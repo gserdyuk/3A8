@@ -78,6 +78,26 @@ carries exit criterion **v2.0** (§6c) replacing v1.0. Ordered; 1 and 2 are inde
       If it does, it turns `syn`'s single point into a corridor and makes gate test 2 scoreable at
       the width the market actually has. If it does not, `syn` still gives the first reading.
 
+## Added 2026-09-14 — the entry points exist, one step of them is still handwork
+
+- [ ] **A generic assembler, `tools/assemble.py`.** Step 4 of the chain (`docs/instrument.md` §3) is
+      the one step with no judgement in it, and it is the one step that is rewritten for every case:
+      `examples/BMS/run25_raw/assemble.py`, `FaxRxTx/run31_raw/assemble_faxrxtx.py`,
+      `FaxRxTx/run42_raw/assemble_oa2.py`, `SAS/run47_raw/assemble_sas.py` all hard-code the tree, the
+      element classes and the size classes by hand from the sensor replies. `/3a8:estimate-product`
+      therefore ends with "write the script by the SAS pattern", which is the only place an entry
+      point does not run. What is needed: **a fixed output format for the three sensors** (product
+      model: id, name, parent, coverage; work model: element class and items; sizing: size class
+      per element, holes) that `Hotyn-M/W/D` print as a block the orchestrator saves verbatim, and one
+      script that reads those blocks and `docs/rate_table.md` and prints the total, the layers, the
+      holes and the repeat ratio, with the C3 rule and the once-scoped / per-environment / demanded
+      exclusions exactly as the four case scripts apply them. Acceptance: it reproduces run 47's SAS
+      total and run 42's FaxRxTx ratio ×1.0532 from the saved raw replies, to the hour. A format change
+      in a sensor's output is a **minor** bump of that sensor; the script is not a sensor and has no
+      stamp of its own.
+
+---
+
 ## Resumed 2026-09-08 — case 3, `examples/SAS`
 
 - [ ] **A sensor reply longer than the harness relays whole loses its head, and the recovery is gone.**
