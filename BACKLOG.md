@@ -78,6 +78,48 @@ carries exit criterion **v2.0** (§6c) replacing v1.0. Ordered; 1 and 2 are inde
       If it does, it turns `syn`'s single point into a corridor and makes gate test 2 scoreable at
       the width the market actually has. If it does not, `syn` still gives the first reading.
 
+## Added 2026-09-15 — `Hotyn-M 2.0` is unmeasured, and the skeleton is not the only order-dependence
+
+`Hotyn-M 2.0` (coverage in leaves only; `docs/review_2026-09-15_sensor_texts.md`, `PIPELINE.md`) and
+`Hotyn-W 1.2` are on disk with no reading. Nothing below runs before the re-baseline.
+
+- [ ] **Re-baseline 2.0 on SAS.** The same cell as run 44 — Opus 5 × order A × n = 2 — through the
+      plugin entry point, prompt saved with its md5 before launch, first-turn stop reason and any
+      continuation message recorded. Registered before launch: anchored ≈ run 44's 232 / 236 at ≈ ×1.02
+      means the run 53 mechanism was the `covered`-by-posited-leaf verdict and 2.0 removed it; ≈ 120
+      again means it was not, and the entry point or the model behind the alias remains. A first single
+      launch is the smoke test — first turn must end `end_turn`, not `max_tokens` — and only then n = 2.
+- [ ] **A one-node skeleton, as a cell coordinate.** The author's question of 2026-09-15: does it make
+      sense to posit only the root? As a rule, no — M3/M4 put grouping into the one phase that reads
+      the list as a set, and a single root moves every grouping decision into sequential accretion. As a
+      cell, yes: skeleton size becomes a declared coordinate (run 18 measured 15–75 nodes and found no
+      effect on the anchored total; the extreme of 1 was never tried, and price was not computed then).
+      Launch: same inputs, "posit exactly one node, the root" declared as a deviation in the manifest,
+      n = 2. **Two registered predictions:** (1) Jaccard between the repeats moves — up if the skeleton
+      guess was the instability, down if list order becomes structure; (2) C3 falls materially, because
+      integration is taken at every parent and the tree's depth is the multiplier (session
+      2026-08-26: declared 20 %, delivered 41–44 %). What (2) measures is how much of the chain's
+      integration is depth rather than work. Run after the re-baseline, not with it: two new
+      coordinates in one run do not separate.
+- [ ] **Accretion is order-dependent after the skeleton, and the skeleton only defers the problem.**
+      The author's observation, 2026-09-15: (a) the tree grows from one point whatever is posited —
+      the root is always single, the skeleton is its first level(s); (b) the first level is thought
+      through from the whole set, and everything after it is sequential — each accretion verdict is
+      taken against the structure as it stands when that requirement's turn comes. The fixpoint and
+      the `deferred` verdict soften this but do not remove it: `resolution is final` locks the first
+      verdict. Run 18 found `deferred` unused even under the adversarial reverse order, and yet two
+      repeats on the same order still group differently (Jaccard 0.31 / 0.41) — so order is one source
+      of the grouping spread, not the only one. **Candidate design, not decided:** make accretion
+      two-phased — first assign every requirement to a skeleton node (a partition of the set, taken
+      against the whole list, order-free by construction), then, per node, read that node's
+      requirements as a set and group them into leaves. Order-dependence would then exist only inside
+      a node's small set, and the partition itself becomes a measurable reading (agreement between
+      repeats on the assignment alone). This is a method change — `Hotyn-M 3.0`, or folded into 2.0
+      before it is measured — and it changes what the accretion log records. Decide after the
+      re-baseline shows what 2.0 alone did.
+
+---
+
 ## Proposal 2026-09-14 — how the five curves are used: level from the chain, shape from the class
 
 Five curves sit on the panel and each declares a width, but the widths contain different things
