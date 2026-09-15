@@ -78,6 +78,39 @@ carries exit criterion **v2.0** (§6c) replacing v1.0. Ordered; 1 and 2 are inde
       If it does, it turns `syn`'s single point into a corridor and makes gate test 2 scoreable at
       the width the market actually has. If it does not, `syn` still gives the first reading.
 
+## Added 2026-09-16 — the 2.1 chain priced SAS; one sizing question the 1.1 model hid
+
+Runs 58–59 (`examples/SAS/run58_work_model.md`, `run59_sizing_and_assembly.md`): `HM57-1` crossed by
+`Hotyn-W 1.2` and sized by `Hotyn-D 2.0`, n = 2, through the plugin entry point. Chain reading **33 444 net
+task hours, band 31 954–34 933 — ×0.877 of run 47's 38 118**, the whole difference in the skeleton (C3 46%
+of leaf effort against 54%; per-parent items 281 against 574). The entry point is clean. Step 3's own spread
+was **×1.09 against ×1.003 in run 47**, and it is one question, not noise.
+
+- [ ] **Adjudicate the shared-obligation rule for sizing (catalogue §3a, a precedent beside P-1…P-6).**
+      Under `Hotyn-M 2.1` distinct leaves realise the same obligations (52 leaves in 21 equal-set groups;
+      NFR-16 on three leaves, G-1 / G-1.2 / G-3.1 on three, NFR-10 on three). The rules say "count from the
+      element's declared content plus its own coverage" and do not say whether an obligation shared by several
+      leaves is counted in full on each. Run 59's repeats split on exactly this, each declaring its rule up
+      front: repeat 1 counted the full text on every leaf that covers it (13 XL, 44 L; 34 933 h); repeat 2
+      counted on each leaf only the parts its name claims and the rest on the sibling that names them (run
+      47's distribution; 31 954 h). P-2 does not settle it: it is about name tokens against obligations, not
+      obligations across leaves. **Options, one to be chosen once for everybody:** (a) full text on every
+      leaf — simple, over-counts shared work as many times as it is shared; (b) the part the name claims,
+      the remainder on the sibling that names it — repeat 2's reading, needs a tie-break when no name claims a
+      part; (c) the sizing prompt carries, per obligation, the list of leaves that share it, and the rule says
+      "count each named thing once across the sharing set, on the leaf whose name claims it, else on the first
+      in model order". This is a rule change for `Hotyn-D` (minor by the letter — it changes no threshold — but
+      it moves the level ×1.09, so 2.0 and post-change readings are kept apart) and a re-run of run 59's
+      fourteen launches to measure it. Until then the 2.x chain's sizing carries the ×1.09 as its freedom, and
+      on this case the sizing step, not the product model, is the widest of the three.
+- [ ] **The migration driver still reads two ways** (run 47 §3, run 59 §3, unchanged): 15 of 24 stores agree,
+      A076 / A010 / C06 / A012 do not, and batch B's six drew no class under either repeat because "no
+      predecessor application is named anywhere in the batch". The catalogue's two framings of the driver
+      ("needing pre-load" against "loaded from the predecessor") are the cause; the rate table's G rows have
+      no zero rung. Carried, third case now.
+
+---
+
 ## Added 2026-09-15 — `Hotyn-M 2.0` is unmeasured, and the skeleton is not the only order-dependence
 
 `Hotyn-M 2.0` (coverage in leaves only; `docs/review_2026-09-15_sensor_texts.md`, `PIPELINE.md`) and
