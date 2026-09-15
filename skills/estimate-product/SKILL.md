@@ -91,6 +91,7 @@ python examples/<case>/run<N>_raw/assemble_<case>.py
 
 ## What this half does not give
 
-No corridor (no P10–P90), no team-capability term, no brake on over-counting
+No measured corridor — the band the report draws is the sum of the rate cells' O/M/P at an assumed
+ρ = 0.5 that has not been measured — no team-capability term, no brake on over-counting
 (`docs/instrument.md` §4). The outside view and the diagnosis are `/3a8:estimate-reference-class`
 and `/3a8:estimate`.
