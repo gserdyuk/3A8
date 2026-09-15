@@ -137,6 +137,7 @@ the BMS pair differs by ×1.56 in structure size and has not been priced end to 
 | `Hotyn-K 1.0 → 1.1` | required declaration (unit, leave, roles, source disagreement) before any figure | 2026-08-26 |
 | rate table v0.1 → v0.1-h | re-expressed in person-hours, ×8, no value reviewed | 2026-08-27 |
 | `Hotyn-M 1.1 → 2.0` | **coverage in leaves only**: a leaf carries its load, a node only its children; posited things are nodes, childless nodes deleted and single-child nodes lifted at closure, all logged; `covered` names leaves only. Plus write-as-you-go and the reduced output. Motivated by run 53 (`docs/review_2026-09-15_sensor_texts.md`). No reading yet | 2026-09-15 |
+| `Hotyn-M 2.0 → 2.1` | M2: identity by coverage set is for comparing models, not for building one; distinct things with the same coverage are distinct leaves. Runs 55–56 read the 2.0 sentence three ways and the level followed (139 / 145 / 182) | 2026-09-15 |
 | `Hotyn-W 1.1 → 1.2` | W7: `aggregate` is the class of every node and of nothing else; declared content of a leaf is its name plus the obligations it covers | 2026-09-15 |
 
 `Lytin-D` is the sensor this chain replaced; it does not run inside it.

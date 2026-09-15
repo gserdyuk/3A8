@@ -39,8 +39,19 @@ was struck. Worked example of a complete Step 0: `examples/SAS/README.md`.
 ## Steps 1–3 — three sensors, each blind to the others
 
 All three have `tools: Glob` only and must not read files: **paste** their inputs. Choose the model
-deliberately and record it yourself. Launch **n = 2 repeats** per step; the spread is part of the
-result. Large models are crossed and sized in batches by parent (SAS: seven batches).
+deliberately and record it yourself. Launch **n = 2 repeats** for steps 1 and 3 (they measure the
+method's freedom); step 2 runs once per batch (it is very nearly a function, Jaccard 0.969). Large
+models are crossed and sized in batches by parent (SAS: seven batches).
+
+**The output cap is a launch coordinate.** Claude Code caps a subagent turn at 64 000 output tokens
+and, from 2.1.270, resumes it with an injected "Output token limit hit … break remaining work into
+smaller pieces" message — text that reached the sensor and was in no prompt. The product-model
+sensor needs 80 000–95 000 tokens for a 146-obligation list (runs 44, 56). Launch the orchestrating
+process with `CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000` (it reaches subagents — run 56), and record in
+the manifest, per sensor and per turn: the cap in force, the stop reason, output tokens, and any
+continuation message verbatim. A sensor whose turn stopped at `max_tokens` is a reading taken under a
+different instrument from one that did not (runs 53–55 against 56); do not pool them. Save every
+prompt to `run<N>_raw/prompt*.md` with its md5 **before** launch.
 
 | step | subagent | paste in | must never see |
 |---|---|---|---|

@@ -85,7 +85,7 @@ assumption log, write the technology declaration with its parameters and its **v
 decisions** (each a named fork, e.g. direct client acceptance vs staged UAT, seeded data vs migrated
 data). Scope decisions are declared, never inferred, and each one is separately priceable afterwards.
 
-### Step 1 — the product model · `Hotyn-M 2.0`
+### Step 1 — the product model · `Hotyn-M 2.1`
 
 **In:** the pinned product obligations, a declared processing order, the assumption log.
 **Out:** a tree of the thing to be built — one root, elements with id, name, parent, and the set of
@@ -225,7 +225,7 @@ steps of +0.4% to +30%. A batch on a different model is a different instrument, 
 
 | role | engine | definition |
 |---|---|---|
-| product model | **`Hotyn-M 2.0`** | `agents/model-builder.md` |
+| product model | **`Hotyn-M 2.1`** | `agents/model-builder.md` |
 | work model | **`Hotyn-W 1.2`** | `agents/work-crosser.md` |
 | size classes | **`Hotyn-D 2.0`** | `agents/work-estimator.md` |
 | rate table | **`Hotyn-K 1.0`** | `agents/rate-table-author.md` |

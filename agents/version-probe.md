@@ -23,7 +23,7 @@ estimator-decomposition    Lytin-D 5.0
 estimator-reference-class  Lytin-R 1.1
 fp-counter                 Hotyn-P 1.0
 fp-norms-author            Hotyn-N 1.0
-model-builder              Hotyn-M 2.0
+model-builder              Hotyn-M 2.1
 rate-table-author          Hotyn-K 1.1
 rates-step-c               Lytin-K 1.1
 work-crosser               Hotyn-W 1.2
