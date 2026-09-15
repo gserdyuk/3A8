@@ -85,23 +85,27 @@ assumption log, write the technology declaration with its parameters and its **v
 decisions** (each a named fork, e.g. direct client acceptance vs staged UAT, seeded data vs migrated
 data). Scope decisions are declared, never inferred, and each one is separately priceable afterwards.
 
-### Step 1 — the product model · `Hotyn-M 1.1`
+### Step 1 — the product model · `Hotyn-M 2.0`
 
 **In:** the pinned product obligations, a declared processing order, the assumption log.
 **Out:** a tree of the thing to be built — one root, elements with id, name, parent, and the set of
 obligation ids each **realises**. No numbers of any kind beyond counts.
 
 Binding rules: the requirement list is the anchor and may not be reshaped (an entry that holds two
-obligations is *flagged ambiguous*, not split); a node's identity is the set of requirements it
-covers, never its name; at closure every obligation must be placed or explicitly reported unplaced.
+obligations is *flagged ambiguous*, not split); **coverage lives in leaves only** — a leaf's identity
+is the set of requirements it covers, a node carries nothing but its children (2.0, 2026-09-15; 1.1 let
+a node hold coverage of its own); at closure every obligation must be placed or explicitly reported
+unplaced, childless nodes are deleted and single-child nodes lifted, every deletion and lift logged.
 
 **Measured:** two identical runs place the same obligations but disagree on **what goes with what** —
 Jaccard 0.31 (BMS) / 0.41 (FaxRxTx) — and on structure size by ×1.56 (BMS) / ×1.02 (FaxRxTx). **This
 is the chain's least stable step**, and how unstable depends on how densely the source describes
 structure. Whether that spread is instrument defect or the honest multiplicity of designs over an
-under-determined document is **not settled**: no human control has ever been run.
+under-determined document is **not settled**: no human control has ever been run. All of these are
+`1.1` readings; `2.0` has none yet — its first SAS pair is the re-baseline, and readings across the two
+are not comparable without it.
 
-### Step 2 — the work model · `Hotyn-W 1.1`
+### Step 2 — the work model · `Hotyn-W 1.2`
 
 **In:** the closed product model, the technology declaration and its parameters, the demanded-work
 list.
@@ -221,8 +225,8 @@ steps of +0.4% to +30%. A batch on a different model is a different instrument, 
 
 | role | engine | definition |
 |---|---|---|
-| product model | **`Hotyn-M 1.1`** | `agents/model-builder.md` |
-| work model | **`Hotyn-W 1.1`** | `agents/work-crosser.md` |
+| product model | **`Hotyn-M 2.0`** | `agents/model-builder.md` |
+| work model | **`Hotyn-W 1.2`** | `agents/work-crosser.md` |
 | size classes | **`Hotyn-D 2.0`** | `agents/work-estimator.md` |
 | rate table | **`Hotyn-K 1.0`** | `agents/rate-table-author.md` |
 | outside view | **`Lytin-R 1.0`** | `agents/estimator-reference-class.md` |
