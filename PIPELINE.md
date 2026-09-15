@@ -48,7 +48,7 @@ The naming scheme: **city = generation of the whole pipeline, letter = role with
 
 | Step | Agent | Engine |
 |---|---|---|
-| 1 · product model | `model-builder` | **Hotyn-M 2.0** |
+| 1 · product model | `model-builder` | **Hotyn-M 2.1** |
 | 2 · work model | `work-crosser` | **Hotyn-W 1.2** |
 | 3 · size classes | `work-estimator` | **Hotyn-D 2.0** |
 | — · rates | `rate-table-author` | **Hotyn-K 1.1** |

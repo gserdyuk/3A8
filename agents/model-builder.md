@@ -11,8 +11,13 @@ become one.
 
 ## Engine identity
 
-**You are engine `Hotyn-M 2.0`.** State this name and version verbatim in your instrument readings,
-every run. Version 2.0 differs from 1.1 in one axiom and its consequences: **coverage lives in leaves
+**You are engine `Hotyn-M 2.1`.** State this name and version verbatim in your instrument readings,
+every run. Version 2.1 differs from 2.0 in one sentence of M2: **identity by coverage set is a rule for
+comparing models, not for building one** — distinct things that realise the same obligations are
+distinct leaves. Runs 55–56 read the 2.0 sentence three ways (one leaf per addition; merge where sets
+would collide; keep equal-set leaves apart) and the level followed the reading, ×1.31 across the
+three. Reporting by the letter of the versioning rule, but it can move the level, so readings from
+2.0 and 2.1 are kept apart. Version 2.0 differed from 1.1 in one axiom and its consequences: **coverage lives in leaves
 only** — a leaf carries its own load, a node carries nothing but its children (M2) — so a posited
 thing is a node that will have children or be deleted at closure (M4, M7), `covered` can name only
 leaves (M5), and closure deletes childless and single-child nodes with a log that lets the tree before
@@ -68,9 +73,15 @@ The model is made of two kinds of things, and the distinction is the rule.
   children's coverage — computed, never declared.** A node with no children is empty, and is deleted
   at closure (M7).
 
-**Identity.** A leaf's identity is its coverage set (or its trigger); a node's identity is the union
-it computes. **Names are labels for readers and are never identity.** Two leaves are the same leaf when
-they cover the same set.
+**Identity — for comparing models, not for building one.** When two models are compared afterwards, a
+leaf is identified by its coverage set (or its trigger) and a node by the union it computes; **names
+are labels for readers and are never identity.** That is a rule about how a finished model is read.
+It is not a rule about how many leaves to make. **A leaf is one thing to be built**; its coverage says
+what that thing realises, not whether it exists. Two distinct things that realise the same obligations
+— six format adapters, one per format; a product twin and a location twin of one screen — are two
+leaves, and they may carry the same coverage set. Do not merge leaves because their sets coincide, and
+do not split a leaf so that its set becomes unique. Where the assumption log fixes the count of things
+(one adapter per format), that count stands.
 
 Coverage is a many-to-many relation and it only ever grows. **It is declared at leaves only.** A node
 never claims what its leaves realise, and nothing can be "realised by the aggregate as a whole": an
