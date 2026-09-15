@@ -1,0 +1,1121 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project estimate &middot; 2026-09-16 01:42</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap">
+
+<style>
+:root{
+  --ground:#EEF0EA; --surface:#FAFBF7; --surface-2:#E7EAE1;
+  --ink:#161A15; --ink-2:#3C443A; --muted:#5D655A; --faint:#8B9386;
+  --rule:#D2D7C9; --rule-2:#BFC5B4;
+  --pen-blue:#20456B; --pen-blue-fill:rgba(32,69,107,.10);
+  --pen-red:#9E3B26; --pen-red-fill:rgba(158,59,38,.13);
+  --pen-teal:#1F6E5B; --pen-teal-fill:rgba(31,110,91,.10);
+  --pen-ochre:#A8781E;
+  --caution:#7A5A12;
+  --shadow:0 1px 2px rgba(22,26,21,.07), 0 8px 24px -12px rgba(22,26,21,.18);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#121410; --surface:#1A1D18; --surface-2:#22261E;
+    --ink:#E6E9E1; --ink-2:#C6CCBE; --muted:#98A090; --faint:#727A6C;
+    --rule:#2E3329; --rule-2:#3D4436;
+    --pen-blue:#82ACD8; --pen-blue-fill:rgba(130,172,216,.13);
+    --pen-red:#DD9078; --pen-red-fill:rgba(221,144,120,.16);
+    --pen-teal:#79C2AB; --pen-teal-fill:rgba(121,194,171,.13);
+    --pen-ochre:#D9B25C;
+    --caution:#C9A758;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -14px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#121410; --surface:#1A1D18; --surface-2:#22261E;
+  --ink:#E6E9E1; --ink-2:#C6CCBE; --muted:#98A090; --faint:#727A6C;
+  --rule:#2E3329; --rule-2:#3D4436;
+  --pen-blue:#82ACD8; --pen-blue-fill:rgba(130,172,216,.13);
+  --pen-red:#DD9078; --pen-red-fill:rgba(221,144,120,.16);
+  --pen-teal:#79C2AB; --pen-teal-fill:rgba(121,194,171,.13);
+  --pen-ochre:#D9B25C;
+  --caution:#C9A758;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px -14px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
+body{margin:0; background:var(--ground); color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:15px; line-height:1.6; -webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px; margin:0 auto; padding:0 24px 40px}
+:focus-visible{outline:2px solid var(--pen-blue); outline-offset:2px}
+
+header.mast{padding:34px 0 20px}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--muted)}
+h1{font-family:Newsreader,Georgia,serif; font-weight:500; font-size:clamp(29px,4vw,42px);
+  line-height:1.1; letter-spacing:-.015em; margin:10px 0 10px; text-wrap:balance}
+h1 em{font-style:italic; color:var(--ink-2)}
+.standfirst{max-width:68ch; color:var(--ink-2); font-size:16px; margin:0}
+.mast-meta{display:flex; flex-wrap:wrap; gap:6px 24px; margin-top:16px;
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; color:var(--muted)}
+.mast-meta b{color:var(--ink-2); font-weight:500}
+
+.chart-card{background:var(--surface); border:1px solid var(--rule); border-radius:3px;
+  padding:22px 22px 14px; box-shadow:var(--shadow)}
+.chart-legend{display:flex; flex-wrap:wrap; gap:9px 24px; margin-bottom:14px;
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11.5px; color:var(--ink-2)}
+.lg{display:flex; align-items:center; gap:9px}
+.lg i{width:22px; height:0; border-top-width:2px; border-top-style:solid; display:block; flex:none}
+.lg.blue i{border-color:var(--pen-blue)} .lg.red i{border-color:var(--pen-red)}
+.lg.teal i{border-color:var(--pen-teal)}
+.lg.ochre i{border-color:var(--pen-ochre); border-top-width:1px}
+.lg.dash i{border-top-style:dashed} .lg.dot i{border-top-style:dotted; border-top-width:3px}
+.lg.fact i{border-color:var(--ink); border-top-width:3px}
+svg.plot{width:100%; height:auto; display:block; overflow:visible}
+svg.plot text{font-family:"IBM Plex Mono",ui-monospace,monospace; fill:var(--muted)}
+.hint{margin:12px 0 0; padding-top:11px; border-top:1px solid var(--rule);
+  font-size:12.5px; color:var(--muted)}
+.hint b{color:var(--ink-2); font-weight:500}
+
+.tiles{display:grid; grid-template-columns:repeat(auto-fit,minmax(185px,1fr)); gap:1px;
+  background:var(--rule); border:1px solid var(--rule); border-radius:3px; overflow:hidden;
+  margin-top:20px}
+.tile{background:var(--surface); padding:16px 18px 18px; display:flex; flex-direction:column; gap:4px}
+.tile .k{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10px; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--muted)}
+.tile .v{font-family:Newsreader,Georgia,serif; font-size:26px; font-weight:500; line-height:1.1;
+  letter-spacing:-.01em; font-variant-numeric:tabular-nums}
+.tile .v small{font-size:13px; color:var(--muted); font-family:"IBM Plex Sans",sans-serif;
+  font-weight:400; letter-spacing:0}
+.tile .d{font-size:12px; color:var(--muted); margin-top:1px; line-height:1.45}
+.tile.red .v{color:var(--pen-red)} .tile.blue .v{color:var(--pen-blue)}
+.tile.teal .v{color:var(--pen-teal)}
+.tile.ochre .v{color:var(--pen-ochre)}
+.tile.none .v{font-size:17px; color:var(--caution)}
+.tiles > .tile:last-child{grid-column:1/-1}
+
+.acc{margin-top:34px; border:1px solid var(--rule); border-radius:3px; overflow:hidden;
+  background:var(--rule)}
+.acc > details{background:var(--surface); border-bottom:1px solid var(--rule)}
+.acc > details:last-child{border-bottom:none}
+.acc summary{list-style:none; cursor:pointer; padding:15px 20px; display:flex;
+  align-items:baseline; gap:14px; transition:background .12s}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary:hover{background:var(--surface-2)}
+.acc summary .n{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px;
+  color:var(--faint); flex:none; width:2.2em}
+.acc summary .h{font-family:Newsreader,Georgia,serif; font-size:19px; font-weight:500;
+  letter-spacing:-.01em; flex:1; text-wrap:balance}
+.acc summary .c{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px;
+  color:var(--muted); flex:none}
+.acc summary .c::after{content:" +"; color:var(--faint)}
+.acc details[open] > summary{background:var(--surface-2); border-bottom:1px solid var(--rule)}
+.acc details[open] > summary .c::after{content:" \2212"}
+.acc .panel{padding:20px 20px 26px}
+.acc .panel > .lead{color:var(--ink-2); font-size:14px; margin:0 0 18px; max-width:74ch}
+.acc .panel > .lead b{color:var(--ink)}
+
+.stack{display:flex; flex-direction:column; gap:1px; background:var(--rule);
+  border:1px solid var(--rule); border-radius:3px; overflow:hidden}
+.row{background:var(--surface); padding:14px 18px; display:grid; grid-template-columns:auto 1fr;
+  gap:15px; align-items:baseline}
+.row .idx{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; color:var(--faint);
+  padding-top:2px; white-space:nowrap}
+.row .body{min-width:0}
+.row .t{font-weight:600; font-size:14px; margin-bottom:3px}
+.row .x{color:var(--ink-2); font-size:13.5px}
+.chip{display:inline-block; font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:9.5px;
+  letter-spacing:.1em; text-transform:uppercase; padding:2px 7px; border-radius:2px;
+  border:1px solid currentColor; margin-left:8px; vertical-align:1px; white-space:nowrap}
+.chip.caution{color:var(--caution)} .chip.blue{color:var(--pen-blue)} .chip.red{color:var(--pen-red)}
+
+.tbl-scroll{overflow-x:auto; border:1px solid var(--rule); border-radius:3px; background:var(--surface)}
+.tbl-tall{max-height:min(58vh,520px); overflow-y:auto}
+table{border-collapse:collapse; width:100%; min-width:600px; font-size:13.5px}
+th,td{text-align:left; padding:10px 15px; border-bottom:1px solid var(--rule); vertical-align:top}
+thead th{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--muted); font-weight:400; background:var(--surface-2);
+  white-space:nowrap; position:sticky; top:0; z-index:1}
+tbody tr:last-child td{border-bottom:none}
+td.num{text-align:right; font-variant-numeric:tabular-nums;
+  font-family:"IBM Plex Mono",ui-monospace,monospace; white-space:nowrap}
+td.q{color:var(--ink-2)}
+.tag{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; color:var(--pen-blue);
+  white-space:nowrap}
+
+.acc .panel h4{font-size:12px; font-family:"IBM Plex Mono",ui-monospace,monospace;
+  text-transform:uppercase; letter-spacing:.1em; color:var(--muted); font-weight:400; margin:24px 0 9px}
+.acc .panel p{margin:0 0 11px; max-width:74ch; font-size:13.5px; color:var(--ink-2)}
+.acc .panel p b{color:var(--ink)}
+.acc .panel ul{margin:0 0 12px; padding-left:19px; max-width:74ch; font-size:13.5px; color:var(--ink-2)}
+.acc .panel li{margin-bottom:7px}
+.acc .panel blockquote{margin:0 0 14px; padding:2px 0 2px 15px; border-left:2px solid var(--rule-2);
+  font-family:Newsreader,Georgia,serif; font-size:16px; font-style:italic; color:var(--ink); max-width:66ch}
+.src-line{margin-top:18px; padding-top:12px; border-top:1px solid var(--rule);
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px; color:var(--pen-blue)}
+.acc .panel a{color:var(--pen-blue); text-decoration:none;
+  border-bottom:1px solid color-mix(in srgb, var(--pen-blue) 35%, transparent)}
+.acc .panel a:hover{border-bottom-color:var(--pen-blue)}
+.row .t a{font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:12.5px}
+
+footer{margin-top:48px; padding:26px 0 8px; border-top:1px solid var(--rule-2);
+  display:grid; grid-template-columns:minmax(190px,auto) 1fr; gap:28px 40px}
+footer .brand{font-family:Newsreader,Georgia,serif; font-size:26px; font-weight:500;
+  letter-spacing:-.01em; line-height:1.2}
+footer .brand span{display:block; font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:10.5px; letter-spacing:.13em; text-transform:uppercase; color:var(--muted);
+  margin-top:8px; line-height:1.8}
+footer .fine{font-size:12.5px; color:var(--muted); max-width:74ch}
+footer .fine b{color:var(--ink-2); font-weight:500}
+footer .fine p{margin:0 0 9px}
+footer .stamp{grid-column:1/-1; margin-top:8px; padding-top:14px; border-top:1px solid var(--rule);
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:10.5px; color:var(--faint)}
+@media (max-width:640px){
+  .wrap{padding:0 16px 32px}
+  .row{grid-template-columns:1fr; gap:4px}
+  .chart-card{padding:16px 12px 10px}
+  .acc summary{padding:13px 15px; gap:10px}
+  .acc summary .h{font-size:17px}
+  .acc .panel{padding:16px 15px 22px}
+  footer{grid-template-columns:1fr; gap:20px}
+}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="eyebrow">3A8 &middot; TriAngulEight</div>
+  <h1>Project estimate</h1>
+  <p class="stamp-line">Case SAS &middot; member application solution for a standards body, 2018 &middot; RFP stage &middot; <b>no outcome, ever</b> &middot; generated <b>2026-09-16 01:42</b></p>
+  <p class="standfirst">The third case, and the first prepared under the case-profile rule: the team, the site, the domain and the absence of an outcome were pinned before any number existed. The chain was run end to end on one model coordinate; two readings of the outside view were taken in ignorance of it and landed on both sides of it, &times;1.8 apart from each other.</p>
+  <div class="mast-meta">
+    <span><b>153</b> obligations &mdash; 146 product, 7 work</span>
+    <span><b>246</b> model elements &middot; <b>1 650</b> work items</span>
+    <span>chain assembled <b>8 Sep</b> &middot; outside view read <b>8 Sep</b> &middot; diagnosed <b>8 Sep</b></span>
+    <span>unit <b>1 pd = 8 net task hours</b> &mdash; leave, holidays and sickness not included</span>
+  </div>
+</header>
+
+<div class="chart-card">
+  <div class="chart-legend">
+      <span class="lg blue"><i></i>Outside view RC46-1 &mdash; P50 5985 (380 person-months at 168 recorded h)</span>
+      <span class="lg blue dash"><i></i>Outside view RC46-2 &mdash; P50 3064 (215 person-months at 152 charged h)</span>
+      <span class="lg red"><i></i>Bottom-up, calibrated &mdash; P50 7200</span>
+      <span class="lg red dash"><i></i>Bottom-up, 2.1 chain, calibrated &mdash; P50 6318 (runs 57&ndash;60: the same case on the shallower skeleton of Hotyn-M 2.1; &times;0.88 of the solid bell before and after calibration)</span>
+      <span class="lg ochre"><i></i>No method &mdash; ten bare runs, one thin curve each, medians 2 730&ndash;5 250 (run 49)</span>
+  </div>
+  <svg class="plot" id="plot" viewBox="0 0 900 580" role="img"
+    aria-label="Estimate distributions plotted on one net-working-time scale in person-days of eight task hours."></svg>
+  <p class="hint"><b>Two views of the same three distributions.</b> Above, how likely each answer is &mdash; all curves on one scale, each enclosing the same area, so the bottom-up looks taller only because its mass is packed into a narrower range. Below, the same thing accumulated: <b>the chance of coming in at or under any figure</b>, which is what a number gets chosen against.<br><br><b>Move the pointer</b> and a read line crosses both panels, reporting the chance of exceeding that figure under each instrument. The two outside-view curves are <b>one sensor run twice on identical input</b>; each declared its own person-month and both are placed by the house factor of 0.75 task hours per recorded hour, which both declarations contain. The calibrated bottom-up sits at about P63 of one reading and above P90 of the other &mdash; the diagnosis names that contradiction and does not resolve it. The bottom-up's width is the rate table's optimistic-to-pessimistic spread under a declared &rho; = 0.5, scaled by the calibration; it is a convention, not a measurement, and three times narrower than either class reading. Neither reading gave a floor; below P10 each curve is extended to P10&sup2;/P50 &mdash; the same ratio as P10 to P50 &mdash; as a drawing convention, so that the tenth of the mass below P10 is not drawn as a spike. <b>The ten thin ochre curves</b> are the no-method baseline (run 49): the same document and assumption log handed to a bare agent with no method, ten times, each run's own P10&ndash;P90 fitted as a lognormal. They are drawn as a family and never pooled, because their spread between runs (&times;1.9 on the median) is the reading; their mean sits at &times;0.75 of the raw chain and &times;0.49 of the calibrated centre, and inside the lower class reading. The density panel&rsquo;s vertical axis reads as <b>chance per 100-pd window</b>; the exact mass is always the cumulative panel.<br><br><b>The dashed red bell</b> is the same bottom-up instrument run again on the same case with a later product-model engine (<code>Hotyn-M 2.1</code>, runs 57&ndash;60): the same 187 leaves on a skeleton of 24 nodes instead of 59, priced by the same table and calibrated by its own gap-blind round. It sits at &times;0.88 of the solid bell, before and after calibration, and its width is the same &rho; = 0.5 convention. Read the two bells as two versions of one instrument, never as two independent views: they share every input except the skeleton.</p>
+</div>
+
+<div class="tiles">
+    <div class="tile red"><div class="k">Centre</div><div class="v">7200 <small>pd</small></div><div class="d">57 600 net task hours &asymp; 503 staffed person-months. The table-priced assembly of 4765 &times; the gap-blind Step C chain, <b>&times;1.51</b> &mdash; the figure comparable with the outside view.</div></div>
+    <div class="tile red"><div class="k">Corridor &middot; P10&ndash;P90</div><div class="v">5668&ndash;8732 <small>pd</small></div><div class="d">The drawn band. From the O/M/P in every rate cell, under a declared item correlation of <b>&rho; = 0.5</b>, scaled by the calibration.</div></div>
+    <div class="tile red"><div class="k">Centre &middot; 2.1 chain</div><div class="v">6318 <small>pd</small></div><div class="d">50546 net task hours &asymp; 441 staffed person-months &mdash; the dashed bell. The same case through <code>Hotyn-M 2.1</code> / <code>W 1.2</code> / <code>D 2.0</code> (runs 57&ndash;59, raw 4180), calibrated by its own gap-blind Step C round (run 60, <b>&times;1.51</b> again). <b>&times;0.88</b> of the standing centre before and after calibration: the whole difference is the shallower skeleton&rsquo;s integration and per-parent items. Calibration spread 4980&ndash;9004, not drawn.</div></div>
+    <div class="tile "><div class="k">Calibration spread</div><div class="v">6012&ndash;9265 <small>pd</small></div><div class="d">A different quantity, and <b>not percentiles</b>: the centre at the low and high ends of the Step C rates. 48 100 &ndash; 74 100 net task hours.</div></div>
+    <div class="tile none"><div class="k">Reserve</div><div class="v">Unresolved</div><div class="d">Two P90s of one sensor that differ &times;2: 6270 and 13388 pd. The centre sits at ~P63 of one and <b>above P90</b> of the other. Nothing averaged.</div></div>
+    <div class="tile "><div class="k">Repeat spread</div><div class="v">&times;1.0026</div><div class="d">Two independent size classifications, 85% class agreement, priced from the same table: 38 069 and 38 168 net task hours. Not a measure of precision, the diagnosis says: a symmetric cancellation is the likelier reading.</div></div>
+    <div class="tile ochre"><div class="k">No method &middot; 10 runs</div><div class="v">2 730&ndash;5 250 <small>pd</small></div><div class="d">Medians of ten bare runs on the same text, mean 3 553 pd (169 person-months at 168 h). Spread &times;1.92 between runs, CV 25.5% &mdash; twice FaxRxTx's; each run declares a &times;2.2 corridor of its own. Sits at &times;0.75 of the raw chain.</div></div>
+    <div class="tile blue"><div class="k">Outside view &middot; P50</div><div class="v">3064 &middot; 5985 <small>pd</small></div><div class="d">Two readings of one sensor, in net working time: 215 and 380 person-months in their own declared units. <b>&times;1.95 apart</b> after conversion, &times;1.77 before it &mdash; units explain 4&ndash;7% of the gap.</div></div>
+</div>
+
+<div class="acc">
+    <details id="how-to-read">
+      <summary><span class="n">01</span><span class="h">How to read the chart</span><span class="c">the method</span></summary>
+      <div class="panel">
+        <p class="lead">Both instruments produce a distribution. Only one of them did so without being asked.</p>
+
+<p>Both instruments produce a distribution. The outside view produces quantiles natively; the
+bottom-up's range comes from the optimistic, most-likely and pessimistic value in every rate cell,
+summed under a <b>declared</b> item correlation of &rho; = 0.5 &mdash; independent items would claim
+the total is known to &plusmn;1%, perfectly correlated ones would give &times;1.9, and the truth is
+certainly neither. Across &rho; from 0.25 to 0.75 the band edges move about &plusmn;20%.</p>
+<h4>The two outside-view readings are one sensor run twice</h4>
+<p>Same input, same day, same engine. They built the same eight-branch class, excluded the same
+neighbours, used the same relative anchors &mdash; and landed <b>&times;1.77 apart at the median
+before any conversion</b>, because their absolute anchors differ: one staffs the class from tier-1
+vendor patterns, the other sizes it in functional units against repository delivery rates. This is
+the third case on which the class disagrees with itself by more than it disagrees with the chain.
+<b>Only the marked quantiles are readings; the curve between them is interpolation.</b> Neither reading
+quoted a P95 &mdash; both said the class contains non-delivery beyond P90 and declined to number it, so
+the tails are hatched rather than drawn.</p>
+<h4>The unit, and the one conversion applied</h4>
+<p>Net hours of work on the task, shown as person-days of 8 such hours. <b>Leave, public holidays and
+sickness are not in these numbers</b>, and neither is any notion of calendar or headcount. Each class
+reading declared its own unit &mdash; 168 recorded hours per person-month with leave outside, and 152
+charged hours per person-month with leave inside &mdash; and each put its own conversion to task hours
+in a band containing 0.75. <b>The house factor 0.75 is applied to both</b>, to the class side only;
+the bottom-up needs none, having been priced in task hours to begin with.</p>
+<h4>Known direction of error</h4>
+<p>The bottom-up curve is a normal approximation. Rate cells are right-skewed and correlated sums keep
+skew, so the true upper tail is <b>fatter</b> than drawn.</p>
+
+      <div class="src-line">docs/constants.md &middot; docs/instrument.md</div>
+      </div>
+    </details>
+    <details id="divergence">
+      <summary><span class="n">02</span><span class="h">Why the methods disagree</span><span class="c">&times;0.85 &ndash; &times;1.56</span></summary>
+      <div class="panel">
+        <p class="lead">At equal scope the raw chain sits between the two readings of the outside view; the calibrated centre sits above both. Steps B&ndash;D attributed the gaps without closing them, and found the largest one inside the outside view itself.</p>
+
+<div class="stack">
+  <div class="row"><span class="idx">the class<br>vs itself</span><div class="body">
+    <div class="t">The largest single quantity in the comparison <span class="chip blue">&times;1.82</span></div>
+    <div class="x">The two outside-view medians are 24 510 and 44 688&ndash;47 880 net task hours &mdash; three times the distance from the bottom-up to the nearer of them. Before any conversion the raw medians are 215 and 380 person-months, so the conversion did not create it; the two declared units come out within 3% of each other in task hours. <b>Attributed to one free parameter closed two ways</b>: the functional-size regime behind the repository anchor &mdash; one reading closed it with a number (1 200&ndash;3 000 units &times; ~12 h), the other with words (&ldquo;large band, over 1 000 FP&rdquo;) &mdash; plus a staffing anchor about two different crews, plus misclassification leaning opposite ways at equal 60% confidence.</div>
+  </div></div>
+  <div class="row"><span class="idx">units first</span><div class="body">
+    <div class="t">The naive comparison inverts the diagnosis</div>
+    <div class="x">Number against number, the chain reads 17% above the lower reading and 40% below the higher. After each reading's own declared conversion it is <b>56% above</b> the lower and <b>15% below</b> the higher. The direction survives in one case and the magnitude is wrong threefold; in the other, &ldquo;the instruments nearly agree&rdquo; would have been a pure artefact of units.</div>
+  </div></div>
+  <div class="row"><span class="idx">one way</span><div class="body">
+    <div class="t">Calibration points up, so it cannot meet both readings</div>
+    <div class="x">Every Step C correction is upward &mdash; the bottom-up's known systematic is omission. Against the higher reading the gap is explained 100% with a +12 900 h overshoot. Against the lower, <b>explained share 0%</b> and the gap widens &times;2.43. The class-vs-class gap is addressed by no rate at all. Stated in those words rather than closed by adjustment.</div>
+  </div></div>
+  <div class="row"><span class="idx">no method</span><div class="body">
+    <div class="t">Ten bare runs land below the chain, not above it <span class="chip">&times;0.75</span></div>
+    <div class="x">On FaxRxTx the no-method baseline sat &times;1.78 <b>above</b> the chain; here its mean is &times;0.75 <b>below</b> the raw chain and &times;0.49 below the calibrated centre, inside the lower class reading. The ten medians spread &times;1.92 (CV 25.5%, twice the FaxRxTx batches), and every run declares a corridor (&times;2.2) wider than that spread &mdash; the opposite of run 43's finding. Six of ten corridors cover the raw chain; two of ten cover the calibrated centre. One batch is one draw of the level (run 43 moved &times;1.145 in a day); a second batch is scheduled.</div>
+  </div></div>
+  <div class="row"><span class="idx">level</span><div class="body">
+    <div class="t">The rate table's level <span class="chip caution">round requested</span></div>
+    <div class="x">The one uncovered spot that acts multiplicatively on the whole centre. The rate agent spent both permitted globals on sourced effects and refused to touch the table; the diagnostician asks for a narrow gap-blind round on exactly that question and says the centre should be read as &ldquo;the table's level &times;1.50&rdquo; until it runs.</div>
+  </div></div>
+</div>
+<h4>What Step C adds, and why the rates came out modest</h4>
+<ul>
+<li><b>T1, T2, T3</b> &mdash; the 31/14 named holes, the real share of ~30 closure violations, and the three coarse XL leaves, each with the structure's own 20% integration on the increment.</li>
+<li><b>A-1&hellip;A-5</b> &mdash; five once-scoped additions the coverage report itself named as absent: a load test against the five response-time targets, a failover and backup/DR exercise, a WCAG 2.0 A evaluation, a cross-browser matrix, initial help content. 550 / 970 / 1 680 h, the same order as the existing once-scoped layer.</li>
+<li><b>G2 &times;1.15</b> &mdash; a first-in-domain team, a committee-governed client, generic optimism, <b>merged</b> into one global rather than charged three times.</li>
+<li><b>G1 &times;1.18</b> &mdash; scope growth: the business rules and the identity protocol the document says will be decided during the project.</li>
+<li><b>Suppressed by the coverage report</b>: no integration uplift (paid at 59 parents), no test or rework multiplier (two cycles of each carried), no management, security, environment or documentation uplift. The rate agent called this the largest single effect of the run.</li>
+</ul>
+<h4>False convergence, checked and refused</h4>
+<p>The raw chain, 38 118 h, lands within 1.3% of the lower reading's P80 &mdash; only at that reading's
+central conversion factor. At either end of its own declared band the coincidence disappears. The
+two class readings share an engine, a prompt and a blind-spot list, so their agreement on
+<b>shape</b> (P90/P50 of 2.24 and 2.05) is reproducibility of one instrument, not independent
+confirmation; their disagreement on <b>level</b> is a measurement of that instrument's dispersion.</p>
+
+      <div class="src-line">examples/SAS/run48_steps_BD.md &middot; run48_raw/diagnosis.md</div>
+      </div>
+    </details>
+    <details id="obligations">
+      <summary><span class="n">03</span><span class="h">Obligations</span><span class="c">153</span></summary>
+      <div class="panel">
+        <p class="lead">One entry per obligation <b>as the document words it</b>, under the document's own ids. Ids never change, so every artefact downstream still means what it meant. <b>No run may add, remove, split or merge an entry.</b></p>
+<div class="tbl-scroll tbl-tall"><table><thead><tr><th>id</th><th>obligation</th><th>kind</th></tr></thead><tbody>
+<tr><td class="tag">I-1</td><td>A web-based application solution for members to create, manage and share data related to prefixes, Global Item Numbers (GIN) and Location Numbers (LN), replacing the applications currently available to members</td><td class="q">product</td></tr>
+<tr><td class="tag">I-2</td><td>Three integrated modules &mdash; Product (GIN), Location (LN), Access Data &mdash; using the same data and system architecture and running on the same development platform</td><td class="q">product</td></tr>
+<tr><td class="tag">I-3</td><td>Identifier rules: a GIN is 12 or 14 digits and an LN is 13 digits, each formed as the company's licensed prefix (6&ndash;9 digits) plus a serial part, with a check digit</td><td class="q">product</td></tr>
+<tr><td class="tag">I-4</td><td>An application architecture aligned with the existing enterprise architecture, maintainable by X-Customer resources, and scalable and sustainable given the projected member and application growth</td><td class="q">product</td></tr>
+<tr><td class="tag">I-5</td><td>The final design accommodates future expansion &mdash; data other than GIN or LN, and sharing privileges down to field level &mdash; while that expansion itself stays out of scope</td><td class="q">product</td></tr>
+<tr><td class="tag">I-6</td><td>Functionality available to all members based on permissions, regardless of which module they use; data and functions are shared across modules</td><td class="q">product</td></tr>
+<tr><td class="tag">I-7</td><td>All functionality is validated against X-Customer Standards and business rules, which will be defined as part of the project</td><td class="q">product</td></tr>
+<tr><td class="tag">I-8</td><td>The Access Data module allows users to search for, view and export prefix, GIN and LN data &mdash; the subscribe side of the publish-and-subscribe model &mdash; and contains no editing functionality</td><td class="q">product</td></tr>
+<tr><td class="tag">I-9</td><td>A client's subscription determines which data can be viewed and which export options are available</td><td class="q">product</td></tr>
+<tr><td class="tag">I-10</td><td>Non-members (the general public) can search a limited data set but cannot export</td><td class="q">product</td></tr>
+<tr><td class="tag">I-11</td><td>X-Customer-owned data as well as data published by data owners can be accessed in the Access Data module</td><td class="q">product</td></tr>
+<tr><td class="tag">W-1</td><td>Project component 1, Requirements and Design, performed by the vendor</td><td class="q">work</td></tr>
+<tr><td class="tag">W-2</td><td>Project component 2, Development and Testing, performed by the vendor</td><td class="q">work</td></tr>
+<tr><td class="tag">W-3</td><td>Project component 3, Implementation, performed by the vendor</td><td class="q">work</td></tr>
+<tr><td class="tag">W-4</td><td>Project component 4, Post-production Support and Transition, performed by the vendor</td><td class="q">work</td></tr>
+<tr><td class="tag">G-1</td><td>Allow assignment of user roles and tasks</td><td class="q">product</td></tr>
+<tr><td class="tag">G-1.1</td><td>Each member is assigned a company administrator with the ability to add and edit other users in their company</td><td class="q">product</td></tr>
+<tr><td class="tag">G-1.2</td><td>The company admin can assign roles and tasks to users</td><td class="q">product</td></tr>
+<tr><td class="tag">G-1.3</td><td>User roles include Super-User, Approver, Editor, View-only; other roles may be added</td><td class="q">product</td></tr>
+<tr><td class="tag">G-1.4</td><td>A customer-level "Super-User" role with access to manage all data</td><td class="q">product</td></tr>
+<tr><td class="tag">G-2</td><td>Present a role-driven UI based on user role</td><td class="q">product</td></tr>
+<tr><td class="tag">G-3</td><td>Implement a workflow for new and edited records</td><td class="q">product</td></tr>
+<tr><td class="tag">G-3.1</td><td>The company admin can designate Editor and Approver roles and the rules for record approval</td><td class="q">product</td></tr>
+<tr><td class="tag">G-3.2</td><td>Editors and Approvers are notified of a change in approval status</td><td class="q">product</td></tr>
+<tr><td class="tag">G-3.3</td><td>Users can easily find records requiring their action</td><td class="q">product</td></tr>
+<tr><td class="tag">G-4</td><td>A user's password can be reset by the user, the company admin, or the X-Customer help desk</td><td class="q">product</td></tr>
+<tr><td class="tag">G-5</td><td>Lock records so that only one user at a time can edit a record</td><td class="q">product</td></tr>
+<tr><td class="tag">G-6</td><td>Display a user dashboard or start screen with notifications, reports, prefix data and other information</td><td class="q">product</td></tr>
+<tr><td class="tag">G-6.1</td><td>A prefix capacity counter displays how many numeric indicators (GINs or LNs) have been used and how many are available</td><td class="q">product</td></tr>
+<tr><td class="tag">G-7</td><td>Allow users to generate reports</td><td class="q">product</td></tr>
+<tr><td class="tag">G-7.1</td><td>Customise, schedule, run and view reports for adds, changes and deletes</td><td class="q">product</td></tr>
+<tr><td class="tag">G-7.2</td><td>View usage reports by hour, day, week, month and year <i>(current reporting utilises 3scale)</i></td><td class="q">product</td></tr>
+<tr><td class="tag">G-7.3</td><td>Run report data history</td><td class="q">product</td></tr>
+<tr><td class="tag">G-7.4</td><td>Run audit reports</td><td class="q">product</td></tr>
+<tr><td class="tag">G-8</td><td>Provide notifications to users in various formats &mdash; email, SMS and/or onscreen</td><td class="q">product</td></tr>
+<tr><td class="tag">G-8.1</td><td>Global notifications (e.g. scheduled server downtime)</td><td class="q">product</td></tr>
+<tr><td class="tag">G-8.2</td><td>Member-specific notifications (e.g. a user opts to be notified when records are updated or added)</td><td class="q">product</td></tr>
+<tr><td class="tag">G-8.3</td><td>Member-to-member and member-to-X-Customer notifications (e.g. a user can challenge record data)</td><td class="q">product</td></tr>
+<tr><td class="tag">G-8.5</td><td>A user can set communication preferences for the method and frequency of notifications received outside the system</td><td class="q">product</td></tr>
+<tr><td class="tag">G-9</td><td>Users can send application feedback to X-Customer, routed to a single X-Customer contact or a feedback tracking system</td><td class="q">product</td></tr>
+<tr><td class="tag">G-10</td><td>Display contextual help to the user</td><td class="q">product</td></tr>
+<tr><td class="tag">G-10.1</td><td>Help content may be customised by industry</td><td class="q">product</td></tr>
+<tr><td class="tag">G-10.2</td><td>Help content is maintained by X-Customer non-technical resources</td><td class="q">product</td></tr>
+<tr><td class="tag">G-11</td><td>Link to training &mdash; external videos, webinars, quick-start guides &mdash; from within the application</td><td class="q">product</td></tr>
+<tr><td class="tag">G-12</td><td>Allow import and export of records, as referenced in the Product, Location and Data Access modules</td><td class="q">product</td></tr>
+<tr><td class="tag">G-12.1</td><td>Import and export formats include at least Excel, CSV, Numbers, XML, tab-delimited, iDocs, and through the API</td><td class="q">product</td></tr>
+<tr><td class="tag">G-12.2</td><td>Import and export must include PC and Mac formats</td><td class="q">product</td></tr>
+<tr><td class="tag">G-12.3</td><td>A user can select one or more records to be imported or exported</td><td class="q">product</td></tr>
+<tr><td class="tag">G-12.4</td><td>All records are validated upon import</td><td class="q">product</td></tr>
+<tr><td class="tag">G-13</td><td>A publish (select for sharing by the data owner) and subscribe (request viewing by data consumers) model with multiple share/view functions</td><td class="q">product</td></tr>
+<tr><td class="tag">G-13.1</td><td>The data owner can publish records at any level in the hierarchy</td><td class="q">product</td></tr>
+<tr><td class="tag">G-13.2</td><td>The data owner can publish (grant access to view) a basic or a full set of record attributes</td><td class="q">product</td></tr>
+<tr><td class="tag">G-13.3</td><td>The data owner can publish data for a group of records</td><td class="q">product</td></tr>
+<tr><td class="tag">G-13.4</td><td>The data owner can share records with an individual, a user-defined group, a controlled group managed by X-Customer, or the public</td><td class="q">product</td></tr>
+<tr><td class="tag">G-13.5</td><td>Based on subscription, a data consumer can view published data</td><td class="q">product</td></tr>
+<tr><td class="tag">G-13.6</td><td>Based on subscription, a data consumer can request access to view data from the data owner</td><td class="q">product</td></tr>
+<tr><td class="tag">G-13.7</td><td>The data owner can approve or reject view requests</td><td class="q">product</td></tr>
+<tr><td class="tag">P-1</td><td>Create GIN records individually, via import, through a step-by-step wizard, or by cloning an existing record; records include required and non-required attributes that may vary by industry</td><td class="q">product</td></tr>
+<tr><td class="tag">P-1.1</td><td>Incomplete records can be saved as Draft</td><td class="q">product</td></tr>
+<tr><td class="tag">P-2</td><td>Assign a GIN to a record automatically or manually at any point during record creation; a check digit is assigned automatically</td><td class="q">product</td></tr>
+<tr><td class="tag">P-2.1</td><td>Users can opt for auto-assign or manual</td><td class="q">product</td></tr>
+<tr><td class="tag">P-2.2</td><td>A user can reserve GINs to hold them out from auto-assign</td><td class="q">product</td></tr>
+<tr><td class="tag">P-3</td><td>Set a preference for how GINs are assigned (auto-assign or manual)</td><td class="q">product</td></tr>
+<tr><td class="tag">P-4</td><td>Edit record attributes before finalising</td><td class="q">product</td></tr>
+<tr><td class="tag">P-5</td><td>Edit record attributes manually or via import</td><td class="q">product</td></tr>
+<tr><td class="tag">P-5.1</td><td>Some attributes cannot be edited, based on status (e.g. once a product has gone to market)</td><td class="q">product</td></tr>
+<tr><td class="tag">P-5.2</td><td>If a GIN changes but the product attributes did not, a reference is kept back to the old number</td><td class="q">product</td></tr>
+<tr><td class="tag">P-6</td><td>Upload product images and add them to records</td><td class="q">product</td></tr>
+<tr><td class="tag">P-7</td><td>View, filter and sort all records in a single view</td><td class="q">product</td></tr>
+<tr><td class="tag">P-7.1</td><td>Select individual records to take any action (edit, export, etc.)</td><td class="q">product</td></tr>
+<tr><td class="tag">P-7.2</td><td>Select multiple records and apply the same action to all selected records</td><td class="q">product</td></tr>
+<tr><td class="tag">P-8</td><td>View, filter and sort all GINs in a single view</td><td class="q">product</td></tr>
+<tr><td class="tag">P-9</td><td>View potential duplicate records and easily remove or edit duplicates</td><td class="q">product</td></tr>
+<tr><td class="tag">P-9.1</td><td>Alert the user of possible duplicate records during creation, and run duplicate reports for completed records</td><td class="q">product</td></tr>
+<tr><td class="tag">P-10</td><td>View and manage the status of a record or GIN</td><td class="q">product</td></tr>
+<tr><td class="tag">P-10.1</td><td>The system or the user assigns a status to each GIN (currently Reserved, In Use, For Reuse, Available); GIN status may update to reflect record status</td><td class="q">product</td></tr>
+<tr><td class="tag">P-10.2</td><td>The system or the user can assign a status to each record</td><td class="q">product</td></tr>
+<tr><td class="tag">P-10.3</td><td>If a GIN is no longer in use, display the date it was taken out of use and when it becomes available for reuse; rules may vary by industry and product type</td><td class="q">product</td></tr>
+<tr><td class="tag">P-11</td><td>Create, edit and view a hierarchy of GINs (e.g. each → case → pallet) manually, via import, or via a visual format such as drag-and-drop</td><td class="q">product</td></tr>
+<tr><td class="tag">P-11.1</td><td>Hierarchies can have pre-defined levels</td><td class="q">product</td></tr>
+<tr><td class="tag">P-11.2</td><td>Imports can include full records with hierarchy information, or hierarchy information for existing records</td><td class="q">product</td></tr>
+<tr><td class="tag">P-11.3</td><td>The system checks that each item type can physically fit into the next item type in the hierarchy (height and weight)</td><td class="q">product</td></tr>
+<tr><td class="tag">P-11.4</td><td>A user can change the item level on a record while creating a hierarchy</td><td class="q">product</td></tr>
+<tr><td class="tag">P-11.5</td><td>If the status of a record within a hierarchy changes, the user is notified if it affects the status of other records in the hierarchy</td><td class="q">product</td></tr>
+<tr><td class="tag">P-12</td><td>Export and print hierarchies in a user-friendly format</td><td class="q">product</td></tr>
+<tr><td class="tag">P-13</td><td>Generate and view X-Customer Standard supported barcodes of various types and sizes</td><td class="q">product</td></tr>
+<tr><td class="tag">P-14</td><td>Export and print X-Customer Standard supported barcodes in standard image formats</td><td class="q">product</td></tr>
+<tr><td class="tag">P-15</td><td>Create, save, export and print Product Information Sheets for each record, with all record attributes and images</td><td class="q">product</td></tr>
+<tr><td class="tag">P-15.1</td><td>Users can select from and edit multiple page-layout templates for product sheets</td><td class="q">product</td></tr>
+<tr><td class="tag">P-16</td><td>Create a digital GIN that can be embedded in a web site</td><td class="q">product</td></tr>
+<tr><td class="tag">P-17</td><td>Permission records for publishing; published records are viewed within the Data Access module</td><td class="q">product</td></tr>
+<tr><td class="tag">P-18</td><td>Transfer record ownership to another member</td><td class="q">product</td></tr>
+<tr><td class="tag">P-19</td><td>Use an external system (e.g. QuickBooks, SAP) to create and manage data and import it into the application solution</td><td class="q">product</td></tr>
+<tr><td class="tag">L-1</td><td>Create LN records individually, via import, through a step-by-step wizard, or by cloning an existing record; records include required and non-required attributes that may vary by industry</td><td class="q">product</td></tr>
+<tr><td class="tag">L-1.1</td><td>Incomplete records can be saved as Draft</td><td class="q">product</td></tr>
+<tr><td class="tag">L-2</td><td>Assign an LN to a record automatically or manually at any point during record creation; a check digit is assigned automatically</td><td class="q">product</td></tr>
+<tr><td class="tag">L-2.1</td><td>Some industries automatically assign LNs from a shared pool</td><td class="q">product</td></tr>
+<tr><td class="tag">L-2.2</td><td>The prefix licensee can opt for auto-assign or manual</td><td class="q">product</td></tr>
+<tr><td class="tag">L-2.3</td><td>The prefix licensee can reserve LNs to hold them out from auto-assign</td><td class="q">product</td></tr>
+<tr><td class="tag">L-3</td><td>Set a preference for how LNs are assigned (auto-assign or manual)</td><td class="q">product</td></tr>
+<tr><td class="tag">L-4</td><td>Edit record attributes before finalising</td><td class="q">product</td></tr>
+<tr><td class="tag">L-5</td><td>Edit record attributes manually or via import</td><td class="q">product</td></tr>
+<tr><td class="tag">L-5.1</td><td>If an LN changes but the location attributes do not, a reference is kept back to the old number</td><td class="q">product</td></tr>
+<tr><td class="tag">L-6</td><td>View, filter and sort all records in a single view</td><td class="q">product</td></tr>
+<tr><td class="tag">L-6.1</td><td>Select individual records to take any action (edit, export, etc.)</td><td class="q">product</td></tr>
+<tr><td class="tag">L-6.2</td><td>Select multiple records and apply the same action to all selected records</td><td class="q">product</td></tr>
+<tr><td class="tag">L-7</td><td>View, filter and sort all LNs in a single view</td><td class="q">product</td></tr>
+<tr><td class="tag">L-8</td><td>View potential duplicate records and easily remove or edit duplicates</td><td class="q">product</td></tr>
+<tr><td class="tag">L-8.1</td><td>Alert the user of possible duplicate records during creation, and run duplicate reports for completed records</td><td class="q">product</td></tr>
+<tr><td class="tag">L-9</td><td>View and manage the status of a record or LN</td><td class="q">product</td></tr>
+<tr><td class="tag">L-9.1</td><td>The system or the user assigns a status to each LN; LN status may update to reflect record status</td><td class="q">product</td></tr>
+<tr><td class="tag">L-9.2</td><td>The system or the user can assign a status to each record</td><td class="q">product</td></tr>
+<tr><td class="tag">L-9.3</td><td>If an LN is no longer in use, display the date it was taken out of use and when it becomes available for reuse; rules may vary by industry</td><td class="q">product</td></tr>
+<tr><td class="tag">L-10</td><td>Create, edit and view a hierarchy of LNs manually, via import, or via a visual format such as drag-and-drop</td><td class="q">product</td></tr>
+<tr><td class="tag">L-10.1</td><td>Hierarchies can have an unlimited number of levels and be organised by various attributes</td><td class="q">product</td></tr>
+<tr><td class="tag">L-10.2</td><td>Imports can include full records with hierarchy information, or hierarchy information for existing records</td><td class="q">product</td></tr>
+<tr><td class="tag">L-10.3</td><td>If the status of a record within a hierarchy changes, the user is notified if it affects the status of other records in the hierarchy</td><td class="q">product</td></tr>
+<tr><td class="tag">L-11</td><td>Export and print hierarchies in a user-friendly format</td><td class="q">product</td></tr>
+<tr><td class="tag">L-12</td><td>Permission records for publishing; published records are viewed within the Data Access module</td><td class="q">product</td></tr>
+<tr><td class="tag">L-13</td><td>Record annual verification of records</td><td class="q">product</td></tr>
+<tr><td class="tag">L-14</td><td>Transfer record ownership to another member</td><td class="q">product</td></tr>
+<tr><td class="tag">L-15</td><td>Use an external system (e.g. QuickBooks, SAP) to create and manage data and import it into the application solution</td><td class="q">product</td></tr>
+<tr><td class="tag">D-1</td><td>Search for prefix, GIN and LN records</td><td class="q">product</td></tr>
+<tr><td class="tag">D-1.1</td><td>Several fields are available for search (e.g. name, city)</td><td class="q">product</td></tr>
+<tr><td class="tag">D-1.2</td><td>Advanced search and filter options are available</td><td class="q">product</td></tr>
+<tr><td class="tag">D-2</td><td>Request access to a basic or full record (subscribe to the record)</td><td class="q">product</td></tr>
+<tr><td class="tag">D-2.1</td><td>The request is sent to the data owner, who must approve before the data becomes available</td><td class="q">product</td></tr>
+<tr><td class="tag">D-3</td><td>Request to be added to a controlled group</td><td class="q">product</td></tr>
+<tr><td class="tag">D-4</td><td>View basic and full records and their hierarchies</td><td class="q">product</td></tr>
+<tr><td class="tag">D-5</td><td>Export one or more records to any format detailed in the General Requirements</td><td class="q">product</td></tr>
+<tr><td class="tag">D-6</td><td>Print one or more records</td><td class="q">product</td></tr>
+<tr><td class="tag">D-7</td><td>Perform all Access Data functions via the web interface or the API</td><td class="q">product</td></tr>
+<tr><td class="tag">D-8</td><td>Easily access information on how to pay for ad hoc access to data</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-2</td><td>Data marts (non-transactional) to support data access; transactional and non-transactional databases scalable for the projected growth (company prefixes 500 000 → 700 000 records, GIN 10 000 000 → 70 000 000, LN 550 000 → 3 500 000, by 2024); data latency is currently overnight and must support near-real-time updates</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-3</td><td>Claims-based authentication and authorisation; user accounts and roles defined in an enterprise Identity Management system enabling single sign-on; the IdM solution is not finalised and will support claims-based standards such as OAuth and SAML</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-4</td><td>A service-oriented architecture: REST (preferred) or SOAP web services integrate functionality and data across the suite instead of direct database access or copying; REST APIs available to members and compatible with an API management solution (currently 3scale)</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-5</td><td>Adherence to X-Customer technical standards &mdash; coding, database connection and naming, integration, approved technologies and products; a deviation requires an impact analysis (technical, operational, support, financial) by the project core team at no cost to X-Customer</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-6</td><td>The architecture is designed to be cloud-ready</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-7</td><td>Web-based, built on industry-standard web design patterns, frameworks and components, with no client-side software installation; roughly 38 000 users today, approximately 256 000 by 2024, up to 10% of them concurrent</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-8</td><td>Highly available with a 99.9% service level; a failover process developed and tested, with the hardware and software needs identified, and failover monitoring that notifies administrators of a failure</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-9</td><td>Backup and disaster recovery procedures that comply with X-Customer policies and procedures</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-10</td><td>Appropriate security configuration, processes and procedures, with a security design and the components, frameworks, libraries and tools used to secure the application solution</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-11</td><td>Deployment to four environments &mdash; development, test, staging/pre-production, production &mdash; with appropriate deployment processes</td><td class="q">work</td></tr>
+<tr><td class="tag">NFR-12</td><td>Migration of the current application data, including users, to the new solution</td><td class="q">work</td></tr>
+<tr><td class="tag">NFR-13</td><td>Accessible on Internet Explorer 9 and above, and on the current and previous versions of Chrome, Firefox, Safari and Edge</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-14</td><td>Response times, 95% of the time under load: login under 2 s at 250 concurrent users; navigation under 1 s at 250; transactions (saves, form generation) under 2 s at 50; searches under 3 s at 150; API responses under 1 s at 250</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-15</td><td>Exceptions may be made for some time-consuming transactions (e.g. barcode generation); performance testing processes ensure the response times are met at the appropriate user load</td><td class="q">work</td></tr>
+<tr><td class="tag">NFR-16</td><td>Business process workflows: record approval (records entered via UI or import are submitted, reviewed, rejected or approved), record validation (identifiers, auto-generated or manual, comply with X-Customer Standards), record verification (attributes entered via UI or import are verified for accuracy)</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-17</td><td>Near-real-time event notifications when system errors occur</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-18</td><td>Near-real-time event notification when critical business functions fail</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-19</td><td>Detailed logging for troubleshooting and process verification</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-20</td><td>An audit trail of all activity taking place at any point in the system</td><td class="q">product</td></tr>
+<tr><td class="tag">NFR-21</td><td>WCAG 2.0 Level A compliance, within reasonable accommodation</td><td class="q">product</td></tr>
+</tbody></table></div>
+      <div class="src-line">examples/SAS/requirements_product.md &middot; requirements_work.md</div>
+      </div>
+    </details>
+    <details id="findings">
+      <summary><span class="n">04</span><span class="h">Findings</span><span class="c">5</span></summary>
+      <div class="panel">
+        <p class="lead">Produced without being asked for, by instruments whose job was something else. The first is the document's own admission; the rest are what the sensors refused to invent.</p>
+
+<div class="stack">
+  <div class="row"><span class="idx">I-7</span><div class="body">
+    <div class="t">The rules the software must obey do not exist yet <span class="chip red">largest driver, both class readings</span></div>
+    <div class="x">&ldquo;All functionality is validated against X-Customer Standards and business rules, <b>which will be defined as part of the project</b>.&rdquo; Both outside-view readings, independently, named this the class's characteristic tail: the requirement set moving while it is built. The chain prices elaboration of what is known; the gap-blind scope-growth rate prices the change.</div>
+  </div></div>
+  <div class="row"><span class="idx">NFR-3 / G-1</span><div class="body">
+    <div class="t">Where do users and roles live</div>
+    <div class="x">One obligation puts accounts and roles in an enterprise identity system whose protocol &ldquo;has not been finalized&rdquo;; another puts user administration in the hands of a company administrator inside the application. Reading taken: both, joined by one claims integration.</div>
+  </div></div>
+  <div class="row"><span class="idx">P-13 / P-14</span><div class="body">
+    <div class="t">A stated plurality with no members</div>
+    <div class="x">&ldquo;Supported barcodes of various types and sizes&rdquo; names no symbology. Four were assumed so that the model has something to count; the count is an assumption, declared as one.</div>
+  </div></div>
+  <div class="row"><span class="idx">A9 &middot; input format</span><div class="body">
+    <div class="t">A chain finding, not a document finding</div>
+    <div class="x">The crossing sensor sees element names, not obligation texts, so the performance-test activity fired on one statement of 24 &mdash; the five response-time targets live in the obligation text, which it never received. Named before any number existed; the gap-blind rates later priced the load test as a hole, which is what the record predicted.</div>
+  </div></div>
+  <div class="row"><span class="idx">MD</span><div class="body">
+    <div class="t">What the sensors refused rather than invented</div>
+    <div class="x">Twenty-five judgement refusals at the crossing, all one question asked twice: does a parent holding only design statements draw test activities, and is a store fed from inside the system a migration target. Three elements refused as too coarse to size (XL) by both sizing repeats: the notification engine, the record import service, the basic-and-full attribute profiles. Catalogue findings, recorded, not repaired.</div>
+  </div></div>
+</div>
+
+      <div class="src-line">examples/SAS/run45_work_model.md &middot; run47_sizing_and_assembly.md &middot; run46_raw/</div>
+      </div>
+    </details>
+    <details id="two-ways">
+      <summary><span class="n">05</span><span class="h">Variant readings</span><span class="c">22, all unasked</span></summary>
+      <div class="panel">
+        <p class="lead">Pinned before any run and consumed by every run. <b>Ask the client; if no answer comes, assume; declare the assumption; and when runs are compared afterwards, exclude the differences the open question causes.</b> All stand unasked here, because this document has no client behind it.</p>
+<div class="tbl-scroll"><table><thead><tr><th>#</th><th>ids</th><th>the question</th><th>reading taken</th></tr></thead><tbody>
+<tr><td class="tag">Q1</td><td class="tag">NFR-3, G-1.x, G-4</td><td>Where does user and role administration live &mdash; in the application, with the IdM authenticating, or entirely in the IdM? Which protocol will the IdM speak?</td><td class="q">in the application; the IdM issues claims through one protocol</td></tr>
+<tr><td class="tag">Q2</td><td class="tag">P-19, L-15, G-12.1</td><td>Do "external systems such as QuickBooks, SAP" require connectors to those products, or is import through the named file formats and the API sufficient?</td><td class="q">file formats and API; IDoc is the SAP path; no product connector</td></tr>
+<tr><td class="tag">Q3</td><td class="tag">G-12.1, G-12.2</td><td>Is the format list closed at six plus the API? What do "PC and Mac formats" add?</td><td class="q">closed; encoding and line-ending variants inside the adapters</td></tr>
+<tr><td class="tag">Q4</td><td class="tag">G-7.2, NFR-4</td><td>Are usage reports to be read from 3scale, or produced by the solution?</td><td class="q">read from 3scale's analytics API</td></tr>
+<tr><td class="tag">Q5</td><td class="tag">P-13, P-14</td><td>Which barcode symbologies and sizes does "X-Customer Standard supported barcodes of various types and sizes" mean?</td><td class="q">four: UPC-A, EAN-13, ITF-14, GS1-128; selectable sizes; PNG and SVG</td></tr>
+<tr><td class="tag">Q6</td><td class="tag">P-16</td><td>What is a "digital GIN that can be embedded in a web site" &mdash; a snippet, or a resolvable identifier with a resolver service behind it?</td><td class="q">a snippet: QR image plus structured markup; no resolver</td></tr>
+<tr><td class="tag">Q7</td><td class="tag">P-1, L-1, P-10.3, L-9.3, L-2.1, G-10.1</td><td>How many industries vary, and in what &mdash; attributes, rules, help, LN pools? Is the variation configuration or separate behaviour?</td><td class="q">configuration data per industry, one mechanism per varying thing; 25 industries is a volume</td></tr>
+<tr><td class="tag">Q8</td><td class="tag">P-11.1, P-11.3</td><td>What are the pre-defined GIN hierarchy levels, and which dimensions does the fit check use?</td><td class="q">each, case, pallet; height and weight</td></tr>
+<tr><td class="tag">Q9</td><td class="tag">G-10.2</td><td>Is help content maintained in the application or in an existing content management system?</td><td class="q">in the application</td></tr>
+<tr><td class="tag">Q10</td><td class="tag">G-9</td><td>"A single X-Customer contact or feedback tracking system" &mdash; which, and if a system, which one?</td><td class="q">email to one configured address</td></tr>
+<tr><td class="tag">Q11</td><td class="tag">G-7.x</td><td>Are reports built into the solution or delivered through a business-intelligence tool the client has?</td><td class="q">built in</td></tr>
+<tr><td class="tag">Q12</td><td class="tag">NFR-2</td><td>What is the target latency behind "near real-time"?</td><td class="q">none pinned; the property is that updates flow as changes occur, not overnight</td></tr>
+<tr><td class="tag">Q13</td><td class="tag">NFR-12, NFR-2</td><td>Which applications are the migration source, and which entity kinds move? Are images and sharing permissions among them?</td><td class="q">several current applications; seven kinds: companies and prefixes, users and roles, GIN records, LN records, hierarchies, sharing permissions, product images</td></tr>
+<tr><td class="tag">Q14</td><td class="tag">W-4</td><td>Over what period, at what service level, does post-production support run?</td><td class="q">none available &mdash; the term is the missing parameter; the period is carried, not priced</td></tr>
+<tr><td class="tag">Q15</td><td class="tag">NFR-5</td><td>Does the proposed solution deviate from any X-Customer technical standard, so that an impact analysis is owed?</td><td class="q">no deviation; count 0</td></tr>
+<tr><td class="tag">Q16</td><td class="tag">NFR-11</td><td>Is the fourth environment ("test") a shared integration environment or a second production-like environment?</td><td class="q">shared integration environment; `E1` class M</td></tr>
+<tr><td class="tag">Q17</td><td class="tag">G-1, G-1.2</td><td>What is a "task" assigned to a user?</td><td class="q">a responsibility inside the record workflow &mdash; which records or kinds a user edits or approves</td></tr>
+<tr><td class="tag">Q18</td><td class="tag">G-1.3</td><td>"Other roles may be added" &mdash; configurable roles, or a fixed set of four?</td><td class="q">a configurable role set with four named</td></tr>
+<tr><td class="tag">Q19</td><td class="tag">L-13</td><td>Does "record annual verification" mean the system runs the annual campaign, or records the outcome?</td><td class="q">records the outcome and shows what is due</td></tr>
+<tr><td class="tag">Q20</td><td class="tag">I-2</td><td>One application or a suite?</td><td class="q">left to design, as the RFP says; modelled as one product with three module areas</td></tr>
+<tr><td class="tag">Q21</td><td class="tag">G-13.4, D-3</td><td>Who administers the "controlled group managed by X-Customer"?</td><td class="q">X-Customer staff, in the application</td></tr>
+<tr><td class="tag">Q22</td><td class="tag">NFR-8</td><td>What does the failover process cover &mdash; application tier only, or the databases and the read store too?</td><td class="q">all tiers the solution owns</td></tr>
+</tbody></table></div>
+      <div class="src-line">examples/SAS/open_questions.md</div>
+      </div>
+    </details>
+    <details id="defaults">
+      <summary><span class="n">06</span><span class="h">Defaults</span><span class="c">8</span></summary>
+      <div class="panel">
+        <p class="lead">Each is a fork the document leaves open and the estimate had to close. <b>The reading taken is inside the centre; the reading refused is not.</b></p>
+
+<div class="stack">
+  <div class="row"><span class="idx">A4</span><div class="body">
+    <div class="t">Identity</div>
+    <div class="x"><b>Taken:</b> the client's identity system issues claims through one protocol; the application keeps its own company&ndash;user&ndash;role model and hosts the administration. <b>Refused:</b> all user and role administration inside the identity system, which would reduce three obligations to interface calls.</div>
+  </div></div>
+  <div class="row"><span class="idx">A6</span><div class="body">
+    <div class="t">Import and export <span class="chip red">worth a branch</span></div>
+    <div class="x"><b>Taken:</b> six file formats plus the API, one adapter each; SAP reached through IDoc. <b>Refused:</b> bespoke connectors to named accounting or ERP products &mdash; the obligation says &ldquo;external systems such as QuickBooks or SAP&rdquo;.</div>
+  </div></div>
+  <div class="row"><span class="idx">A9</span><div class="body">
+    <div class="t">Barcodes and the digital identifier</div>
+    <div class="x"><b>Taken:</b> four symbologies from a library, at selectable sizes; the embeddable identifier is a snippet with no resolver behind it. <b>Refused:</b> a public resolver service &mdash; which the document itself names as future expansion.</div>
+  </div></div>
+  <div class="row"><span class="idx">A8 &middot; A14</span><div class="body">
+    <div class="t">The read store and the reports</div>
+    <div class="x"><b>Taken:</b> one non-transactional read store fed as changes occur, with reports built into the solution over it. <b>Refused:</b> overnight batch replication; a third-party business-intelligence product. &ldquo;Near real-time&rdquo; has no number in the document and none was pinned.</div>
+  </div></div>
+  <div class="row"><span class="idx">A10</span><div class="body">
+    <div class="t">Twenty-five industries</div>
+    <div class="x"><b>Taken:</b> one configurable mechanism per varying thing, industry parameters as configuration data the client maintains; the industry count multiplies nothing. <b>Refused:</b> industry-specific code paths.</div>
+  </div></div>
+  <div class="row"><span class="idx">A16 &middot; A17</span><div class="body">
+    <div class="t">Migration and environments</div>
+    <div class="x">Seven entity kinds from the current applications, two rehearsal cycles; four environments, the fourth read as a shared integration environment. The first case in the project to declare migration at all &mdash; the sizing sensors split on whether a store written at run time has a migration count, and the catalogue owes an answer.</div>
+  </div></div>
+  <div class="row"><span class="idx">scope &times;2</span><div class="body">
+    <div class="t">Two decisions in the technology declaration</div>
+    <div class="x">One team at one site rather than a distributed delivery (the document names an outsourcing vendor and no site) &middot; an external penetration test and remediation rather than none (nothing in the document names one; three once-scoped items hang on it). Each a declared fork, each separately priceable.</div>
+  </div></div>
+  <div class="row"><span class="idx">term</span><div class="body">
+    <div class="t">Not a default but a hole <span class="chip caution">question for the client</span></div>
+    <div class="x">The post-production support period and transition service are <b>carried and not priced</b>: an open-ended obligation has no effort figure until somebody says for how long and at what service level.</div>
+  </div></div>
+</div>
+
+      <div class="src-line">examples/SAS/assumptions.md &middot; technology_declaration.md</div>
+      </div>
+    </details>
+    <details id="not-in-number">
+      <summary><span class="n">07</span><span class="h">Estimate gaps</span><span class="c">6</span></summary>
+      <div class="panel">
+        <p class="lead">Not oversights. Each is a thing the chain refused to price, with the reason it refused.</p>
+
+<div class="stack">
+  <div class="row"><span class="idx">1</span><div class="body">
+    <div class="t">The post-production support period <span class="chip caution">awaiting a parameter</span></div>
+    <div class="x">Carried on every side, awaiting <b>the term and the service level</b>. All three instruments exclude it consistently; no double count. The one-sided risk that the class anchors hold a warranty period inside the team's tenure is named and unpriced.</div>
+  </div></div>
+  <div class="row"><span class="idx">2</span><div class="body">
+    <div class="t">The refused readings</div>
+    <div class="x">Administration inside the identity system &middot; product connectors to accounting and ERP systems &middot; a public resolver &middot; industry-specific code paths &middot; a business-intelligence product &middot; a distributed delivery &middot; no penetration test. Each a step change, not a multiplier; not in the centre, and <b>not priced as options on this case</b> &mdash; no step-event round was run.</div>
+  </div></div>
+  <div class="row"><span class="idx">3</span><div class="body">
+    <div class="t">The rate table's level</div>
+    <div class="x">Uncalibrated against any outcome. A narrow gap-blind round is requested, not run. Until then the centre is the table's level raised &times;1.50, not an independent statement about effort.</div>
+  </div></div>
+  <div class="row"><span class="idx">4</span><div class="body">
+    <div class="t">The era</div>
+    <div class="x">Eight years between the document and the norms. Three independent instruments refused to adjust, for the same reason: tooling pulls down, expectations on security, accessibility and operability pull up, and no source decides which wins.</div>
+  </div></div>
+  <div class="row"><span class="idx">5</span><div class="body">
+    <div class="t">Tail and failure events</div>
+    <div class="x">A late or changed identity platform, business rules never defined, committee stalemate, migration data that cannot be reconciled. Inside the class quantiles, in no bottom-up item &mdash; hence in the reserve and nowhere else.</div>
+  </div></div>
+  <div class="row"><span class="idx">6</span><div class="body">
+    <div class="t">Effort to calendar, and team availability</div>
+    <div class="x">A separate step, deliberately. Task hours do not become dates without a team shape, and this report supplies no team shape.</div>
+  </div></div>
+</div>
+
+      <div class="src-line">examples/SAS/estimate_SAS_2026-09-08.md</div>
+      </div>
+    </details>
+    <details id="provenance">
+      <summary><span class="n">08</span><span class="h">Where every number came from</span><span class="c">7 roles</span></summary>
+      <div class="panel">
+        <p class="lead">Each sensor is an engine with a version, stamped on its own output. They are hired for what they are <b>forbidden to see</b>, not for autonomy.</p>
+
+<div class="stack">
+  <div class="row"><span class="idx">1</span><div class="body"><div class="t">Product model &middot; n = 2</div><div class="x">146 product obligations &rarr; 246 elements (the second reading: 242, anchored structure &times;1.017). Produces no effort figure of any kind. Both replies lost their head in transit &mdash; a protocol fact on record, not a repair.</div></div></div>
+  <div class="row"><span class="idx">2</span><div class="body"><div class="t">Work model</div><div class="x">Crossed against a declared technology, seven batches &rarr; 1 650 work items on 245 elements. May not invent an activity: work the product needs but no declared activity covers is reported as a <b>finding</b> &mdash; 25 such refusals here.</div></div></div>
+  <div class="row"><span class="idx">3</span><div class="body"><div class="t">Size classes &middot; n = 2</div><div class="x">Each of 187 elements classified by counting named things, the enumeration being the justification. Refuses to run if shown any rate or price. Class agreement 85.0%; whole-chain repeat spread &times;1.0026.</div></div></div>
+  <div class="row"><span class="idx">4</span><div class="body"><div class="t">Rate table <span class="chip caution">uncalibrated</span></div><div class="x">External norms in net task hours, gap-blind: never saw a project total, a budget, or a gap a rate would explain. Calibrated against no outcome &mdash; the centre is norms passed through a measured size vector, not a validated cost.</div></div></div>
+  <div class="row"><span class="idx">5</span><div class="body"><div class="t">Outside view &times;2</div><div class="x">Ran in parallel and in ignorance of all of the above, the unit convention withheld so that each declared its own. Both quarantined the repository status the harness prepends, naming the numeric commit subject in it without using it.</div></div></div>
+  <div class="row"><span class="idx">0</span><div class="body"><div class="t">No method &times;10</div><div class="x">The document and the assumption log handed to a bare agent ten times, no sensor definition, one permitted file read each. The floor the chain must beat to be worth its cost: on repeatability it is &times;1.92 across runs against the chain's &times;1.0026.</div></div></div>
+  <div class="row"><span class="idx">6</span><div class="body"><div class="t">Steps B, C, D</div><div class="x">Calibration parameters from a gap-blind source that never saw the outside view or the size of the gap; then the diagnosis, the only participant permitted to see more than one method's output &mdash; told in its brief that no outcome exists.</div></div></div>
+</div>
+<h4>Two coordinates, not one</h4>
+<p>An estimate is a property of the triple <b>(project &times; engine &times; model)</b>. Every sensor
+on this case ran on the same model, Claude Opus 5, so the model coordinate is held fixed and the
+readings above are engine-and-project readings only.</p>
+<h4>The declaration is required, not volunteered</h4>
+<p>Every role that produces a number must state, before any figure, <b>its unit, whether leave sits
+inside it, whose roles are counted, and how far its own sources disagree</b>. This case is the first
+on which two readings of one sensor declared <i>different</i> units &mdash; 168 recorded hours per
+person-month with leave outside, 152 charged hours with leave inside &mdash; which is exactly what
+requiring the declaration was for.</p>
+
+      <div class="src-line">PIPELINE.md &middot; docs/instrument.md</div>
+      </div>
+    </details>
+    <details id="methodology">
+      <summary><span class="n">09</span><span class="h">Methodology</span><span class="c">the documents</span></summary>
+      <div class="panel">
+        <p class="lead">This report is one output of a method that is written down. Nothing below is specific to this case; every file states what it is for, what it may not do, and what would change it.</p>
+
+<div class="stack">
+  <div class="row"><span class="idx">frame</span><div class="body">
+    <div class="t"><a href="../../../METHODOLOGY.md">METHODOLOGY.md</a></div>
+    <div class="x">Why independence of <b>techniques</b> replaces independence of experts, what each method is structurally blind to, and why a divergence is diagnosed rather than averaged.</div>
+  </div></div>
+  <div class="row"><span class="idx">chain</span><div class="body">
+    <div class="t"><a href="../../../docs/instrument.md">docs/instrument.md</a></div>
+    <div class="x">What actually runs: the product model, the crossing against a declared technology, the size classes, the pinned table, the script. What is pinned at each step and what each sensor is forbidden to produce.</div>
+  </div></div>
+  <div class="row"><span class="idx">numbers</span><div class="body">
+    <div class="t"><a href="../../../docs/constants.md">docs/constants.md</a></div>
+    <div class="x">Every constant the method has, and the comparison-layer conversion pinned by the author: 6 net task hours per present day, &times;1.10 leave, 21 days &mdash; so 1 staffed person-month &asymp; 114.5 net task hours.</div>
+  </div></div>
+  <div class="row"><span class="idx">case</span><div class="body">
+    <div class="t"><a href="../../../docs/case_profile.md">docs/case_profile.md</a></div>
+    <div class="x">The rule this case was the first to follow: team grade, site count, domain familiarity and the outcome's unit are pinned <b>before</b> any estimate exists, so that no condition can be chosen after a number is on the table.</div>
+  </div></div>
+  <div class="row"><span class="idx">isolation</span><div class="body">
+    <div class="t"><a href="../../../PIPELINE.md">PIPELINE.md</a></div>
+    <div class="x">The visibility matrix: who may see what, in what order the sensors are launched, and the disciplines that are mechanically checkable rather than promised.</div>
+  </div></div>
+  <div class="row"><span class="idx">prices</span><div class="body">
+    <div class="t"><a href="../../../docs/rate_table.md">docs/rate_table.md</a> &middot; <a href="../../../docs/technology_catalogue.md">technology_catalogue.md</a></div>
+    <div class="x">The pinned rates, in net person-hours, written gap-blind by a role that never saw a project total. And the vocabulary a technology declaration is written in &mdash; this case's declaration proposes one amendment to it.</div>
+  </div></div>
+  <div class="row"><span class="idx">done</span><div class="body">
+    <div class="t"><a href="../../../docs/exit_criterion.md">docs/exit_criterion.md</a></div>
+    <div class="x">When the instrument may be called fit for use, decided in advance. This case scores repeatability and, given a human scale, position; it cannot score calibratability, because it has no outcome.</div>
+  </div></div>
+  <div class="row"><span class="idx">this case</span><div class="body">
+    <div class="t"><a href="../">examples/SAS/</a></div>
+    <div class="x">The pinned inputs, the case profile, the assumption log, the technology declaration, and every run with its raw sensor output kept verbatim.</div>
+  </div></div>
+</div>
+
+      <div class="src-line">the report format: tools/report/build_report.py</div>
+      </div>
+    </details>
+</div>
+
+<footer>
+  <div class="brand">3A8<span>TriAngulEight<br>an estimation instrument</span></div>
+  <div class="fine">
+      <p><b>What this report is not.</b> Not a validated price, and not a price at all &mdash; it is work content in net task hours, shown as person-days of eight such hours. Converting it into money, calendar or headcount is the reader's act, using the reader's own figures. Every bottom-up number rests on a rate table of external industry norms calibrated against no outcome; the bottom-up stands on one product model of two; and this case has no outcome and never will, so nothing here has been checked against reality.</p>
+      <p><b>What it is.</b> The estimate, its corridor, the disagreement between two structurally independent methods stated rather than averaged away &mdash; here, chiefly the disagreement of the outside view with itself &mdash; and, on the record, the obligations, the findings, the questions and the defaults that the number is standing on.</p>
+  </div>
+  <div class="stamp">generated 2026-09-16 01:42 &middot; from examples/SAS/report_data.json &middot; format: tools/report/build_report.py</div>
+</footer>
+
+</div>
+<script>
+const CASE = {"axisMax": 15000, "rawSum": 4765, "rawSumLabel": "raw table sum 4765", "rawMarks": [{"x": 4180, "lo": 3994, "hi": 4367, "label": "raw table sum, 2.1 chain 4180 (runs 57–59, n = 2: 3994–4367)"}], "calibration": {"lo": 6012, "hi": 9265, "label": "calibration spread 6012–9265 · not percentiles"}, "bottomUp": {"mu": 7200, "sd": 1196}, "bottomUpAlt": [{"id": "2.1 chain, calibrated", "mu": 6318, "sd": 999, "dash": "6 4"}], "outside": [{"id": "RC46-1", "dash": "", "floor": 1343, "q": [[2835, 0.1], [5985, 0.5], [10080, 0.8], [13388, 0.9]], "tailDrawn": false}, {"id": "RC46-2", "dash": "6 4", "floor": 1036, "q": [[1781, 0.1], [3064, 0.5], [4702, 0.8], [6270, 0.9]], "tailDrawn": false}], "nomethod": [{"id": "B-1", "median": 3570, "sigma": 0.316}, {"id": "B-2", "median": 5250, "sigma": 0.336}, {"id": "B-3", "median": 3150, "sigma": 0.306}, {"id": "B-4", "median": 3885, "sigma": 0.328}, {"id": "B-5", "median": 5040, "sigma": 0.325}, {"id": "B-6", "median": 2730, "sigma": 0.281}, {"id": "B-7", "median": 3087, "sigma": 0.304}, {"id": "B-8", "median": 3045, "sigma": 0.28}, {"id": "B-9", "median": 2940, "sigma": 0.336}, {"id": "B-10", "median": 2835, "sigma": 0.309}], "axisLabel": "NET WORKING TIME — PERSON-DAYS OF 8 TASK HOURS", "legend": [{"cls": "blue", "text": "Outside view RC46-1 &mdash; P50 5985 (380 person-months at 168 recorded h)"}, {"cls": "blue dash", "text": "Outside view RC46-2 &mdash; P50 3064 (215 person-months at 152 charged h)"}, {"cls": "red", "text": "Bottom-up, calibrated &mdash; P50 7200"}, {"cls": "red dash", "text": "Bottom-up, 2.1 chain, calibrated &mdash; P50 6318 (runs 57&ndash;60: the same case on the shallower skeleton of Hotyn-M 2.1; &times;0.88 of the solid bell before and after calibration)"}, {"cls": "ochre", "text": "No method &mdash; ten bare runs, one thin curve each, medians 2 730&ndash;5 250 (run 49)"}], "hint": "<b>Two views of the same three distributions.</b> Above, how likely each answer is &mdash; all curves on one scale, each enclosing the same area, so the bottom-up looks taller only because its mass is packed into a narrower range. Below, the same thing accumulated: <b>the chance of coming in at or under any figure</b>, which is what a number gets chosen against.<br><br><b>Move the pointer</b> and a read line crosses both panels, reporting the chance of exceeding that figure under each instrument. The two outside-view curves are <b>one sensor run twice on identical input</b>; each declared its own person-month and both are placed by the house factor of 0.75 task hours per recorded hour, which both declarations contain. The calibrated bottom-up sits at about P63 of one reading and above P90 of the other &mdash; the diagnosis names that contradiction and does not resolve it. The bottom-up's width is the rate table's optimistic-to-pessimistic spread under a declared &rho; = 0.5, scaled by the calibration; it is a convention, not a measurement, and three times narrower than either class reading. Neither reading gave a floor; below P10 each curve is extended to P10&sup2;/P50 &mdash; the same ratio as P10 to P50 &mdash; as a drawing convention, so that the tenth of the mass below P10 is not drawn as a spike. <b>The ten thin ochre curves</b> are the no-method baseline (run 49): the same document and assumption log handed to a bare agent with no method, ten times, each run's own P10&ndash;P90 fitted as a lognormal. They are drawn as a family and never pooled, because their spread between runs (&times;1.9 on the median) is the reading; their mean sits at &times;0.75 of the raw chain and &times;0.49 of the calibrated centre, and inside the lower class reading. The density panel&rsquo;s vertical axis reads as <b>chance per 100-pd window</b>; the exact mass is always the cumulative panel.<br><br><b>The dashed red bell</b> is the same bottom-up instrument run again on the same case with a later product-model engine (<code>Hotyn-M 2.1</code>, runs 57&ndash;60): the same 187 leaves on a skeleton of 24 nodes instead of 59, priced by the same table and calibrated by its own gap-blind round. It sits at &times;0.88 of the solid bell, before and after calibration, and its width is the same &rho; = 0.5 convention. Read the two bells as two versions of one instrument, never as two independent views: they share every input except the skeleton."};
+
+const W = 900, H = 580, M = {l:46, r:14, b:52};
+const XMAX = CASE.axisMax, PW = W - M.l - M.r;
+const DEN_TOP = 30, DEN_BOT = 262;          // upper panel — probability density
+const CDF_TOP = 320, CDF_BOT = 528;         // lower panel — cumulative probability
+const X  = v => M.l + (v / XMAX) * PW;
+const XINV = px => (px - M.l) / PW * XMAX;
+const Yc = p => CDF_BOT - p * (CDF_BOT - CDF_TOP);
+
+function erf(z){
+  const t=1/(1+0.3275911*Math.abs(z));
+  const y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-z*z);
+  return z>=0?y:-y;
+}
+const Phi = z => 0.5*(1+erf(z/Math.SQRT2));
+
+/* ---------- the two readings a run can be asked for ---------- */
+function segsOf(run){
+  const pts = [[run.floor != null ? run.floor : run.q[0][0]*0.999, 0], ...run.q], out = [];
+  for(let i=1;i<pts.length;i++){
+    const [x0,p0]=pts[i-1], [x1,p1]=pts[i];
+    out.push({x0,x1,p0,p1,d:(p1-p0)/(x1-x0)});
+  }
+  return out;
+}
+function pdfOutside(run, x){
+  if(run.lognormal){
+    if(x <= 0) return 0;
+    const L = run.lognormal;
+    return Math.exp(-Math.pow(Math.log(x)-Math.log(L.median),2)/(2*L.sigma*L.sigma))
+           /(x*L.sigma*Math.sqrt(2*Math.PI));
+  }
+  for(const g of segsOf(run)) if(x>=g.x0 && x<=g.x1) return g.d;
+  return 0;
+}
+function cdfOutside(run, x){
+  const last = run.q[run.q.length-1][0];
+  if(x >= last) return null;
+  if(run.lognormal){
+    if(x <= 0) return 0;
+    return Phi((Math.log(x)-Math.log(run.lognormal.median))/run.lognormal.sigma);
+  }
+  const g0 = segsOf(run);
+  if(x <= g0[0].x0) return 0;
+  for(const g of g0) if(x <= g.x1) return g.p0 + (g.p1-g.p0)*(x-g.x0)/(g.x1-g.x0);
+  return null;
+}
+const pdfNormal = x => Math.exp(-0.5*Math.pow((x-CASE.bottomUp.mu)/CASE.bottomUp.sd,2))
+                       /(CASE.bottomUp.sd*Math.sqrt(2*Math.PI));
+const cdfNormal = x => Phi((x-CASE.bottomUp.mu)/CASE.bottomUp.sd);
+
+/* ---------- the parametric instrument, if the case carries one ---------- */
+const PARAM = CASE.parametric || [];
+/* the no-method family, if the case carries one: many thin lognormals, one per bare run; never pooled */
+const NOMETH = CASE.nomethod || [];
+/* alternative bottom-up readings, if the case carries any — another version of the chain, or another
+   repeat — drawn as dashed red bells beside the standing one and never pooled with it */
+const ALT = CASE.bottomUpAlt || [];
+const pdfAlt = (r,x) => Math.exp(-0.5*Math.pow((x-r.mu)/r.sd,2))/(r.sd*Math.sqrt(2*Math.PI));
+const cdfAlt = (r,x) => Phi((x-r.mu)/r.sd);
+const pdfParam = (r,x) => x<=0 ? 0 :
+  Math.exp(-Math.pow(Math.log(x)-Math.log(r.median),2)/(2*r.sigma*r.sigma))
+  /(x*r.sigma*Math.sqrt(2*Math.PI));
+const cdfParam = (r,x) => x<=0 ? 0 : Phi((Math.log(x)-Math.log(r.median))/r.sigma);
+
+/* the log panel appears when the instruments' medians span more than this */
+const LOG_RATIO_THRESHOLD = 4;
+const WINDOW_PD = 100;               /* vertical unit of the density panel: chance per this window */
+const medOutside = r => r.lognormal ? r.lognormal.median
+  : (r.q.find(([x,p]) => p >= 0.5) || r.q[r.q.length-1])[0];
+const MEDIANS = [CASE.bottomUp.mu, ...ALT.map(r=>r.mu), ...CASE.outside.map(medOutside), ...PARAM.map(r=>r.median), ...NOMETH.map(r=>r.median)];
+const MED_RATIO = Math.max(...MEDIANS)/Math.min(...MEDIANS);
+const LOGON = MED_RATIO > LOG_RATIO_THRESHOLD;
+
+/* ---------- sampling ---------- */
+function rangeOutside(run){
+  const last = run.q[run.q.length-1][0];
+  const lo = run.lognormal ? Math.max(1, run.lognormal.median*Math.exp(-3.4*run.lognormal.sigma))
+                           : (run.floor != null ? run.floor : run.q[0][0]);
+  return [lo, last];
+}
+function smooth(arr){
+  let cur = arr;
+  for(let pass=0; pass<2; pass++){
+    const k = 20;
+    cur = cur.map((_,i)=>{
+      let a=0,n=0;
+      for(let j=Math.max(0,i-k); j<=Math.min(cur.length-1,i+k); j++){ a+=cur[j][1]; n++; }
+      return [cur[i][0], a/n];
+    });
+  }
+  return cur;
+}
+function densOutside(run){
+  const [lo,hi] = rangeOutside(run), out = [], N = 360;
+  for(let i=0;i<=N;i++){ const x = lo+(hi-lo)*i/N; out.push([x, pdfOutside(run,x)]); }
+  return run.lognormal ? out : smooth(out);
+}
+function densBottomUp(){
+  const B = CASE.bottomUp, out=[], N=360;
+  const lo = Math.max(0,B.mu-3.6*B.sd), hi = Math.min(XMAX, B.mu+3.6*B.sd);
+  for(let i=0;i<=N;i++){ const x=lo+(hi-lo)*i/N; out.push([x, pdfNormal(x)]); }
+  return out;
+}
+function cumOutside(run){
+  const [lo,hi] = rangeOutside(run), out = [], N = 360;
+  for(let i=0;i<=N;i++){
+    const x = lo+(hi-lo)*i/N, c = cdfOutside(run,x);
+    if(c !== null) out.push([x,c]);
+  }
+  out.push([hi, run.q[run.q.length-1][1]]);
+  return out;
+}
+function cumBottomUp(){
+  const B = CASE.bottomUp, out=[], N=360;
+  const lo = Math.max(0,B.mu-3.6*B.sd), hi = Math.min(XMAX, B.mu+3.6*B.sd);
+  for(let i=0;i<=N;i++){ const x=lo+(hi-lo)*i/N; out.push([x, cdfNormal(x)]); }
+  return out;
+}
+
+const DENS = CASE.outside.map(densOutside), DENB = densBottomUp();
+/* the density scale belongs to the standing instruments and the no-method family alike;
+   a family of many thin curves that peaks above the panel would be clipped into a fringe */
+const DENN_PEAK = NOMETH.map(r => pdfParam(r, r.median*Math.exp(-r.sigma*r.sigma)));
+const DMAX = Math.max(...DENS.flat().map(p=>p[1]), ...DENB.map(p=>p[1]), ...DENN_PEAK, ...ALT.map(r=>pdfAlt(r,r.mu)));
+const Yd = d => DEN_BOT - (d / DMAX) * (DEN_BOT - DEN_TOP);
+
+const dpath = pts => pts.map(([x,d],i)=>`${i?"L":"M"} ${X(x).toFixed(1)} ${Yd(d).toFixed(1)}`).join(" ");
+const darea = pts => `M ${X(pts[0][0]).toFixed(1)} ${DEN_BOT} ` + dpath(pts).slice(1) +
+  ` L ${X(pts[pts.length-1][0]).toFixed(1)} ${DEN_BOT} Z`;
+const cpath = pts => pts.map(([x,p],i)=>`${i?"L":"M"} ${X(x).toFixed(1)} ${Yc(p).toFixed(1)}`).join(" ");
+const esc = t => String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+
+let svg = "";
+
+/* ---------- grid, shared x ---------- */
+const STEP = XMAX > 2400 ? 600 : 300;
+for(let v=0; v<=XMAX; v+=STEP/3){
+  const major = v % STEP === 0, op = major ? 1 : .45;
+  svg += `<line x1="${X(v).toFixed(1)}" y1="${DEN_TOP-6}" x2="${X(v).toFixed(1)}" y2="${DEN_BOT}"
+    stroke="var(--rule)" stroke-width="1" opacity="${op}"/>`;
+  svg += `<line x1="${X(v).toFixed(1)}" y1="${CDF_TOP-6}" x2="${X(v).toFixed(1)}" y2="${CDF_BOT}"
+    stroke="var(--rule)" stroke-width="1" opacity="${op}"/>`;
+  if(major) svg += `<text x="${X(v).toFixed(1)}" y="${CDF_BOT+18}" font-size="11" text-anchor="middle">${v}</text>`;
+}
+svg += `<text x="${X(XMAX)}" y="${CDF_BOT+36}" font-size="10" text-anchor="end" letter-spacing="1.4">${CASE.axisLabel}</text>`;
+
+/* ---------- panel captions ---------- */
+svg += `<text x="0" y="14" font-size="9.5" letter-spacing="1.2">HOW LIKELY EACH ANSWER IS \u2014 ONE SCALE, EQUAL AREAS \u00b7 VERTICAL: CHANCE PER ${WINDOW_PD}-PD WINDOW</text>`;
+svg += `<text x="0" y="${CDF_TOP-16}" font-size="9.5" letter-spacing="1.2">CHANCE OF COMING IN AT OR UNDER</text>`;
+
+/* ---------- horizontal grid on the cumulative panel ---------- */
+[0,.10,.25,.50,.75,.90,1].forEach(p=>{
+  svg += `<line x1="${M.l}" y1="${Yc(p).toFixed(1)}" x2="${W-M.r}" y2="${Yc(p).toFixed(1)}"
+    stroke="var(--rule)" stroke-width="1" opacity="${p===0.5?1:.6}" ${p===0.5?'stroke-dasharray="4 4"':''}/>`;
+  svg += `<text x="${M.l-8}" y="${(Yc(p)+3.5).toFixed(1)}" font-size="10.5" text-anchor="end">${Math.round(p*100)}%</text>`;
+});
+
+/* ---------- vertical ticks on the density panel: chance per window ----------
+   height × window is a local approximation; for a curve narrower than the
+   window it overshoots, which the hint says. The exact mass is the CDF panel. */
+const wmax = DMAX*WINDOW_PD;
+const wstep = wmax>0.45?0.15:wmax>0.24?0.10:wmax>0.12?0.05:0.02;
+for(let wv=wstep; wv<=wmax*1.001; wv+=wstep){
+  const y = Yd(wv/WINDOW_PD);
+  svg += `<line x1="${M.l}" y1="${y.toFixed(1)}" x2="${W-M.r}" y2="${y.toFixed(1)}"
+    stroke="var(--rule)" stroke-width="1" opacity=".5"/>`;
+  svg += `<text x="${M.l-8}" y="${(y+3.5).toFixed(1)}" font-size="10.5" text-anchor="end">${Math.round(wv*100)}%</text>`;
+}
+
+/* ---------- the outside-view readings ---------- */
+CASE.outside.forEach((r,i)=>{
+  if(i === 0) svg += `<path d="${darea(DENS[i])}" fill="var(--pen-blue-fill)" stroke="none"/>`;
+  svg += `<path d="${dpath(DENS[i])}" fill="none" stroke="var(--pen-blue)" stroke-width="1.9"
+    ${r.dash?`stroke-dasharray="${r.dash}"`:''} stroke-linejoin="round" stroke-linecap="round"/>`;
+  svg += `<path d="${cpath(cumOutside(r))}" fill="none" stroke="var(--pen-blue)" stroke-width="2"
+    ${r.dash?`stroke-dasharray="${r.dash}"`:''} stroke-linejoin="round" stroke-linecap="round"/>`;
+  r.q.forEach(([x,p])=>{
+    svg += `<circle cx="${X(x).toFixed(1)}" cy="${Yd(pdfOutside(r,x)).toFixed(1)}" r="2.8"
+      fill="var(--surface)" stroke="var(--pen-blue)" stroke-width="1.6"/>`;
+    svg += `<circle cx="${X(x).toFixed(1)}" cy="${Yc(p).toFixed(1)}" r="2.8"
+      fill="var(--surface)" stroke="var(--pen-blue)" stroke-width="1.6"/>`;
+  });
+  const [mx,mp] = r.q[Math.min(1,r.q.length-1)];
+  svg += `<text x="${X(mx)+9}" y="${(Yc(mp)-7).toFixed(1)}" font-size="11" fill="var(--pen-blue)" font-weight="500">${esc(r.id)}</text>`;
+});
+
+/* ---------- the bottom-up ---------- */
+svg += `<path d="${darea(DENB)}" fill="var(--pen-red-fill)" stroke="none"/>`;
+svg += `<path d="${dpath(DENB)}" fill="none" stroke="var(--pen-red)" stroke-width="2.2" stroke-linejoin="round"/>`;
+svg += `<path d="${cpath(cumBottomUp())}" fill="none" stroke="var(--pen-red)" stroke-width="2.4" stroke-linejoin="round"/>`;
+[[CASE.bottomUp.mu-1.2816*CASE.bottomUp.sd,.10],[CASE.bottomUp.mu,.50],[CASE.bottomUp.mu+1.2816*CASE.bottomUp.sd,.90]]
+  .forEach(([x,p])=>{
+    svg += `<circle cx="${X(x).toFixed(1)}" cy="${Yd(pdfNormal(x)).toFixed(1)}" r="2.8" fill="var(--surface)" stroke="var(--pen-red)" stroke-width="1.6"/>`;
+    svg += `<circle cx="${X(x).toFixed(1)}" cy="${Yc(p).toFixed(1)}" r="2.8" fill="var(--surface)" stroke="var(--pen-red)" stroke-width="1.6"/>`;
+  });
+
+/* ---------- alternative bottom-up readings: dashed, no fill, labelled at the median ---------- */
+ALT.forEach(r=>{
+  const lo = Math.max(0, r.mu-3.6*r.sd), hi = Math.min(XMAX, r.mu+3.6*r.sd), dp=[], cp=[], N=360;
+  for(let j=0;j<=N;j++){ const x=lo+(hi-lo)*j/N; dp.push([x,pdfAlt(r,x)]); cp.push([x,cdfAlt(r,x)]); }
+  const dash = r.dash || "6 4";
+  svg += `<path d="${dpath(dp)}" fill="none" stroke="var(--pen-red)" stroke-width="1.7" stroke-dasharray="${dash}" stroke-linejoin="round" opacity=".9"/>`;
+  svg += `<path d="${cpath(cp)}" fill="none" stroke="var(--pen-red)" stroke-width="1.8" stroke-dasharray="${dash}" stroke-linejoin="round" opacity=".9"/>`;
+  svg += `<circle cx="${X(r.mu).toFixed(1)}" cy="${Yc(0.5).toFixed(1)}" r="2.8" fill="var(--surface)" stroke="var(--pen-red)" stroke-width="1.4"/>`;
+  svg += `<text x="${X(r.mu)+9}" y="${(Yc(0.5)+12).toFixed(1)}" font-size="11" fill="var(--pen-red)" font-weight="500">${esc(r.id)}</text>`;
+});
+
+/* ---------- the parametric instrument ---------- */
+/* Drawn last among curves; the density scale belongs to the two standing
+   instruments and is NOT rescaled for it — a needle is clipped at the panel
+   top and says so, and the log panel below carries it in full. */
+let paramClipped = false;
+PARAM.forEach((r,i)=>{
+  const lo = Math.max(0.5, r.median*Math.exp(-3.4*r.sigma));
+  const hi = Math.min(XMAX, r.median*Math.exp(3.4*r.sigma));
+  const dpts=[], cpts=[], N=360;
+  for(let j=0;j<=N;j++){
+    const x = lo*Math.pow(hi/lo, j/N);
+    dpts.push([x, pdfParam(r,x)]); cpts.push([x, cdfParam(r,x)]);
+  }
+  if(Math.max(...dpts.map(p=>p[1])) > DMAX) paramClipped = true;
+  const dp = dpts.map(([x,d],j)=>`${j?"L":"M"} ${X(x).toFixed(1)} ${Math.max(DEN_TOP,Yd(d)).toFixed(1)}`).join(" ");
+  svg += `<path d="${dp}" fill="none" stroke="var(--pen-teal)" stroke-width="1.9"
+    ${r.dash?`stroke-dasharray="${r.dash}"`:''} stroke-linejoin="round" stroke-linecap="round"/>`;
+  svg += `<path d="${cpath(cpts)}" fill="none" stroke="var(--pen-teal)" stroke-width="2"
+    ${r.dash?`stroke-dasharray="${r.dash}"`:''} stroke-linejoin="round" stroke-linecap="round"/>`;
+  svg += `<text x="${(X(r.median)+9).toFixed(1)}" y="${(Yc(0.5)-7-i*15).toFixed(1)}" font-size="11"
+    fill="var(--pen-teal)" font-weight="500">${esc(r.id)}</text>`;
+});
+if(paramClipped) svg += `<text x="${M.l+6}" y="${DEN_TOP+10}" font-size="9.5" fill="var(--pen-teal)">parametric — off this density scale; drawn in full on the log panel below</text>`;
+
+/* ---------- the no-method family ---------- */
+/* One thin curve per bare run, drawn under the standing instruments' scale and
+   never pooled: the family is the reading, a pooled curve would hide its spread. */
+NOMETH.forEach(r=>{
+  const lo = Math.max(0.5, r.median*Math.exp(-3.4*r.sigma));
+  const hi = Math.min(XMAX, r.median*Math.exp(3.4*r.sigma));
+  const dpts=[], cpts=[], N=240;
+  for(let j=0;j<=N;j++){
+    const x = lo*Math.pow(hi/lo, j/N);
+    dpts.push([x, pdfParam(r,x)]); cpts.push([x, cdfParam(r,x)]);
+  }
+  const dp = dpts.map(([x,d],j)=>`${j?"L":"M"} ${X(x).toFixed(1)} ${Math.max(DEN_TOP,Yd(d)).toFixed(1)}`).join(" ");
+  svg += `<path d="${dp}" fill="none" stroke="var(--pen-ochre)" stroke-width="0.9" opacity=".75" stroke-linejoin="round"/>`;
+  svg += `<path d="${cpath(cpts)}" fill="none" stroke="var(--pen-ochre)" stroke-width="0.9" opacity=".75" stroke-linejoin="round"/>`;
+});
+
+/* ---------- the raw table sum ---------- */
+if(CASE.rawSum){
+  svg += `<line x1="${X(CASE.rawSum)}" y1="${DEN_BOT}" x2="${X(CASE.rawSum)}" y2="${DEN_BOT-24}"
+    stroke="var(--pen-red)" stroke-width="1.3" stroke-dasharray="3 3" opacity=".7"/>`;
+  svg += `<text x="${X(CASE.rawSum)}" y="${DEN_BOT-29}" font-size="9.5" text-anchor="middle"
+    fill="var(--pen-red)" opacity=".8">${CASE.rawSumLabel}</text>`;
+}
+
+/* ---------- further raw marks, if the case carries any: the same kind of tick as the raw table sum,
+   each one row higher, with an optional band drawn as two small ticks ---------- */
+(CASE.rawMarks || []).forEach((m,i)=>{
+  const top = DEN_BOT - 24 - 20*(i+1);
+  svg += `<line x1="${X(m.x)}" y1="${DEN_BOT}" x2="${X(m.x)}" y2="${top}"
+    stroke="var(--pen-red)" stroke-width="1.3" stroke-dasharray="3 3" opacity=".7"/>`;
+  if(m.lo != null && m.hi != null){
+    svg += `<line x1="${X(m.lo)}" y1="${top+4}" x2="${X(m.hi)}" y2="${top+4}" stroke="var(--pen-red)" stroke-width="1" opacity=".6"/>`;
+    [m.lo,m.hi].forEach(v=>{ svg += `<line x1="${X(v)}" y1="${top}" x2="${X(v)}" y2="${top+8}" stroke="var(--pen-red)" stroke-width="1" opacity=".6"/>`; });
+  }
+  svg += `<text x="${X(m.x)}" y="${top-5}" font-size="9.5" text-anchor="middle"
+    fill="var(--pen-red)" opacity=".8">${m.label}</text>`;
+});
+
+/* ---------- a documented outcome, through both panels ---------- */
+if(CASE.fact){
+  const f = CASE.fact;
+  svg += `<line x1="${X(f.value)}" y1="${DEN_TOP-6}" x2="${X(f.value)}" y2="${DEN_BOT}" stroke="var(--ink)" stroke-width="2"/>`;
+  svg += `<line x1="${X(f.value)}" y1="${CDF_TOP-6}" x2="${X(f.value)}" y2="${CDF_BOT}" stroke="var(--ink)" stroke-width="2"/>`;
+  const anchor = X(f.value) > W*0.6 ? "end" : "start";
+  svg += `<text x="${X(f.value)+(anchor==="end"?-9:9)}" y="${DEN_TOP+8}" font-size="11.5"
+    text-anchor="${anchor}" fill="var(--ink)" font-weight="600">${f.label}</text>`;
+  CASE.outside.forEach(r=>{
+    const c = cdfOutside(r, f.value);
+    if(c !== null) svg += `<circle cx="${X(f.value)}" cy="${Yc(c).toFixed(1)}" r="4.2" fill="var(--pen-blue)"/>`;
+  });
+  svg += `<circle cx="${X(f.value)}" cy="${Yc(cdfNormal(f.value)).toFixed(1)}" r="4.2" fill="var(--pen-red)"/>`;
+}
+
+/* ---------- the calibration spread ---------- */
+if(CASE.calibration){
+  const BY = DEN_BOT - 14, cs = CASE.calibration;
+  svg += `<line x1="${X(cs.lo)}" y1="${BY}" x2="${X(cs.hi)}" y2="${BY}" stroke="var(--pen-red)" stroke-width="1.4" stroke-dasharray="5 4"/>`;
+  [cs.lo,cs.hi].forEach(v=>{ svg += `<line x1="${X(v)}" y1="${BY-5}" x2="${X(v)}" y2="${BY+5}" stroke="var(--pen-red)" stroke-width="1.4"/>`; });
+  svg += `<text x="${X(cs.lo)}" y="${BY-9}" font-size="10.5" fill="var(--pen-red)">${cs.label}</text>`;
+}
+
+const beyond = CASE.outside.find(r=>r.beyondLabel);
+if(beyond) svg += `<text x="${X(XMAX)-4}" y="${Yc(0.965).toFixed(1)}" font-size="9.5" text-anchor="end" fill="var(--pen-blue)">${beyond.beyondLabel}</text>`;
+
+svg += `<line x1="${M.l}" y1="${DEN_BOT}" x2="${W-M.r}" y2="${DEN_BOT}" stroke="var(--rule-2)" stroke-width="1.5"/>`;
+svg += `<line x1="${M.l}" y1="${CDF_BOT}" x2="${W-M.r}" y2="${CDF_BOT}" stroke="var(--rule-2)" stroke-width="1.5"/>`;
+svg += `<line x1="${M.l}" y1="${CDF_TOP-6}" x2="${M.l}" y2="${CDF_BOT}" stroke="var(--rule-2)" stroke-width="1.5"/>`;
+
+/* ---------- the log panel — added, never replacing the linear one, when the
+   instruments' medians span more than LOG_RATIO_THRESHOLD ---------- */
+const LOG_TOP = 596, LOG_BOT = 792, HFULL = LOGON ? 848 : 580;
+if(LOGON){
+  const lastQ = Math.max(...CASE.outside.map(r=>r.q[r.q.length-1][0]), XMAX);
+  const LXMIN = Math.max(1, Math.min(...MEDIANS)/8), LXMAX = lastQ;
+  const Xl = v => M.l + (Math.log(v)-Math.log(LXMIN))/(Math.log(LXMAX)-Math.log(LXMIN))*PW;
+  const LOG_WINDOW = Math.log(10)/10;   /* vertical unit: chance per ×1.26 (0.1 decade) */
+  const gOf = (f,x) => LOG_WINDOW * x * f(x);
+
+  /* sample every curve in log space */
+  const lcurves = [];
+  const sample = (f, lo, hi) => { const o=[],N=420;
+    for(let j=0;j<=N;j++){ const x=lo*Math.pow(hi/lo,j/N); o.push([x,gOf(f,x)]); } return o; };
+  lcurves.push({pts: sample(pdfNormal, Math.max(LXMIN,CASE.bottomUp.mu-3.6*CASE.bottomUp.sd),
+                            Math.min(LXMAX,CASE.bottomUp.mu+3.6*CASE.bottomUp.sd)),
+                pen:"--pen-red", w:2.2, dash:null});
+  CASE.outside.forEach(r=>{
+    const [lo,hi] = rangeOutside(r);
+    lcurves.push({pts: sample(x=>pdfOutside(r,x), Math.max(LXMIN,lo), Math.min(LXMAX,hi)),
+                  pen:"--pen-blue", w:1.9, dash:r.dash||null});
+  });
+  ALT.forEach(r=>{
+    lcurves.push({pts: sample(x=>pdfAlt(r,x), Math.max(LXMIN,r.mu-3.6*r.sd), Math.min(LXMAX,r.mu+3.6*r.sd)),
+                  pen:"--pen-red", w:1.6, dash:r.dash||"6 4"});
+  });
+  PARAM.forEach(r=>{
+    lcurves.push({pts: sample(x=>pdfParam(r,x), Math.max(LXMIN,r.median*Math.exp(-3.4*r.sigma)),
+                              Math.min(LXMAX,r.median*Math.exp(3.4*r.sigma))),
+                  pen:"--pen-teal", w:1.9, dash:r.dash||null, label:r.id, med:r.median});
+  });
+  NOMETH.forEach(r=>{
+    lcurves.push({pts: sample(x=>pdfParam(r,x), Math.max(LXMIN,r.median*Math.exp(-3.4*r.sigma)),
+                              Math.min(LXMAX,r.median*Math.exp(3.4*r.sigma))),
+                  pen:"--pen-ochre", w:0.9, dash:null});
+  });
+  const LMAX = Math.max(...lcurves.map(c=>Math.max(...c.pts.map(p=>p[1]))));
+  const Yl = g => LOG_BOT - (g/LMAX)*(LOG_BOT-LOG_TOP);
+
+  svg += `<text x="0" y="${LOG_TOP-16}" font-size="9.5" letter-spacing="1.2">THE SAME MASS ON A LOG AXIS — ADDED BECAUSE THE MEDIANS SPAN ×${Math.round(MED_RATIO)} · VERTICAL: CHANCE PER ×1.26 WINDOW</text>`;
+
+  /* decade grid */
+  for(let e=Math.ceil(Math.log10(LXMIN)); e<=Math.floor(Math.log10(LXMAX)); e++){
+    [1,2,5].forEach(m=>{
+      const v = m*Math.pow(10,e);
+      if(v<LXMIN || v>LXMAX) return;
+      const major = m===1;
+      svg += `<line x1="${Xl(v).toFixed(1)}" y1="${LOG_TOP-6}" x2="${Xl(v).toFixed(1)}" y2="${LOG_BOT}"
+        stroke="var(--rule)" stroke-width="1" opacity="${major?1:.45}"/>`;
+      if(major || m===5) svg += `<text x="${Xl(v).toFixed(1)}" y="${LOG_BOT+18}" font-size="11" text-anchor="middle">${v}</text>`;
+    });
+  }
+  /* horizontal ticks: chance per log-window */
+  const lstep = LMAX>0.45?0.15:LMAX>0.24?0.10:0.05;
+  for(let lv=lstep; lv<=LMAX*1.001; lv+=lstep){
+    svg += `<line x1="${M.l}" y1="${Yl(lv).toFixed(1)}" x2="${W-M.r}" y2="${Yl(lv).toFixed(1)}"
+      stroke="var(--rule)" stroke-width="1" opacity=".5"/>`;
+    svg += `<text x="${M.l-8}" y="${(Yl(lv)+3.5).toFixed(1)}" font-size="10.5" text-anchor="end">${Math.round(lv*100)}%</text>`;
+  }
+  /* curves */
+  lcurves.forEach(c=>{
+    const d = c.pts.map(([x,g],j)=>`${j?"L":"M"} ${Xl(x).toFixed(1)} ${Yl(g).toFixed(1)}`).join(" ");
+    svg += `<path d="${d}" fill="none" stroke="var(${c.pen})" stroke-width="${c.w}"
+      ${c.dash?`stroke-dasharray="${c.dash}"`:''} stroke-linejoin="round" stroke-linecap="round"/>`;
+    if(c.label){
+      const peak = Math.max(...c.pts.map(p=>p[1]));
+      svg += `<text x="${Xl(c.med).toFixed(1)}" y="${(Yl(peak)-7).toFixed(1)}" font-size="10.5"
+        text-anchor="middle" fill="var(${c.pen})" font-weight="500">${esc(c.label)}</text>`;
+    }
+  });
+  /* the fact through the log panel */
+  if(CASE.fact){
+    svg += `<line x1="${Xl(CASE.fact.value).toFixed(1)}" y1="${LOG_TOP-6}" x2="${Xl(CASE.fact.value).toFixed(1)}" y2="${LOG_BOT}" stroke="var(--ink)" stroke-width="2"/>`;
+  }
+  svg += `<line x1="${M.l}" y1="${LOG_BOT}" x2="${W-M.r}" y2="${LOG_BOT}" stroke="var(--rule-2)" stroke-width="1.5"/>`;
+  svg += `<line x1="${M.l}" y1="${LOG_TOP-6}" x2="${M.l}" y2="${LOG_BOT}" stroke="var(--rule-2)" stroke-width="1.5"/>`;
+}
+
+svg += `<g id="cursor" style="display:none">
+  <line id="cur-a" y1="${DEN_TOP-6}" y2="${DEN_BOT}" stroke="var(--ink)" stroke-width="1" opacity=".5"/>
+  <line id="cur-b" y1="${CDF_TOP-6}" y2="${CDF_BOT}" stroke="var(--ink)" stroke-width="1" opacity=".5"/>
+  <g><rect id="cur-bg" rx="2" fill="var(--surface)" stroke="var(--rule-2)" stroke-width="1"/>
+  <text id="cur-t" font-size="11"></text></g></g>`;
+svg += `<rect id="hit" x="${M.l}" y="${DEN_TOP-6}" width="${PW}" height="${CDF_BOT-DEN_TOP+6}" fill="transparent" style="cursor:crosshair"/>`;
+
+const plot = document.getElementById("plot");
+plot.setAttribute("viewBox", `0 0 ${W} ${HFULL}`);
+plot.innerHTML = svg;
+
+const cursor=document.getElementById("cursor"), curA=document.getElementById("cur-a"),
+      curB=document.getElementById("cur-b"), curBg=document.getElementById("cur-bg"),
+      curT=document.getElementById("cur-t"), hit=document.getElementById("hit");
+const over = c => c === null ? "past its last quantile" : (100-Math.round(c*100)) + "% chance of exceeding";
+
+function move(evt){
+  const pt = plot.createSVGPoint(), src = evt.touches ? evt.touches[0] : evt;
+  pt.x = src.clientX; pt.y = src.clientY;
+  const loc = pt.matrixTransform(plot.getScreenCTM().inverse());
+  const v = Math.max(0, Math.min(XMAX, XINV(loc.x)));
+  cursor.style.display = "";
+  [curA,curB].forEach(l=>{ l.setAttribute("x1", X(v)); l.setAttribute("x2", X(v)); });
+
+  const lines = [[`if the answer is ${Math.round(v)} person-days`, "var(--ink)", true]];
+  CASE.outside.forEach(r => lines.push([`${r.id}: ${over(cdfOutside(r, v))}`, "var(--pen-blue)"]));
+  lines.push([`bottom-up: ${over(cdfNormal(v))}`, "var(--pen-red)"]);
+  ALT.forEach(r => lines.push([`${r.id}: ${over(cdfAlt(r, v))}`, "var(--pen-red)"]));
+  PARAM.forEach(r => lines.push([`${r.id}: ${over(cdfParam(r, v))}`, "var(--pen-teal)"]));
+  if(NOMETH.length){
+    const ps = NOMETH.map(r => 1-cdfParam(r, v)).sort((a,b)=>a-b);
+    const md = ps[Math.floor(ps.length/2)], k = ps.filter(p=>p>0.5).length;
+    lines.push([`no-method, ${NOMETH.length} runs: median ${Math.round(100*md)}% over · ${k} of ${NOMETH.length} put it above`, "var(--pen-ochre)"]);
+  }
+  if(CASE.fact) lines.push([`outcome: ${(v/CASE.fact.value).toFixed(2)}\u00d7`, "var(--ink-2)"]);
+
+  curT.textContent = "";
+  lines.forEach(([t,fill,bold],i)=>{
+    const e = document.createElementNS("http://www.w3.org/2000/svg","tspan");
+    e.textContent = t; e.setAttribute("x", 0); e.setAttribute("dy", i ? 15 : 0);
+    if(bold) e.setAttribute("font-weight","600");
+    e.setAttribute("fill", fill);
+    curT.appendChild(e);
+  });
+  const bw = 232, bh = 16 + lines.length*15;
+  const flip = X(v) + bw + 14 > W - M.r;
+  const bx = flip ? X(v) - bw - 10 : X(v) + 10, by = DEN_TOP + 26;
+  curBg.setAttribute("x", bx); curBg.setAttribute("y", by);
+  curBg.setAttribute("width", bw); curBg.setAttribute("height", bh);
+  curT.setAttribute("transform", `translate(${bx+11},${by+19})`);
+}
+hit.addEventListener("mousemove", move);
+hit.addEventListener("touchmove", e=>{ move(e); e.preventDefault(); }, {passive:false});
+hit.addEventListener("mouseleave", ()=>{ cursor.style.display = "none"; });
+</script>

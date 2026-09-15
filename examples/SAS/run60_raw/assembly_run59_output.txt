@@ -1,0 +1,216 @@
+=== repeat 1: sized elements 187 · distribution {'L': 44, 'M': 94, 'S': 35, 'unsizeable': 1, 'XL': 13} · statement kinds 20 · special counts 25
+  element leaf E (incl. root per-parent items): 23331.6 h
+  C3 all parents:                               10761.2 h   of which root C3: 4666.3
+  once + per-environment layer [L]:            840.3 h
+  GRAND TOTAL:                                  34933 net person-hours  (= 4366.6 pd at 8 h)
+  corridor, rho = 0.5:  sd 5473 h · P10 27919 · P90 41947  (x0.80 / x1.20 of the centre)
+  named holes (42):
+      ('A140', 'K1', 'unsizeable (M10)')
+      ('A140', 'K2', 'unsizeable (M10)')
+      ('A140', 'A2', 'unsizeable (M10)')
+      ('A140', 'A3', 'unsizeable (M10)')
+      ('A140', 'A4', 'unsizeable (M10)')
+      ('A140', 'A10', 'unsizeable (M10)')
+      ('A089', 'G2m', 'special count unsizeable')
+      ('A089', 'G3m', 'special count unsizeable')
+      ('A089', 'G4m', 'special count unsizeable')
+      ('A009', 'G2m', 'special count unsizeable')
+      ('A018', 'G2m', 'special count unsizeable')
+      ('A021', 'G2m', 'special count unsizeable')
+      ('A048', 'G2m', 'special count unsizeable')
+      ('A050', 'G2m', 'special count unsizeable')
+      ('C01', 'G2m', 'special count unsizeable')
+      ('A009', 'G3m', 'special count unsizeable')
+      ('A018', 'G3m', 'special count unsizeable')
+      ('A021', 'G3m', 'special count unsizeable')
+      ('A048', 'G3m', 'special count unsizeable')
+      ('A050', 'G3m', 'special count unsizeable')
+      ('C01', 'G3m', 'special count unsizeable')
+      ('A009', 'G4m', 'special count unsizeable')
+      ('A018', 'G4m', 'special count unsizeable')
+      ('A021', 'G4m', 'special count unsizeable')
+      ('A048', 'G4m', 'special count unsizeable')
+      ('A050', 'G4m', 'special count unsizeable')
+      ('C01', 'G4m', 'special count unsizeable')
+      ('A035', 'G2m', 'special count unsizeable')
+      ('A044', 'G2m', 'special count unsizeable')
+      ('C06', 'G2m', 'special count unsizeable')
+      ('A035', 'G3m', 'special count unsizeable')
+      ('A044', 'G3m', 'special count unsizeable')
+      ('C06', 'G3m', 'special count unsizeable')
+      ('A035', 'G4m', 'special count unsizeable')
+      ('A044', 'G4m', 'special count unsizeable')
+      ('C06', 'G4m', 'special count unsizeable')
+      ('A083', 'G2m', 'special count unsizeable')
+      ('A083', 'G3m', 'special count unsizeable')
+      ('A083', 'G4m', 'special count unsizeable')
+      ('A170', 'G2m', 'special count unsizeable')
+      ('A170', 'G3m', 'special count unsizeable')
+      ('A170', 'G4m', 'special count unsizeable')
+=== repeat 2: sized elements 185 · distribution {'S': 45, 'M': 101, 'L': 35, 'unsizeable': 1, 'XL': 3} · statement kinds 18 · special counts 25
+  element leaf E (incl. root per-parent items): 21348.6 h
+  C3 all parents:                               9765.2 h   of which root C3: 4269.7
+  once + per-environment layer [L]:            840.3 h
+  GRAND TOTAL:                                  31954 net person-hours  (= 3994.3 pd at 8 h)
+  corridor, rho = 0.5:  sd 5103 h · P10 25413 · P90 38495  (x0.80 / x1.20 of the centre)
+  named holes (47):
+      ('A140', 'K1', 'unsizeable (M10)')
+      ('A140', 'K2', 'unsizeable (M10)')
+      ('A140', 'A2', 'unsizeable (M10)')
+      ('A140', 'A3', 'unsizeable (M10)')
+      ('A140', 'A4', 'unsizeable (M10)')
+      ('A140', 'A10', 'unsizeable (M10)')
+      ('A076', 'G2m', 'special count unsizeable')
+      ('A089', 'G2m', 'special count unsizeable')
+      ('A076', 'G3m', 'special count unsizeable')
+      ('A089', 'G3m', 'special count unsizeable')
+      ('A076', 'G4m', 'special count unsizeable')
+      ('A089', 'G4m', 'special count unsizeable')
+      ('A009', 'G2m', 'special count unsizeable')
+      ('A018', 'G2m', 'special count unsizeable')
+      ('A021', 'G2m', 'special count unsizeable')
+      ('A048', 'G2m', 'special count unsizeable')
+      ('A050', 'G2m', 'special count unsizeable')
+      ('C01', 'G2m', 'special count unsizeable')
+      ('A009', 'G3m', 'special count unsizeable')
+      ('A018', 'G3m', 'special count unsizeable')
+      ('A021', 'G3m', 'special count unsizeable')
+      ('A048', 'G3m', 'special count unsizeable')
+      ('A050', 'G3m', 'special count unsizeable')
+      ('C01', 'G3m', 'special count unsizeable')
+      ('A009', 'G4m', 'special count unsizeable')
+      ('A018', 'G4m', 'special count unsizeable')
+      ('A021', 'G4m', 'special count unsizeable')
+      ('A048', 'G4m', 'special count unsizeable')
+      ('A050', 'G4m', 'special count unsizeable')
+      ('C01', 'G4m', 'special count unsizeable')
+      ('A035', 'G2m', 'special count unsizeable')
+      ('A044', 'G2m', 'special count unsizeable')
+      ('A035', 'G3m', 'special count unsizeable')
+      ('A044', 'G3m', 'special count unsizeable')
+      ('A035', 'G4m', 'special count unsizeable')
+      ('A044', 'G4m', 'special count unsizeable')
+      ('A010', 'G2m', 'special count unsizeable')
+      ('A010', 'G3m', 'special count unsizeable')
+      ('A010', 'G4m', 'special count unsizeable')
+      ('A083', 'G2m', 'special count unsizeable')
+      ('A083', 'G3m', 'special count unsizeable')
+      ('A083', 'G4m', 'special count unsizeable')
+      ('A158', 'K3', 'no size in reading')
+      ('A159', 'K3', 'no size in reading')
+      ('A170', 'G2m', 'special count unsizeable')
+      ('A170', 'G3m', 'special count unsizeable')
+      ('A170', 'G4m', 'special count unsizeable')
+=== composition, repeat 1 - per top-level subtree: element items + C3 inside the subtree
+   N02    Platform architecture                    elements  35  items   3043 h  C3   1093 h  subtotal   4136 h
+   N06    Identity and access                      elements  14  items   1554 h  C3    311 h  subtotal   1864 h
+   N07    Record governance                        elements  10  items   1118 h  C3    224 h  subtotal   1342 h
+   N08    Notifications                            elements  16  items   1475 h  C3    295 h  subtotal   1770 h
+   N09    Reporting and dashboard                  elements  10  items   1232 h  C3    246 h  subtotal   1479 h
+   N10    User assistance                          elements   6  items    573 h  C3    115 h  subtotal    688 h
+   N11    Import and export                        elements  12  items   1502 h  C3    300 h  subtotal   1803 h
+   N12    Publish and subscribe                    elements  14  items   1374 h  C3    275 h  subtotal   1649 h
+   N13    Shared record management                 elements  37  items   5145 h  C3   1931 h  subtotal   7076 h
+   N19    Product module                           elements  19  items   2316 h  C3    628 h  subtotal   2945 h
+   N20    Location module                          elements  12  items   1237 h  C3    247 h  subtotal   1484 h
+   N21    Access Data module                       elements   9  items   1088 h  C3    218 h  subtotal   1306 h
+   N22    Operational properties                   elements  16  items   1062 h  C3    212 h  subtotal   1274 h
+   root own per-parent items 612 h · root C3 4666 h · once/per-env 840 h
+=== composition, repeat 1 - per activity (element-attached items only, hours)
+   K2      4481
+   A3      3372
+   K1      1981
+   A6      1904
+   A2      1788
+   D4      1365
+   A5      1304
+   A7      1112
+   U3       979
+   A4       913
+   U2       719
+   D2       644
+   K3       528
+   G3m      384
+   U1       373
+   O1       373
+   A8       323
+   A10      313
+   G2m      233
+   G4m      197
+   A9        47
+=== once/per-environment items, repeat 1:
+   A1 test strategy [bracket]                       E =  42.7
+   U4 acceptance record [bracket]                   E =  17.3
+   D1 mobilisation [bracket]                        E =  49.3
+   D3 status reporting [bracket]                    E =  66.7
+   D6 risk & dependency [bracket]                   E =  34.7
+   E2 build/deploy pipeline [bracket]               E =  46.7
+   E3 promotion procedure [4 envs: L]               E =  17.3
+   E4 configuration management [bracket]            E =  22.0
+   E6 production cutover [bracket]                  E =  44.0
+   E7 hosting set-up [bracket]                      E =  46.7
+   G1m source profiling [bracket]                   E =  52.0
+   G5m migration rehearsal #1 [bracket]             E =  46.7
+   G5m migration rehearsal #2 [bracket]             E =  46.7
+   O2 operational runbook [bracket]                 E =  38.0
+   O3 support handover pack [bracket]               E =  33.3
+   O4 release notes [single]                        E =   4.3
+   S1 security design review [bracket]              E =  42.7
+   S2 penetration test [52 surf+int: XL]            E =  42.7
+   S3 remediation [52 surf+int: XL]                 E =  72.0
+   E1 environment: dev [S]                          E =   9.3
+   E1 environment: test [M, declared]               E =  17.3
+   E1 environment: stage [M]                        E =  17.3
+   E1 environment: prod [L]                         E =  30.7
+=== size-class agreement: 185 elements in both, 42 differ (77.3% agree)
+      ('A034', 'M', 'L')
+      ('C14', 'S', 'M')
+      ('A007', 'L', 'M')
+      ('A015', 'L', 'M')
+      ('A017', 'M', 'S')
+      ('A025', 'L', 'M')
+      ('A146', 'L', 'M')
+      ('A147', 'L', 'M')
+      ('A008', 'XL', 'M')
+      ('A020', 'XL', 'L')
+      ('A021', 'M', 'S')
+      ('A026', 'S', 'M')
+      ('A165', 'L', 'M')
+      ('A046', 'L', 'M')
+      ('A022', 'M', 'S')
+      ('A038', 'M', 'L')
+      ('A044', 'M', 'S')
+      ('A035', 'M', 'S')
+      ('A036', 'S', 'M')
+      ('A071', 'L', 'M')
+      ('A004', 'L', 'S')
+      ('A081', 'XL', 'L')
+      ('A082', 'M', 'S')
+      ('A100', 'XL', 'L')
+      ('A102', 'L', 'S')
+      ('A073', 'L', 'S')
+      ('A074', 'L', 'S')
+      ('A075', 'L', 'S')
+      ('A084', 'L', 'M')
+      ('A099', 'XL', 'M')
+      ('A094', 'L', 'M')
+      ('A097', 'M', 'S')
+      ('A098', 'M', 'S')
+      ('A107', 'L', 'M')
+      ('A108', 'L', 'M')
+      ('A078', 'XL', 'L')
+      ('A123', 'XL', 'L')
+      ('A011', 'L', 'M')
+      ('A160', 'XL', 'L')
+      ('A161', 'XL', 'L')
+      ('A162', 'XL', 'L')
+      ('C11', 'L', 'M')
+=== statement-kind divergences: [('A005', 'behavioural', 'compliance'), ('A158', 'compliance', None), ('A159', 'compliance', None)]
+=== special-count divergences: [('A076', 'M', None), ('C06', None, 'S'), ('A010', 'S', None), ('A012', 'M', 'S')]
+=== XL elements (either repeat): ['A008', 'A020', 'A029', 'A037', 'A051', 'A078', 'A081', 'A099', 'A100', 'A123', 'A160', 'A161', 'A162']
+=== repeat 1: XL leaves 13, their own element-attached effort 2085.0 h: A008, A020, A029, A037, A051, A078, A081, A099, A100, A123, A160, A161, A162
+=== repeat 2: XL leaves 3, their own element-attached effort 601.7 h: A029, A037, A051
+=== repeat spread: 31954 .. 34933 net person-hours (x1.0932); centre 33444 h
+=== tree: 211 elements, 187 leaves, 24 parents; mean leaf depth 2.32
+=== unit: net hours of work on the task (docs/instrument.md section 0). Leave, holidays, sickness and
+===       presence are NOT included; the comparison-layer conversion is docs/constants.md section 4a.

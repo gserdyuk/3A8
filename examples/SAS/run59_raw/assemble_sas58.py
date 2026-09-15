@@ -324,6 +324,12 @@ if __name__ == '__main__':
     print('=== special-count divergences:', spd)
     xl = sorted(set(e for e, v in s1.items() if v == 'XL') | set(e for e, v in s2.items() if v == 'XL'))
     print('=== XL elements (either repeat):', xl)
+    # bases the Step C rate chain is applied to (run 48's T3 was taken on the XL leaves' own effort)
+    for rep in (1, 2):
+        s = READINGS[rep][0]
+        xl = sorted(e for e, v in s.items() if v == 'XL')
+        own = sum(res[rep]['leafE'].get(e, 0.0) for e in xl)
+        print('=== repeat %d: XL leaves %d, their own element-attached effort %.1f h: %s' % (rep, len(xl), own, ', '.join(xl)))
     lo, hi = min(r['total'] for r in res.values()), max(r['total'] for r in res.values())
     print('=== repeat spread: %.0f .. %.0f net person-hours (x%.4f); centre %.0f h' % (lo, hi, hi / lo, (lo + hi) / 2))
     depth = [len([p for p in ORDER if p in KIDS and e in sub(p)]) for e in ORDER if e not in KIDS]

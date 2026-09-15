@@ -251,6 +251,11 @@ const cdfNormal = x => Phi((x-CASE.bottomUp.mu)/CASE.bottomUp.sd);
 const PARAM = CASE.parametric || [];
 /* the no-method family, if the case carries one: many thin lognormals, one per bare run; never pooled */
 const NOMETH = CASE.nomethod || [];
+/* alternative bottom-up readings, if the case carries any — another version of the chain, or another
+   repeat — drawn as dashed red bells beside the standing one and never pooled with it */
+const ALT = CASE.bottomUpAlt || [];
+const pdfAlt = (r,x) => Math.exp(-0.5*Math.pow((x-r.mu)/r.sd,2))/(r.sd*Math.sqrt(2*Math.PI));
+const cdfAlt = (r,x) => Phi((x-r.mu)/r.sd);
 const pdfParam = (r,x) => x<=0 ? 0 :
   Math.exp(-Math.pow(Math.log(x)-Math.log(r.median),2)/(2*r.sigma*r.sigma))
   /(x*r.sigma*Math.sqrt(2*Math.PI));
@@ -261,7 +266,7 @@ const LOG_RATIO_THRESHOLD = 4;
 const WINDOW_PD = 100;               /* vertical unit of the density panel: chance per this window */
 const medOutside = r => r.lognormal ? r.lognormal.median
   : (r.q.find(([x,p]) => p >= 0.5) || r.q[r.q.length-1])[0];
-const MEDIANS = [CASE.bottomUp.mu, ...CASE.outside.map(medOutside), ...PARAM.map(r=>r.median), ...NOMETH.map(r=>r.median)];
+const MEDIANS = [CASE.bottomUp.mu, ...ALT.map(r=>r.mu), ...CASE.outside.map(medOutside), ...PARAM.map(r=>r.median), ...NOMETH.map(r=>r.median)];
 const MED_RATIO = Math.max(...MEDIANS)/Math.min(...MEDIANS);
 const LOGON = MED_RATIO > LOG_RATIO_THRESHOLD;
 
@@ -315,7 +320,7 @@ const DENS = CASE.outside.map(densOutside), DENB = densBottomUp();
 /* the density scale belongs to the standing instruments and the no-method family alike;
    a family of many thin curves that peaks above the panel would be clipped into a fringe */
 const DENN_PEAK = NOMETH.map(r => pdfParam(r, r.median*Math.exp(-r.sigma*r.sigma)));
-const DMAX = Math.max(...DENS.flat().map(p=>p[1]), ...DENB.map(p=>p[1]), ...DENN_PEAK);
+const DMAX = Math.max(...DENS.flat().map(p=>p[1]), ...DENB.map(p=>p[1]), ...DENN_PEAK, ...ALT.map(r=>pdfAlt(r,r.mu)));
 const Yd = d => DEN_BOT - (d / DMAX) * (DEN_BOT - DEN_TOP);
 
 const dpath = pts => pts.map(([x,d],i)=>`${i?"L":"M"} ${X(x).toFixed(1)} ${Yd(d).toFixed(1)}`).join(" ");
@@ -388,6 +393,17 @@ svg += `<path d="${cpath(cumBottomUp())}" fill="none" stroke="var(--pen-red)" st
     svg += `<circle cx="${X(x).toFixed(1)}" cy="${Yc(p).toFixed(1)}" r="2.8" fill="var(--surface)" stroke="var(--pen-red)" stroke-width="1.6"/>`;
   });
 
+/* ---------- alternative bottom-up readings: dashed, no fill, labelled at the median ---------- */
+ALT.forEach(r=>{
+  const lo = Math.max(0, r.mu-3.6*r.sd), hi = Math.min(XMAX, r.mu+3.6*r.sd), dp=[], cp=[], N=360;
+  for(let j=0;j<=N;j++){ const x=lo+(hi-lo)*j/N; dp.push([x,pdfAlt(r,x)]); cp.push([x,cdfAlt(r,x)]); }
+  const dash = r.dash || "6 4";
+  svg += `<path d="${dpath(dp)}" fill="none" stroke="var(--pen-red)" stroke-width="1.7" stroke-dasharray="${dash}" stroke-linejoin="round" opacity=".9"/>`;
+  svg += `<path d="${cpath(cp)}" fill="none" stroke="var(--pen-red)" stroke-width="1.8" stroke-dasharray="${dash}" stroke-linejoin="round" opacity=".9"/>`;
+  svg += `<circle cx="${X(r.mu).toFixed(1)}" cy="${Yc(0.5).toFixed(1)}" r="2.8" fill="var(--surface)" stroke="var(--pen-red)" stroke-width="1.4"/>`;
+  svg += `<text x="${X(r.mu)+9}" y="${(Yc(0.5)+12).toFixed(1)}" font-size="11" fill="var(--pen-red)" font-weight="500">${esc(r.id)}</text>`;
+});
+
 /* ---------- the parametric instrument ---------- */
 /* Drawn last among curves; the density scale belongs to the two standing
    instruments and is NOT rescaled for it — a needle is clipped at the panel
@@ -435,6 +451,20 @@ if(CASE.rawSum){
   svg += `<text x="${X(CASE.rawSum)}" y="${DEN_BOT-29}" font-size="9.5" text-anchor="middle"
     fill="var(--pen-red)" opacity=".8">${CASE.rawSumLabel}</text>`;
 }
+
+/* ---------- further raw marks, if the case carries any: the same kind of tick as the raw table sum,
+   each one row higher, with an optional band drawn as two small ticks ---------- */
+(CASE.rawMarks || []).forEach((m,i)=>{
+  const top = DEN_BOT - 24 - 20*(i+1);
+  svg += `<line x1="${X(m.x)}" y1="${DEN_BOT}" x2="${X(m.x)}" y2="${top}"
+    stroke="var(--pen-red)" stroke-width="1.3" stroke-dasharray="3 3" opacity=".7"/>`;
+  if(m.lo != null && m.hi != null){
+    svg += `<line x1="${X(m.lo)}" y1="${top+4}" x2="${X(m.hi)}" y2="${top+4}" stroke="var(--pen-red)" stroke-width="1" opacity=".6"/>`;
+    [m.lo,m.hi].forEach(v=>{ svg += `<line x1="${X(v)}" y1="${top}" x2="${X(v)}" y2="${top+8}" stroke="var(--pen-red)" stroke-width="1" opacity=".6"/>`; });
+  }
+  svg += `<text x="${X(m.x)}" y="${top-5}" font-size="9.5" text-anchor="middle"
+    fill="var(--pen-red)" opacity=".8">${m.label}</text>`;
+});
 
 /* ---------- a documented outcome, through both panels ---------- */
 if(CASE.fact){
@@ -487,6 +517,10 @@ if(LOGON){
     const [lo,hi] = rangeOutside(r);
     lcurves.push({pts: sample(x=>pdfOutside(r,x), Math.max(LXMIN,lo), Math.min(LXMAX,hi)),
                   pen:"--pen-blue", w:1.9, dash:r.dash||null});
+  });
+  ALT.forEach(r=>{
+    lcurves.push({pts: sample(x=>pdfAlt(r,x), Math.max(LXMIN,r.mu-3.6*r.sd), Math.min(LXMAX,r.mu+3.6*r.sd)),
+                  pen:"--pen-red", w:1.6, dash:r.dash||"6 4"});
   });
   PARAM.forEach(r=>{
     lcurves.push({pts: sample(x=>pdfParam(r,x), Math.max(LXMIN,r.median*Math.exp(-3.4*r.sigma)),
@@ -567,6 +601,7 @@ function move(evt){
   const lines = [[`if the answer is ${Math.round(v)} person-days`, "var(--ink)", true]];
   CASE.outside.forEach(r => lines.push([`${r.id}: ${over(cdfOutside(r, v))}`, "var(--pen-blue)"]));
   lines.push([`bottom-up: ${over(cdfNormal(v))}`, "var(--pen-red)"]);
+  ALT.forEach(r => lines.push([`${r.id}: ${over(cdfAlt(r, v))}`, "var(--pen-red)"]));
   PARAM.forEach(r => lines.push([`${r.id}: ${over(cdfParam(r, v))}`, "var(--pen-teal)"]));
   if(NOMETH.length){
     const ps = NOMETH.map(r => 1-cdfParam(r, v)).sort((a,b)=>a-b);
