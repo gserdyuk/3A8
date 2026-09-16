@@ -1,6 +1,6 @@
 ---
 name: 3A8 — TriAngulEight
-description: "Software estimation factory: four isolated sensors plus a reference class, divergence diagnosed, range with explained residual."
+description: "Software estimation factory: a three-sensor bottom-up chain with a pinned rate table, a reference class run blind to it, gap-blind calibration and a diagnosis; divergence explained, not averaged; a range with its residual."
 owner: Gennadiy Serdyuk
 authors:
   - "Gennadiy Serdyuk <gennadiy_serdyuk@epam.com>"

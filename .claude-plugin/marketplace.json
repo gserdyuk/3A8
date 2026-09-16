@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "3a8",
-      "description": "3A8 (TriAngulEight): software estimation factory with isolated sensors and a pinned rate table.",
+      "description": "3A8 (TriAngulEight): Software estimation instrument for Claude Code: three chained sensors build a product model, cross it with a declared technology and size it by counting; a reference-class sensor runs blind to them; a gap-blind rate round and a diagnosis explain the divergence instead of averaging it. Numbers come from a pinned rate table; the model only chooses rows.",
       "source": "./",
       "category": "productivity",
       "homepage": "https://github.com/gserdyuk/3A8"

@@ -126,7 +126,11 @@ The repository is a Claude Code plugin: the sensor definitions live in
 ```
 
 Working inside a clone: `claude --plugin-dir .` Inventory check:
-`claude --plugin-dir . plugin details 3a8`. The agents are not a pick-and-mix
+`claude --plugin-dir . plugin details 3a8`. Current release: **0.2.0** (tag `v0.2.0`, 2026-09-16 — the first
+that passed its regression, runs 52–60); engines `Hotyn-M 2.1` / `Hotyn-W 1.2` / `Hotyn-D 2.0`, `Lytin-R 1.1`,
+`Lytin-K 1.1`, `Lytin-G 1.1`. **Launch the orchestrating process with `CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000`**:
+the product-model sensor needs 65 000–95 000 output tokens on a 150-obligation list, and the default cap of
+64 000 cuts its turn and injects a continuation message that no prompt contains (runs 53–56). The agents are not a pick-and-mix
 set — who may see what is in [`PIPELINE.md`](PIPELINE.md), the run order in
 [`docs/instrument.md`](docs/instrument.md).
 

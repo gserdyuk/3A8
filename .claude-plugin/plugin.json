@@ -1,7 +1,7 @@
 {
   "name": "3a8",
   "version": "0.2.0",
-  "description": "3A8 (TriAngulEight): software estimation factory. Four isolated sensors plus a reference class; the magnitude comes from a pinned rate table, the model only chooses rows; divergence between methods is diagnosed, not averaged.",
+  "description": "Software estimation instrument for Claude Code: three chained sensors build a product model, cross it with a declared technology and size it by counting; a reference-class sensor runs blind to them; a gap-blind rate round and a diagnosis explain the divergence instead of averaging it. Numbers come from a pinned rate table; the model only chooses rows.",
   "author": {
     "name": "Gennadiy Serdyuk",
     "email": "gserdyuk@gmail.com"
