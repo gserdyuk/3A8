@@ -81,7 +81,7 @@ carries exit criterion **v2.0** (§6c) replacing v1.0. Ordered; 1 and 2 are inde
 ## Direction 2026-09-16 — the estimate document and the report are the instrument's standard output
 
 The author's statement, 2026-09-16: **"we ran our tool, it launched its sensors and drew a report"** — the
-estimate document (`estimate_<case>_<date>.md`, the format of `examples/SAS/estimate_SAS_2026-09-16.md`) and
+estimate document (`estimate_<case>_<date>.md`, the format of the SAS case's `estimate_SAS_2026-09-16.md`, `examples/ignored/SAS`) and
 the HTML report (`tools/report/build_report.py` on a `report_data.json`) are what `/3a8:estimate` delivers,
 every time, not a hand-written epilogue. Then, and only then, token cost is minimised wherever it can be.
 
@@ -107,7 +107,7 @@ every time, not a hand-written epilogue. Then, and only then, token cost is mini
 
 ## Added 2026-09-16 — the 2.1 chain priced SAS; one sizing question the 1.1 model hid
 
-Runs 58–59 (`examples/SAS/run58_work_model.md`, `run59_sizing_and_assembly.md`): `HM57-1` crossed by
+Runs 58–59 (`run58_work_model.md`, `run59_sizing_and_assembly.md` in `examples/ignored/SAS`): `HM57-1` crossed by
 `Hotyn-W 1.2` and sized by `Hotyn-D 2.0`, n = 2, through the plugin entry point. Chain reading **33 444 net
 task hours, band 31 954–34 933 — ×0.877 of run 47's 38 118**, the whole difference in the skeleton (C3 46%
 of leaf effort against 54%; per-parent items 281 against 574). The entry point is clean. Step 3's own spread
@@ -246,7 +246,7 @@ This is the proposal to decide it, written before case 4 so that it can be score
 
 ---
 
-## Resumed 2026-09-08 — case 3, `examples/SAS`
+## Resumed 2026-09-08 — case 3, `examples/SAS` (since 2026-09-16 `examples/ignored/SAS`, outside the public repository)
 
 - [ ] **A sensor reply longer than the harness relays whole loses its head, and the recovery is gone.**
       Run 44: both `Hotyn-M 1.1` replies (~55 KB each) arrived without §1–§3; `SendMessage` is disabled
@@ -258,7 +258,7 @@ This is the proposal to decide it, written before case 4 so that it can be score
       version bump. Until one is chosen, every long-reply sensor run is checked for its first line and
       the loss recorded in the raw file's header.
 - [ ] **Case 3 has no outcome** (author, 2026-09-08). It scores gate tests 1 and 2 only.
-- [x] **Case 3 run end to end, 2026-09-08 — runs 44–48**, deliverable `examples/SAS/estimate_SAS_2026-09-08.md`
+- [x] **Case 3 run end to end, 2026-09-08 — runs 44–48**, deliverable `estimate_SAS_2026-09-08.md` (`examples/ignored/SAS`)
       and the report. Centre 57 600 net task hours (raw chain 38 118 × Step C ×1.51); the two class
       readings ×1.82 apart after conversion, the chain between them raw and above both calibrated.
 - [x] **DONE 2026-09-08 — run 49. The no-method baseline on SAS, n = 10.** Author's request, made
@@ -266,7 +266,7 @@ This is the proposal to decide it, written before case 4 so that it can be score
       ×0.49 of the calibrated centre** — the inverse of FaxRxTx, where the baseline sat ×1.78 above.
       Spread ×1.92 across runs, CV 25.5%, twice the FaxRxTx batches; every run's declared corridor
       (×2.2) is wider than the spread, the opposite of run 43. Drawn on the report as ten thin curves.
-      `examples/SAS/run49_baseline_no_method.md`.
+      `run49_baseline_no_method.md` (`examples/ignored/SAS`).
 - [ ] **Run 50 — the second SAS baseline batch, a day later.** The control on the level (run 43 moved
       ×1.145 in a day). Same pinned prompt, md5 `9d71b4c7039e5adcd5477c75c7439732`, n = 10, then the
       difference of means with its t-test. A reminder is scheduled for 2026-09-09 10:00.

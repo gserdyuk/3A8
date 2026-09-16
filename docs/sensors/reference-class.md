@@ -54,7 +54,7 @@ answer; decomposition is a hard prohibition.
 - The distance **between** readings is the uncertainty of the sensor's own act of placing this
   project in a class and choosing its anchors — on SAS, one reading staffed the class from vendor
   patterns (15–30 FTE, 14–24 months) and the other sized it in functional units against ISBSG
-  rates, and their medians differ ×1.95 (`examples/SAS/run46_reference_class.md`).
+  rates, and their medians differ ×1.95 (`run46_reference_class.md`, in `examples/ignored/SAS`, outside the public repository).
 
 Pooling the readings into one curve would erase the second width. The panel draws them separately for
 that reason.

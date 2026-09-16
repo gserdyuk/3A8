@@ -34,7 +34,7 @@ In `examples/<case>/`, in this order (`docs/case_profile.md`):
 | `technology_declaration.md` | one entry per dimension of `docs/technology_catalogue.md`, the activities each mandates, parameters (environments, cycles), and every **scope decision** as a named fork |
 
 Scan the source for effort, cost, duration, deadline, budget, team size; strike it and record what
-was struck. Worked example of a complete Step 0: `examples/SAS/README.md`.
+was struck. Worked example of a complete Step 0: `examples/FaxRxTx/` (`requirements_pinned.md`, `requirements_split.md`, `assumptions.md`, `technology_declaration.md`). The fuller SAS example is kept outside the public repository (`examples/ignored/SAS`, see `examples/README.md`).
 
 ## Steps 1–3 — three sensors, each blind to the others
 
@@ -63,7 +63,7 @@ Between steps, close the artefact: every obligation placed or reported unplaced 
 refusal labelled *filter* or *judgement* (step 2); every unsizeable element a **named hole**
 (step 3). A sensor that reports contamination has done its job — fix the prompt, relaunch.
 
-Prompt generators from the last case are reusable patterns: `examples/SAS/run47_raw/make_sizing_prompts.py`.
+Prompt generators from the published case are reusable patterns: `examples/FaxRxTx/run30_raw/` (crossing) and `examples/FaxRxTx/run31_raw/` (sizing).
 
 ## Step 4 — the arithmetic (a script, no model)
 
@@ -72,7 +72,7 @@ rooted subtree's leaf effort at every parent, never compounding**; once-scoped, 
 and demanded items enter no C3 base.
 
 There is no generic joiner yet: write `examples/<case>/run<N>_raw/assemble_<case>.py` following
-`examples/SAS/run47_raw/assemble_sas.py` (reads the rate table from `docs/rate_table.md`; prices
+`examples/FaxRxTx/run31_raw/assemble_faxrxtx.py` (reads the rate table from `docs/rate_table.md`; prices
 each repeat as a variant; prints total, layers, holes, repeat ratio). Run it:
 
 ```bash

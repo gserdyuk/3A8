@@ -75,7 +75,7 @@ Two other widths exist and are **not** what the bell shows: the repeat spread of
 dispersion of outcomes of projects like this is the class curve's width, not this one's. The
 deliverable reports a third band as its corridor — the spread of the calibration rates, low /
 central / high — which is the rates' band and not a percentile either
-(`examples/SAS/estimate_SAS_2026-09-08.md` §1).
+(`estimate_SAS_2026-09-08.md` §1, in `examples/ignored/SAS`, outside the public repository).
 
 `docs/instrument.md` §4 predated the session of 2026-08-26 and said the chain declares no P10–P90 —
 stale on this point from that day; brought in line 2026-09-14.

@@ -128,7 +128,7 @@ and prohibitions ≈ 5 %.
 - Output §4: "one table per activity: … the items it generated (item id · element id · element
   class), and the count". Run 45's orchestrator had to override this in every prompt: "**Compact §4 at
   the orchestrator's instruction: one row per activity … with item ids of the form
-  `ACTIVITY@ELEMENT`**" (`examples/SAS/run45_raw/make_prompts.py`). The definition's format was found
+  `ACTIVITY@ELEMENT`**" (`run45_raw/make_prompts.py` of the SAS case, `examples/ignored/SAS`). The definition's format was found
   too long in practice and the fix lives in a prompt, not in the definition — which also means the run
   45 readings were taken under a format the definition does not describe.
 - Output §8 "Projection onto the requirement anchor — one row per requirement id … the elements that
@@ -293,7 +293,7 @@ For an orchestrator that has never seen the repo, no. What a first-time reader c
   rule for batch composition (must be complete subtrees, or subtree-conditioned activities U1–U3/O1
   are undecidable — HW45-A1 §2 had to reason this out), no batch size, no statement that once-scoped
   and per-environment activities are deferred in a partial run and generated once at consolidation, no
-  pointer to `examples/SAS/run45_raw/consolidate_run45.py` or `classes.tsv`/`work_model.tsv` as the
+  pointer to the SAS case's `run45_raw/consolidate_run45.py` (`examples/ignored/SAS`) or `classes.tsv`/`work_model.tsv` as the
   batch-join format. The step-1 input cannot be batched (skeleton reads the list as a set) — said in
   BACKLOG, not here.
 - **Repeats.** "Launch **n = 2 repeats** per step" contradicts run 45 (crosser n = 1 per batch) and

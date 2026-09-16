@@ -185,7 +185,7 @@ One case, SAS, whose pinned inputs and run-44 pair already exist. Same model ali
 order, same thinking budget as run 44 (recorded in the launch record with the harness preamble size,
 per the 2026-09-15 review).
 
-1. **Write and pin** `examples/SAS/architecture_declaration.md` from the pinned list and case
+1. **Write and pin** `examples/ignored/SAS/architecture_declaration.md` from the pinned list and case
    profile, gap-blind — by someone who has not read `estimate_SAS_2026-09-08.md`, `run45_work_model.md`
    or the diagnostician's list of holes.
 2. **`Hotyn-M` seeded, n = 2.** Register before launch: the number of declared leaves, and the
