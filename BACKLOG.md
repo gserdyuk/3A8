@@ -78,6 +78,33 @@ carries exit criterion **v2.0** (§6c) replacing v1.0. Ordered; 1 and 2 are inde
       If it does, it turns `syn`'s single point into a corridor and makes gate test 2 scoreable at
       the width the market actually has. If it does not, `syn` still gives the first reading.
 
+## Direction 2026-09-16 — the estimate document and the report are the instrument's standard output
+
+The author's statement, 2026-09-16: **"we ran our tool, it launched its sensors and drew a report"** — the
+estimate document (`estimate_<case>_<date>.md`, the format of `examples/SAS/estimate_SAS_2026-09-16.md`) and
+the HTML report (`tools/report/build_report.py` on a `report_data.json`) are what `/3a8:estimate` delivers,
+every time, not a hand-written epilogue. Then, and only then, token cost is minimised wherever it can be.
+
+- [ ] **The root skill's last step produces both artefacts.** Today `skills/estimate/SKILL.md` names the
+      document as "the deliverable, in the format of …" and points at the report builder; both are handwork
+      after the diagnosis. The step should be written like the others: what it reads (the assembly output, the
+      class readings, the Step C rates, the diagnosis, the case files), what it writes (the document, the data
+      file, the report), and what it may not do (no number that is not in a sensor's output or the assembly's).
+- [ ] **A generic `report_data.json` builder.** Every case so far has a hand-written `report_src/make_report_*.py`
+      (SAS has two: v1 and v2). The chart block is already generic (bottomUp, bottomUpAlt, outside, nomethod,
+      rawSum, rawMarks, calibration); what is case-specific is the prose of the tiles, the divergence and
+      findings sections, and the static fragments. Split: the numbers from the artefacts by script (assembly
+      totals and corridor, class quantiles and declared units, Step C central and low/high, the diagnosis's
+      three-part answer), the prose written by the orchestrator into named slots. Depends on the generic
+      assembler (Added 2026-09-14) for the same reason it does.
+- [ ] **Then token economy.** The regression of runs 52–60 recorded every sensor's output tokens (10k–40k a
+      turn; the product model 64k–93k). Candidates, in order of what is measured to matter: the product-model
+      sensor's output format (review 2026-09-15, edits 2–3, applied), the sizing prompts' obligation texts
+      (repeated per batch), the diagnostician's 97k-character prompt (both class readings verbatim). Nothing
+      is cut before the standard output exists and one case has been produced through it end to end.
+
+---
+
 ## Added 2026-09-16 — the 2.1 chain priced SAS; one sizing question the 1.1 model hid
 
 Runs 58–59 (`examples/SAS/run58_work_model.md`, `run59_sizing_and_assembly.md`): `HM57-1` crossed by
