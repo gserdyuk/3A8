@@ -1,7 +1,9 @@
 # Run from anywhere: python examples/SAS/report_src/make_report_sas_v2.py  ->  examples/SAS/report_data_v2.json
 # Assembles the data file of the v2 estimate (estimate_SAS_2026-09-16.md): the 2.1 chain through the plugin, runs 57-60,
-# as the standing bell; the v1 estimate of record (2026-09-08, the 1.1 chain) beside it as the dashed bell. The outside
-# view, the no-method family, the obligations, questions and defaults are the case's and are shared with v1.
+# as the only bottom-up on the chart. The v1 estimate of record (2026-09-08, the 1.1 chain) is NOT drawn: its
+# product-model engine (Hotyn-M 1.1) is retired and the installed instrument cannot produce it; it appears as a tile
+# and in the text. (The 03:03 build of this file drew it as a dashed bell by mistake; removed in the next build.)
+# The outside view, the no-method family, the obligations, questions and defaults are the case's and are shared with v1.
 # Unit on the chart: person-days of 8 net task hours.
 import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -17,8 +19,8 @@ cal_lo_c, cal_hi_c = 48483, 52608
 cal_c = (cal_lo_c + cal_hi_c) / 2
 cal_lo, cal_hi = 39837, 72031
 sd_raw = 5288; sd_cal = sd_raw * (cal_c / raw)
-# the v1 estimate of record (run 47 + run 48), drawn dashed for comparison
-v1_raw = 38118; v1_cal = 57600; v1_sd = 6330 * (v1_cal / v1_raw)
+# the v1 estimate of record (run 47 + run 48): a tile, not a curve - its engine is retired
+v1_raw = 38118; v1_cal = 57600
 # class, house factor 0.75 (constants 5b); RC46-1: 168 h/PM, RC46-2: 152 h/PM (as on the v1 chart)
 rc1 = {q: pm * 168 * 0.75 for q, pm in [(0.1, 180), (0.5, 380), (0.8, 640), (0.9, 850)]}
 rc2 = {q: pm * 152 * 0.75 for q, pm in [(0.1, 125), (0.5, 215), (0.8, 330), (0.9, 440)]}
@@ -28,7 +30,7 @@ d = {
  "eyebrow": "3A8 &middot; TriAngulEight",
  "headline": "Project estimate",
  "subject": "Case SAS &middot; member application solution for a standards body, 2018 &middot; RFP stage &middot; <b>no outcome, ever</b> &middot; v2: the estimate produced through the packaged instrument",
- "standfirst": "The same case estimated again, this time through the <code>3a8</code> plugin &mdash; the instrument as it is installed today &mdash; with the current product-model engine. The 187 leaves of the product are the same as on 8 September; the skeleton above them is shallower, and the whole difference between the two estimates, &times;0.88 before and after calibration, is the price of that skeleton. The estimate of record from 8 September stays on the chart as the dashed bell; the two are two versions of one instrument, never averaged.",
+ "standfirst": "The same case estimated again, this time through the <code>3a8</code> plugin &mdash; the instrument as it is installed today &mdash; with the current product-model engine. The 187 leaves of the product are the same as on 8 September; the skeleton above them is shallower, and the whole difference between the two estimates, &times;0.88 before and after calibration, is the price of that skeleton. The estimate of record from 8 September is not drawn: its product-model engine is retired and the installed instrument cannot reproduce it. It is stated in a tile and in the text, and never averaged with this one.",
  "meta": [
   "<b>153</b> obligations &mdash; 146 product, 7 work",
   "<b>211</b> model elements &middot; <b>1 396</b> work items",
@@ -39,10 +41,8 @@ d = {
   "axisMax": 15000,
   "rawSum": pd(raw),
   "rawSumLabel": "raw table sum %d (band %d–%d)" % (pd(raw), pd(raw_lo), pd(raw_hi)),
-  "rawMarks": [{"x": pd(v1_raw), "label": "raw table sum, v1 chain %d (8 Sep)" % pd(v1_raw)}],
   "calibration": {"lo": pd(cal_lo), "hi": pd(cal_hi), "label": "calibration spread %d–%d · not percentiles" % (pd(cal_lo), pd(cal_hi))},
   "bottomUp": {"mu": pd(cal_c), "sd": pd(sd_cal)},
-  "bottomUpAlt": [{"id": "v1 estimate, 8 Sep", "mu": pd(v1_cal), "sd": pd(v1_sd), "dash": "6 4"}],
   "outside": [
    {"id": "RC46-1", "dash": "", "floor": pd(rc1[0.1] ** 2 / rc1[0.5]), "q": [[pd(v), q] for q, v in rc1.items()], "tailDrawn": False},
    {"id": "RC46-2", "dash": "6 4", "floor": pd(rc2[0.1] ** 2 / rc2[0.5]), "q": [[pd(v), q] for q, v in rc2.items()], "tailDrawn": False}
@@ -53,16 +53,15 @@ d = {
    {"cls": "blue", "text": "Outside view RC46-1 &mdash; P50 %d (380 person-months at 168 recorded h)" % pd(rc1[0.5])},
    {"cls": "blue dash", "text": "Outside view RC46-2 &mdash; P50 %d (215 person-months at 152 charged h)" % pd(rc2[0.5])},
    {"cls": "red", "text": "Bottom-up, calibrated &mdash; P50 %d (the 2.1 chain through the plugin, runs 57&ndash;60)" % pd(cal_c)},
-   {"cls": "red dash", "text": "Bottom-up, v1 estimate of record &mdash; P50 %d (the 1.1 chain, 8 Sep; &times;1.14 of the solid bell, before and after calibration)" % pd(v1_cal)},
    {"cls": "ochre", "text": "No method &mdash; ten bare runs, one thin curve each, medians 2 730&ndash;5 250 (run 49)"}
   ],
-  "hint": "<b>Two views of the same distributions.</b> Above, how likely each answer is &mdash; all curves on one scale, each enclosing the same area, so the bottom-up looks taller only because its mass is packed into a narrower range. Below, the same thing accumulated: <b>the chance of coming in at or under any figure</b>, which is what a number gets chosen against.<br><br><b>Move the pointer</b> and a read line crosses both panels, reporting the chance of exceeding that figure under each instrument. The two outside-view curves are <b>one sensor run twice on identical input</b>; each declared its own person-month and both are placed here by the house factor of 0.75 task hours per recorded hour, which both declarations contain (the diagnosis of this estimate used each reading's own factor band instead, 0.65&ndash;0.80, and shows both ends where they change a conclusion). The calibrated bottom-up sits at &times;1.05&ndash;1.27 of one reading's median and &times;1.85&ndash;2.30 of the other's &mdash; the diagnosis names that contradiction and does not resolve it. The bottom-up's width is the rate table's optimistic-to-pessimistic spread under a declared &rho; = 0.5, scaled by the calibration; it is a convention, not a measurement, and three times narrower than either class reading. Neither reading gave a floor; below P10 each curve is extended to P10&sup2;/P50 as a drawing convention. <b>The ten thin ochre curves</b> are the no-method baseline (run 49): the same document and assumption log handed to a bare agent with no method, ten times, never pooled.<br><br><b>The dashed red bell</b> is the estimate of record of 8 September: the same instrument on the same case with the previous product-model engine (<code>Hotyn-M 1.1</code>, launched by hand), a skeleton of 59 parents where this one has 24. It sits at &times;1.14 of the solid bell before and after calibration; the two share every input except the skeleton and are two versions of one instrument, not two independent views. The density panel&rsquo;s vertical axis reads as <b>chance per 100-pd window</b>; the exact mass is always the cumulative panel."
+  "hint": "<b>Two views of the same distributions.</b> Above, how likely each answer is &mdash; all curves on one scale, each enclosing the same area, so the bottom-up looks taller only because its mass is packed into a narrower range. Below, the same thing accumulated: <b>the chance of coming in at or under any figure</b>, which is what a number gets chosen against.<br><br><b>Move the pointer</b> and a read line crosses both panels, reporting the chance of exceeding that figure under each instrument. The two outside-view curves are <b>one sensor run twice on identical input</b>; each declared its own person-month and both are placed here by the house factor of 0.75 task hours per recorded hour, which both declarations contain (the diagnosis of this estimate used each reading's own factor band instead, 0.65&ndash;0.80, and shows both ends where they change a conclusion). The calibrated bottom-up sits at &times;1.05&ndash;1.27 of one reading's median and &times;1.85&ndash;2.30 of the other's &mdash; the diagnosis names that contradiction and does not resolve it. The bottom-up's width is the rate table's optimistic-to-pessimistic spread under a declared &rho; = 0.5, scaled by the calibration; it is a convention, not a measurement, and three times narrower than either class reading. Neither reading gave a floor; below P10 each curve is extended to P10&sup2;/P50 as a drawing convention. <b>The ten thin ochre curves</b> are the no-method baseline (run 49): the same document and assumption log handed to a bare agent with no method, ten times, never pooled.<br><br><b>No earlier estimate is drawn.</b> The estimate of record of 8 September (7 200 pd) came from a product-model engine that is now retired; the installed instrument cannot produce that curve, so it is not on this chart &mdash; it is a tile below and a section of the estimate document, &times;1.14 of this centre before and after calibration. The density panel&rsquo;s vertical axis reads as <b>chance per 100-pd window</b>; the exact mass is always the cumulative panel."
  },
  "tiles": [
   {"cls": "red", "k": "Centre", "v": "%d" % pd(cal_c), "unit": "pd", "d": "%d net task hours &asymp; 441 staffed person-months, the midpoint of the calibrated band 48 483&ndash;52 608 (repeat 2 &hellip; repeat 1). The table-priced assembly of %d &times; the gap-blind Step C chain, <b>&times;1.51</b> &mdash; the figure comparable with the outside view." % (round(cal_c), pd(raw))},
   {"cls": "red", "k": "Corridor &middot; P10&ndash;P90", "v": "%d&ndash;%d" % (pd(cal_c - 1.2816 * sd_cal), pd(cal_c + 1.2816 * sd_cal)), "unit": "pd", "d": "The drawn band. From the O/M/P in every rate cell, under a declared item correlation of <b>&rho; = 0.5</b>, scaled by the calibration."},
   {"cls": "", "k": "Calibration spread", "v": "%d&ndash;%d" % (pd(cal_lo), pd(cal_hi)), "unit": "pd", "d": "A different quantity, and <b>not percentiles</b>: the low chain on the lower repeat to the high chain on the upper one. 39 837 &ndash; 72 031 net task hours. Wider at the bottom than v1's because the sizing repeats disagree &times;1.09 on one rule (below)."},
-  {"cls": "red", "k": "v1 estimate of record", "v": "%d" % pd(v1_cal), "unit": "pd", "d": "The dashed bell: 57 600 net task hours &asymp; 503 staffed person-months, 8 September, the 1.1 chain launched by hand (<code>estimate_SAS_2026-09-08.md</code>). <b>&times;1.14</b> of this estimate before and after calibration &mdash; the price of a skeleton of 59 parents against 24, integration at 54% of leaf effort against 46%. Which skeleton reads the product better, this case cannot say."},
+  {"cls": "none", "k": "Previous estimate &middot; 8 Sep", "v": "%d" % pd(v1_cal), "unit": "pd", "d": "Not drawn. 57 600 net task hours &asymp; 503 staffed person-months, the estimate of record (<code>estimate_SAS_2026-09-08.md</code>), produced by a product-model engine (<code>Hotyn-M 1.1</code>) that the installed instrument no longer contains. <b>&times;1.14</b> of this estimate before and after calibration &mdash; the price of a skeleton of 59 parents against 24, integration at 54% of leaf effort against 46%. Which skeleton reads the product better, this case cannot say."},
   {"cls": "none", "k": "Reserve", "v": "Unresolved", "unit": "", "d": "Two P90s of one sensor that differ &times;2: %d and %d pd at the house factor. At each reading's own factor the lower P90 is <b>at or below the centre</b> and the higher lies 40&ndash;59 k h above it. Nothing averaged." % (pd(rc2[0.9]), pd(rc1[0.9]))},
   {"cls": "", "k": "Repeat spread", "v": "&times;1.093", "unit": "", "d": "Two independent size classifications, 77% class agreement, priced from the same table: 31 954 and 34 933 net task hours. Not noise: the repeats declared opposite rules for an obligation shared by several leaves &mdash; counted in full on each, or only for the part each leaf's name claims &mdash; a catalogue question the 2.1 model exposes and the 1.1 model hid (BACKLOG 2026-09-16)."},
   {"cls": "ochre", "k": "No method &middot; 10 runs", "v": "2 730&ndash;5 250", "unit": "pd", "d": "Medians of ten bare runs on the same text, mean 3 553 pd (169 person-months at 168 h). Spread &times;1.92 between runs, CV 25.5%; each run declares a &times;2.2 corridor of its own. Sits at &times;0.85 of this raw chain and &times;0.56 of the calibrated centre."},
@@ -201,7 +200,7 @@ d["footer"] = {
  "brand": "3A8",
  "brandsub": "TriAngulEight<br>an estimation instrument",
  "fine": [
-  "<b>What this report is not.</b> Not a validated price, and not a price at all &mdash; it is work content in net task hours, shown as person-days of eight such hours. Converting it into money, calendar or headcount is the reader's act, using the reader's own figures. Every bottom-up number rests on a rate table of external industry norms calibrated against no outcome; the bottom-up stands on one product model, and a second engine version of the same model is drawn beside it at &times;1.14; the case has no outcome and never will.",
+  "<b>What this report is not.</b> Not a validated price, and not a price at all &mdash; it is work content in net task hours, shown as person-days of eight such hours. Converting it into money, calendar or headcount is the reader's act, using the reader's own figures. Every bottom-up number rests on a rate table of external industry norms calibrated against no outcome; the bottom-up stands on one product model; the previous estimate of this case, from a retired engine version, is stated in a tile at &times;1.14 and not drawn; the case has no outcome and never will.",
   "<b>What it is.</b> The estimate the instrument produces today, its corridor, the disagreement between two structurally independent methods stated rather than averaged away &mdash; here, chiefly the disagreement of the outside view with itself &mdash; and, on the record, the obligations, the findings, the questions and the defaults that the number is standing on."
  ]
 }
@@ -221,4 +220,4 @@ d["sections"] = [
 out = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'report_data_v2.json')
 with open(out, 'w', encoding='utf-8', newline='\n') as f:
     json.dump(d, f, ensure_ascii=False, indent=1)
-print('written', out, 'centre', pd(cal_c), 'sd', pd(sd_cal), 'corridor', pd(cal_c - 1.2816 * sd_cal), pd(cal_c + 1.2816 * sd_cal), 'v1', pd(v1_cal), pd(v1_sd))
+print('written', out, 'centre', pd(cal_c), 'sd', pd(sd_cal), 'corridor', pd(cal_c - 1.2816 * sd_cal), pd(cal_c + 1.2816 * sd_cal), 'previous estimate (tile only)', pd(v1_cal))
