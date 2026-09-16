@@ -1,0 +1,6 @@
+{
+  "case_label": "FaxRxTx, declared 2026-08-22",
+  "declared": ["K-BESPOKE", "A-TB", "C-DIRECT", "D-TEAM", "E-DSP", "G-SEED", "U-OPS-USER", "SA-NONE"],
+  "parameters": {"environments": ["dev", "stage", "prod"], "test_cycles": 2, "uat_cycles": 0, "migration_rehearsal_cycles": 0},
+  "batches": null
+}

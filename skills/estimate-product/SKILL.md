@@ -32,6 +32,7 @@ In `examples/<case>/`, in this order (`docs/case_profile.md`):
 | `requirements_split.md` → `requirements_product.md` + `requirements_work.md` | **product obligations** (what the thing must be) vs **demanded work** (migration, parallel run, decommissioning) |
 | `assumptions.md`, `assumptions_product.md`, `open_questions.md` | adjudicated readings; the product projection is what the model builder sees |
 | `technology_declaration.md` | one entry per dimension of `docs/technology_catalogue.md`, the activities each mandates, parameters (environments, cycles), and every **scope decision** as a named fork |
+| `chain_config.json` | the same declaration for the scripts: the declared codes and the parameters (`tools/chain/README.md`) |
 
 Scan the source for effort, cost, duration, deadline, budget, team size; strike it and record what
 was struck. Worked example of a complete Step 0: `examples/FaxRxTx/` (`requirements_pinned.md`, `requirements_split.md`, `assumptions.md`, `technology_declaration.md`). The fuller SAS example is kept outside the public repository (`examples/ignored/SAS`, see `examples/README.md`).
@@ -63,7 +64,7 @@ Between steps, close the artefact: every obligation placed or reported unplaced 
 refusal labelled *filter* or *judgement* (step 2); every unsizeable element a **named hole**
 (step 3). A sensor that reports contamination has done its job — fix the prompt, relaunch.
 
-Prompt generators from the published case are reusable patterns: `examples/FaxRxTx/run30_raw/` (crossing) and `examples/FaxRxTx/run31_raw/` (sizing).
+The prompts of steps 2 and 3 are generated, not written: `tools/chain/make_crossing_prompts.py` from the closed model and `chain_config.json`, `tools/chain/consolidate_crossing.py` after the crossing replies are saved, `tools/chain/make_sizing_prompts.py` from the consolidation (`tools/chain/README.md`). Save every prompt's md5 before launch; the scripts print it.
 
 ## Step 4 — the arithmetic (a script, no model)
 
@@ -71,12 +72,12 @@ Join classes to `docs/rate_table.md`: `E = (O + 4M + P) / 6` per cell; integrati
 rooted subtree's leaf effort at every parent, never compounding**; once-scoped, per-environment
 and demanded items enter no C3 base.
 
-There is no generic joiner yet: write `examples/<case>/run<N>_raw/assemble_<case>.py` following
-`examples/FaxRxTx/run31_raw/assemble_faxrxtx.py` (reads the rate table from `docs/rate_table.md`; prices
-each repeat as a variant; prints total, layers, holes, repeat ratio). Run it:
+The joiner is `tools/chain/assemble.py`: it reads the consolidation, the sizing replies, `chain_config.json`,
+the catalogue and the rate table, prices each repeat as a variant and prints total, layers, corridor, holes and
+the repeat ratio; it writes `run<K>_raw/assembly_summary.json`, the source of the report's numbers:
 
 ```bash
-python examples/<case>/run<N>_raw/assemble_<case>.py
+python tools/chain/assemble.py examples/<case> --crossing-run <N> --sizing-run <K> > examples/<case>/run<K>_raw/assembly_output.txt
 ```
 
 ## Keep and report

@@ -110,12 +110,12 @@ estimate document (`estimate_<case>_<date>.md`, the format of the SAS case's `es
 the HTML report (`tools/report/build_report.py` on a `report_data.json`) are what `/3a8:estimate` delivers,
 every time, not a hand-written epilogue. Then, and only then, token cost is minimised wherever it can be.
 
-- [ ] **The root skill's last step produces both artefacts.** Today `skills/estimate/SKILL.md` names the
+- [x] **The root skill's last step produces both artefacts** (done 2026-09-16: Step 7 of `skills/estimate/SKILL.md`, template `docs/templates/estimate_document.md`). Today `skills/estimate/SKILL.md` names the
       document as "the deliverable, in the format of …" and points at the report builder; both are handwork
       after the diagnosis. The step should be written like the others: what it reads (the assembly output, the
       class readings, the Step C rates, the diagnosis, the case files), what it writes (the document, the data
       file, the report), and what it may not do (no number that is not in a sensor's output or the assembly's).
-- [ ] **A generic `report_data.json` builder.** Every case so far has a hand-written `report_src/make_report_*.py`
+- [x] **A generic `report_data.json` builder** (done 2026-09-16: `tools/report/make_report_data.py`, inputs in `tools/report/REPORT_INPUTS.md`; the chain's own scripts generalised the same day into `tools/chain/`, see below). Every case so far has a hand-written `report_src/make_report_*.py`
       (SAS has two: v1 and v2). The chart block is already generic (bottomUp, bottomUpAlt, outside, nomethod,
       rawSum, rawMarks, calibration); what is case-specific is the prose of the tiles, the divergence and
       findings sections, and the static fragments. Split: the numbers from the artefacts by script (assembly
@@ -253,7 +253,7 @@ This is the proposal to decide it, written before case 4 so that it can be score
 
 ## Added 2026-09-14 — the entry points exist, one step of them is still handwork
 
-- [ ] **A generic assembler, `tools/assemble.py`.** Step 4 of the chain (`docs/instrument.md` §3) is
+- [x] **A generic assembler** (done 2026-09-16 as `tools/chain/assemble.py`, with the prompt generators and the consolidator beside it in `tools/chain/`; regression on SAS runs 58–59 exact to the hour). The original text: Step 4 of the chain (`docs/instrument.md` §3) is
       the one step with no judgement in it, and it is the one step that is rewritten for every case:
       `examples/BMS/run25_raw/assemble.py`, `FaxRxTx/run31_raw/assemble_faxrxtx.py`,
       `FaxRxTx/run42_raw/assemble_oa2.py`, `SAS/run47_raw/assemble_sas.py` all hard-code the tree, the
