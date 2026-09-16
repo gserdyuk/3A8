@@ -1,33 +1,34 @@
 # examples/ — the cases
 
-One folder per case the instrument has been run on. Each case folder holds the pinned inputs (the
+One folder per case the instrument has been run on. A case folder holds the pinned inputs (the
 obligation list, the split, the assumption log, the technology declaration), one raw folder per run
-(`run<N>_raw/`, prompts and sensor replies verbatim), one record per run (`run<N>_*.md`), the estimate
-document (`estimate_<case>_<date>.md`) and the built reports (`reports/`).
+(`run<N>_raw/`, prompts and sensor replies verbatim), one record per run (`run<N>_*.md`), the built
+reports (`reports/`) and, where the case was taken to a deliverable, the estimate document
+(`estimate_<case>_<date>.md`). Run numbers are global across cases: a run belongs to the case it was
+made on, and the sequence never restarts.
+
+To add a case, follow `docs/case_profile.md` (the profile is pinned before any number exists) and
+Step 0 of `skills/estimate-product/SKILL.md`.
 
 ## Published here
 
-| case | source document | outcome | note |
+| case | source document | outcome | what is there |
 |---|---|---|---|
-| `BMS/` | a training RFP of 2016 (booking management for a company's own travel); the issuer is anonymised as "the issuer" and **the source document is not included** (`BMS_updated.docx` and its extraction live in `examples/ignored/BMS_source/`) | none | case 1; the Lytin generation's runs, the first Hotyn chain (runs 16–25), the estimate of 2026-08-22 and its reports |
-| `FaxRxTx/` | an internal system's requirements (`REQUIREMENTS.md`, `SYSTEM.md`) | **known** (`FACT.md`, opened only after each estimate) | case 2; the exit criterion's only scored case |
+| `BMS/` | a training RFP of 2016 — a booking management system for a company's own travel; the issuer is anonymised as "the issuer", and the document itself is not included, only the obligation list derived from it | none | case 1: the Lytin generation's runs (1–15), the first Hotyn chain (16–28), the outside view and the parametric reading (36, 40), the estimate of 2026-08-22 and its reports |
+| `FaxRxTx/` | the author's own requirements document for a real service (`REQUIREMENTS.md`, `SYSTEM.md`) | **known** — `FACT.md`, opened only after each estimate is fixed | case 2, the one case scored against an outcome: the Lytin runs (1–5), the Hotyn chain (29–35), the parametric reading (39), the no-method baseline (41–43), the assembly (run 31) and the fact comparisons (runs 4, 32) |
 
-## Kept outside the public repository — `examples/ignored/`
+## Not published — `examples/ignored/`
 
-`examples/ignored/` is in `.gitignore`. It exists on the author's machine only, and nothing under it
-is ever committed, so that "is this example in the repository or not" never has to be guessed: if a
-case is listed here, it is not.
+`examples/ignored/` is in `.gitignore` and exists on the author's machine only. Whatever lives there
+is not in the repository, so the question "is this example published or not" is answered by this
+list alone.
 
-| case | why | what is there |
-|---|---|---|
-| `ignored/BMS_source/` | the BMS source document carries the issuer's confidentiality marking; the case's derived files are published, the document is not | `BMS_updated.docx`, `BMS_extracted.md` |
-| `ignored/SAS/` | the source is an EPAM RFP response document (2018) marked confidential; the client is anonymised, the document is not ours to publish | case 3, the fullest case on record: runs 44–60, the estimates of 2026-09-08 (v1, the 1.1 chain) and 2026-09-16 (v2, through the plugin), the reports with the density chart, every prompt and raw reply of the plugin regression (runs 52–60) |
-| `ignored/syn/` | a client RFP (2026) and a Delphi figure that is not an outcome; see `BACKLOG.md`, "examples/syn — what is actually in it" | the RFP, the extracted text, `fact.md` (a group consensus, deliberately misnamed, see `docs/case_profile.md` §5) |
+| folder | what it is |
+|---|---|
+| `ignored/SAS/` | case 3, the fullest case on record: runs 44–60, the estimates of 2026-09-08 (the 1.1 chain) and 2026-09-16 (the first through the plugin), the reports with the density chart, every prompt and raw reply of the plugin regression (runs 52–60). Its source document is a third party's and is not ours to publish |
+| `ignored/syn/` | a 2026 RFP and a group's consensus figure that is not an outcome; see `BACKLOG.md`, "examples/syn — what is actually in it" |
+| `ignored/BMS_source/` | the BMS source document and its extraction, not ours to publish |
 
-The SAS case and the BMS source document were removed from the git history as well (`git filter-repo`,
-2026-09-16), and the repository was re-created on GitHub and re-imported to EPAM GitLab from the rewritten
-history.
-
-Documents elsewhere in the repository that cite SAS runs or files by their old path (`examples/SAS/…`) — session notes, findings, proposals — are historical records and keep the path they had; read it as `examples/ignored/SAS`. Living documents (`BACKLOG.md`, `docs/sensors/`,
-`docs/review_2026-09-15_sensor_texts.md`, the skills) say so with the path `examples/ignored/SAS`; the
-facts they cite stand, the files are simply not in the public tree.
+Historical records elsewhere in the repository — session notes, findings, proposals — cite SAS files by
+the path they had at the time, `examples/SAS/…`; read it as `examples/ignored/SAS/…`. Living documents
+say `examples/ignored/SAS` outright.
