@@ -1,9 +1,9 @@
 # 3A8 → EPAM LEAP AI Assets Marketplace
 
 Working note. Written 2026-09-11 after reviewing the LEAP portal
-(https://leap.epam.com) and its asset submission guide; updated 2026-09-13.
-Decision as of today: **not submitting yet**, but bring the repository to the
-expected layout in advance.
+(https://leap.epam.com) and its asset submission guide; updated 2026-09-13 and 2026-09-16.
+Decision 2026-09-16, after the end-to-end test of the packaged instrument: **submitting.**
+The letter and the pre-send check: `docs/leap_submission_2026-09-16.md`.
 
 ## 1. To do before submission
 
@@ -175,5 +175,7 @@ appeared at https://leap.epam.com/hyperfactory/ai-assets-marketplace.
   view on this is a question the author puts to EPAM, not one the repository can settle.
 - `owner`: personal name or EPM-UASP.
 - "Proven On" (L2/L3) is filled for only 8 of 38 factories; FaxRxTx as the
-  one validated case honestly rates L2.
+  one validated case honestly rates L2. **Approved by the author 2026-09-16:** the letter
+  claims L2 on FaxRxTx (outcome sealed, calibrated centre within ×1.3; re-estimated by the
+  packaged plugin alone the same day) and leaves the level to the catalogue's criteria.
 - The niche is empty: the catalog has no factory about effort estimation.

@@ -86,19 +86,25 @@ the record.
    the report is built by `tools/report/build_report.py`.
 
 Worked cases in `examples/`: **FaxRxTx** (real project, outcome sealed before
-the estimate, ×1.21 against actual), **BMS** (training RFP, issuer anonymised, full deliverable
+the estimate, ×1.21 against actual; re-estimated 2026-09-16 by the packaged plugin alone, 22 sensor
+launches in 46 minutes, raw chain ×0.73 and calibrated centre ×1.26 against actual —
+`examples/FaxRxTx/run61_e2e_test.md`), **BMS** (training RFP, issuer anonymised, full deliverable
 format). A third case, SAS, is kept outside the public repository because its source document is not ours to publish.
 
 ## Standing and limits
 
-Definition of done is pinned in advance: over at least four cases with
-documented outcomes, none used for fitting, the calibrated P50 lands within
-×1.3 of actual on at least three. Today: 1 of ≥4 cases, 1 of 1 passing on the
-centre. The chain declares no P10–P90 yet; the corridor test is the one
-structural gap left.
+Definition of done is pinned in advance and never edited while looking at a
+result: exit criterion v2.0 in [`docs/status_2026-08-27.md`](../../docs/status_2026-08-27.md) §6c
+(repeatability of the whole chain no worse than ×1.3; position inside the corridor of professional
+estimators on a shared text; one correction fitted on two cases reducing the miss on a third; no
+parameter fitted on the case it is scored against). Today: repeatability measured on one case
+(×1.05), the human scale for the position test not yet obtained, one of the three outcomes the
+calibratability test needs. Which runs count toward the criterion, and why, is a decision the
+author takes over the whole history; the withdrawn v1.0 gate is kept as a record in
+[`docs/exit_criterion.md`](../../docs/exit_criterion.md).
 
 Current state of every claim, including which documents are stale:
-[`docs/status_2026-08-25.md`](../../docs/status_2026-08-25.md).
+[`docs/status_2026-08-27.md`](../../docs/status_2026-08-27.md).
 
 ## Further reading
 
