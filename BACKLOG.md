@@ -98,8 +98,23 @@ statement about actual size or outcome — and pinned as cases in `examples/`:
       parses requirements and scores vendor bids; a possible source of test RFPs it ships with, and a comparison
       point for what "complexity" means there.
 
-Order agreed 2026-09-16: the root skill's last step first, then the end-to-end test on FaxRxTx, then the LEAP
-submission (Proven On approved by the author, the letter), then new cases from this list.
+Order agreed 2026-09-16: the root skill's last step first (done), then the end-to-end test on FaxRxTx (done the
+same day — `examples/FaxRxTx/run61_e2e_test.md`: 46 minutes, 22 launches, raw ×0.73, calibrated ×1.26, every
+registered outcome met), then the LEAP submission (Proven On approved by the author, the letter), then new cases
+from this list.
+
+What the end-to-end test left open:
+
+- [ ] **The non-interactive process cannot write into `examples/<case>/`** — the harness refused the case folder
+      as a sensitive path in the `-p` child; every artefact went to the scratchpad and was copied by hand. Find
+      the rule that trips (path, extension, or the `acceptEdits` mode) and either name the case folder in the
+      skill for the permission layer or add it to the runner's allowed paths; until then the run's output is
+      not where the skill says it is.
+- [ ] **The report's footer names the path of its data file** — under a scratchpad run it is a temp path.
+      Print the case-relative path instead.
+- [ ] **A parser gap is a silent hole.** Twice in one run a sensor phrasing the parser did not know turned an
+      assigned class into a hole (fixed for the phrasings seen). The assembler should print the chunk it could
+      not read for every special-count element, so the orchestrator sees the miss without diffing by hand.
 
 ---
 

@@ -83,6 +83,14 @@ class Model:
             n += size
         if cur:
             batches[next(letters)] = cur
+        # a trailing batch of a few root-level leaves (run 62: two leaves alone in batch D) is not worth a
+        # sensor launch of its own: it joins the smallest earlier batch
+        if len(batches) > 1:
+            last_key = next(reversed(batches))
+            if sum(len(self.subtree(x)) for x in batches[last_key]) < target // 4:
+                tail = batches.pop(last_key)
+                smallest = min(batches, key=lambda k: sum(len(self.subtree(x)) for x in batches[k]))
+                batches[smallest] = batches[smallest] + tail
         return batches
 
 

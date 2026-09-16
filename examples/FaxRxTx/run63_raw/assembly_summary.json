@@ -1,0 +1,388 @@
+{
+ "case": "FaxRxTx",
+ "model": "run61_raw/HM61-1.md",
+ "model_id": "HM61-1",
+ "crossing_run": 62,
+ "sizing_run": 63,
+ "elements": 84,
+ "leaves": 68,
+ "parents": 16,
+ "mean_leaf_depth": 2.49,
+ "bracket": "M",
+ "declared": [
+  "K-BESPOKE",
+  "A-TB",
+  "C-DIRECT",
+  "D-TEAM",
+  "E-DSP",
+  "G-SEED",
+  "U-OPS-USER",
+  "SA-NONE"
+ ],
+ "parameters": {
+  "environments": [
+   "dev",
+   "stage",
+   "prod"
+  ],
+  "test_cycles": 2,
+  "uat_cycles": 0,
+  "migration_rehearsal_cycles": 0
+ },
+ "once_items": 16,
+ "repeats": {
+  "1": {
+   "total": 10093.7,
+   "leaf_total": 6576.7,
+   "c3_total": 3143.9,
+   "root_c3": 1315.3,
+   "once_total": 373.0,
+   "sd": 1648.0,
+   "p10": 7981.6,
+   "p90": 12205.8,
+   "holes": [
+    [
+     "L27",
+     "K1",
+     "unsizeable (M10)"
+    ],
+    [
+     "L27",
+     "K2",
+     "unsizeable (M10)"
+    ],
+    [
+     "L27",
+     "A2",
+     "unsizeable (M10)"
+    ],
+    [
+     "L27",
+     "A3",
+     "unsizeable (M10)"
+    ],
+    [
+     "L27",
+     "A4",
+     "unsizeable (M10)"
+    ],
+    [
+     "L32",
+     "G1",
+     "special count unsizeable"
+    ],
+    [
+     "L32",
+     "G2",
+     "special count unsizeable"
+    ],
+    [
+     "L32",
+     "G3",
+     "special count unsizeable"
+    ],
+    [
+     "L38",
+     "K1",
+     "unsizeable (M10)"
+    ],
+    [
+     "L51",
+     "K1",
+     "unsizeable (M10)"
+    ],
+    [
+     "L38",
+     "K2",
+     "unsizeable (M10)"
+    ],
+    [
+     "L51",
+     "K2",
+     "unsizeable (M10)"
+    ],
+    [
+     "L38",
+     "A2",
+     "unsizeable (M10)"
+    ],
+    [
+     "L51",
+     "A2",
+     "unsizeable (M10)"
+    ],
+    [
+     "L38",
+     "A3",
+     "unsizeable (M10)"
+    ],
+    [
+     "L51",
+     "A3",
+     "unsizeable (M10)"
+    ],
+    [
+     "L38",
+     "A4",
+     "unsizeable (M10)"
+    ],
+    [
+     "L51",
+     "A4",
+     "unsizeable (M10)"
+    ],
+    [
+     "L51",
+     "A10",
+     "unsizeable (M10)"
+    ],
+    [
+     "L38",
+     "G1",
+     "special count unsizeable"
+    ],
+    [
+     "L38",
+     "G2",
+     "special count unsizeable"
+    ],
+    [
+     "L38",
+     "G3",
+     "special count unsizeable"
+    ],
+    [
+     "L56",
+     "K1",
+     "unsizeable (M10)"
+    ],
+    [
+     "L56",
+     "K2",
+     "unsizeable (M10)"
+    ],
+    [
+     "L56",
+     "A2",
+     "unsizeable (M10)"
+    ],
+    [
+     "L56",
+     "A3",
+     "unsizeable (M10)"
+    ],
+    [
+     "L56",
+     "A4",
+     "unsizeable (M10)"
+    ]
+   ],
+   "sized": 64,
+   "unsizeable": [
+    "L27",
+    "L38",
+    "L51",
+    "L56"
+   ],
+   "distribution": {
+    "S": 33,
+    "M": 26,
+    "L": 4,
+    "XL": 1
+   },
+   "xl": [
+    "L15"
+   ],
+   "xl_own_effort": 189.0
+  },
+  "2": {
+   "total": 9746.5,
+   "leaf_total": 6350.5,
+   "c3_total": 3023.0,
+   "root_c3": 1270.1,
+   "once_total": 373.0,
+   "sd": 1600.8,
+   "p10": 7695.0,
+   "p90": 11798.1,
+   "holes": [
+    [
+     "L27",
+     "K1",
+     "unsizeable (M10)"
+    ],
+    [
+     "L27",
+     "K2",
+     "unsizeable (M10)"
+    ],
+    [
+     "L27",
+     "A2",
+     "unsizeable (M10)"
+    ],
+    [
+     "L27",
+     "A3",
+     "unsizeable (M10)"
+    ],
+    [
+     "L27",
+     "A4",
+     "unsizeable (M10)"
+    ],
+    [
+     "L32",
+     "G1",
+     "special count unsizeable"
+    ],
+    [
+     "L32",
+     "G2",
+     "special count unsizeable"
+    ],
+    [
+     "L32",
+     "G3",
+     "special count unsizeable"
+    ],
+    [
+     "L38",
+     "K1",
+     "unsizeable (M10)"
+    ],
+    [
+     "L51",
+     "K1",
+     "unsizeable (M10)"
+    ],
+    [
+     "L38",
+     "K2",
+     "unsizeable (M10)"
+    ],
+    [
+     "L51",
+     "K2",
+     "unsizeable (M10)"
+    ],
+    [
+     "L46",
+     "K3",
+     "unsizeable (M10)"
+    ],
+    [
+     "L38",
+     "A2",
+     "unsizeable (M10)"
+    ],
+    [
+     "L51",
+     "A2",
+     "unsizeable (M10)"
+    ],
+    [
+     "L38",
+     "A3",
+     "unsizeable (M10)"
+    ],
+    [
+     "L51",
+     "A3",
+     "unsizeable (M10)"
+    ],
+    [
+     "L38",
+     "A4",
+     "unsizeable (M10)"
+    ],
+    [
+     "L51",
+     "A4",
+     "unsizeable (M10)"
+    ],
+    [
+     "L51",
+     "A10",
+     "unsizeable (M10)"
+    ],
+    [
+     "L38",
+     "G1",
+     "special count unsizeable"
+    ],
+    [
+     "D03",
+     "G1",
+     "special count unsizeable"
+    ],
+    [
+     "L38",
+     "G2",
+     "special count unsizeable"
+    ],
+    [
+     "D03",
+     "G2",
+     "special count unsizeable"
+    ],
+    [
+     "L38",
+     "G3",
+     "special count unsizeable"
+    ],
+    [
+     "D03",
+     "G3",
+     "special count unsizeable"
+    ],
+    [
+     "L56",
+     "K1",
+     "unsizeable (M10)"
+    ],
+    [
+     "L56",
+     "K2",
+     "unsizeable (M10)"
+    ],
+    [
+     "L56",
+     "A2",
+     "unsizeable (M10)"
+    ],
+    [
+     "L56",
+     "A3",
+     "unsizeable (M10)"
+    ],
+    [
+     "L56",
+     "A4",
+     "unsizeable (M10)"
+    ]
+   ],
+   "sized": 63,
+   "unsizeable": [
+    "L27",
+    "L38",
+    "L46",
+    "L51",
+    "L56"
+   ],
+   "distribution": {
+    "S": 34,
+    "M": 25,
+    "L": 4,
+    "XL": 0
+   },
+   "xl": [],
+   "xl_own_effort": 0
+  }
+ },
+ "centre_h": 9920,
+ "lo_h": 9747,
+ "hi_h": 10094,
+ "spread": 1.0356,
+ "sd_rho05_h": 1624,
+ "class_agreement_pct": 95.6
+}

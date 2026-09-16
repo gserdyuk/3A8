@@ -1,0 +1,737 @@
+{
+ "pricing_choices": "Run 66: price RK66-1's structural additions (A1-A5) through rate table v0.1-h and apply its correction chain\n(T1-T5, G2, G1) in the order its \u00a75 fixes, to each repeat of the run 63/64 chain, at low / central / high.\n\nWhat the orchestrator decided here, because RK66-1 left it open (each listed in PRICING_CHOICES and printed):\n  - class and parent of every added element; per-element activity set by class as the crossing assigned it\n    (behaviour/surface/store: K1 K2 A2 A3 A4; interface: + A10; statement: K3); D4 and per-parent items not added;\n  - C3 on an added element = 20% \u00d7 number of its ancestors (root included), never compounding;\n  - A4's performance-testing rows (A9) are once items, no C3 (RK66-1 \u00a75 step 1); the load generator is an element;\n  - A5 cannot be priced: the table has no XL row for E1 or E7 (\"one class up\" from L); carried, named, zero;\n  - T1 base = the composition subtotals of N30 and N40 (items + C3 inside) + own item effort of L46 and L47,\n    plus the added elements placed under N30 or N40 or on L46; RK66-1 names \"items + C3\" and nothing finer.\nThe raw chain numbers come from the assembler itself (its res, read from the frame that writes the summary).\nWrites calibration_66.json and prints the table the diagnosis receives.\n",
+ "repeats": {
+  "1": {
+   "P0_product_base_h": 9720.7,
+   "once_h": 373.0,
+   "addendum_h": 100.0,
+   "raw_total_h": 10193.7,
+   "T1_base_h": 1457.0,
+   "low": {
+    "additions_elements_h": 473.3,
+    "additions_once_h": 17.3,
+    "A5_h": "not priceable (no XL row for E1/E7)",
+    "after_1_h": 10566.9,
+    "after_T1_h": 10193.9,
+    "after_T2_product_h": 10703.6,
+    "B_h": 11094.0,
+    "after_T3_T5_h": 12092.4,
+    "after_addendum_h": 12192.4,
+    "after_G2_h": 12192.4,
+    "after_G1_h": 14021.3,
+    "factor_to_after_G2": 1.196,
+    "factor_to_after_G1": 1.375,
+    "fills": [
+     [
+      "A1 L27 further-format renderers",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A1 L38 database schema",
+      "store",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A1 L51 old-system interface",
+      "interface",
+      "S",
+      50.5,
+      70.7
+     ],
+     [
+      "A2 faxes for unknown numbers",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 submission-rejection notices",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A2 routing-program fallback",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A2 outbound status recording",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 clean-up of finished status",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 account creation and provisioning",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A3 initial load of user accounts",
+      "interface",
+      "S",
+      50.5,
+      70.7
+     ]
+    ]
+   },
+   "central": {
+    "additions_elements_h": 964.9,
+    "additions_once_h": 34.7,
+    "A5_h": "not priceable (no XL row for E1/E7)",
+    "after_1_h": 11058.5,
+    "after_T1_h": 10946.6,
+    "after_T2_product_h": 12260.2,
+    "B_h": 12667.9,
+    "after_T3_T5_h": 15201.4,
+    "after_addendum_h": 15301.4,
+    "after_G2_h": 17596.7,
+    "after_G1_h": 21995.8,
+    "factor_to_after_G2": 1.726,
+    "factor_to_after_G1": 2.158,
+    "fills": [
+     [
+      "A1 L27 further-format renderers",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A1 L27 further-format renderers",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A1 L38 database schema",
+      "store",
+      "M",
+      55.7,
+      77.9
+     ],
+     [
+      "A1 L51 old-system interface",
+      "interface",
+      "M",
+      95.7,
+      133.9
+     ],
+     [
+      "A2 inbound job hand-off",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 faxes for unknown numbers",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 submission-rejection notices",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A2 routing-program fallback",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A2 outbound status recording",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 clean-up of finished status",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 PoP registry maintenance",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 account creation and provisioning",
+      "behaviour",
+      "M",
+      60.3,
+      84.5
+     ],
+     [
+      "A2 inventory of v1 core functions",
+      "behaviour",
+      "S",
+      28.1,
+      33.8
+     ],
+     [
+      "A2 ending coexistence",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A3 initial load of user accounts",
+      "interface",
+      "M",
+      95.7,
+      133.9
+     ],
+     [
+      "A4 load generator (PoP and mail stream)",
+      "behaviour",
+      "M",
+      60.3,
+      84.5
+     ]
+    ]
+   },
+   "high": {
+    "additions_elements_h": 1479.3,
+    "additions_once_h": 34.7,
+    "A5_h": "not priceable (no XL row for E1/E7)",
+    "after_1_h": 11572.9,
+    "after_T1_h": 11722.1,
+    "after_T2_product_h": 14652.6,
+    "B_h": 15060.3,
+    "after_T3_T5_h": 20632.6,
+    "after_addendum_h": 20732.6,
+    "after_G2_h": 26330.3,
+    "after_G1_h": 36862.5,
+    "factor_to_after_G2": 2.583,
+    "factor_to_after_G1": 3.616,
+    "fills": [
+     [
+      "A1 L27 further-format renderers",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A1 L27 further-format renderers",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A1 L27 further-format renderers",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A1 L38 database schema",
+      "store",
+      "L",
+      104.7,
+      146.5
+     ],
+     [
+      "A1 L51 old-system interface",
+      "interface",
+      "L",
+      164.0,
+      229.6
+     ],
+     [
+      "A2 inbound job hand-off",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 faxes for unknown numbers",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 submission-rejection notices",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A2 routing-program fallback",
+      "behaviour",
+      "M",
+      60.3,
+      96.5
+     ],
+     [
+      "A2 outbound status recording",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 clean-up of finished status",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 PoP registry maintenance",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 account creation and provisioning",
+      "behaviour",
+      "M",
+      60.3,
+      84.5
+     ],
+     [
+      "A2 inventory of v1 core functions",
+      "behaviour",
+      "M",
+      60.3,
+      72.4
+     ],
+     [
+      "A2 ending coexistence",
+      "behaviour",
+      "M",
+      60.3,
+      84.5
+     ],
+     [
+      "A3 initial load of user accounts",
+      "interface",
+      "L",
+      164.0,
+      229.6
+     ],
+     [
+      "A4 load generator (PoP and mail stream)",
+      "behaviour",
+      "L",
+      113.3,
+      158.7
+     ]
+    ]
+   }
+  },
+  "2": {
+   "P0_product_base_h": 9373.5,
+   "once_h": 373.0,
+   "addendum_h": 100.0,
+   "raw_total_h": 9846.5,
+   "T1_base_h": 1439.6,
+   "low": {
+    "additions_elements_h": 473.3,
+    "additions_once_h": 17.3,
+    "A5_h": "not priceable (no XL row for E1/E7)",
+    "after_1_h": 10219.8,
+    "after_T1_h": 9846.8,
+    "after_T2_product_h": 10339.2,
+    "B_h": 10729.5,
+    "after_T3_T5_h": 11695.2,
+    "after_addendum_h": 11795.2,
+    "after_G2_h": 11795.2,
+    "after_G1_h": 13564.4,
+    "factor_to_after_G2": 1.198,
+    "factor_to_after_G1": 1.378,
+    "fills": [
+     [
+      "A1 L27 further-format renderers",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A1 L38 database schema",
+      "store",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A1 L51 old-system interface",
+      "interface",
+      "S",
+      50.5,
+      70.7
+     ],
+     [
+      "A2 faxes for unknown numbers",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 submission-rejection notices",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A2 routing-program fallback",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A2 outbound status recording",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 clean-up of finished status",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 account creation and provisioning",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A3 initial load of user accounts",
+      "interface",
+      "S",
+      50.5,
+      70.7
+     ]
+    ]
+   },
+   "central": {
+    "additions_elements_h": 989.1,
+    "additions_once_h": 34.7,
+    "A5_h": "not priceable (no XL row for E1/E7)",
+    "after_1_h": 10735.7,
+    "after_T1_h": 10624.9,
+    "after_T2_product_h": 11899.9,
+    "B_h": 12307.6,
+    "after_T3_T5_h": 14769.1,
+    "after_addendum_h": 14869.1,
+    "after_G2_h": 17099.5,
+    "after_G1_h": 21374.4,
+    "factor_to_after_G2": 1.737,
+    "factor_to_after_G1": 2.171,
+    "fills": [
+     [
+      "A1 L27 further-format renderers",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A1 L27 further-format renderers",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A1 L38 database schema",
+      "store",
+      "M",
+      55.7,
+      77.9
+     ],
+     [
+      "A1 L51 old-system interface",
+      "interface",
+      "M",
+      95.7,
+      133.9
+     ],
+     [
+      "A2 inbound job hand-off",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 faxes for unknown numbers",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 submission-rejection notices",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A2 routing-program fallback",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A2 outbound status recording",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 clean-up of finished status",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 PoP registry maintenance",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 account creation and provisioning",
+      "behaviour",
+      "M",
+      60.3,
+      84.5
+     ],
+     [
+      "A2 inventory of v1 core functions",
+      "behaviour",
+      "S",
+      28.1,
+      33.8
+     ],
+     [
+      "A2 ending coexistence",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A3 initial load of user accounts",
+      "interface",
+      "M",
+      95.7,
+      133.9
+     ],
+     [
+      "A4 load generator (PoP and mail stream)",
+      "behaviour",
+      "M",
+      60.3,
+      84.5
+     ],
+     [
+      "A1 L46 capacity statement (repeat 2)",
+      "statement",
+      "S",
+      17.3,
+      24.3
+     ]
+    ]
+   },
+   "high": {
+    "additions_elements_h": 1527.8,
+    "additions_once_h": 34.7,
+    "A5_h": "not priceable (no XL row for E1/E7)",
+    "after_1_h": 11274.3,
+    "after_T1_h": 11434.1,
+    "after_T2_product_h": 14292.6,
+    "B_h": 14700.3,
+    "after_T3_T5_h": 20139.4,
+    "after_addendum_h": 20239.4,
+    "after_G2_h": 25704.0,
+    "after_G1_h": 35985.6,
+    "factor_to_after_G2": 2.61,
+    "factor_to_after_G1": 3.655,
+    "fills": [
+     [
+      "A1 L27 further-format renderers",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A1 L27 further-format renderers",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A1 L27 further-format renderers",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A1 L38 database schema",
+      "store",
+      "L",
+      104.7,
+      146.5
+     ],
+     [
+      "A1 L51 old-system interface",
+      "interface",
+      "L",
+      164.0,
+      229.6
+     ],
+     [
+      "A2 inbound job hand-off",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 faxes for unknown numbers",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 submission-rejection notices",
+      "behaviour",
+      "S",
+      28.1,
+      45.0
+     ],
+     [
+      "A2 routing-program fallback",
+      "behaviour",
+      "M",
+      60.3,
+      96.5
+     ],
+     [
+      "A2 outbound status recording",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 clean-up of finished status",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 PoP registry maintenance",
+      "behaviour",
+      "S",
+      28.1,
+      39.4
+     ],
+     [
+      "A2 account creation and provisioning",
+      "behaviour",
+      "M",
+      60.3,
+      84.5
+     ],
+     [
+      "A2 inventory of v1 core functions",
+      "behaviour",
+      "M",
+      60.3,
+      72.4
+     ],
+     [
+      "A2 ending coexistence",
+      "behaviour",
+      "M",
+      60.3,
+      84.5
+     ],
+     [
+      "A3 initial load of user accounts",
+      "interface",
+      "L",
+      164.0,
+      229.6
+     ],
+     [
+      "A4 load generator (PoP and mail stream)",
+      "behaviour",
+      "L",
+      113.3,
+      158.7
+     ],
+     [
+      "A1 L46 capacity statement (repeat 2)",
+      "statement",
+      "M",
+      34.7,
+      48.5
+     ]
+    ]
+   }
+  }
+ }
+}

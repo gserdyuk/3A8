@@ -1,95 +1,113 @@
 {
- "_note": "Test input of the generic assembler, 2026-09-16: the figures of the 2026-08-26 report restated in net task hours, the parametric instrument dropped and the no-method family (runs 41, 43) added at the author's request. Replaced by the run's own file when the case is estimated again through the plugin.",
  "hours_per_pd": 8,
- "dates_line": "estimate closed <b>22 Aug</b>, outcome opened after &middot; outside view read <b>22 Aug</b> &middot; no-method batches <b>26&ndash;27 Aug</b>",
+ "dates_line": "chain, outside view, Step C and diagnosis run <b>16 Sep 2026</b> (runs 61&ndash;67) &middot; outcome opened <b>after</b> the estimate document was fixed (run 68)",
  "counts": {
-  "elements": 97,
-  "leaves": 79,
-  "items": 570,
-  "class_agreement_pct": 87.3,
-  "repeat_spread": 1.033
+  "elements": 84,
+  "leaves": 68,
+  "items": 521,
+  "class_agreement_pct": 95.6,
+  "repeat_spread": 1.035
  },
  "chain": {
-  "raw_centre_h": 11386,
-  "raw_lo_h": 11203,
-  "raw_hi_h": 11568,
-  "sd_rho05_h": 1888,
-  "source": "run 31 assembly (1 400.4 / 1 446.0 pd)"
+  "raw_centre_h": 10020,
+  "raw_lo_h": 9846,
+  "raw_hi_h": 10194,
+  "sd_rho05_h": 1649,
+  "source": "run 63 assembly + run 64 demanded-work addendum (addendum_summary.json)"
  },
- "calibration": null,
+ "calibration": {
+  "centre_lo_h": 17100,
+  "centre_hi_h": 17597,
+  "corridor_lo_h": 11795,
+  "corridor_hi_h": 26330,
+  "factor_central": 1.73,
+  "source": "run 67 RG67-1 §6 (chain to G2; RK66 rates, run 66 pricing)"
+ },
  "outside": [
   {
-   "id": "class",
-   "dash": "2 3",
-   "unit_note": "140 person-months, funded seats × time, all roles",
+   "id": "RC65-1",
+   "dash": "",
+   "unit_note": "150 recorded pm of 168 attended h, &times;126 net h",
    "quantiles_h": {
-    "0.1": 7760,
-    "0.5": 15520,
-    "0.8": 24944,
-    "0.9": 32152,
-    "0.95": 42128
+    "0.1": 10080,
+    "0.5": 18900,
+    "0.8": 30240,
+    "0.9": 39060
    },
-   "lognormal": {
-    "median_h": 15520,
-    "sigma": 0.55
+   "source": "run 65, converted as run 67 applied"
+  },
+  {
+   "id": "RC65-2",
+   "dash": "6 4",
+   "unit_note": "105 staffed pm, &times;114.5 net h",
+   "quantiles_h": {
+    "0.1": 6298,
+    "0.5": 12023,
+    "0.8": 20038,
+    "0.9": 27480
    },
-   "tail_drawn": true,
-   "beyond_label": "class · P99 = 8592, off scale →",
-   "source": "run 29 / run 33 unit reconciliation"
+   "source": "run 65, converted as run 67 applied"
   }
  ],
  "nomethod_curves_file": "run43_raw/curves_pd.json",
  "parametric": null,
  "fact": {
-  "value_h": 13304,
-  "label": "the outcome &mdash; 1663",
-  "legend": "The documented outcome &mdash; 1663 (120 person-months)",
-  "note": "120 staffed person-months, a participant's memory at &plusmn;20%, restated in this unit by the case's own conversion (run 33)."
+  "value_h": 13745,
+  "label": "the outcome &mdash; 120 staffed pm",
+  "legend": "The remembered outcome &mdash; ~10 people &times; ~1 year = 120 staffed pm (&plusmn;20%), &times;114.5 net h",
+  "note": "120 staffed person-months &times; 114.5 = 13&nbsp;745 net task hours; the participant's own band 96&ndash;144 pm = 10&nbsp;996&ndash;16&nbsp;494 h. Opened after the estimate document was fixed (run 68)."
  },
+ "bottom_up_alt": null,
+ "raw_marks": null,
  "engines": {
   "model": "Claude Opus 5",
-  "chain": "Hotyn-M 1.1 / Hotyn-W 1.1 / Hotyn-D 2.0 × rate table v0.1-h",
-  "outside": "Lytin-R 1.1",
-  "model_note": "Every sensor on this case ran on Claude Opus 5, so the model coordinate is held fixed and the readings are engine-and-project readings only.",
-  "nomethod": "no sensor definition, 2 × 10 bare runs (runs 41, 43)"
+  "chain": "Hotyn-M 2.1 / Hotyn-W 1.2 / Hotyn-D 2.0 &times; rate table v0.1-h + Hotyn-K 1.1 addendum",
+  "outside": "Lytin-R 1.1 &times;2",
+  "rates": "Lytin-K 1.1",
+  "diagnosis": "Lytin-G 1.1",
+  "model_note": "Every sensor on this estimate ran on Claude Opus 5 (alias <code>opus</code>, recorded per turn as <code>claude-opus-5</code>), so the model coordinate is held fixed. Claude Code 2.1.270; every prompt reached its sensor byte-identical; every turn ended <code>end_turn</code>.",
+  "nomethod": "no sensor definition, 2 × 10 bare runs (runs 41, 43, 26–27 Aug)"
  },
  "provenance": [
   {
    "idx": "1",
-   "title": "Product model &middot; n = 2 &middot; Hotyn-M 1.1",
-   "text": "47 product obligations &rarr; 97 elements; the second reading differs &times;1.02 in structure. Produces no effort figure of any kind."
+   "title": "Product model &middot; n = 2 &middot; Hotyn-M 2.1 &middot; run 61",
+   "text": "47 product obligations &rarr; <b>HM61-1</b>: 84 elements, 68 leaves, 47/47 whole (closed); HM61-2: 91 / 75, F19 residue. Leaves &times;1.10, coverage-set Jaccard 0.51. The first launch of both repeats stopped for contamination: the pinned product projection quotes a duration it says it removed; the figure was struck in the prompt and fresh instances launched."
   },
   {
    "idx": "2",
-   "title": "Work model &middot; Hotyn-W 1.1",
-   "text": "Crossed against the declared technology in three batches &rarr; 570 work items on 96 elements. Work the product needs but no declared activity covers is reported as a finding, never invented."
+   "title": "Work model &middot; Hotyn-W 1.2 &middot; run 62",
+   "text": "4 batches, one crossing each &rarr; 521 element-attached items, 0 row mismatches (after a read-time fix of one group-definition phrasing). F51 absorbed by the production cutover; F48, F49, F50, F52 standing as own branches."
   },
   {
    "idx": "3",
-   "title": "Size classes &middot; n = 2 &middot; Hotyn-D 2.0",
-   "text": "Each element classified by counting named things, the enumeration being the justification. Class agreement 87.3%; whole-chain repeat spread &times;1.033."
+   "title": "Size classes &middot; n = 2 &middot; Hotyn-D 2.0 &middot; run 63",
+   "text": "64 / 63 leaves sized, 95.6% class agreement; 4 / 5 unsizeable (L27, L38, L51, L56; + L46). Assembly 10&nbsp;094 / 9&nbsp;747 net task hours, &times;1.036."
   },
   {
    "idx": "4",
-   "title": "Rate table",
-   "chip": "uncalibrated",
-   "chip_cls": "caution",
-   "text": "External norms in net task hours, gap-blind: never saw a project total, a budget, or a gap a rate would explain."
+   "title": "Demanded-work rows &middot; Hotyn-K 1.1 &middot; run 64",
+   "text": "W-F49 (62.7 h) and W-F52 (37.3 h) priced; W-F48 and W-F50 refused &mdash; headcount and parallel-run period undeclared. Raw chain 9&nbsp;846&ndash;10&nbsp;194 h."
   },
   {
    "idx": "5",
-   "title": "Outside view &middot; Lytin-R 1.1",
-   "text": "Ran in ignorance of all of the above, the unit convention withheld so that it declared its own: funded seats &times; time, all roles &mdash; the same unit the outcome is recorded in."
+   "title": "Outside view &middot; n = 2 &middot; Lytin-R 1.1 &middot; run 65",
+   "text": "One class (in-house second-generation rewrite of a distributed back-end with a parallel-run cutover), 55% confidence. RC65-1 in recorded 168-h months, leave out: 80 / 150 / 240 / 310. RC65-2 in staffed months, leave in: 55 / 105 / 175 / 240."
+  },
+  {
+   "idx": "6",
+   "title": "Step C rates &middot; Lytin-K 1.1 &middot; run 66",
+   "text": "Gap-blind. Fills A1&ndash;A5 (A5 unpriceable), T1&ndash;T5, two globals G1 (within-day overhead) and G2 (era + learning curve). Fills priced by the orchestrator's script through rate table v0.1-h."
+  },
+  {
+   "idx": "7",
+   "title": "Steps B, D &middot; Lytin-G 1.1 &middot; run 67",
+   "text": "Units first: G1 duplicates the pinned 6-h day, chain stopped at G2. Centre 17&nbsp;350 h, corridor 11&nbsp;795&ndash;26&nbsp;330, reserve = raw class tails. Explained 83% against RC65-1; overshoot against RC65-2."
   },
   {
    "idx": "0",
-   "title": "No method &times;20",
-   "text": "The requirements and the assumption log handed to a bare agent with no sensor definition, ten times on 26 August and ten more on 27 August, one permitted file read each. Each run declared its own P10&ndash;P90; each is drawn as its own thin curve and none is pooled. Their medians spread &times;1.85; their mean sits &times;1.78 above the chain and above the outcome."
-  },
-  {
-   "idx": "F",
-   "title": "The outcome",
-   "text": "Sealed before the estimate, opened after the number was written down and closed (run 32)."
+   "title": "No method &times;20 &middot; runs 41 and 43, added by the author after the run",
+   "text": "The requirements and the assumption log handed to a bare agent with no sensor definition, ten times on 26 August and ten more on 27 August, one permitted file read each. Each run declared its own P10&ndash;P90; each is drawn as its own thin curve and none is pooled. Not part of the run-61 estimate: the child was told not to read earlier runs, and this family is the control drawn beside every FaxRxTx report."
   }
  ]
 }

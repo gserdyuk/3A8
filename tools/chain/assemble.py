@@ -60,11 +60,15 @@ def parse_reading(fn, leaf_re):
         chunk = s3[pos:end]
         m = (re.search(r'(?:→|->)\s*\**\s*(S|M|L|XL)\b', chunk) or re.search(r'\|\s*\d+\s*\|\s*\*\*(S|M|L|XL)\*\*', chunk)
              or re.search(r'\|\s*\d+\s*\|\s*(S|M|L|XL)\s*\|', chunk) or re.search(r'class\s*\*\*(S|M|L|XL)\*\*', chunk)
-             or re.search(r'[Cc]ount and class:\*\*\s*\d+,\s*\*\*(S|M|L|XL)\*\*', chunk) or re.search(r'·\s*\d+ kinds?\s*·\s*\*\*(S|M|L|XL)\*\*', chunk))
+             or re.search(r'[Cc]ount and class:\*\*\s*\d+,\s*\*\*(S|M|L|XL)\*\*', chunk) or re.search(r'·\s*\d+ kinds?\s*·\s*\*\*(S|M|L|XL)\*\*', chunk)
+             # run 63 phrasings: "so the class is **M**", "**Count: 2. Class: M.**", "**L01, count 2, M.**"
+             or re.search(r'\bclass is \*{0,2}(S|M|L|XL)\*{0,2}(?!\w)', chunk) or re.search(r'\b[Cc]lass:\s*\*{0,2}(S|M|L|XL)\*{0,2}(?!\w)', chunk)
+             or re.search(r'\bcount\s+\d+,\s*\*{0,2}(S|M|L|XL)\*{0,2}(?!\w)', chunk))
         if m:
             special.setdefault(eid, m.group(1))
         elif re.search(r'unsizeable|none assigned|not assigned|not countable|not determinable|no special[- ]count|no count|nothing can be enumerated'
-                       r'|\*\*none\*\*|\|\s*none\s*\||\bno class\b|\bno band\b|below the S threshold|\|\s*0(?: evidenced| kinds)?\s*\||\|\s*—\s*\|\s*—\s*\|', chunk, re.I):
+                       r'|\*\*none\*\*|\|\s*none\s*\||\bno class\b|\bno band\b|below the S threshold|\|\s*0(?: evidenced| kinds)?\s*\||\|\s*—\s*\|\s*—\s*\|'
+                       r'|\bcount:?\s*\*{0,2}0\b|no special class|assign no (?:special )?class', chunk, re.I):
             special.setdefault(eid, None)
     return sizes, kinds, special
 

@@ -1,67 +1,91 @@
 {
- "title": "Project estimate",
+ "title": "FaxRxTx estimate",
  "eyebrow": "3A8 &middot; TriAngulEight",
- "headline": "Project estimate",
- "subject": "Case FaxRxTx / Venali &middot; worldwide fax platform, 2007&ndash;2009 &middot; <b>outcome known</b> &middot; test build of the generic report assembler",
- "standfirst": "The validation case &mdash; the only one this project has with a documented outcome. The chain was run end to end and the number written down and closed <b>before</b> the outcome was opened. A reference-class reading was taken separately, in ignorance of the chain, and lands on the other side of the outcome. This build reproduces the report of 2026-08-26 through the generic assembler, with the parametric instrument taken off the chart at the author's request and the no-method family of runs 41 and 43 added; no figure is new.",
+ "headline": "FaxRxTx &mdash; the estimate, end to end",
+ "subject": "Case FaxRxTx &middot; worldwide fax send/receive back-end, second version (Venali, 2007&ndash;2009) &middot; a participant's recollection &middot; <b>outcome known, opened after the estimate</b>",
+ "standfirst": "A fresh end-to-end estimate on the current chain: a product model, a work model and size classes by three isolated sensors, priced from a pinned table of external norms; an outside view by two independent launches; gap-blind Step C rates; a diagnosis that reconciled the units before attributing anything. The answer is 17&nbsp;350 net task hours (about 152 staffed person-months), a rate corridor of 11&nbsp;795&ndash;26&nbsp;330, and an unresolved class tail. The remembered outcome, opened only after the document was fixed, is 120 staffed person-months &mdash; the centre is &times;1.26 above it, inside the corridor.",
  "meta": [
   "<b>52</b> obligations &mdash; 47 product, 5 work",
-  "<b>97</b> model elements &middot; <b>570</b> work items",
-  "estimate closed <b>22 Aug</b>, outcome opened after &middot; outside view read <b>22 Aug</b> &middot; no-method batches <b>26&ndash;27 Aug</b>",
+  "<b>84</b> model elements &middot; <b>521</b> work items",
+  "chain, outside view, Step C and diagnosis run <b>16 Sep 2026</b> (runs 61&ndash;67) &middot; outcome opened <b>after</b> the estimate document was fixed (run 68)",
   "unit <b>1 pd = 8 net task hours</b> &mdash; leave, holidays and sickness not included"
  ],
  "chart": {
   "axisMax": 6000,
-  "rawSum": null,
-  "rawSumLabel": "",
-  "calibration": null,
+  "rawSum": 1252,
+  "rawSumLabel": "raw table sum 1252 (band 1231–1274)",
+  "calibration": {
+   "lo": 1474,
+   "hi": 3291,
+   "label": "calibration spread 1474–3291 · not percentiles"
+  },
   "bottomUp": {
-   "mu": 1423,
-   "sd": 236
+   "mu": 2169,
+   "sd": 357
   },
   "outside": [
    {
-    "id": "class",
-    "dash": "2 3",
+    "id": "RC65-1",
+    "dash": "",
     "q": [
      [
-      970,
+      1260,
       0.1
      ],
      [
-      1940,
+      2362,
       0.5
      ],
      [
-      3118,
+      3780,
       0.8
      ],
      [
-      4019,
+      4882,
       0.9
-     ],
-     [
-      5266,
-      0.95
      ]
     ],
-    "tailDrawn": true,
-    "lognormal": {
-     "median": 1940,
-     "sigma": 0.55
-    },
-    "beyondLabel": "class · P99 = 8592, off scale →"
+    "tailDrawn": false,
+    "floor": 672
+   },
+   {
+    "id": "RC65-2",
+    "dash": "6 4",
+    "q": [
+     [
+      787,
+      0.1
+     ],
+     [
+      1503,
+      0.5
+     ],
+     [
+      2505,
+      0.8
+     ],
+     [
+      3435,
+      0.9
+     ]
+    ],
+    "tailDrawn": false,
+    "floor": 412
    }
   ],
   "axisLabel": "NET WORKING TIME — PERSON-DAYS OF 8 TASK HOURS",
   "legend": [
    {
+    "cls": "blue",
+    "text": "Outside view RC65-1 &mdash; P50 2362 (150 recorded pm of 168 attended h, &times;126 net h)"
+   },
+   {
     "cls": "blue dash",
-    "text": "Outside view class &mdash; P50 1940 (140 person-months, funded seats × time, all roles)"
+    "text": "Outside view RC65-2 &mdash; P50 1503 (105 staffed pm, &times;114.5 net h)"
    },
    {
     "cls": "red",
-    "text": "Bottom-up, table-priced &mdash; P50 1423, &rho; = 0.5"
+    "text": "Bottom-up, calibrated &mdash; P50 2169 (raw chain 10&nbsp;020 h &times;1.73, run 67)"
    },
    {
     "cls": "ochre",
@@ -69,10 +93,10 @@
    },
    {
     "cls": "fact",
-    "text": "The documented outcome &mdash; 1663 (120 person-months)"
+    "text": "The remembered outcome &mdash; ~10 people &times; ~1 year = 120 staffed pm (&plusmn;20%), &times;114.5 net h"
    }
   ],
-  "hint": "<b>Two views of the same distributions.</b> Above, how likely each answer is &mdash; all curves on one scale, each enclosing the same area. Below, the same thing accumulated: <b>the chance of coming in at or under any figure</b>. <b>Move the pointer</b> and a read line crosses both panels, reporting the chance of exceeding that figure under each instrument. The red bell is the table-priced chain, <b>uncalibrated</b> &mdash; Steps B&ndash;D never ran on this case &mdash; and its width is the rate table's O/M/P spread under a declared &rho; = 0.5, a convention. The dotted blue curve is the outside view, a lognormal fitted to its declared quantiles; its tail is drawn to P95 and its P99 is off scale. <b>The twenty thin ochre curves</b> are the no-method baseline (runs 41 and 43): the same requirements and assumption log handed to a bare agent with no method, twenty times, each run's own P10&ndash;P90 fitted as a lognormal, drawn as a family and never pooled. Their medians spread &times;1.85 and their mean sits &times;1.78 above the chain and above the outcome; the chain is the narrower and the nearer reading, and the family shows what the bare model does with the same text. The black line is the documented outcome, 120 staffed person-months restated in this unit.",
+  "hint": "<b>What each width is.</b> The red bell is the calibrated centre with the chain's O/M/P co-variation at an <b>assumed</b> &rho; = 0.5, scaled by the calibration &mdash; it does not contain the product-model spread (&times;1.10 on leaves here), the rate table being one sample, the team's grade, or the unit-factor dispute. The grey band is the Step C rate envelope (all lows, all highs) &mdash; <b>not percentiles</b>. The blue curves are two launches of the outside view: their width is the heterogeneity of the class; the distance between them (&times;1.57 at P50) is the level uncertainty between readings and is not a width. Each outside curve was converted from its own declared unit (RC65-1: recorded 168-h months &times;126 net h; RC65-2: staffed months &times;114.5). The black mark is the outcome as remembered, &plusmn;20%. <b>The twenty thin ochre curves</b> are the no-method control (runs 41 and 43, 26&ndash;27 August): the same requirements and assumption log handed to a bare agent with no method, twenty times, each run's own P10&ndash;P90 fitted as a lognormal, drawn as a family and never pooled. Added by the author beside the run-61 estimate; not a reading of this run.",
   "nomethod": [
    {
     "id": "B-1",
@@ -176,59 +200,73 @@
    }
   ],
   "fact": {
-   "value": 1663,
-   "label": "the outcome &mdash; 1663"
+   "value": 1718,
+   "label": "the outcome &mdash; 120 staffed pm"
   }
  },
  "tiles": [
   {
    "cls": "red",
    "k": "Centre",
-   "v": "1423",
+   "v": "2169",
    "unit": "pd",
-   "d": "11 386 net task hours &mdash; the table-priced assembly, uncalibrated"
+   "d": "17&nbsp;350 net task hours (17&nbsp;100&ndash;17&nbsp;597) &mdash; the table-priced chain 10&nbsp;020 &times; the gap-blind Step C chain to G2, <b>&times;1.73</b>. &asymp; 152 staffed pm at 114.5 h."
   },
   {
    "cls": "red",
    "k": "Corridor &middot; P10&ndash;P90",
-   "v": "1121&ndash;1726",
+   "v": "1711&ndash;2626",
    "unit": "pd",
-   "d": "The drawn band. From the O/M/P in every rate cell, under a declared item correlation of <b>&rho; = 0.5</b>. A convention, not a measurement."
+   "d": "The drawn band. From the O/M/P in every rate cell, under a declared item correlation of <b>&rho; = 0.5</b>, scaled by the calibration. A convention, not a measurement."
+  },
+  {
+   "cls": "",
+   "k": "Calibration spread",
+   "v": "1474&ndash;3291",
+   "unit": "pd",
+   "d": "The envelope of the Step C rates, all lows and all highs together, both sizing repeats. <b>Not percentiles.</b> 11&nbsp;795 &ndash; 26&nbsp;330 net task hours &asymp; 103&ndash;230 staffed pm."
   },
   {
    "cls": "none",
    "k": "The outcome",
-   "v": "1663",
+   "v": "1718",
    "unit": "pd",
-   "d": "120 staffed person-months, a participant's memory at &plusmn;20%, restated in this unit by the case's own conversion (run 33)."
+   "d": "120 staffed person-months &times; 114.5 = 13&nbsp;745 net task hours; the participant's own band 96&ndash;144 pm = 10&nbsp;996&ndash;16&nbsp;494 h. Opened after the estimate document was fixed (run 68)."
   },
   {
    "cls": "red",
    "k": "Against the outcome",
-   "v": "&times;1.17",
+   "v": "&times;0.79",
    "unit": "",
-   "d": "Inside the &times;1.3 gate. The outcome sits at about P85 of the declared corridor and below the outside view's median."
+   "d": "outcome / centre: the calibrated centre is <b>&times;1.26 above</b> the remembered 120 pm and just above its own &plusmn;20% band; the raw chain was &times;1.37 below."
   },
   {
    "cls": "",
    "k": "Repeat spread",
-   "v": "&times;1.033",
+   "v": "&times;1.035",
    "unit": "",
-   "d": "Two independent size classifications, 87.3% class agreement, priced from the same table: 1 400.4 and 1 446.0 person-days."
+   "d": "Two independent size classifications of one product model, 95.6% class agreement, priced from the same table. The product-model pair (&times;1.10 on leaves) is not in this figure."
   },
   {
    "cls": "ochre",
    "k": "No method &middot; 20 runs",
    "v": "1 942&ndash;3 600",
    "unit": "pd",
-   "d": "Medians of twenty bare runs on the same text, in two batches a day apart; spread &times;1.85 between runs; each run declares a corridor of about &times;1.5 of its own. The mean sits at &times;1.78 of the chain and above the outcome &mdash; on this case the bare model overshoots where on SAS it undershot."
+   "d": "Medians of twenty bare runs on the same text, in two batches a day apart; spread &times;1.85 between runs; each run declares a corridor of about &times;1.5 of its own. Their mean sits above the outcome and near the calibrated centre &mdash; on this case the bare model overshoots where on SAS it undershot."
   },
   {
    "cls": "blue",
    "k": "Outside view &middot; P50",
-   "v": "1940",
+   "v": "2362 &middot; 1503",
    "unit": "pd",
-   "d": "Funded seats &times; time, all roles &mdash; <b>the same unit the outcome is recorded in</b>; 140 person-months against an outcome of 120."
+   "d": "RC65-1 and RC65-2, each in its own unit, converted by the pinned convention; &times;1.57 apart. Not averaged."
+  },
+  {
+   "cls": "none",
+   "k": "Reserve",
+   "v": "Unresolved",
+   "unit": "",
+   "d": "The raw class tails, uncalibrated: RC65-1 P80 30&nbsp;240 / P90 39&nbsp;060; RC65-2 P80 20&nbsp;038 / P90 27&nbsp;480 net task hours. The centre sits below RC65-1's P50 and between RC65-2's P50 and P80."
   }
  ],
  "sections": [
@@ -241,12 +279,20 @@
    "src": "docs/constants.md &middot; docs/instrument.md &middot; docs/sensors/"
   },
   {
+   "id": "divergence",
+   "title": "Why the methods disagree",
+   "count": "&times;1.20 &ndash; &times;1.89 raw",
+   "lead": "Units first, then blind spots; the two outside launches disagree with each other more than the chain disagrees with one of them.",
+   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">units</span><div class=\"body\">\n    <div class=\"t\">Units component sized before anything was attributed <span class=\"chip blue\">31% / 68% of the unit-blind gap</span></div>\n    <div class=\"x\">Read unit-blind (each outside month as 168 h), the outside view sits &times;2.5 and &times;1.8 above the chain. Converted by the pinned convention, the gaps are &times;1.89 (RC65-1) and &times;1.20 (RC65-2). The factor itself is disputed: 100&ndash;146 net h per RC65-1 month, 101&ndash;133 per RC65-2 month.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">G1</span><div class=\"body\">\n    <div class=\"t\">A calibration factor that was a unit <span class=\"chip red\">double count caught</span></div>\n    <div class=\"x\">Step C's G1 (within-day overhead &times;1.25) turns net task hours into attended hours &mdash; the same step as the pinned 6-net-hours-a-day conversion. The chain is taken to G2 in net hours; the conversion to months replaces G1. Converting the post-G1 figure again would read &times;1.58 against the outcome.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">scope</span><div class=\"body\">\n    <div class=\"t\">Refused rows and holes <span class=\"chip caution\">+3 509 h</span></div>\n    <div class=\"x\">Immersion (W-F48) and the parallel-run comparison (W-F50) were refused as rows for undeclared headcount and period; Step C priced them as COCOMO II phase shares (T3 +999, T4 +874). Holes and closure findings, account load and performance testing priced through the table (+1&nbsp;012); PM residual T5 +624.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">systemic</span><div class=\"body\">\n    <div class=\"t\">Era, learning curve, complexity, growth <span class=\"chip caution\">+3 819 h</span></div>\n    <div class=\"x\">G2 era tooling and domain learning curve &times;1.15 (+2&nbsp;263, the largest and lowest-confidence item); T2 unnamed requirement growth &times;1.12 (+1&nbsp;294); T1 complexity of the hand-built orchestration and cluster &times;1.17 (+262).</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">residual</span><div class=\"body\">\n    <div class=\"t\">Explained share, per reading <span class=\"chip blue\">83% / overshoot</span></div>\n    <div class=\"x\">Against RC65-1: 83% explained, residual +1&nbsp;552 h whose sign flips across the unit band. Against RC65-2: the corrections overshoot &mdash; the calibrated centre is &times;1.44 above its P50 at every factor. Not closed by adjustment.</div>\n  </div></div>\n</div>\n<h4>What Step C adds, and why the rates came out as they did</h4>\n<ul>\n<li><b>No generic uplift</b> for testing, integration or rework &mdash; the coverage report showed the chain carries them heavily.</li>\n<li><b>Omissions itemised</b> (A1&ndash;A4) instead of a blanket percentage, which kept T2 at &times;1.12 rather than ~&times;1.25.</li>\n<li><b>A5 (cluster build-out) unpriceable</b> &mdash; the table has no XL row for environments or hosting.</li>\n<li><b>Two globals exactly</b>: G1 (later ruled a unit) and G2.</li>\n</ul>\n<h4>False convergence, checked</h4>\n<p>The calibrated centre lands &times;0.92 of RC65-1 &mdash; weak evidence: RK66's phase and complexity factors and RC65-1's anchor A-3 both come from COCOMO II, the agreement sits inside the unit band, and it is disagreement with RC65-2. The raw chain's &times;1.20 closeness to RC65-2 was a coincidence of an incomplete chain and a low-anchored reading.</p>",
+   "src": "examples/FaxRxTx/run67_steps_BD.md"
+  },
+  {
    "id": "outcome",
    "title": "Against the outcome",
-   "count": "&times;1.17 &middot; ~P85",
-   "lead": "This is the only case in the project with a documented outcome, and the only place any of the method's claims can be scored at all.",
-   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">gate</span><div class=\"body\">\n    <div class=\"t\">The chain lands inside the &times;1.3 gate <span class=\"chip red\">&times;1.17</span></div>\n    <div class=\"x\">11 386 net task hours against an outcome of about 13 304 (120 staffed person-months at the case's own conversion, run 33). The number was written down and closed before the outcome was opened (run 32).</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">corridor</span><div class=\"body\">\n    <div class=\"t\">The outcome sits at about P85 of the declared corridor</div>\n    <div class=\"x\">The corridor is the rate table's O/M/P spread under &rho; = 0.5, a convention; that the outcome falls inside it at P85 is one observation, not a calibration.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">class</span><div class=\"body\">\n    <div class=\"t\">The outside view lands on the other side <span class=\"chip blue\">&times;1.17 high</span></div>\n    <div class=\"x\">The class median, 140 person-months in the unit the outcome is recorded in, is &times;1.17 above the outcome where the chain is &times;0.86 below it. Neither is averaged.</div>\n  </div></div>\n</div>",
-   "src": "examples/FaxRxTx/run32_fact_comparison.md &middot; run33_unit_of_the_fact.md"
+   "count": "&times;1.26 high &middot; inside the corridor",
+   "lead": "Opened after the estimate document was fixed. A participant's memory, &plusmn;20%; the presence convention post-dates this outcome, so the case can be learned from and does not score.",
+   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">fact</span><div class=\"body\">\n    <div class=\"t\">~10 people &times; ~1 year = 120 staffed pm <span class=\"chip \">13 745 h</span></div>\n    <div class=\"x\">&times;114.5 net task hours per staffed month (docs/constants.md &sect;4a); the participant's own band 96&ndash;144 pm = 10&nbsp;996&ndash;16&nbsp;494 h.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">centre</span><div class=\"body\">\n    <div class=\"t\">Calibrated centre 17 350 h <span class=\"chip red\">&times;1.26 high</span></div>\n    <div class=\"x\">Above the outcome's own band by &times;1.05. Without G2 the centre would read &times;1.10; without T3&ndash;T5 &times;1.05 &mdash; observations about where the miss sits, not corrections.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">corridor</span><div class=\"body\">\n    <div class=\"t\">Rate corridor 11 795&ndash;26 330 h <span class=\"chip blue\">contains</span></div>\n    <div class=\"x\">The outcome sits 13% of the way up the envelope. The raw chain's &rho; = 0.5 band (7&nbsp;764&ndash;12&nbsp;337) does not contain it; the raw chain was &times;1.37 low.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">outside</span><div class=\"body\">\n    <div class=\"t\">Outside view brackets it <span class=\"chip \">&asymp;P30 / &asymp;P58</span></div>\n    <div class=\"x\">RC65-1 P50 &times;1.38 high, RC65-2 P50 &times;0.87 low; the outcome sits near RC65-1's P30 and RC65-2's P58.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">gate</span><div class=\"body\">\n    <div class=\"t\">Exit criterion v2.0 <span class=\"chip caution\">not evaluable</span></div>\n    <div class=\"x\">End-to-end repeatability not measured (one product model priced); no human scale; one outcome in hand. Provenance held for the rates; the presence convention post-dates the outcome.</div>\n  </div></div>\n</div>",
+   "src": "examples/FaxRxTx/run68_fact_comparison.md"
   },
   {
    "id": "obligations",
@@ -259,10 +305,10 @@
   {
    "id": "findings",
    "title": "Findings",
-   "count": "2",
+   "count": "6",
    "lead": "Produced without being asked for, by instruments whose job was something else.",
-   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">sizing</span><div class=\"body\">\n    <div class=\"t\">Four elements refused as unsizeable by both repeats</div>\n    <div class=\"x\">A schema that names a platform and not an entity kind, a handler defined by a question, an integration interface with neither direction nor payload, a scope baseline that names no function. Named holes, never guessed (run 31).</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">no method</span><div class=\"body\">\n    <div class=\"t\">The bare model overshoots here and undershoots elsewhere <span class=\"chip caution\">&times;1.78</span></div>\n    <div class=\"x\">Twenty runs without a method land above the chain and above the outcome on this case; on SAS the same control landed at &times;0.75 of the chain. The sign of the no-method error is not a property of the model, it is a property of the text; that is why the control is drawn and never used.</div>\n  </div></div>\n</div>",
-   "src": "examples/FaxRxTx/run31_whole_model_assembly.md &middot; run41_baseline_no_method.md &middot; run43_second_baseline_batch.md"
+   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">F-1</span><div class=\"body\">\n    <div class=\"t\">A pinned projection contaminated its consumer <span class=\"chip red\">both repeats refused</span></div>\n    <div class=\"x\">assumptions_product.md quotes the immersion stage's duration in the paragraph that says it was removed. Both product-model sensors stopped at &sect;1. The pinned file needs a new version.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">F-2</span><div class=\"body\">\n    <div class=\"t\">The crossing cannot see obligation texts <span class=\"chip caution\">A9 refused</span></div>\n    <div class=\"x\">It refused performance testing on a statement whose obligation (F36) states a measurable target, because its input carries coverage ids only. Performance testing entered through Step C.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">F-3</span><div class=\"body\">\n    <div class=\"t\">Two parser gaps in tools/chain <span class=\"chip caution\">silent drops</span></div>\n    <div class=\"x\">The consolidator misses group definitions written as '**NAME** is &hellip;' (49 items); the assembler misses special counts written as 'so the class is **M**'. Both handled by read-time wrappers; the tools were not changed.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">F-4</span><div class=\"body\">\n    <div class=\"t\">Step C's G1 is a unit step <span class=\"chip blue\">request to the rate role</span></div>\n    <div class=\"x\">A global 'net hours &rarr; working hours' factor overlaps the pinned presence conversion; the diagnosis asked for it to be restated as a unit step.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">F-5</span><div class=\"body\">\n    <div class=\"t\">Demanded rows need an output-bounded form <span class=\"chip caution\">catalogue</span></div>\n    <div class=\"x\">W-F48 and W-F50 cannot be priced as worded (headcount &times; period). The rate author proposed per-candidate evaluation, per-decision records, a comparator build, per-discrepancy-class adjudication and per-week monitoring.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">F-6</span><div class=\"body\">\n    <div class=\"t\">F47 as a leaf is unsizeable <span class=\"chip \">both repeats</span></div>\n    <div class=\"x\">'First-version core function set, as replaced' declares a set it never names; the sizing sensors asked for an inventory of the first version's core functions.</div>\n  </div></div>\n</div>",
+   "src": "run61&ndash;run67 records"
   },
   {
    "id": "defaults",
@@ -275,17 +321,17 @@
   {
    "id": "not-in-number",
    "title": "Estimate gaps",
-   "count": "3",
+   "count": "5",
    "lead": "Not oversights. Each is a thing the chain refused to price, with the reason it refused.",
-   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">1</span><div class=\"body\">\n    <div class=\"t\">Seven named holes</div>\n    <div class=\"x\">Items the sizing sensors refused to size, listed by the assembly and priced at nothing.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">2</span><div class=\"body\">\n    <div class=\"t\">No calibration <span class=\"chip caution\">Steps B&ndash;D not run</span></div>\n    <div class=\"x\">The centre is the table-priced assembly as it stands; the gap-blind rate round and the diagnosis were not run on this case in this generation.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">3</span><div class=\"body\">\n    <div class=\"t\">The rate table's level</div>\n    <div class=\"x\">Uncalibrated against any outcome; this case is the one place it has been scored, once.</div>\n  </div></div>\n</div>",
-   "src": "examples/FaxRxTx/run31_whole_model_assembly.md"
+   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">1</span><div class=\"body\">\n    <div class=\"t\">W-F48 and W-F50 as rows; cluster build-out (A5) <span class=\"chip caution\">awaiting a parameter</span></div>\n    <div class=\"x\">Headcount and length of the immersion and parallel-run stages undeclared; no XL row for environments and hosting. W-F48/W-F50 enter only as Step C shares.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">2</span><div class=\"body\">\n    <div class=\"t\">The second product model <span class=\"chip caution\">&times;1.10 unpriced</span></div>\n    <div class=\"x\">HM61-2 (75 leaves) was not crossed or sized; the end-to-end repeat is unmeasured.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">3</span><div class=\"body\">\n    <div class=\"t\">The table's level and its day convention <span class=\"chip red\">units question</span></div>\n    <div class=\"x\">External norms, uncalibrated; if its day-based sources meant assigned days, the chain is overstated &times;1.23&ndash;1.45.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">4</span><div class=\"body\">\n    <div class=\"t\">Migration, v1 upkeep, hyper-care, security, team grade <span class=\"chip \">no rate</span></div>\n    <div class=\"x\">Outside the declaration or uncovered by any rate; the reverse audit that would check the additive design has never been run.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">5</span><div class=\"body\">\n    <div class=\"t\">Tail events and calendar <span class=\"chip \">class tail only</span></div>\n    <div class=\"x\">Orchestration collapse, driver/OCR instability, a failed parallel run: in the class quantiles only. Effort-to-calendar not estimated.</div>\n  </div></div>\n</div>",
+   "src": "estimate_FaxRxTx_2026-09-16.md &sect;4"
   },
   {
    "id": "provenance",
    "title": "Where every number came from",
-   "count": "7 roles",
+   "count": "8 roles",
    "lead": "Each sensor is an engine with a version, stamped on its own output. They are hired for what they are <b>forbidden to see</b>, not for autonomy.",
-   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">1</span><div class=\"body\">\n    <div class=\"t\">Product model &middot; n = 2 &middot; Hotyn-M 1.1</div>\n    <div class=\"x\">47 product obligations &rarr; 97 elements; the second reading differs &times;1.02 in structure. Produces no effort figure of any kind.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">2</span><div class=\"body\">\n    <div class=\"t\">Work model &middot; Hotyn-W 1.1</div>\n    <div class=\"x\">Crossed against the declared technology in three batches &rarr; 570 work items on 96 elements. Work the product needs but no declared activity covers is reported as a finding, never invented.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">3</span><div class=\"body\">\n    <div class=\"t\">Size classes &middot; n = 2 &middot; Hotyn-D 2.0</div>\n    <div class=\"x\">Each element classified by counting named things, the enumeration being the justification. Class agreement 87.3%; whole-chain repeat spread &times;1.033.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">4</span><div class=\"body\">\n    <div class=\"t\">Rate table <span class=\"chip caution\">uncalibrated</span></div>\n    <div class=\"x\">External norms in net task hours, gap-blind: never saw a project total, a budget, or a gap a rate would explain.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">5</span><div class=\"body\">\n    <div class=\"t\">Outside view &middot; Lytin-R 1.1</div>\n    <div class=\"x\">Ran in ignorance of all of the above, the unit convention withheld so that it declared its own: funded seats &times; time, all roles &mdash; the same unit the outcome is recorded in.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">0</span><div class=\"body\">\n    <div class=\"t\">No method &times;20</div>\n    <div class=\"x\">The requirements and the assumption log handed to a bare agent with no sensor definition, ten times on 26 August and ten more on 27 August, one permitted file read each. Each run declared its own P10&ndash;P90; each is drawn as its own thin curve and none is pooled. Their medians spread &times;1.85; their mean sits &times;1.78 above the chain and above the outcome.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">F</span><div class=\"body\">\n    <div class=\"t\">The outcome</div>\n    <div class=\"x\">Sealed before the estimate, opened after the number was written down and closed (run 32).</div>\n  </div></div>\n</div>\n<h4>Two coordinates, not one</h4>\n<p>An estimate is a property of the triple <b>(project &times; engine &times; model)</b>. Every sensor on this case ran on Claude Opus 5, so the model coordinate is held fixed and the readings are engine-and-project readings only.</p>",
+   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">1</span><div class=\"body\">\n    <div class=\"t\">Product model &middot; n = 2 &middot; Hotyn-M 2.1 &middot; run 61</div>\n    <div class=\"x\">47 product obligations &rarr; <b>HM61-1</b>: 84 elements, 68 leaves, 47/47 whole (closed); HM61-2: 91 / 75, F19 residue. Leaves &times;1.10, coverage-set Jaccard 0.51. The first launch of both repeats stopped for contamination: the pinned product projection quotes a duration it says it removed; the figure was struck in the prompt and fresh instances launched.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">2</span><div class=\"body\">\n    <div class=\"t\">Work model &middot; Hotyn-W 1.2 &middot; run 62</div>\n    <div class=\"x\">4 batches, one crossing each &rarr; 521 element-attached items, 0 row mismatches (after a read-time fix of one group-definition phrasing). F51 absorbed by the production cutover; F48, F49, F50, F52 standing as own branches.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">3</span><div class=\"body\">\n    <div class=\"t\">Size classes &middot; n = 2 &middot; Hotyn-D 2.0 &middot; run 63</div>\n    <div class=\"x\">64 / 63 leaves sized, 95.6% class agreement; 4 / 5 unsizeable (L27, L38, L51, L56; + L46). Assembly 10&nbsp;094 / 9&nbsp;747 net task hours, &times;1.036.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">4</span><div class=\"body\">\n    <div class=\"t\">Demanded-work rows &middot; Hotyn-K 1.1 &middot; run 64</div>\n    <div class=\"x\">W-F49 (62.7 h) and W-F52 (37.3 h) priced; W-F48 and W-F50 refused &mdash; headcount and parallel-run period undeclared. Raw chain 9&nbsp;846&ndash;10&nbsp;194 h.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">5</span><div class=\"body\">\n    <div class=\"t\">Outside view &middot; n = 2 &middot; Lytin-R 1.1 &middot; run 65</div>\n    <div class=\"x\">One class (in-house second-generation rewrite of a distributed back-end with a parallel-run cutover), 55% confidence. RC65-1 in recorded 168-h months, leave out: 80 / 150 / 240 / 310. RC65-2 in staffed months, leave in: 55 / 105 / 175 / 240.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">6</span><div class=\"body\">\n    <div class=\"t\">Step C rates &middot; Lytin-K 1.1 &middot; run 66</div>\n    <div class=\"x\">Gap-blind. Fills A1&ndash;A5 (A5 unpriceable), T1&ndash;T5, two globals G1 (within-day overhead) and G2 (era + learning curve). Fills priced by the orchestrator's script through rate table v0.1-h.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">7</span><div class=\"body\">\n    <div class=\"t\">Steps B, D &middot; Lytin-G 1.1 &middot; run 67</div>\n    <div class=\"x\">Units first: G1 duplicates the pinned 6-h day, chain stopped at G2. Centre 17&nbsp;350 h, corridor 11&nbsp;795&ndash;26&nbsp;330, reserve = raw class tails. Explained 83% against RC65-1; overshoot against RC65-2.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">0</span><div class=\"body\">\n    <div class=\"t\">No method &times;20 &middot; runs 41 and 43, added by the author after the run</div>\n    <div class=\"x\">The requirements and the assumption log handed to a bare agent with no sensor definition, ten times on 26 August and ten more on 27 August, one permitted file read each. Each run declared its own P10&ndash;P90; each is drawn as its own thin curve and none is pooled. Not part of the run-61 estimate: the child was told not to read earlier runs, and this family is the control drawn beside every FaxRxTx report.</div>\n  </div></div>\n</div>\n<h4>Two coordinates, not one</h4>\n<p>An estimate is a property of the triple <b>(project &times; engine &times; model)</b>. Every sensor on this estimate ran on Claude Opus 5 (alias <code>opus</code>, recorded per turn as <code>claude-opus-5</code>), so the model coordinate is held fixed. Claude Code 2.1.270; every prompt reached its sensor byte-identical; every turn ended <code>end_turn</code>.</p>",
    "src": "PIPELINE.md &middot; docs/instrument.md"
   },
   {

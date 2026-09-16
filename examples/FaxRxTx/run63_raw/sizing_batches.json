@@ -1,0 +1,52 @@
+{
+ "crossing_run": 62,
+ "model": "run61_raw/HM61-1.md",
+ "model_id": "HM61-1",
+ "batches": {
+  "A": [
+   "N10"
+  ],
+  "B": [
+   "N20",
+   "N30"
+  ],
+  "C": [
+   "N40",
+   "N50",
+   "N60",
+   "N70",
+   "N80",
+   "N90"
+  ],
+  "D": [
+   "L39",
+   "L56"
+  ]
+ },
+ "prompts": {
+  "A": {
+   "file": "prompt_size_A.md",
+   "sized": 12,
+   "chars": 9493,
+   "md5": "bba73201a3db407c3d6d7c47247ea1ef"
+  },
+  "B": {
+   "file": "prompt_size_B.md",
+   "sized": 25,
+   "chars": 13725,
+   "md5": "1569143922f1ef3633d24b5431273ef4"
+  },
+  "C": {
+   "file": "prompt_size_C.md",
+   "sized": 29,
+   "chars": 13696,
+   "md5": "356ced4d0d57a39b9e8eee0275d38166"
+  },
+  "D": {
+   "file": "prompt_size_D.md",
+   "sized": 2,
+   "chars": 6637,
+   "md5": "3ba460367bd0c7cf9bf24051ce54841e"
+  }
+ }
+}

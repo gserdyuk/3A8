@@ -76,7 +76,9 @@ def main():
             ids = ELEMENT.findall(line)
             if len(ids) < 3:
                 continue
-            keys = re.findall(r'"([^"]+)"', line) + re.findall(r'\*\*([^*]+)\*\*\s*=', line) + re.findall(r'^\s*-?\s*\**(\w+)\**\s*(?:=|below means)', line)
+            # a group is defined as `**NAME** = …`, `**NAME** is/are the …`, `"NAME" …` or `NAME below means …`
+            keys = (re.findall(r'"([^"]+)"', line) + re.findall(r'\*\*([^*]+)\*\*\s*(?:=|\bis\b|\bare\b|\bdenotes\b|\bmeans\b)', line)
+                    + re.findall(r'^\s*-?\s*\**(\w+)\**\s*(?:=|below means|\bis\b|\bare\b)', line))
             for k in keys:
                 groups[k.strip().lower()] = ids
         k1, prev, declared = None, [], 0

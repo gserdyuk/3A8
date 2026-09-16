@@ -1,0 +1,140 @@
+=== assembly: FaxRxTx · model HM61-1 (84 elements, 68 leaves, 16 parents) · crossing run 62 · sizing run 63 · 2 repeats
+=== declared: K-BESPOKE, A-TB, C-DIRECT, D-TEAM, E-DSP, G-SEED, U-OPS-USER, SA-NONE · environments ['dev', 'stage', 'prod'] · test cycles 2 · UAT cycles 0 · migration rehearsals 0 · model bracket M
+=== repeat 1: sized 64 · distribution {'S': 33, 'M': 26, 'L': 4, 'XL': 1} · unsizeable ['L27', 'L38', 'L51', 'L56']
+  element leaf E (incl. root per-parent items): 6576.7 h
+  C3 all parents:                               3143.9 h   of which root C3: 1315.3
+  once + per-environment layer [M]:            373.0 h  (16 items)
+  GRAND TOTAL:                                  10094 net person-hours  (= 1261.7 pd at 8 h)
+  corridor, rho = 0.5:  sd 1648 h · P10 7982 · P90 12206  (x0.79 / x1.21 of the centre)
+  XL leaves 1, own effort 189.0 h: L15
+  named holes (27):
+      ('L27', 'K1', 'unsizeable (M10)')
+      ('L27', 'K2', 'unsizeable (M10)')
+      ('L27', 'A2', 'unsizeable (M10)')
+      ('L27', 'A3', 'unsizeable (M10)')
+      ('L27', 'A4', 'unsizeable (M10)')
+      ('L32', 'G1', 'special count unsizeable')
+      ('L32', 'G2', 'special count unsizeable')
+      ('L32', 'G3', 'special count unsizeable')
+      ('L38', 'K1', 'unsizeable (M10)')
+      ('L51', 'K1', 'unsizeable (M10)')
+      ('L38', 'K2', 'unsizeable (M10)')
+      ('L51', 'K2', 'unsizeable (M10)')
+      ('L38', 'A2', 'unsizeable (M10)')
+      ('L51', 'A2', 'unsizeable (M10)')
+      ('L38', 'A3', 'unsizeable (M10)')
+      ('L51', 'A3', 'unsizeable (M10)')
+      ('L38', 'A4', 'unsizeable (M10)')
+      ('L51', 'A4', 'unsizeable (M10)')
+      ('L51', 'A10', 'unsizeable (M10)')
+      ('L38', 'G1', 'special count unsizeable')
+      ('L38', 'G2', 'special count unsizeable')
+      ('L38', 'G3', 'special count unsizeable')
+      ('L56', 'K1', 'unsizeable (M10)')
+      ('L56', 'K2', 'unsizeable (M10)')
+      ('L56', 'A2', 'unsizeable (M10)')
+      ('L56', 'A3', 'unsizeable (M10)')
+      ('L56', 'A4', 'unsizeable (M10)')
+=== repeat 2: sized 63 · distribution {'S': 34, 'M': 25, 'L': 4, 'XL': 0} · unsizeable ['L27', 'L38', 'L46', 'L51', 'L56']
+  element leaf E (incl. root per-parent items): 6350.5 h
+  C3 all parents:                               3023.0 h   of which root C3: 1270.1
+  once + per-environment layer [M]:            373.0 h  (16 items)
+  GRAND TOTAL:                                  9747 net person-hours  (= 1218.3 pd at 8 h)
+  corridor, rho = 0.5:  sd 1601 h · P10 7695 · P90 11798  (x0.79 / x1.21 of the centre)
+  XL leaves 0, own effort 0.0 h: 
+  named holes (31):
+      ('L27', 'K1', 'unsizeable (M10)')
+      ('L27', 'K2', 'unsizeable (M10)')
+      ('L27', 'A2', 'unsizeable (M10)')
+      ('L27', 'A3', 'unsizeable (M10)')
+      ('L27', 'A4', 'unsizeable (M10)')
+      ('L32', 'G1', 'special count unsizeable')
+      ('L32', 'G2', 'special count unsizeable')
+      ('L32', 'G3', 'special count unsizeable')
+      ('L38', 'K1', 'unsizeable (M10)')
+      ('L51', 'K1', 'unsizeable (M10)')
+      ('L38', 'K2', 'unsizeable (M10)')
+      ('L51', 'K2', 'unsizeable (M10)')
+      ('L46', 'K3', 'unsizeable (M10)')
+      ('L38', 'A2', 'unsizeable (M10)')
+      ('L51', 'A2', 'unsizeable (M10)')
+      ('L38', 'A3', 'unsizeable (M10)')
+      ('L51', 'A3', 'unsizeable (M10)')
+      ('L38', 'A4', 'unsizeable (M10)')
+      ('L51', 'A4', 'unsizeable (M10)')
+      ('L51', 'A10', 'unsizeable (M10)')
+      ('L38', 'G1', 'special count unsizeable')
+      ('D03', 'G1', 'special count unsizeable')
+      ('L38', 'G2', 'special count unsizeable')
+      ('D03', 'G2', 'special count unsizeable')
+      ('L38', 'G3', 'special count unsizeable')
+      ('D03', 'G3', 'special count unsizeable')
+      ('L56', 'K1', 'unsizeable (M10)')
+      ('L56', 'K2', 'unsizeable (M10)')
+      ('L56', 'A2', 'unsizeable (M10)')
+      ('L56', 'A3', 'unsizeable (M10)')
+      ('L56', 'A4', 'unsizeable (M10)')
+=== composition, repeat 1 - per top-level subtree: element items + C3 inside the subtree
+   N10    Inbound fax path                         elements  15  items   1402 h  C3    477 h  subtotal   1878 h
+   N20    Outbound fax path                        elements  25  items   2020 h  C3    741 h  subtotal   2761 h
+   N30    Job orchestration                        elements   5  items    424 h  C3     85 h  subtotal    508 h
+   N40    Processing cluster                       elements   8  items    659 h  C3    204 h  subtotal    862 h
+   N50    Storage and records                      elements   9  items    435 h  C3     87 h  subtotal    522 h
+   N60    NOC                                      elements   5  items    346 h  C3     69 h  subtotal    416 h
+   N70    User portal                              elements   5  items    319 h  C3     64 h  subtotal    382 h
+   N80    Old system coexistence                   elements   4  items    176 h  C3     35 h  subtotal    211 h
+   N90    System-wide properties                   elements   5  items    337 h  C3     67 h  subtotal    404 h
+   L39    Inter-component API                      elements   1  items     65 h  C3      0 h  subtotal     65 h
+   L56    First-version core function set, as repl elements   1  items      4 h  C3      0 h  subtotal      4 h
+   root own per-parent items 391 h · root C3 1315 h · once/per-env 373 h
+=== composition, repeat 1 - per activity (element-attached items only, hours)
+   K2      1095  element implementation
+   A6      1000  defect resolution
+   A3       873  unit and component test implementation
+   A5       669  test execution
+   A7       600  automated regression suite
+   K1       499  element design
+   A2       447  test design
+   D4       355  requirement elaboration
+   D2       332  planning and tracking
+   A4       224  code review
+   A8       179  test data preparation
+   O1       112  user documentation
+   A10       99  interface contract testing
+   G2        30  seed data preparation and load
+   K3        30  statement realisation and evidence
+   G1        22  seed data set specification
+   G3        11  load reconciliation
+=== once / per-environment items:
+   A1 test strategy [bracket]                           E =  29.3
+   U1d production verification checklist [single]       E =   8.7
+   D1 mobilisation and set-up [bracket]                 E =  33.3
+   D3 status reporting and client communication [bracket] E =  34.7
+   D6 risk and dependency management [bracket]          E =  21.3
+   E1 environment: dev [S]                              E =   9.3
+   E1 environment: stage [M]                            E =  17.3
+   E1 environment: prod [L]                             E =  30.7
+   E2 build and deployment pipeline [bracket]           E =  30.7
+   E3 promotion procedure, defined and rehearsed [3 envs] E =  17.3
+   E4 configuration management and version control set-up [bracket] E =  13.3
+   E6 production cutover [bracket]                      E =  30.7
+   E7 hosting set-up: tenancy, capacity, runtime [3 envs] E =  46.7
+   O2 operational runbook [bracket]                     E =  24.7
+   O3 support handover pack [bracket]                   E =  20.7
+   O4 release notes [single]                            E =   4.3
+=== demanded ids (W6): F48, F49, F50, F51, F52 — absorbed or standing per the crossing's §6; a standing branch has no table row and is carried, not priced here
+=== size-class agreement: 68 elements in both, 3 differ (95.6% agree)
+      ('L04', 'M', 'S')
+      ('L15', 'XL', 'S')
+      ('L46', 'S', None)
+=== statement-kind divergences: []
+=== special-count divergences: [('D03', 'S', None)]
+=== repeat spread: 9747 .. 10094 net person-hours (x1.0356); centre 9920 h
+=== tree: 84 elements, 68 leaves, 16 parents; mean leaf depth 2.49
+=== unit: net hours of work on the task (docs/instrument.md section 0). Leave, holidays, sickness and presence are NOT included.
+=== run 63 read-time overlay (assemble_63.py), 5 entries:
+     HD63-A1.md D01: parser not found -> M  (reply: "2 entity kinds need pre-loading, so the class is **M**")
+     HD63-C1.md L01: parser not found -> M  (reply: "**L01, count 2, M.**")
+     HD63-C1.md D03: parser not found -> S  (reply: "**D03, count 1, S.**")
+     HD63-A2.md D01: parser not found -> M  (reply: "**Count: 2. Class: M.**")
+     HD63-B2.md L32: parser not found -> None  (reply: "**Count: 0.** No threshold row matches zero")

@@ -1,0 +1,172 @@
+{
+ "elements_classified": 83,
+ "classes": {
+  "aggregate": 15,
+  "behaviour": 39,
+  "interface": 9,
+  "store": 11,
+  "surface": 7,
+  "statement": 2
+ },
+ "leaves_classed_aggregate": [],
+ "nodes_not_aggregate": [],
+ "batch_totals_printed_vs_parsed": {
+  "A": [
+   97,
+   97
+  ],
+  "B": [
+   190,
+   190
+  ],
+  "C": [
+   222,
+   222
+  ],
+  "D": [
+   12,
+   12
+  ]
+ },
+ "row_count_mismatches": 0,
+ "items": 521,
+ "items_by_activity": {
+  "A10": 9,
+  "A2": 66,
+  "A3": 66,
+  "A4": 66,
+  "A5": 30,
+  "A6": 30,
+  "A7": 15,
+  "A8": 15,
+  "D2": 15,
+  "D4": 56,
+  "G1": 5,
+  "G2": 5,
+  "G3": 5,
+  "K1": 66,
+  "K2": 66,
+  "K3": 2,
+  "O1": 4
+ },
+ "elements_crossed": 83,
+ "items_per_crossed_element": 6.28,
+ "elements_untouched": [],
+ "refusals_filter": 40,
+ "refusals_judgement": 18,
+ "filters_by_activity": {
+  "A9": 2,
+  "D4": 27,
+  "O1": 11
+ },
+ "judgements": [
+  [
+   "C",
+   "L36",
+   "G1",
+   "The fax archive holds only faxes produced by operation, so nothing needs to be in it befor"
+  ],
+  [
+   "C",
+   "L36",
+   "G2",
+   "The fax archive has nothing to seed or load."
+  ],
+  [
+   "C",
+   "L36",
+   "G3",
+   "No load, so nothing to reconcile."
+  ],
+  [
+   "C",
+   "L37",
+   "G1",
+   "The working-file area is transient scratch space and has no seed content."
+  ],
+  [
+   "C",
+   "L37",
+   "G2",
+   "Transient area, nothing to load."
+  ],
+  [
+   "C",
+   "L37",
+   "G3",
+   "No load, so nothing to reconcile."
+  ],
+  [
+   "C",
+   "L49",
+   "G1",
+   "Call detail records (CDRs) are produced by operation and have no seed content."
+  ],
+  [
+   "C",
+   "L49",
+   "G2",
+   "The CDR store has nothing to load."
+  ],
+  [
+   "C",
+   "L49",
+   "G3",
+   "No load, so nothing to reconcile."
+  ],
+  [
+   "C",
+   "L50",
+   "G1",
+   "The content names the store for billing data the system writes; no seed content is declare"
+  ],
+  [
+   "C",
+   "L50",
+   "G2",
+   "Output store with nothing to load."
+  ],
+  [
+   "C",
+   "L50",
+   "G3",
+   "No load, so nothing to reconcile."
+  ],
+  [
+   "C",
+   "D06",
+   "G1",
+   "The index is built from the archive contents, not seeded."
+  ],
+  [
+   "C",
+   "D06",
+   "G2",
+   "Derived index with nothing to load."
+  ],
+  [
+   "C",
+   "D06",
+   "G3",
+   "No load, so nothing to reconcile."
+  ],
+  [
+   "C",
+   "D11",
+   "G1",
+   "The event and alarm log is written by operation and has no seed content."
+  ],
+  [
+   "C",
+   "D11",
+   "G2",
+   "Log store with nothing to load."
+  ],
+  [
+   "C",
+   "D11",
+   "G3",
+   "No load, so nothing to reconcile."
+  ]
+ ]
+}

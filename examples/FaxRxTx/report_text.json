@@ -1,78 +1,194 @@
 {
- "_note": "Test input of the generic assembler, 2026-09-16: prose taken from the 2026-08-26 report. Replaced by the run's own file when the case is estimated again through the plugin.",
- "subject": "Case FaxRxTx / Venali &middot; worldwide fax platform, 2007&ndash;2009 &middot; <b>outcome known</b> &middot; test build of the generic report assembler",
- "standfirst": "The validation case &mdash; the only one this project has with a documented outcome. The chain was run end to end and the number written down and closed <b>before</b> the outcome was opened. A reference-class reading was taken separately, in ignorance of the chain, and lands on the other side of the outcome. This build reproduces the report of 2026-08-26 through the generic assembler, with the parametric instrument taken off the chart at the author's request and the no-method family of runs 41 and 43 added; no figure is new.",
- "hint": "<b>Two views of the same distributions.</b> Above, how likely each answer is &mdash; all curves on one scale, each enclosing the same area. Below, the same thing accumulated: <b>the chance of coming in at or under any figure</b>. <b>Move the pointer</b> and a read line crosses both panels, reporting the chance of exceeding that figure under each instrument. The red bell is the table-priced chain, <b>uncalibrated</b> &mdash; Steps B&ndash;D never ran on this case &mdash; and its width is the rate table's O/M/P spread under a declared &rho; = 0.5, a convention. The dotted blue curve is the outside view, a lognormal fitted to its declared quantiles; its tail is drawn to P95 and its P99 is off scale. <b>The twenty thin ochre curves</b> are the no-method baseline (runs 41 and 43): the same requirements and assumption log handed to a bare agent with no method, twenty times, each run's own P10&ndash;P90 fitted as a lognormal, drawn as a family and never pooled. Their medians spread &times;1.85 and their mean sits &times;1.78 above the chain and above the outcome; the chain is the narrower and the nearer reading, and the family shows what the bare model does with the same text. The black line is the documented outcome, 120 staffed person-months restated in this unit.",
- "chain_legend_note": null,
- "against_outcome_note": "Inside the &times;1.3 gate. The outcome sits at about P85 of the declared corridor and below the outside view's median.",
- "repeat_note": "Two independent size classifications, 87.3% class agreement, priced from the same table: 1 400.4 and 1 446.0 person-days.",
- "outside_note": "Funded seats &times; time, all roles &mdash; <b>the same unit the outcome is recorded in</b>; 140 person-months against an outcome of 120.",
- "outcome": {
-  "count": "&times;1.17 &middot; ~P85",
-  "lead": "This is the only case in the project with a documented outcome, and the only place any of the method's claims can be scored at all.",
+ "title": "FaxRxTx estimate",
+ "headline": "FaxRxTx &mdash; the estimate, end to end",
+ "subject": "Case FaxRxTx &middot; worldwide fax send/receive back-end, second version (Venali, 2007&ndash;2009) &middot; a participant's recollection &middot; <b>outcome known, opened after the estimate</b>",
+ "standfirst": "A fresh end-to-end estimate on the current chain: a product model, a work model and size classes by three isolated sensors, priced from a pinned table of external norms; an outside view by two independent launches; gap-blind Step C rates; a diagnosis that reconciled the units before attributing anything. The answer is 17&nbsp;350 net task hours (about 152 staffed person-months), a rate corridor of 11&nbsp;795&ndash;26&nbsp;330, and an unresolved class tail. The remembered outcome, opened only after the document was fixed, is 120 staffed person-months &mdash; the centre is &times;1.26 above it, inside the corridor.",
+ "hint": "<b>What each width is.</b> The red bell is the calibrated centre with the chain's O/M/P co-variation at an <b>assumed</b> &rho; = 0.5, scaled by the calibration &mdash; it does not contain the product-model spread (&times;1.10 on leaves here), the rate table being one sample, the team's grade, or the unit-factor dispute. The grey band is the Step C rate envelope (all lows, all highs) &mdash; <b>not percentiles</b>. The blue curves are two launches of the outside view: their width is the heterogeneity of the class; the distance between them (&times;1.57 at P50) is the level uncertainty between readings and is not a width. Each outside curve was converted from its own declared unit (RC65-1: recorded 168-h months &times;126 net h; RC65-2: staffed months &times;114.5). The black mark is the outcome as remembered, &plusmn;20%. <b>The twenty thin ochre curves</b> are the no-method control (runs 41 and 43, 26&ndash;27 August): the same requirements and assumption log handed to a bare agent with no method, twenty times, each run's own P10&ndash;P90 fitted as a lognormal, drawn as a family and never pooled. Added by the author beside the run-61 estimate; not a reading of this run.",
+ "chain_legend_note": "raw chain 10&nbsp;020 h &times;1.73, run 67",
+ "centre_note": "17&nbsp;350 net task hours (17&nbsp;100&ndash;17&nbsp;597) &mdash; the table-priced chain 10&nbsp;020 &times; the gap-blind Step C chain to G2, <b>&times;1.73</b>. &asymp; 152 staffed pm at 114.5 h.",
+ "calibration_note": "The envelope of the Step C rates, all lows and all highs together, both sizing repeats. <b>Not percentiles.</b> 11&nbsp;795 &ndash; 26&nbsp;330 net task hours &asymp; 103&ndash;230 staffed pm.",
+ "outside_note": "RC65-1 and RC65-2, each in its own unit, converted by the pinned convention; &times;1.57 apart. Not averaged.",
+ "against_outcome_note": "outcome / centre: the calibrated centre is <b>&times;1.26 above</b> the remembered 120 pm and just above its own &plusmn;20% band; the raw chain was &times;1.37 below.",
+ "repeat_note": "Two independent size classifications of one product model, 95.6% class agreement, priced from the same table. The product-model pair (&times;1.10 on leaves) is not in this figure.",
+ "reserve_value": "Unresolved",
+ "reserve_note": "The raw class tails, uncalibrated: RC65-1 P80 30&nbsp;240 / P90 39&nbsp;060; RC65-2 P80 20&nbsp;038 / P90 27&nbsp;480 net task hours. The centre sits below RC65-1's P50 and between RC65-2's P50 and P80.",
+ "divergence": {
+  "count": "&times;1.20 &ndash; &times;1.89 raw",
+  "lead": "Units first, then blind spots; the two outside launches disagree with each other more than the chain disagrees with one of them.",
   "rows": [
    {
-    "idx": "gate",
-    "title": "The chain lands inside the &times;1.3 gate",
-    "chip": "&times;1.17",
+    "idx": "units",
+    "title": "Units component sized before anything was attributed",
+    "chip": "31% / 68% of the unit-blind gap",
+    "chip_cls": "blue",
+    "text": "Read unit-blind (each outside month as 168 h), the outside view sits &times;2.5 and &times;1.8 above the chain. Converted by the pinned convention, the gaps are &times;1.89 (RC65-1) and &times;1.20 (RC65-2). The factor itself is disputed: 100&ndash;146 net h per RC65-1 month, 101&ndash;133 per RC65-2 month."
+   },
+   {
+    "idx": "G1",
+    "title": "A calibration factor that was a unit",
+    "chip": "double count caught",
     "chip_cls": "red",
-    "text": "11 386 net task hours against an outcome of about 13 304 (120 staffed person-months at the case's own conversion, run 33). The number was written down and closed before the outcome was opened (run 32)."
+    "text": "Step C's G1 (within-day overhead &times;1.25) turns net task hours into attended hours &mdash; the same step as the pinned 6-net-hours-a-day conversion. The chain is taken to G2 in net hours; the conversion to months replaces G1. Converting the post-G1 figure again would read &times;1.58 against the outcome."
+   },
+   {
+    "idx": "scope",
+    "title": "Refused rows and holes",
+    "chip": "+3 509 h",
+    "chip_cls": "caution",
+    "text": "Immersion (W-F48) and the parallel-run comparison (W-F50) were refused as rows for undeclared headcount and period; Step C priced them as COCOMO II phase shares (T3 +999, T4 +874). Holes and closure findings, account load and performance testing priced through the table (+1&nbsp;012); PM residual T5 +624."
+   },
+   {
+    "idx": "systemic",
+    "title": "Era, learning curve, complexity, growth",
+    "chip": "+3 819 h",
+    "chip_cls": "caution",
+    "text": "G2 era tooling and domain learning curve &times;1.15 (+2&nbsp;263, the largest and lowest-confidence item); T2 unnamed requirement growth &times;1.12 (+1&nbsp;294); T1 complexity of the hand-built orchestration and cluster &times;1.17 (+262)."
+   },
+   {
+    "idx": "residual",
+    "title": "Explained share, per reading",
+    "chip": "83% / overshoot",
+    "chip_cls": "blue",
+    "text": "Against RC65-1: 83% explained, residual +1&nbsp;552 h whose sign flips across the unit band. Against RC65-2: the corrections overshoot &mdash; the calibrated centre is &times;1.44 above its P50 at every factor. Not closed by adjustment."
+   }
+  ],
+  "stepc_bullets": [
+   "<b>No generic uplift</b> for testing, integration or rework &mdash; the coverage report showed the chain carries them heavily.",
+   "<b>Omissions itemised</b> (A1&ndash;A4) instead of a blanket percentage, which kept T2 at &times;1.12 rather than ~&times;1.25.",
+   "<b>A5 (cluster build-out) unpriceable</b> &mdash; the table has no XL row for environments or hosting.",
+   "<b>Two globals exactly</b>: G1 (later ruled a unit) and G2."
+  ],
+  "false_convergence": "The calibrated centre lands &times;0.92 of RC65-1 &mdash; weak evidence: RK66's phase and complexity factors and RC65-1's anchor A-3 both come from COCOMO II, the agreement sits inside the unit band, and it is disagreement with RC65-2. The raw chain's &times;1.20 closeness to RC65-2 was a coincidence of an incomplete chain and a low-anchored reading.",
+  "src": "examples/FaxRxTx/run67_steps_BD.md"
+ },
+ "outcome": {
+  "count": "&times;1.26 high &middot; inside the corridor",
+  "lead": "Opened after the estimate document was fixed. A participant's memory, &plusmn;20%; the presence convention post-dates this outcome, so the case can be learned from and does not score.",
+  "rows": [
+   {
+    "idx": "fact",
+    "title": "~10 people &times; ~1 year = 120 staffed pm",
+    "chip": "13 745 h",
+    "chip_cls": "",
+    "text": "&times;114.5 net task hours per staffed month (docs/constants.md &sect;4a); the participant's own band 96&ndash;144 pm = 10&nbsp;996&ndash;16&nbsp;494 h."
+   },
+   {
+    "idx": "centre",
+    "title": "Calibrated centre 17 350 h",
+    "chip": "&times;1.26 high",
+    "chip_cls": "red",
+    "text": "Above the outcome's own band by &times;1.05. Without G2 the centre would read &times;1.10; without T3&ndash;T5 &times;1.05 &mdash; observations about where the miss sits, not corrections."
    },
    {
     "idx": "corridor",
-    "title": "The outcome sits at about P85 of the declared corridor",
-    "text": "The corridor is the rate table's O/M/P spread under &rho; = 0.5, a convention; that the outcome falls inside it at P85 is one observation, not a calibration."
+    "title": "Rate corridor 11 795&ndash;26 330 h",
+    "chip": "contains",
+    "chip_cls": "blue",
+    "text": "The outcome sits 13% of the way up the envelope. The raw chain's &rho; = 0.5 band (7&nbsp;764&ndash;12&nbsp;337) does not contain it; the raw chain was &times;1.37 low."
    },
    {
-    "idx": "class",
-    "title": "The outside view lands on the other side",
-    "chip": "&times;1.17 high",
-    "chip_cls": "blue",
-    "text": "The class median, 140 person-months in the unit the outcome is recorded in, is &times;1.17 above the outcome where the chain is &times;0.86 below it. Neither is averaged."
+    "idx": "outside",
+    "title": "Outside view brackets it",
+    "chip": "&asymp;P30 / &asymp;P58",
+    "chip_cls": "",
+    "text": "RC65-1 P50 &times;1.38 high, RC65-2 P50 &times;0.87 low; the outcome sits near RC65-1's P30 and RC65-2's P58."
+   },
+   {
+    "idx": "gate",
+    "title": "Exit criterion v2.0",
+    "chip": "not evaluable",
+    "chip_cls": "caution",
+    "text": "End-to-end repeatability not measured (one product model priced); no human scale; one outcome in hand. Provenance held for the rates; the presence convention post-dates the outcome."
    }
   ],
-  "src": "examples/FaxRxTx/run32_fact_comparison.md &middot; run33_unit_of_the_fact.md"
+  "src": "examples/FaxRxTx/run68_fact_comparison.md"
  },
  "findings": {
-  "lead": "Produced without being asked for, by instruments whose job was something else.",
   "rows": [
    {
-    "idx": "sizing",
-    "title": "Four elements refused as unsizeable by both repeats",
-    "text": "A schema that names a platform and not an entity kind, a handler defined by a question, an integration interface with neither direction nor payload, a scope baseline that names no function. Named holes, never guessed (run 31)."
+    "idx": "F-1",
+    "title": "A pinned projection contaminated its consumer",
+    "chip": "both repeats refused",
+    "chip_cls": "red",
+    "text": "assumptions_product.md quotes the immersion stage's duration in the paragraph that says it was removed. Both product-model sensors stopped at &sect;1. The pinned file needs a new version."
    },
    {
-    "idx": "no method",
-    "title": "The bare model overshoots here and undershoots elsewhere",
-    "chip": "&times;1.78",
+    "idx": "F-2",
+    "title": "The crossing cannot see obligation texts",
+    "chip": "A9 refused",
     "chip_cls": "caution",
-    "text": "Twenty runs without a method land above the chain and above the outcome on this case; on SAS the same control landed at &times;0.75 of the chain. The sign of the no-method error is not a property of the model, it is a property of the text; that is why the control is drawn and never used."
+    "text": "It refused performance testing on a statement whose obligation (F36) states a measurable target, because its input carries coverage ids only. Performance testing entered through Step C."
+   },
+   {
+    "idx": "F-3",
+    "title": "Two parser gaps in tools/chain",
+    "chip": "silent drops",
+    "chip_cls": "caution",
+    "text": "The consolidator misses group definitions written as '**NAME** is &hellip;' (49 items); the assembler misses special counts written as 'so the class is **M**'. Both handled by read-time wrappers; the tools were not changed."
+   },
+   {
+    "idx": "F-4",
+    "title": "Step C's G1 is a unit step",
+    "chip": "request to the rate role",
+    "chip_cls": "blue",
+    "text": "A global 'net hours &rarr; working hours' factor overlaps the pinned presence conversion; the diagnosis asked for it to be restated as a unit step."
+   },
+   {
+    "idx": "F-5",
+    "title": "Demanded rows need an output-bounded form",
+    "chip": "catalogue",
+    "chip_cls": "caution",
+    "text": "W-F48 and W-F50 cannot be priced as worded (headcount &times; period). The rate author proposed per-candidate evaluation, per-decision records, a comparator build, per-discrepancy-class adjudication and per-week monitoring."
+   },
+   {
+    "idx": "F-6",
+    "title": "F47 as a leaf is unsizeable",
+    "chip": "both repeats",
+    "chip_cls": "",
+    "text": "'First-version core function set, as replaced' declares a set it never names; the sizing sensors asked for an inventory of the first version's core functions."
    }
   ],
-  "src": "examples/FaxRxTx/run31_whole_model_assembly.md &middot; run41_baseline_no_method.md &middot; run43_second_baseline_batch.md"
+  "src": "run61&ndash;run67 records"
  },
  "gaps": {
   "rows": [
    {
     "idx": "1",
-    "title": "Seven named holes",
-    "text": "Items the sizing sensors refused to size, listed by the assembly and priced at nothing."
+    "title": "W-F48 and W-F50 as rows; cluster build-out (A5)",
+    "chip": "awaiting a parameter",
+    "chip_cls": "caution",
+    "text": "Headcount and length of the immersion and parallel-run stages undeclared; no XL row for environments and hosting. W-F48/W-F50 enter only as Step C shares."
    },
    {
     "idx": "2",
-    "title": "No calibration",
-    "chip": "Steps B&ndash;D not run",
+    "title": "The second product model",
+    "chip": "&times;1.10 unpriced",
     "chip_cls": "caution",
-    "text": "The centre is the table-priced assembly as it stands; the gap-blind rate round and the diagnosis were not run on this case in this generation."
+    "text": "HM61-2 (75 leaves) was not crossed or sized; the end-to-end repeat is unmeasured."
    },
    {
     "idx": "3",
-    "title": "The rate table's level",
-    "text": "Uncalibrated against any outcome; this case is the one place it has been scored, once."
+    "title": "The table's level and its day convention",
+    "chip": "units question",
+    "chip_cls": "red",
+    "text": "External norms, uncalibrated; if its day-based sources meant assigned days, the chain is overstated &times;1.23&ndash;1.45."
+   },
+   {
+    "idx": "4",
+    "title": "Migration, v1 upkeep, hyper-care, security, team grade",
+    "chip": "no rate",
+    "chip_cls": "",
+    "text": "Outside the declaration or uncovered by any rate; the reverse audit that would check the additive design has never been run."
+   },
+   {
+    "idx": "5",
+    "title": "Tail events and calendar",
+    "chip": "class tail only",
+    "chip_cls": "",
+    "text": "Orchestration collapse, driver/OCR instability, a failed parallel run: in the class quantiles only. Effort-to-calendar not estimated."
    }
   ],
-  "src": "examples/FaxRxTx/run31_whole_model_assembly.md"
+  "src": "estimate_FaxRxTx_2026-09-16.md &sect;4"
  },
- "footer_fine": null,
- "nomethod_note": "Medians of twenty bare runs on the same text, in two batches a day apart; spread &times;1.85 between runs; each run declares a corridor of about &times;1.5 of its own. The mean sits at &times;1.78 of the chain and above the outcome &mdash; on this case the bare model overshoots where on SAS it undershot."
+ "nomethod_note": "Medians of twenty bare runs on the same text, in two batches a day apart; spread &times;1.85 between runs; each run declares a corridor of about &times;1.5 of its own. Their mean sits above the outcome and near the calibrated centre &mdash; on this case the bare model overshoots where on SAS it undershot."
 }

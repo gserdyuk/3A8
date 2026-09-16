@@ -55,6 +55,9 @@ within ×1.3 of actual on at least three, and the declared P10–P90 covers actu
   compared. **99.4 against 120 staffed person-months — ×1.21, inside the gate**, both classification
   repeats inside, nothing fitted on the case. It gets there *despite* a known ×8.5 under-pricing of
   one stage.
+  Re-estimated on 2026-09-16 by the packaged plugin alone, from the pinned inputs to the document and the
+  report, outcome sealed (`examples/FaxRxTx/run61_e2e_test.md`): raw chain ×0.73, calibrated centre ×1.26,
+  inside the gate; 22 sensor launches, one turn each, 46 minutes.
 - **BMS** (a training RFP of 2016 whose issuer is anonymised as "the issuer"; the source document itself is not in the repository; no outcome): the first full deliverable, 2026-08-22 —
   a centre with its calibration, a corridor with its sources named, the outside view with its tail,
   the scope that is in no number, and the questions that move the answer.

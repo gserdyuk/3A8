@@ -1,0 +1,82 @@
+{
+ "model": "run61_raw/HM61-1.md",
+ "model_id": "HM61-1",
+ "engine": "Hotyn-M 2.1",
+ "root": "N00",
+ "batches": {
+  "A": [
+   "N10"
+  ],
+  "B": [
+   "N20",
+   "N30"
+  ],
+  "C": [
+   "N40",
+   "N50",
+   "N60",
+   "N70",
+   "N80",
+   "N90"
+  ],
+  "D": [
+   "L39",
+   "L56"
+  ]
+ },
+ "prompts": {
+  "A": {
+   "file": "prompt_A.md",
+   "elements": 15,
+   "chars": 8192,
+   "md5": "5735a918072c8dc2a68e1e726e72b1e0"
+  },
+  "B": {
+   "file": "prompt_B.md",
+   "elements": 30,
+   "chars": 9125,
+   "md5": "75c757524ef35220b1ba1eb25b1f6a3e"
+  },
+  "C": {
+   "file": "prompt_C.md",
+   "elements": 36,
+   "chars": 9595,
+   "md5": "4906f0390454d25a03f445636f3d0e9d"
+  },
+  "D": {
+   "file": "prompt_D.md",
+   "elements": 2,
+   "chars": 9298,
+   "md5": "1768017472077fb49cb0986be35219ea",
+   "generated_md5": "fc7f2e67020e195dc4d875a05d94da89",
+   "orchestrator_edit": "F48 duration struck before launch; generated file kept as prompt_D.generated.md"
+  }
+ },
+ "demanded_ids": [
+  "F48",
+  "F49",
+  "F50",
+  "F51",
+  "F52"
+ ],
+ "declared": [
+  "K-BESPOKE",
+  "A-TB",
+  "C-DIRECT",
+  "D-TEAM",
+  "E-DSP",
+  "G-SEED",
+  "U-OPS-USER",
+  "SA-NONE"
+ ],
+ "parameters": {
+  "environments": [
+   "dev",
+   "stage",
+   "prod"
+  ],
+  "test_cycles": 2,
+  "uat_cycles": 0,
+  "migration_rehearsal_cycles": 0
+ }
+}
