@@ -204,7 +204,8 @@ def main():
         chart['parametric'] = [{'id': p['id'], 'median': pd(p['median_h']) if p.get('median_h') else p['median_pd'], 'sigma': p['sigma'], 'dash': p.get('dash', '6 3')} for p in N['parametric']]
         chart['legend'].append({'cls': 'teal dash', 'text': T.get('parametric_legend') or 'Parametric &mdash; ' + ', '.join(p['id'] for p in N['parametric'])})
     if N.get('nomethod_curves_file'):
-        chart['nomethod'] = json.load(open(os.path.join(case, N['nomethod_curves_file']), encoding='utf-8'))
+        nm = json.load(open(os.path.join(case, N['nomethod_curves_file']), encoding='utf-8'))
+        chart['nomethod'] = nm if isinstance(nm, list) else [{'id': k, **v} for k, v in nm.items()]   # list, or {id: {median, sigma}}
         meds = sorted(c['median'] for c in chart['nomethod'])
         chart['legend'].append({'cls': 'ochre', 'text': T.get('nomethod_legend') or 'No method &mdash; %d bare runs, one thin curve each, medians %s&ndash;%s' % (len(meds), fmt(meds[0]), fmt(meds[-1]))})
     if N.get('fact'):

@@ -1,33 +1,95 @@
 {
-  "_note": "Test input of the generic assembler (tools/report/make_report_data.py), 2026-09-16: the figures of the 2026-08-26 report restated in net task hours. Replaced by the run's own file when the case is estimated again through the plugin.",
-  "hours_per_pd": 8,
-  "dates_line": "estimate closed <b>22 Aug</b>, outcome opened after &middot; outside view read <b>22 Aug</b> &middot; parametric <b>26 Aug</b>",
-  "counts": {"elements": 97, "leaves": 79, "items": 570, "class_agreement_pct": 87.3, "repeat_spread": 1.033},
-  "chain": {"raw_centre_h": 11386, "raw_lo_h": 11203, "raw_hi_h": 11568, "sd_rho05_h": 1888, "source": "run 31 assembly (1 400.4 / 1 446.0 pd)"},
-  "calibration": null,
-  "outside": [
-    {"id": "class", "dash": "2 3", "unit_note": "140 person-months, funded seats × time, all roles",
-     "quantiles_h": {"0.1": 7760, "0.5": 15520, "0.8": 24944, "0.9": 32152, "0.95": 42128},
-     "lognormal": {"median_h": 15520, "sigma": 0.55}, "tail_drawn": true,
-     "beyond_label": "class · P99 = 8592, off scale →", "source": "run 29 / run 33 unit reconciliation"}
-  ],
-  "nomethod_curves_file": null,
-  "parametric": [
-    {"id": "parametric · China", "median_pd": 75.4, "sigma": 0.95, "dash": "6 3"},
-    {"id": "parametric · Kitchenham", "median_pd": 64.9, "sigma": 0.59, "dash": "2 3"}
-  ],
-  "fact": {"value_h": 13304, "label": "the outcome &mdash; 1663", "legend": "The documented outcome &mdash; 1663 (120 person-months)",
-           "note": "120 staffed person-months, a participant's memory at &plusmn;20%, restated in this unit by the case's own conversion (run 33)."},
-  "engines": {"model": "Claude Opus 5", "chain": "Hotyn-M 1.1 / Hotyn-W 1.1 / Hotyn-D 2.0 × rate table v0.1-h",
-              "outside": "Lytin-R 1.1", "parametric": "Hotyn-P 1.0 / Hotyn-N 1.0",
-              "model_note": "Every sensor on this case ran on Claude Opus 5, so the model coordinate is held fixed and the readings are engine-and-project readings only."},
-  "provenance": [
-    {"idx": "1", "title": "Product model &middot; n = 2 &middot; Hotyn-M 1.1", "text": "47 product obligations &rarr; 97 elements; the second reading differs &times;1.02 in structure. Produces no effort figure of any kind."},
-    {"idx": "2", "title": "Work model &middot; Hotyn-W 1.1", "text": "Crossed against the declared technology in three batches &rarr; 570 work items on 96 elements. Work the product needs but no declared activity covers is reported as a finding, never invented."},
-    {"idx": "3", "title": "Size classes &middot; n = 2 &middot; Hotyn-D 2.0", "text": "Each element classified by counting named things, the enumeration being the justification. Class agreement 87.3%; whole-chain repeat spread &times;1.033."},
-    {"idx": "4", "title": "Rate table", "chip": "uncalibrated", "chip_cls": "caution", "text": "External norms in net task hours, gap-blind: never saw a project total, a budget, or a gap a rate would explain."},
-    {"idx": "5", "title": "Outside view &middot; Lytin-R 1.1", "text": "Ran in ignorance of all of the above, the unit convention withheld so that it declared its own: funded seats &times; time, all roles &mdash; the same unit the outcome is recorded in."},
-    {"idx": "P", "title": "Parametric &middot; Hotyn-P 1.0 / Hotyn-N 1.0", "text": "Function points counted from the pinned obligation list by a sensor that never sees weights or effort, priced on two published effort curves. The functional shell only."},
-    {"idx": "F", "title": "The outcome", "text": "Sealed before the estimate, opened after the number was written down and closed (run 32)."}
-  ]
+ "_note": "Test input of the generic assembler, 2026-09-16: the figures of the 2026-08-26 report restated in net task hours, the parametric instrument dropped and the no-method family (runs 41, 43) added at the author's request. Replaced by the run's own file when the case is estimated again through the plugin.",
+ "hours_per_pd": 8,
+ "dates_line": "estimate closed <b>22 Aug</b>, outcome opened after &middot; outside view read <b>22 Aug</b> &middot; no-method batches <b>26&ndash;27 Aug</b>",
+ "counts": {
+  "elements": 97,
+  "leaves": 79,
+  "items": 570,
+  "class_agreement_pct": 87.3,
+  "repeat_spread": 1.033
+ },
+ "chain": {
+  "raw_centre_h": 11386,
+  "raw_lo_h": 11203,
+  "raw_hi_h": 11568,
+  "sd_rho05_h": 1888,
+  "source": "run 31 assembly (1 400.4 / 1 446.0 pd)"
+ },
+ "calibration": null,
+ "outside": [
+  {
+   "id": "class",
+   "dash": "2 3",
+   "unit_note": "140 person-months, funded seats × time, all roles",
+   "quantiles_h": {
+    "0.1": 7760,
+    "0.5": 15520,
+    "0.8": 24944,
+    "0.9": 32152,
+    "0.95": 42128
+   },
+   "lognormal": {
+    "median_h": 15520,
+    "sigma": 0.55
+   },
+   "tail_drawn": true,
+   "beyond_label": "class · P99 = 8592, off scale →",
+   "source": "run 29 / run 33 unit reconciliation"
+  }
+ ],
+ "nomethod_curves_file": "run43_raw/curves_pd.json",
+ "parametric": null,
+ "fact": {
+  "value_h": 13304,
+  "label": "the outcome &mdash; 1663",
+  "legend": "The documented outcome &mdash; 1663 (120 person-months)",
+  "note": "120 staffed person-months, a participant's memory at &plusmn;20%, restated in this unit by the case's own conversion (run 33)."
+ },
+ "engines": {
+  "model": "Claude Opus 5",
+  "chain": "Hotyn-M 1.1 / Hotyn-W 1.1 / Hotyn-D 2.0 × rate table v0.1-h",
+  "outside": "Lytin-R 1.1",
+  "model_note": "Every sensor on this case ran on Claude Opus 5, so the model coordinate is held fixed and the readings are engine-and-project readings only.",
+  "nomethod": "no sensor definition, 2 × 10 bare runs (runs 41, 43)"
+ },
+ "provenance": [
+  {
+   "idx": "1",
+   "title": "Product model &middot; n = 2 &middot; Hotyn-M 1.1",
+   "text": "47 product obligations &rarr; 97 elements; the second reading differs &times;1.02 in structure. Produces no effort figure of any kind."
+  },
+  {
+   "idx": "2",
+   "title": "Work model &middot; Hotyn-W 1.1",
+   "text": "Crossed against the declared technology in three batches &rarr; 570 work items on 96 elements. Work the product needs but no declared activity covers is reported as a finding, never invented."
+  },
+  {
+   "idx": "3",
+   "title": "Size classes &middot; n = 2 &middot; Hotyn-D 2.0",
+   "text": "Each element classified by counting named things, the enumeration being the justification. Class agreement 87.3%; whole-chain repeat spread &times;1.033."
+  },
+  {
+   "idx": "4",
+   "title": "Rate table",
+   "chip": "uncalibrated",
+   "chip_cls": "caution",
+   "text": "External norms in net task hours, gap-blind: never saw a project total, a budget, or a gap a rate would explain."
+  },
+  {
+   "idx": "5",
+   "title": "Outside view &middot; Lytin-R 1.1",
+   "text": "Ran in ignorance of all of the above, the unit convention withheld so that it declared its own: funded seats &times; time, all roles &mdash; the same unit the outcome is recorded in."
+  },
+  {
+   "idx": "0",
+   "title": "No method &times;20",
+   "text": "The requirements and the assumption log handed to a bare agent with no sensor definition, ten times on 26 August and ten more on 27 August, one permitted file read each. Each run declared its own P10&ndash;P90; each is drawn as its own thin curve and none is pooled. Their medians spread &times;1.85; their mean sits &times;1.78 above the chain and above the outcome."
+  },
+  {
+   "idx": "F",
+   "title": "The outcome",
+   "text": "Sealed before the estimate, opened after the number was written down and closed (run 32)."
+  }
+ ]
 }

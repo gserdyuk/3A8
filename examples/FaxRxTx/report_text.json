@@ -1,37 +1,78 @@
 {
-  "_note": "Test input of the generic assembler, 2026-09-16: prose taken from the 2026-08-26 report. Replaced by the run's own file when the case is estimated again through the plugin.",
-  "subject": "Case FaxRxTx / Venali &middot; worldwide fax platform, 2007&ndash;2009 &middot; <b>outcome known</b> &middot; test build of the generic report assembler",
-  "standfirst": "The validation case &mdash; the only one this project has with a documented outcome. The chain was run end to end and the number written down and closed <b>before</b> the outcome was opened. A reference-class reading was taken separately, in ignorance of the chain, and lands on the other side of the outcome. This build reproduces the report of 2026-08-26 through the generic assembler; no figure is new.",
-  "hint": "<b>Two views of the same distributions.</b> Above, how likely each answer is &mdash; all curves on one scale, each enclosing the same area. Below, the same thing accumulated: <b>the chance of coming in at or under any figure</b>. <b>Move the pointer</b> and a read line crosses both panels, reporting the chance of exceeding that figure under each instrument. The red bell is the table-priced chain, <b>uncalibrated</b> &mdash; Steps B&ndash;D never ran on this case &mdash; and its width is the rate table's O/M/P spread under a declared &rho; = 0.5, a convention. The dotted blue curve is the outside view, a lognormal fitted to its declared quantiles; its tail is drawn to P95 and its P99 is off scale. The two teal curves are the parametric instrument, function points priced on two published effort curves: they sit &times;22 below the outcome by design, because they price the functional shell only. The black line is the documented outcome, 120 staffed person-months restated in this unit.",
-  "chain_legend_note": null,
-  "against_outcome_note": "Inside the &times;1.3 gate. The outcome sits at about P85 of the declared corridor and below the outside view's median.",
-  "repeat_note": "Two independent size classifications, 87.3% class agreement, priced from the same table: 1 400.4 and 1 446.0 person-days.",
-  "outside_note": "Funded seats &times; time, all roles &mdash; <b>the same unit the outcome is recorded in</b>; 140 person-months against an outcome of 120.",
-  "outcome": {
-    "count": "&times;1.17 &middot; ~P85",
-    "lead": "This is the only case in the project with a documented outcome, and the only place any of the method's claims can be scored at all.",
-    "rows": [
-      {"idx": "gate", "title": "The chain lands inside the &times;1.3 gate", "chip": "&times;1.17", "chip_cls": "red", "text": "11 386 net task hours against an outcome of about 13 304 (120 staffed person-months at the case's own conversion, run 33). The number was written down and closed before the outcome was opened (run 32)."},
-      {"idx": "corridor", "title": "The outcome sits at about P85 of the declared corridor", "text": "The corridor is the rate table's O/M/P spread under &rho; = 0.5, a convention; that the outcome falls inside it at P85 is one observation, not a calibration."},
-      {"idx": "class", "title": "The outside view lands on the other side", "chip": "&times;1.17 high", "chip_cls": "blue", "text": "The class median, 140 person-months in the unit the outcome is recorded in, is &times;1.17 above the outcome where the chain is &times;0.86 below it. Neither is averaged."}
-    ],
-    "src": "examples/FaxRxTx/run32_fact_comparison.md &middot; run33_unit_of_the_fact.md"
-  },
-  "findings": {
-    "lead": "Produced without being asked for, by instruments whose job was something else.",
-    "rows": [
-      {"idx": "sizing", "title": "Four elements refused as unsizeable by both repeats", "text": "A schema that names a platform and not an entity kind, a handler defined by a question, an integration interface with neither direction nor payload, a scope baseline that names no function. Named holes, never guessed (run 31)."},
-      {"idx": "parametric", "title": "Function points price the shell", "chip": "&times;22 low &middot; by design", "chip_cls": "caution", "text": "23&ndash;27 of 52 obligations sit outside what function points count &mdash; telephony, routing, rendering, the points of presence. The parametric instrument's place on this chart is the measure of that."}
-    ],
-    "src": "examples/FaxRxTx/run31_whole_model_assembly.md &middot; run39_raw/"
-  },
-  "gaps": {
-    "rows": [
-      {"idx": "1", "title": "Seven named holes", "text": "Items the sizing sensors refused to size, listed by the assembly and priced at nothing."},
-      {"idx": "2", "title": "No calibration", "chip": "Steps B&ndash;D not run", "chip_cls": "caution", "text": "The centre is the table-priced assembly as it stands; the gap-blind rate round and the diagnosis were not run on this case in this generation."},
-      {"idx": "3", "title": "The rate table's level", "text": "Uncalibrated against any outcome; this case is the one place it has been scored, once."}
-    ],
-    "src": "examples/FaxRxTx/run31_whole_model_assembly.md"
-  },
-  "footer_fine": null
+ "_note": "Test input of the generic assembler, 2026-09-16: prose taken from the 2026-08-26 report. Replaced by the run's own file when the case is estimated again through the plugin.",
+ "subject": "Case FaxRxTx / Venali &middot; worldwide fax platform, 2007&ndash;2009 &middot; <b>outcome known</b> &middot; test build of the generic report assembler",
+ "standfirst": "The validation case &mdash; the only one this project has with a documented outcome. The chain was run end to end and the number written down and closed <b>before</b> the outcome was opened. A reference-class reading was taken separately, in ignorance of the chain, and lands on the other side of the outcome. This build reproduces the report of 2026-08-26 through the generic assembler, with the parametric instrument taken off the chart at the author's request and the no-method family of runs 41 and 43 added; no figure is new.",
+ "hint": "<b>Two views of the same distributions.</b> Above, how likely each answer is &mdash; all curves on one scale, each enclosing the same area. Below, the same thing accumulated: <b>the chance of coming in at or under any figure</b>. <b>Move the pointer</b> and a read line crosses both panels, reporting the chance of exceeding that figure under each instrument. The red bell is the table-priced chain, <b>uncalibrated</b> &mdash; Steps B&ndash;D never ran on this case &mdash; and its width is the rate table's O/M/P spread under a declared &rho; = 0.5, a convention. The dotted blue curve is the outside view, a lognormal fitted to its declared quantiles; its tail is drawn to P95 and its P99 is off scale. <b>The twenty thin ochre curves</b> are the no-method baseline (runs 41 and 43): the same requirements and assumption log handed to a bare agent with no method, twenty times, each run's own P10&ndash;P90 fitted as a lognormal, drawn as a family and never pooled. Their medians spread &times;1.85 and their mean sits &times;1.78 above the chain and above the outcome; the chain is the narrower and the nearer reading, and the family shows what the bare model does with the same text. The black line is the documented outcome, 120 staffed person-months restated in this unit.",
+ "chain_legend_note": null,
+ "against_outcome_note": "Inside the &times;1.3 gate. The outcome sits at about P85 of the declared corridor and below the outside view's median.",
+ "repeat_note": "Two independent size classifications, 87.3% class agreement, priced from the same table: 1 400.4 and 1 446.0 person-days.",
+ "outside_note": "Funded seats &times; time, all roles &mdash; <b>the same unit the outcome is recorded in</b>; 140 person-months against an outcome of 120.",
+ "outcome": {
+  "count": "&times;1.17 &middot; ~P85",
+  "lead": "This is the only case in the project with a documented outcome, and the only place any of the method's claims can be scored at all.",
+  "rows": [
+   {
+    "idx": "gate",
+    "title": "The chain lands inside the &times;1.3 gate",
+    "chip": "&times;1.17",
+    "chip_cls": "red",
+    "text": "11 386 net task hours against an outcome of about 13 304 (120 staffed person-months at the case's own conversion, run 33). The number was written down and closed before the outcome was opened (run 32)."
+   },
+   {
+    "idx": "corridor",
+    "title": "The outcome sits at about P85 of the declared corridor",
+    "text": "The corridor is the rate table's O/M/P spread under &rho; = 0.5, a convention; that the outcome falls inside it at P85 is one observation, not a calibration."
+   },
+   {
+    "idx": "class",
+    "title": "The outside view lands on the other side",
+    "chip": "&times;1.17 high",
+    "chip_cls": "blue",
+    "text": "The class median, 140 person-months in the unit the outcome is recorded in, is &times;1.17 above the outcome where the chain is &times;0.86 below it. Neither is averaged."
+   }
+  ],
+  "src": "examples/FaxRxTx/run32_fact_comparison.md &middot; run33_unit_of_the_fact.md"
+ },
+ "findings": {
+  "lead": "Produced without being asked for, by instruments whose job was something else.",
+  "rows": [
+   {
+    "idx": "sizing",
+    "title": "Four elements refused as unsizeable by both repeats",
+    "text": "A schema that names a platform and not an entity kind, a handler defined by a question, an integration interface with neither direction nor payload, a scope baseline that names no function. Named holes, never guessed (run 31)."
+   },
+   {
+    "idx": "no method",
+    "title": "The bare model overshoots here and undershoots elsewhere",
+    "chip": "&times;1.78",
+    "chip_cls": "caution",
+    "text": "Twenty runs without a method land above the chain and above the outcome on this case; on SAS the same control landed at &times;0.75 of the chain. The sign of the no-method error is not a property of the model, it is a property of the text; that is why the control is drawn and never used."
+   }
+  ],
+  "src": "examples/FaxRxTx/run31_whole_model_assembly.md &middot; run41_baseline_no_method.md &middot; run43_second_baseline_batch.md"
+ },
+ "gaps": {
+  "rows": [
+   {
+    "idx": "1",
+    "title": "Seven named holes",
+    "text": "Items the sizing sensors refused to size, listed by the assembly and priced at nothing."
+   },
+   {
+    "idx": "2",
+    "title": "No calibration",
+    "chip": "Steps B&ndash;D not run",
+    "chip_cls": "caution",
+    "text": "The centre is the table-priced assembly as it stands; the gap-blind rate round and the diagnosis were not run on this case in this generation."
+   },
+   {
+    "idx": "3",
+    "title": "The rate table's level",
+    "text": "Uncalibrated against any outcome; this case is the one place it has been scored, once."
+   }
+  ],
+  "src": "examples/FaxRxTx/run31_whole_model_assembly.md"
+ },
+ "footer_fine": null,
+ "nomethod_note": "Medians of twenty bare runs on the same text, in two batches a day apart; spread &times;1.85 between runs; each run declares a corridor of about &times;1.5 of its own. The mean sits at &times;1.78 of the chain and above the outcome &mdash; on this case the bare model overshoots where on SAS it undershot."
 }

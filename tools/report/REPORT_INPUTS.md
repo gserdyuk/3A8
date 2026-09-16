@@ -45,7 +45,8 @@ number that is not in a sensor's output, the assembly's output or the diagnosis.
 - `bottom_up_alt`, only for a second reading of the same instrument on the same case (another engine version or
   repeat): `[{"id", "centre_h", "sd_h", "dash"}]`. Never for another method.
 - `raw_marks`: extra ticks on the axis, `[{"value_h", "label", "lo_h", "hi_h"}]`.
-- `parametric`: `[{"id", "median_h" | "median_pd", "sigma", "dash"}]` for the function-point instrument.
+- `parametric`: `[{"id", "median_h" | "median_pd", "sigma", "dash"}]` for the function-point instrument; leave it `null` where the instrument prices the functional shell only and says nothing about the case (the author dropped it from the FaxRxTx report, 2026-09-16).
+- `nomethod_curves_file`: a JSON list `[{id, median, sigma}]` or a dict `{id: {median, sigma}}`, medians in person-days of the report unit, one entry per bare run; both forms the project has produced are read.
 - `axis_max_pd` overrides the computed axis end.
 
 ## `report_text.json` — the prose, written by the orchestrator from the run records
