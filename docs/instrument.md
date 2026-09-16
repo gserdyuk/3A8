@@ -207,7 +207,7 @@ python examples/FaxRxTx/run31_raw/assemble_faxrxtx.py
 ```
 
 ```bash
-python examples/BMS/run25_raw/assemble.py
+python examples/FaxRxTx/run31_raw/assemble_faxrxtx.py
 ```
 
 Each prints the total, the layer breakdown, the named holes and the repeat spread. Every sensor run

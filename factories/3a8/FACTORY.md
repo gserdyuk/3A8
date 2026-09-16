@@ -86,8 +86,8 @@ the record.
    the report is built by `tools/report/build_report.py`.
 
 Worked cases in `examples/`: **FaxRxTx** (real project, outcome sealed before
-the estimate, ×1.21 against actual), **BMS** (training RFP, full deliverable
-format), **SAS** (case 3, in progress).
+the estimate, ×1.21 against actual), **BMS** (training RFP, issuer anonymised, full deliverable
+format). A third case, SAS, is kept outside the public repository because its source document is not ours to publish.
 
 ## Standing and limits
 

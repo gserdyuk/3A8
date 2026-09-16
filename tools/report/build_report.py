@@ -2,7 +2,7 @@
 """
 Build an estimate report from a case data file.
 
-    python tools/report/build_report.py examples/BMS/report_data.json
+    python tools/report/build_report.py examples/FaxRxTx/report_data.json
 
 Writes  examples/<case>/reports/report_<YYYY-MM-DDTHHMM>.html  next to the data file
 and updates  examples/<case>/reports/README.md  with one line for the new report.

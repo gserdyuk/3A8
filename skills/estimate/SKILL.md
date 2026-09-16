@@ -49,7 +49,7 @@ the visibility matrix is `PIPELINE.md`. Nothing here overrides those; this is th
 
 ## The deliverable
 
-Written knowing nothing of the outcome, in the format of `examples/BMS/estimate_BMS_2026-08-22.md` (the SAS documents `estimate_SAS_2026-09-08.md` and `estimate_SAS_2026-09-16.md` are the fuller examples, kept outside the public repository in `examples/ignored/SAS`):
+Written knowing nothing of the outcome, in the format of `examples/BMS/estimate_BMS_2026-08-22.md` (the fuller SAS documents of 2026-09-08 and 2026-09-16 are kept outside the public repository, `examples/ignored/SAS`):
 
 - **the centre** and its calibration (what moved it and by how much);
 - **the corridor** with its sources named — today this comes from the outside view only;

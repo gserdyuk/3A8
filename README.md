@@ -55,7 +55,7 @@ within ×1.3 of actual on at least three, and the declared P10–P90 covers actu
   compared. **99.4 against 120 staffed person-months — ×1.21, inside the gate**, both classification
   repeats inside, nothing fitted on the case. It gets there *despite* a known ×8.5 under-pricing of
   one stage.
-- **BMS** (training RFP, no outcome): the only place the full deliverable format has been produced —
+- **BMS** (a training RFP of 2016 whose issuer is anonymised as "the issuer"; the source document itself is not in the repository; no outcome): the first full deliverable, 2026-08-22 —
   a centre with its calibration, a corridor with its sources named, the outside view with its tail,
   the scope that is in no number, and the questions that move the answer.
 - **Not yet scoreable:** the corridor test. The chain declares no P10–P90, and that is the one
@@ -78,7 +78,7 @@ Current state of every claim, including which documents are stale and how:
 - [`findings.md`](findings.md) — the working log: *why* the methodology is built the way it is.
 - `docs/sensors/` — one note per curve on the panel: how each sensor was conceived, what its width means, what was measured, what we want to change. Expected to disagree with the code; that is what they record.
 - [`BACKLOG.md`](BACKLOG.md) — open work, cheapest first. `sessions/` — one record per working session.
-- `examples/` — worked cases: `BMS`, `FaxRxTx`. Raw sensor output is transcribed verbatim under `run*_raw/`.
+- `examples/` — worked cases. Published: `BMS` (a training RFP, issuer anonymised, source document not included) and `FaxRxTx` (the author's own document, the one case with a known outcome). Kept outside the public tree because its source is not ours to publish: `SAS` (`examples/ignored/`, listed in `examples/README.md`). Raw sensor output is transcribed verbatim under `run*_raw/`.
 - `mars_model/` — hypothesis checks on open datasets (PROMISE); results and fitting code.
 
 ## Working method

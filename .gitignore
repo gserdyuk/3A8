@@ -230,3 +230,5 @@ examples/ignored/
 
 # papers and articles kept beside the project, never published from it
 literature/
+# Word lock files
+~$*
