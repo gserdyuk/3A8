@@ -195,6 +195,13 @@ outcome, both classification repeats inside the gate, nothing fitted on the case
 on conventions supplied after the estimate existed and therefore sets the **floor, not the standard**:
 for cases 2–4 the case profile is pinned before any estimate exists.
 
+**Re-run 2026-09-16 by the packaged instrument alone** (`/3a8:estimate`, runs 61–68,
+`examples/FaxRxTx/run61_e2e_test.md`). The actual effort of the FaxRxTx project, as its participant
+remembers it, is 120 staffed person-months (13 745 net task hours). The instrument, with that figure
+sealed until its estimate document was fixed, gave a calibrated centre of 17 350 h = 1.26 × the actual,
+from a raw chain of 10 020 h = 0.73 × the actual; the corridor 11 795–26 330 h contains the actual.
+Which runs count toward the criterion, and why, is a decision to be taken over the whole history, not here.
+
 Current state of every claim, and what stale documents say instead:
 `docs/status_2026-08-25.md`.
 
