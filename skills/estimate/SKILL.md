@@ -47,19 +47,45 @@ the visibility matrix is `PIPELINE.md`. Nothing here overrides those; this is th
 - Raw replies verbatim under `examples/<case>/run<N>_raw/`, one run record per step, one
   `MANIFEST.md`. The harness does not persist subagent output; those files are the record.
 
-## The deliverable
+## Step 7 — the deliverable: the estimate document and the report (yours, every run)
 
-Written knowing nothing of the outcome, in the format of `examples/BMS/estimate_BMS_2026-08-22.md` (the fuller SAS documents of 2026-09-08 and 2026-09-16 are kept outside the public repository, `examples/ignored/SAS`):
+The run is not finished when the diagnosis returns. It is finished when two artefacts exist in
+`examples/<case>/`, written by you from the run records and the sensors' outputs only. Nothing in them
+may be a number that is not in a sensor's output, the assembly's output or the diagnosis; every figure
+carries the run it came from.
 
-- **the centre** and its calibration (what moved it and by how much);
-- **the corridor** with its sources named — today this comes from the outside view only;
-  the chain declares no P10–P90 of its own (`docs/instrument.md` §4);
-- **the outside view** with its tail and its class-membership test;
-- **what is in no number**: the named holes, the scope forks declared in step 0, the
-  team-capability term the table does not carry;
-- **the questions that move the answer**, from `open_questions.md`.
+1. **`report_numbers.json`** — every figure of the chart and the tiles, in net task hours, with its
+   source run: the raw chain (centre, repeat band, the ρ = 0.5 sd from the assembly), the calibration
+   (centre band, corridor, central factor — or `null` if Steps C, B, D did not run), each outside-view
+   reading (its declared unit and its quantiles after the conversion the diagnosis applied), the
+   no-method family if one was run, the parametric readings if any, the outcome only if it exists and
+   has been opened, the engine versions and model, one provenance row per sensor. Schema and an example:
+   `tools/report/REPORT_INPUTS.md`.
+2. **`report_text.json`** — the prose slots: subject, standfirst, the paragraph under the chart (say
+   what each curve's width is and is not — `docs/sensors/README.md`), the divergence rows from Steps
+   B–D, the findings, the estimate gaps, the outcome rows if there is one. Same schema file.
+3. Build:
 
-Built reports: `tools/report/build_report.py` from `report_data.json`; never overwrite a build.
+   ```bash
+   python tools/report/make_report_data.py examples/<case>
+   python tools/report/build_report.py examples/<case>/report_data.json
+   ```
+
+   The first joins the two files with the case's own `requirements_*.md`, `open_questions.md` and
+   `assumptions.md` into `report_data.json`; the second writes `reports/report_<timestamp>.html` and a
+   line in `reports/README.md` — fill that line's `_(fill in)_` with one sentence on what this build
+   shows. **Never overwrite a build**; a new run is a new file beside the old ones.
+4. **`estimate_<case>_<date>.md`** — the document, from `docs/templates/estimate_document.md`: the
+   answer in three parts, what the diagnosis established, what is inside the centre, what is in no
+   number by name, the decisions and questions that move the answer, provenance. Written knowing
+   nothing of the outcome; if an outcome exists, Step 6 comes after this document is fixed, and its
+   comparison goes into the run record, not into the document's centre. Worked example:
+   `examples/BMS/estimate_BMS_2026-08-22.md`.
+
+Every curve on the chart is a sensor's reading or the assembly's; a curve from a retired engine version
+is not one of this instrument's readings and does not go on the chart — it may be a tile and a
+paragraph. Two readings of one instrument (two engine versions, two repeats) may be drawn together as
+`bottom_up_alt`, dashed, and are never averaged.
 
 ## What full convergence would mean
 

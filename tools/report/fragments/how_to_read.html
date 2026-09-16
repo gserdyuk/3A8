@@ -1,0 +1,27 @@
+<p>Both instruments produce a distribution. The outside view produces quantiles natively; the
+bottom-up's range comes from the optimistic, most-likely and pessimistic value in every rate cell,
+summed under a <b>declared</b> item correlation of &rho; = 0.5 &mdash; independent items would claim
+the total is known to about &plusmn;2%, perfectly correlated ones would give about &times;1.9, and the
+truth is certainly neither. Across &rho; from 0.25 to 0.75 the band edges move about &plusmn;20%. The
+width of the red bell is therefore a property of the rate table and of that convention, not of the
+project; what each curve's width does and does not contain is tabulated in <code>docs/sensors/README.md</code>.</p>
+<h4>Curves that must not be read as one</h4>
+<p>Each curve answers a different question. The outside view says where projects of this class landed
+against their early estimates &mdash; that width is the class's heterogeneity, the risk of the project.
+The bottom-up says what this work costs at the pinned rates &mdash; its width is the rates' spread under
+the declared correlation. A no-method family says what a bare model guesses on the same text, one thin
+curve per run, never pooled &mdash; its spread is the model's, not the project's. A parametric curve
+prices the functional shell only. Two readings of the outside view are one sensor run twice on the same
+input; where they disagree, the distance between them is that sensor's own uncertainty about the level,
+and neither is averaged with the other. <b>Only the marked quantiles are readings; the curve between
+them is interpolation.</b></p>
+<h4>The unit, and the one conversion applied</h4>
+<p>Net hours of work on the task, shown as person-days of 8 such hours. <b>Leave, public holidays and
+sickness are not in these numbers</b>, and neither is any notion of calendar or headcount. Every sensor
+declares its own unit before its figures; the class readings are converted to task hours by the factor
+their own declarations contain, applied to the class side only &mdash; the bottom-up needs none, having
+been priced in task hours to begin with. The comparison-layer conversion to staffed person-months is the
+author's constant (<code>docs/constants.md</code> §4a) and appears in the text, never on the chart.</p>
+<h4>Known direction of error</h4>
+<p>The bottom-up curve is a normal approximation. Rate cells are right-skewed and correlated sums keep
+skew, so the true upper tail is <b>fatter</b> than drawn.</p>

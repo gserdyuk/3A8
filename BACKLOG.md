@@ -78,6 +78,31 @@ carries exit criterion **v2.0** (§6c) replacing v1.0. Ordered; 1 and 2 are inde
       If it does, it turns `syn`'s single point into a corridor and makes gate test 2 scoreable at
       the width the market actually has. If it does not, `syn` still gives the first reading.
 
+## Test data 2026-09-16 — open RFPs to run the instrument on
+
+The author's list, 2026-09-16, of open sources of RFP-like documents for new cases (the shortage of test RFPs
+with any work-complexity signal was one of the project's standing problems). To be screened for what the
+instrument needs — a requirement list dense enough to pin, no effort or budget figure inside, ideally some
+statement about actual size or outcome — and pinned as cases in `examples/`:
+
+- [ ] **Atyantik, software development RFP template** — a fully filled example (IT modernisation for a
+      healthcare network) with an interactive weighted scorecard for bids:
+      https://atyantik.com/blog/software-development-rfp-template/
+- [ ] **Notion, software development RFP template** — a fill-in structure with UX, non-functional and timeline
+      blocks: https://www.notion.com/templates/software-development-request-for-proposal-rfp
+- [ ] **Open-source grant RFPs on GitHub** — real requests published for anyone to bid on:
+      W3F Grants Program https://github.com/w3f/Grants-Program/blob/master/docs/rfps.md ·
+      IPFS devgrants https://github.com/ipfs/devgrants/blob/main/rfps/rfp-template.md ·
+      Radworks grants https://github.com/radicle-dev/radicle-grants/blob/main/rfps/template.md
+- [ ] **AI-Powered RFP Analyzer** (code, not data): https://github.com/aadrikasingh/AI-Powered-RFP-Analyzer —
+      parses requirements and scores vendor bids; a possible source of test RFPs it ships with, and a comparison
+      point for what "complexity" means there.
+
+Order agreed 2026-09-16: the root skill's last step first, then the end-to-end test on FaxRxTx, then the LEAP
+submission (Proven On approved by the author, the letter), then new cases from this list.
+
+---
+
 ## Direction 2026-09-16 — the estimate document and the report are the instrument's standard output
 
 The author's statement, 2026-09-16: **"we ran our tool, it launched its sensors and drew a report"** — the

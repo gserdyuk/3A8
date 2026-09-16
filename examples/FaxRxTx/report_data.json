@@ -1,236 +1,213 @@
 {
-  "title": "Project estimate",
-  "eyebrow": "3A8 &middot; TriAngulEight",
-  "headline": "Project estimate",
-  "subject": "Case FaxRxTx / Venali &middot; worldwide fax platform, 2007&ndash;2009 &middot; <b>outcome known</b>",
-  "standfirst": "The validation case &mdash; the only one this project has with a documented outcome. The chain was run end to end and the number written down and closed <b>before</b> the outcome was opened. A reference-class reading was taken separately, in ignorance of the chain, and lands on the other side of the outcome.",
-  "meta": [
-    "<b>52</b> obligations &mdash; 47 product, 5 work",
-    "<b>97</b> model elements &middot; <b>570</b> work items",
-    "estimate closed <b>22 Aug</b>, outcome opened after",
-    "unit <b>1 pd = 8 net hours</b> &mdash; leave, holidays and sickness not included"
-  ],
-  "chart": {
-    "axisMax": 5400,
-    "rawSum": null,
-    "rawSumLabel": "",
-    "calibration": null,
-    "bottomUp": {
-      "mu": 1423,
-      "sd": 236
-    },
-    "fact": {
-      "value": 1663,
-      "label": "the outcome &mdash; 1663"
-    },
-    "outside": [
-      {
-        "id": "class",
-        "dash": "2 3",
-        "q": [
-          [
-            970,
-            0.1
-          ],
-          [
-            1940,
-            0.5
-          ],
-          [
-            3118,
-            0.8
-          ],
-          [
-            4019,
-            0.9
-          ],
-          [
-            5266,
-            0.95
-          ]
-        ],
-        "tailDrawn": true,
-        "beyondLabel": "class · P99 = 8592, off scale →",
-        "lognormal": {
-          "median": 1940,
-          "sigma": 0.55
-        }
-      }
-    ],
-    "axisLabel": "NET WORKING TIME — PERSON-DAYS OF 8 TASK HOURS",
-    "legend": [
-      {
-        "cls": "red",
-        "text": "Bottom-up, table-priced &mdash; P50 1423, &rho; = 0.5"
-      },
-      {
-        "cls": "blue dot",
-        "text": "Outside view &mdash; P50 1940 (140 person-months)"
-      },
-      {
-        "cls": "fact",
-        "text": "The documented outcome &mdash; 1663 (120 person-months)"
-      },
-      {
-        "cls": "teal",
-        "text": "Parametric &mdash; UFP 78/82 &times; China/Kitchenham curves &middot; P50 65&ndash;75 pd (run 39)"
-      }
-    ],
-    "hint": "<b>Two views of the same two distributions.</b> Above, how likely each answer is &mdash; both curves on one scale, each enclosing the same area, so the bottom-up looks taller only because its mass is packed into a narrower range. Below, the same thing accumulated: <b>the chance of coming in at or under any figure</b>, which is what a number gets chosen against.<br><br><b>Move the pointer</b> and a read line crosses both panels, reporting the chance of exceeding that figure under each instrument and what multiple it is of the outcome. The outside view is placed by the declared conversion &mdash; one funded-seat person-month = 21 weekdays &times; 0.88 presence &times; 6 net task hours &divide; 8 = 13.86 person-days &mdash; the same conversion the outcome is placed by, so the two keep their exact ratio whatever the convention.<br><br><b>The third instrument</b> &mdash; the parametric: function points counted from the same pinned obligation list, priced by curves fitted on 644 open projects &mdash; is drawn in teal. Its mass sits far left <b>by design</b>: function points price the functional shell only, and this case&rsquo;s cost lives in what the counting sensor itself declared outside its scope (throughput, bursts, distribution, failure survival, parallel run). The density panel&rsquo;s vertical axis reads as <b>chance per 100-pd window</b>; height &times; window is a local approximation and overshoots for a curve narrower than the window &mdash; the exact mass is always the cumulative panel. The log panel at the bottom appears whenever the instruments&rsquo; medians span more than &times;4: it redraws the same distributions, equal areas kept, as chance per &times;1.26 window.",
-    "parametric": [
-      {
-        "id": "parametric · China",
-        "median": 75.4,
-        "sigma": 0.95,
-        "dash": "6 3"
-      },
-      {
-        "id": "parametric · Kitchenham",
-        "median": 64.9,
-        "sigma": 0.59,
-        "dash": "2 3"
-      }
-    ]
+ "title": "Project estimate",
+ "eyebrow": "3A8 &middot; TriAngulEight",
+ "headline": "Project estimate",
+ "subject": "Case FaxRxTx / Venali &middot; worldwide fax platform, 2007&ndash;2009 &middot; <b>outcome known</b> &middot; test build of the generic report assembler",
+ "standfirst": "The validation case &mdash; the only one this project has with a documented outcome. The chain was run end to end and the number written down and closed <b>before</b> the outcome was opened. A reference-class reading was taken separately, in ignorance of the chain, and lands on the other side of the outcome. This build reproduces the report of 2026-08-26 through the generic assembler; no figure is new.",
+ "meta": [
+  "<b>52</b> obligations &mdash; 47 product, 5 work",
+  "<b>97</b> model elements &middot; <b>570</b> work items",
+  "estimate closed <b>22 Aug</b>, outcome opened after &middot; outside view read <b>22 Aug</b> &middot; parametric <b>26 Aug</b>",
+  "unit <b>1 pd = 8 net task hours</b> &mdash; leave, holidays and sickness not included"
+ ],
+ "chart": {
+  "axisMax": 6000,
+  "rawSum": null,
+  "rawSumLabel": "",
+  "calibration": null,
+  "bottomUp": {
+   "mu": 1423,
+   "sd": 236
   },
-  "tiles": [
-    {
-      "cls": "red",
-      "k": "Centre",
-      "v": "1423",
-      "unit": "pd",
-      "d": "11 386 net hours. Table-priced and <b>uncalibrated</b>: Steps B&ndash;D never ran on this case, so nothing was added for what decomposition cannot see."
+  "outside": [
+   {
+    "id": "class",
+    "dash": "2 3",
+    "q": [
+     [
+      970,
+      0.1
+     ],
+     [
+      1940,
+      0.5
+     ],
+     [
+      3118,
+      0.8
+     ],
+     [
+      4019,
+      0.9
+     ],
+     [
+      5266,
+      0.95
+     ]
+    ],
+    "tailDrawn": true,
+    "lognormal": {
+     "median": 1940,
+     "sigma": 0.55
     },
-    {
-      "cls": "red",
-      "k": "Corridor &middot; P10&ndash;P90",
-      "v": "1121&ndash;1725",
-      "unit": "pd",
-      "d": "From the O/M/P in every rate cell, under a declared item correlation of <b>&rho; = 0.5</b>."
-    },
-    {
-      "cls": "",
-      "k": "The outcome",
-      "v": "1663",
-      "unit": "pd",
-      "d": "120 staffed person-months, a participant's memory at &plusmn;20%, restated in this unit at a presence fraction of 0.88 &mdash; which is <b>undeclared</b> and moves the figure &plusmn;5%."
-    },
-    {
-      "cls": "blue",
-      "k": "Against the outcome",
-      "v": "&times;1.17",
-      "unit": "low",
-      "d": "Inside the &times;1.3 gate. The outcome sits at <b>~P85</b> of the declared corridor &mdash; covered, and in its upper part."
-    },
-    {
-      "cls": "",
-      "k": "Repeat spread",
-      "v": "&times;1.033",
-      "unit": "",
-      "d": "Two independent size classifications, priced from the same table: 1400.4 and 1446.0 person-days. The whole chain, twice."
-    },
-    {
-      "cls": "teal",
-      "k": "Parametric · P50",
-      "v": "65&ndash;75",
-      "unit": "pd",
-      "d": "the third instrument prices the functional shell only — 23–27 of 52 obligations sit outside its declared scope (run 39)"
-    },
-    {
-      "cls": "blue",
-      "k": "Outside view &middot; P50",
-      "v": "140",
-      "unit": "person-months",
-      "d": "Funded seats &times; time, all roles &mdash; <b>the same unit the outcome is recorded in</b>, so the two compare with no conversion: <b>&times;1.17 high</b>, and the outcome sits at ~P39 of the class."
-    }
+    "beyondLabel": "class · P99 = 8592, off scale →"
+   }
   ],
-  "sections": [
-    {
-      "id": "outcome",
-      "title": "Against the outcome",
-      "count": "&times;1.17 &middot; ~P85",
-      "lead": "This is the only case in the project with a documented outcome, and the only place any of the method's claims can be scored at all.",
-      "html": "\n<h4>The three tests, and all three now score</h4>\n<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">1</span><div class=\"body\">\n    <div class=\"t\">Centre inside &times;1.3 <span class=\"chip blue\">pass</span></div>\n    <div class=\"x\">1423 against 1663 person-days &mdash; <b>&times;1.17 low</b>. Both classification repeats are inside on their own: 1400 and 1446.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">2</span><div class=\"body\">\n    <div class=\"t\">The declared corridor contains the outcome <span class=\"chip blue\">pass, first time</span></div>\n    <div class=\"x\">1121&ndash;1725 contains 1663, which sits at about <b>P85</b>. This test had never been scoreable, because the chain declared no corridor. <b>Read the provenance clause below before reading this as a result.</b></div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">3</span><div class=\"body\">\n    <div class=\"t\">Nothing fitted on the case <span class=\"chip blue\">pass</span></div>\n    <div class=\"x\">No rate, no factor and no classification was chosen while looking at the outcome. The one level factor ever fitted here was withdrawn when the unit error under it was found.</div>\n  </div></div>\n</div>\n<h4>What the corridor's pass does and does not mean</h4>\n<p>The corridor rests on one declared number &mdash; the correlation between work items, &rho; = 0.5.\nThat number was <b>not fitted on this case</b>: it was declared while working the other case, on the\ngeneral reasoning that the truth is neither 0 nor 1 and far from both. But it was declared with this\noutcome already on the record and known. <b>So it is not fitted, and it is not blind.</b> A corridor\nwhose width parameter is chosen after the answer is visible is weaker evidence than one chosen before,\nand this report says so rather than counting the pass at full weight.</p>\n<h4>And the case has stopped being able to score anything further</h4>\n<p>Three conditions of the case arrived from the outcome's owner <b>after</b> the estimate existed:\nstaffed-versus-delivered time, the presence fraction, and the headcount on the concept stage. Each was\nlegitimate &mdash; each was a real input nobody had asked for. The last is one sixth of the answer by\narithmetic: ten people for two of twelve months. <b>A gate cleared by being handed a sixth of the\nanswer is not a gate.</b></p>\n<p>The rule the episode produced, and it costs nothing to apply from now on: <b>a case profile is\npinned with the requirements, before any estimate</b> &mdash; team grade and domain experience,\ndeclared overheads and what is inside them, the presence fraction, the process, and the staffing of\nevery stage the method prices separately. All of it was obtainable on day one, from the same person.\nA case whose conditions arrive after its number can be learned from; it cannot score.</p>\n<h4>One parameter still undeclared, and it is on the outcome's side</h4>\n<p>The outcome is recorded as <b>120 staffed person-months</b> &mdash; ten people on the staff for\nabout a year, from a participant's memory, stated at &plusmn;20%. Turning that into working time needs\nthe <b>presence fraction</b>: how much of a nominal staffed year is actually present. At 0.88 the\noutcome is 1663 person-days and the miss is &times;1.17; across the plausible 0.83&ndash;0.91 it runs\n&times;1.10 to &times;1.21. The verdict does not turn on it, but the figure is not declared and should\nbe.</p>",
-      "src": "examples/FaxRxTx/run32_fact_comparison.md &middot; run35_stage_headcount.md &middot; docs/exit_criterion.md"
-    },
-    {
-      "id": "outside-view",
-      "title": "The outside view",
-      "count": "&times;1.17 high",
-      "lead": "The first reference-class reading on this case in this generation. It never saw the product model, the work items, the rate table or any number from the chain &mdash; and it produced its estimate in <b>the unit the outcome is natively recorded in</b>, which makes one comparison here exact and another impossible.",
-      "html": "\n<h4>What it says</h4>\n<div class=\"tbl-scroll\"><table>\n<thead><tr><th></th><th class=\"num\">P10</th><th class=\"num\">P50</th><th class=\"num\">P80</th><th class=\"num\">P90</th><th class=\"num\">P95</th><th class=\"num\">P99</th></tr></thead>\n<tbody>\n<tr><td>person-months, funded seats</td><td class=\"num\">70</td><td class=\"num\"><b>140</b></td><td class=\"num\">225</td><td class=\"num\">290</td><td class=\"num\">380</td><td class=\"num\">620</td></tr>\n<tr><td class=\"q\">ratio to its own median</td><td class=\"num q\">0.50</td><td class=\"num q\">1.00</td><td class=\"num q\">1.61</td><td class=\"num q\">2.07</td><td class=\"num q\">2.71</td><td class=\"num q\">4.43</td></tr>\n</tbody></table></div>\n\n<h4>The one comparison on this page that needs no conversion</h4>\n<p>Its unit is the <b>funded-seat person-month</b> &mdash; seats multiplied by elapsed time, all roles,\nleave inside, no focus factor applied. The outcome is recorded in exactly that unit: ten staffed heads\nfor about a year. Both sides are seats &times; time, so the comparison is direct and no convention\nenters it:</p>\n<blockquote>class 140 against an outcome of 120 &mdash; <b>&times;1.17 high</b>. The outcome sits at\nabout <b>P39</b> of the class distribution.</blockquote>\n<p>Every other comparison this project has made needed a conversion on one side or the other. This one\ndoes not, and it is the first.</p>\n\n<h4>How it is placed on the chart</h4>\n<p>The chart is in <b>net hours of work on the task</b> and this reading is in <b>funded seats</b>.\nThe conversion between them is not a guess &mdash; it is a ladder, and only its last rung is\ncontested:</p>\n<div class=\"tbl-scroll\"><table>\n<thead><tr><th>one funded seat, one year</th><th class=\"num\">days left</th><th>determined by</th></tr></thead>\n<tbody>\n<tr><td>calendar</td><td class=\"num\">365</td><td class=\"q\">arithmetic</td></tr>\n<tr><td>less weekends</td><td class=\"num\">261</td><td class=\"q\">arithmetic</td></tr>\n<tr><td>less public holidays, ~10</td><td class=\"num\">251</td><td class=\"q\">a fact of the case's country</td></tr>\n<tr><td>less annual leave, ~10&ndash;15</td><td class=\"num\">238</td><td class=\"q\">the organisation's policy</td></tr>\n<tr><td>less sickness, ~5</td><td class=\"num\"><b>233</b></td><td class=\"q\">the organisation's average</td></tr>\n</tbody></table></div>\n<p>That gives a presence fraction of <b>0.893</b>. The sensor's own figure is 19.3 &divide; 21.7 =\n<b>0.889</b>; this report declares <b>0.88</b>. Three independent sources, one number &mdash; this rung\nis closed.</p>\n<p>The last rung is <b>how many of a present day's eight nominal hours are work on the task</b>. What\ncomes out inside the day: standups, planning and review meetings, code review given and received,\ndesign discussion, context switching, waiting on other people, reading, rework, ordinary friction.\n<b>This project declares 6. The sensor declares 4.0&ndash;5.6.</b> That is the whole of the\ndisagreement, and it is worth &times;1.25 on where the blue curve sits &mdash; nothing else in the\nladder is open.</p>\n<blockquote>1 funded-seat person-month = 21 weekdays &times; 0.88 presence &times; 6 net task hours\n&divide; 8 = <b>13.86 person-days</b>.</blockquote>\n<p>That is the same conversion the outcome is placed by, which is why <b>the class and the outcome keep\ntheir exact ratio of &times;1.17 whatever convention is chosen</b> &mdash; both are funded seats, and\nthe factor cancels. It does not cancel against the bottom-up, which is native to task hours: at the\nsensor's own 4.8 hours the blue curve would sit at 1552 rather than 1940, left of the outcome instead\nof right of it.</p>\n\n<h4>What the blue curve actually is</h4>\n<p>It is <b>the sensor's own declared body</b> — a lognormal with &sigma; = 0.55 — and not an\ninterpolation between its quantiles. That distinction matters: interpolating between stated points\nproduces a flat block between P10 and P50 and <b>destroys the mode</b>, so the curve comes out looking\nlike a descending ramp rather than a distribution. The declared lognormal reproduces the sensor's own\nP10, P80 and P90 to within 1&ndash;2%, and puts the mode at about 1434 &mdash; left of the median, as a\nright-skewed body has it.</p>\n<p>Two honest edges. <b>Nothing below P10 was stated</b>, and the lognormal supplies that region from\nits own shape rather than from anything the sensor said. And <b>the stated P95 sits about 9% above the\nlognormal</b>, because the sensor lifted its tail deliberately, saying the extreme tail of IT outcomes\nis heavier than lognormal and giving its reason; the drawn curve does not carry that lift.</p>\n\n<h4>The class it constructed</h4>\n<p>Not looked up &mdash; built for this project at run time, with membership stated as categories of\nwork that must be present and categories that must be absent:</p>\n<blockquote>Replacement of an already-operating revenue-bearing back-end system, built in-house by a\nproduct company's own blended team, where the central engineering difficulty is sustained-throughput\ndistributed processing with per-item delivery guarantees, in a pre-cloud era with hand-built\ninfrastructure, by a team new to the business domain, with a definition of done that requires parallel\noperation against the predecessor and its decommissioning.</blockquote>\n<p><b>55% confidence in that class</b>, with 20 points of the remainder moving the answer up and 25\npoints moving it down. It named misclassification as the largest single source of error in its own\nforecast &mdash; larger than the sampling error inside the class.</p>\n\n<h4>Its shape is triple-sourced; its level is single-sourced &mdash; and it says so</h4>\n<p>The ratios P10/P50 = 0.50 and P90/P50 = 2.07 fall out of three sources of different provenance that\nagree: the published cone of uncertainty, a systematic review of estimation studies, and a\nlarge-sample study of outcomes. <b>Every person-month of the level, by contrast, descends from one\nanchor</b> &mdash; team size multiplied by calendar duration.</p>\n<blockquote>If this forecast is wrong, the most probable failure is that A1 or A2 is wrong for this\nproject, and not that the ratios are wrong. Anyone reconciling this sensor against another should\nattack the level first and leave the ratios alone.</blockquote>\n\n<h4>The contamination residue it declared against itself</h4>\n<p>The input carried the calendar window &mdash; \"roughly 2007&ndash;2009\" &mdash; and its principal\nanchor is built as team &times; duration, so a duration hint is a live path into its level. It raised\nthis unprompted, bounded the possible nudge at &plusmn;15% on the median, said it could not bound it\ntighter, and recommended stripping the window from any future run. The duration band it used,\n12&ndash;24 months, is not pulled toward the hint; that is a fact about its declared anchor, not a\nmeasure of how much the hint mattered.</p>\n\n<h4>And a tail with its own truncation caveat</h4>\n<p>It refused to continue a lognormal past P90, on the ground that the extreme tail of IT outcomes is\nheavier than lognormal, and lifted P95 and P99 by hand. Then it cut against itself: a product company\nof this size <b>cannot fund</b> a 620-person-month rework of a system it already owns, so the class's\nown economics delete the project rather than fund it.</p>\n<blockquote>My P95 and P99 are probably too high as predictors of recorded effort, and about right as\npredictors of required effort. These two diverge only above P90; below it they coincide.</blockquote>",
-      "src": "examples/FaxRxTx/run37_raw/RC37-1.md"
-    },
-    {
-      "id": "parametric",
-      "title": "The parametric instrument",
-      "count": "&times;22 low &middot; by design",
-      "lead": "The third instrument, first run 2026-08-26: <b>function points</b> counted from the pinned obligation list by a sensor that never sees weights or effort, priced by effort curves fitted on 644 open projects, with a corridor taken from the curves&rsquo; own residual scatter. It lands at <b>P50 65&ndash;75 pd</b> against an outcome of 1663 &mdash; and its own output says why: the count sits on the enumeration floor, and the case&rsquo;s cost lives in what the count declares out of scope.",
-      "html": "<h4>The reading</h4><div class=\"tbl-scroll\"><table><thead><tr><th>curve</th><th class=\"num\">P10</th><th class=\"num\">P50</th><th class=\"num\">P90</th><th>source of the corridor</th></tr></thead><tbody><tr><td>China (n=499)</td><td class=\"num\">21</td><td class=\"num\">75</td><td class=\"num\">229</td><td class=\"q\">empirical P10&ndash;P90 of the fit residuals</td></tr><tr><td>Kitchenham (n=145)</td><td class=\"num\">30</td><td class=\"num\">65</td><td class=\"num\">137</td><td class=\"q\">same, one-company data, tighter</td></tr></tbody></table></div><p>All figures in table person-days of 8 net hours, converted from the curves&rsquo; native recorded timesheet hours by the declared &times;0.75 and &divide;8. Repeat spread of the count itself: <b>&times;1.051</b> (UFP 78 vs 82, two independent runs, item-identity Jaccard 0.833).</p><h4>Why it is &times;22 low, in its own words</h4><ul><li><b>The enumeration floor.</b> The source names almost no fields, and complexity classes follow enumerations: every data function and nearly every transaction classified <i>Low</i>. 14&ndash;16 of 16&ndash;17 items were flagged under-enumerated by the sensor itself, unprompted, in both runs.</li><li><b>The declared scope boundary.</b> 23&ndash;27 of 52 obligations were reported outside the instrument&rsquo;s reach &mdash; throughput (F36/F37), distribution, failure survival, delivery control (F44&ndash;F46), the 8&ndash;10 format integrations as work (F19), parallel run and transition (F43, F49&ndash;F52). That list is where this system&rsquo;s cost lives.</li><li><b>Population mismatch.</b> The curves are business-MIS projects of the function-point era; a distributed telecom pipeline is outside their class. Read against the counted size, the outcome sits far beyond the curves&rsquo; P99; read against the outcome, the curves demand 4,800&ndash;10,200 AFP where 78&ndash;82 were counted.</li></ul><h4>What it contributes despite the miss</h4><p>An independent size axis with &times;1.05 repeatability, and a machine-written boundary list that says precisely which obligations a functional-size instrument cannot see &mdash; the same kind of artefact as the chain&rsquo;s named holes. On a case whose cost is functional breadth (a forms-and-data system), the same instrument is expected to land inside the band; that test is the BMS run.</p><h4>Provenance</h4><p>Weights and complexity thresholds: two gap-blind <span class=\"tag\">Hotyn-N 1.0</span> runs, exact agreement on all 33 numeric cells (run 38, IFPUG CPM 4.x / ISO 20926). Count: two <span class=\"tag\">Hotyn-P 1.0</span> runs on the pinned list, weights never shown (run 39). Level: curves refitted from <span class=\"tag\">mars_model/data</span> at every script run &mdash; no constant is carried by hand. Arithmetic: <span class=\"tag\">tools/parametric/parametric.py</span>, deterministic.</p>",
-      "src": "examples/FaxRxTx/run39_raw/ &middot; tools/parametric/run38_raw/ &middot; docs/fp_counting_rules.md"
-    },
-    {
-      "id": "how-to-read",
-      "title": "How to read the chart",
-      "count": "the method",
-      "lead": "One distribution and one line. The line is what happened; the distribution is what the method said before anyone looked.",
-      "html": "\n<h4>Where the distribution comes from</h4>\n<p><b>Every rate cell carries an optimistic, a most-likely and a pessimistic value.</b> The chain\ncollapsed each to its expected value before summing, so the range existed at the leaf and was destroyed\nat the total. Restoring it needs one declared number: how strongly the 543 priced items are correlated.\nBoth ends are wrong &mdash; <b>independent</b> gives a P10&ndash;P90 of &times;1.04, which would claim\nthe total is known to &plusmn;1%; <b>perfectly correlated</b> gives &times;1.86. <b>&rho; = 0.5 is\ndeclared</b>, and across &rho; from 0.25 to 0.75 the band edges move about &plusmn;20%.</p>\n<p>&Sigma;O&hellip;&Sigma;P &mdash; every optimistic and every pessimistic end summed &mdash; spans\n&times;4.14 here. That is <b>six sigma</b>, the absolute extremes, not a percentile band; a\nP10&ndash;P90 is 2.56 sigma.</p>\n<h4>Why there is no outside view on this chart</h4>\n<p>The reference-class sensor has <b>not run on this case in this generation</b>. It produced two\nreadings for it in 2026 &mdash; and both are in units that were never declared, which is why the four\ncross-generation readings that rested on them are currently suspended rather than quoted. Drawing them\nhere would put quantities of unknown dimension on a scale with a known one.</p>\n<p>The consequence is worth stating plainly: <b>this case has no second opinion.</b> The one number on\nthis chart comes from one method, and what checks it is not another instrument but the outcome.</p>\n<h4>The unit</h4>\n<p>Person-days of <b>8 net hours of work on the task</b>, 40 to the week. Leave, public holidays and\nsickness are not in these numbers, and neither is any notion of calendar or headcount. If you need days\nof presence, divide by the effective task hours your working day delivers &mdash; commonly 5 to 6,\nnever 8 &mdash; and add your own allowance for leave.</p>\n<p>That unit cost this project three days and three separate errors, all the same shape: the outcome\nrecorded as headcount &times; calendar and read as delivered work; a conversion applied to one side of\nthe comparison only, worth &times;1.33 in the estimator's own favour; and the rate table's hour content\nrelabelled without re-derivation, a relabelling its own author declined to certify. <b>The unit of a\ncomparison is part of the comparison, and it is an input on both sides.</b></p>\n<h4>Known direction of error</h4>\n<p>The curve is a normal approximation. Rate cells are right-skewed and correlated sums keep skew, so\nthe true upper tail is <b>fatter</b> than drawn.</p>",
-      "src": "docs/constants.md &middot; docs/instrument.md"
-    },
-    {
-      "id": "obligations",
-      "title": "Obligations",
-      "count": "52",
-      "lead": "One entry per obligation <b>as the source words it</b> &mdash; 47 on the product, 5 on the work. Reconstructed from a participant's account of a system built in 2007&ndash;2009, then pinned and never reshaped: <b>no run may add, remove, split or merge an entry.</b>",
-      "html": "<div class=\"tbl-scroll tbl-tall\"><table><thead><tr><th>id</th><th>obligation</th><th>kind</th></tr></thead><tbody>\n<tr><td class=\"tag\">F01</td><td>A worldwide fax send-and-receive service covering at least Europe and the USA *(the participant does not remember whether Australia was included)*</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F02</td><td>The user receives incoming faxes by email</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F03</td><td>The user sends outgoing faxes by emailing a special address</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F04</td><td>Faxes received at the points of presence arrive at the Miami data centre as TIFF files</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F05</td><td>Depending on the user's configuration, the fax is either attached to the email page by page as TIFF or converted to PDF and attached</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F06</td><td>Conversion of a received fax to PDF</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F07</td><td>Digitisation (OCR) as part of the conversion to PDF</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F08</td><td>OCR is performed on a third-party library</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F09</td><td>OCR workers carry out the digitisation</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F10</td><td>The email carrying the fax is sent to the user</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F11</td><td>Conversion and sending are carried out by workers</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F12</td><td>The email sent to the submission address is parsed</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F13</td><td>The recipient's fax number is extracted from the email</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F14</td><td>The document from the attachment is rendered to TIFF</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F15</td><td>Rendering goes through a printer driver of the Black Ice class *(\"it seems\")*</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F16</td><td>The rendered TIFF is sent as an archive to a point of presence</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F17</td><td>Which point of presence receives the TIFF is decided by the ready least-cost routing program</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F18</td><td>Renderers for the main document formats: DOC, XLS, PPT, PDF, TXT, GIF, TIFF</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F19</td><td>On the order of 8–10 input formats in all; each format is a separate piece of integration and stabilisation work</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F20</td><td>An own cluster of Windows computers for rendering and other tasks</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F21</td><td>A cluster management tool — queue lengths and so on *(no further detail given anywhere in the source)*</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F22</td><td>No job queue (MQ) is used; MSMQ is deliberately excluded</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F23</td><td>A home-grown system of watchdogs and tokens (an unordered store) holds the status of each fax</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F24</td><td>The watchdog-and-token system resumes work if something went wrong</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F25</td><td>Orchestration of a large number of faxes in flight</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F26</td><td>The fax archive is stored on the Lustre file system</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F27</td><td>The working files are stored on the Lustre file system</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F28</td><td>A database is part of the system *(the DBMS is not specified)*</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F29</td><td>The components communicate through the database and an API</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F30</td><td>The development language is C#</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F31</td><td>NOC — an internal control centre</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F32</td><td>The NOC shows the state of the remote nodes (PoP)</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F33</td><td>The NOC shows the state of the cluster</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F34</td><td>The NOC shows the state of the queues</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F35</td><td>User portal — the users' website *(named in the source; no functional detail given anywhere)*</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F36</td><td>Nominal target volume ~1,000,000 faxes per 10-hour day (~30/s on average)</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F37</td><td>Burst mode of about ten times nominal (~300/s)</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F38</td><td>10–20 points of presence are served</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F39</td><td>A render cluster of ~16–20 nodes joined by a private network</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F40</td><td>CDR data is saved</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F41</td><td>Billing data is saved *(billing itself is out of scope)*</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F42</td><td>Integration with the old system</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F43</td><td>Coexistence with the old system for the duration of the transition</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F44</td><td>Distribution across the cluster is a mandatory property, not an option</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F45</td><td>Surviving failures is a mandatory property, not an option</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F46</td><td>Delivery control of every fax is a mandatory property, not an option</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F47</td><td>The new system replaces the core functionality of the existing first version</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F48</td><td>A stage of domain immersion and architecture/technology selection, about 1–2 months (DHT and the like were studied)</td><td class=\"q\"><b>work</b></td></tr>\n<tr><td class=\"tag\">F49</td><td>Integration tests on the real message stream</td><td class=\"q\"><b>work</b></td></tr>\n<tr><td class=\"tag\">F50</td><td>The integration-test results are compared with the \"old system\" and must agree</td><td class=\"q\"><b>work</b></td></tr>\n<tr><td class=\"tag\">F51</td><td>Rollout to production: the new system takes production traffic in prod</td><td class=\"q\"><b>work</b></td></tr>\n<tr><td class=\"tag\">F52</td><td>The old version can be decommissioned</td><td class=\"q\"><b>work</b></td></tr>\n</tbody></table></div>",
-      "src": "examples/FaxRxTx/requirements_product.md &middot; requirements_work.md"
-    },
-    {
-      "id": "gaps",
-      "title": "Estimate gaps",
-      "count": "7 named holes",
-      "lead": "Priced at zero, deliberately, each because a sensor <b>refused rather than guessed</b>. The estimate is understated by whatever these are worth, and that is the honest form.",
-      "html": "\n<div class=\"tbl-scroll\"><table><thead><tr><th>element</th><th class=\"num\">items unpriced</th><th>why</th></tr></thead><tbody>\n<tr><td>System database schemas</td><td class=\"num\">9</td><td class=\"q\">The source names a platform and not one entity kind; the store's driver counts zero. Both repeats refused.</td></tr>\n<tr><td>Non-delivery handling</td><td class=\"num\">6</td><td class=\"q\">The content is <i>&ldquo;what happens when there is no delivery&rdquo;</i> &mdash; a question, not an act. Both repeats refused.</td></tr>\n<tr><td>Old-system integration interface</td><td class=\"num\">7</td><td class=\"q\">The source gives the word &ldquo;integration&rdquo; and names neither direction nor payload. Both repeats refused.</td></tr>\n<tr><td>Core-parity scope baseline</td><td class=\"num\">2</td><td class=\"q\">Declares itself the boundary of &ldquo;which core functions&rdquo; and names none.</td></tr>\n<tr><td>Seed items on the message store</td><td class=\"num\">3</td><td class=\"q\">The one named kind is created at run time; nothing is declared as pre-existing.</td></tr>\n<tr><td>One element each, on opposite readings</td><td class=\"num\">2 / 6</td><td class=\"q\">The two repeats refused different elements &mdash; each had named the other's reading in its own doubts before choosing.</td></tr>\n</tbody></table></div>\n<h4>And a seventh, of a different kind</h4>\n<p>The rate author priced the parallel-run execution cycles against live traffic and <b>explicitly\nexcluded fixing the defects those cycles surface</b>. Nothing else in the model prices that fixing:\ndefect resolution is scoped to the ordinary test cycles, not to a shakeout against real message\nstreams. Its own words: <i>&ldquo;if the estimator has no other home for those excluded things, the\nexclusions are holes, not savings.&rdquo;</i> There is no other home.</p>\n<h4>And one defect the estimate carries with its size named</h4>\n<p>The concept stage &mdash; discussions, immersion in the domain, technology selection &mdash; is\npriced at about <b>2% of the project</b>. The outcome's owner later stated the actual parameter: all\nten people, two months, nothing else, which is <b>17%</b>. The row is low by &times;8.5, and the cause\nis on the record and is not the rate author's fault: it correctly refused to price a stage from a\ncalendar duration, then had to invent a headcount to convert calendar into effort. <b>Stage headcount\nis a declaration parameter</b>, not something a gap-blind rate author can be asked to assume. The\ncentre above does <b>not</b> include the correction.</p>",
-      "src": "examples/FaxRxTx/run31_whole_model_assembly.md &middot; run35_stage_headcount.md"
-    },
-    {
-      "id": "defaults",
-      "title": "Defaults",
-      "count": "4 scope decisions",
-      "lead": "Where the source is silent, the technology declaration chooses &mdash; and each choice is written down as a fork with its own price, never inferred quietly.",
-      "html": "\n<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">acceptance</span><div class=\"body\">\n    <div class=\"t\">Direct to production, no acceptance stage</div>\n    <div class=\"x\">The definition of done names production traffic, tests agreeing with the old system, and the old version being decommissionable. It names no sign-off and no accepting party &mdash; this was an internal rework in a product company, with no client to accept. Declaring a UAT stage would invent one the source does not contain.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">environments</span><div class=\"body\">\n    <div class=\"t\">Dev, stage, production</div>\n    <div class=\"x\">The source names no environment. Three are declared because two pinned obligations require the structure: integration tests run against the real message stream, which needs somewhere that is not production; and a promotion into production is demanded outright.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">data</span><div class=\"body\">\n    <div class=\"t\">Seeded reference data, no legacy migration <span class=\"chip caution\">thinnest ground</span></div>\n    <div class=\"x\">A predecessor system exists, but <b>no obligation names a data migration</b>, and the storage infrastructure and database are declared reused. If the new system's stores in fact had to be loaded from the old one's, this declaration is wrong &mdash; and it is the largest of the four.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">documentation</span><div class=\"body\">\n    <div class=\"t\">Operational and user documentation</div>\n    <div class=\"x\">The assumption log demands no documentation at all. It is declared anyway, from three pinned entries: a network operations centre that must be handed something to operate, a user-facing portal, and the requirement that the old version become decommissionable.</div>\n  </div></div>\n</div>",
-      "src": "examples/FaxRxTx/technology_declaration.md"
-    },
-    {
-      "id": "sensitivities",
-      "title": "Sensitivities carried, not resolved",
-      "count": "5",
-      "lead": "Named in the assembly before the outcome was opened, so that nothing here could be invented afterwards.",
-      "html": "\n<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">structure</span><div class=\"body\">\n    <div class=\"t\">The second product model was never priced</div>\n    <div class=\"x\">The pair produced two models of the same obligations &mdash; 97 nodes and 87. Only the first was crossed, sized and priced. Unquantified width, named as such.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">crossing</span><div class=\"body\">\n    <div class=\"t\">One crossing, no repeat</div>\n    <div class=\"x\">The three batches logged <b>20 judgement refusals</b> against 50 filter refusals, plus 9 contested classifications. A second crossing could differ on those lines, and no repeatability reading exists for this step on this case.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">R8</span><div class=\"body\">\n    <div class=\"t\">The total may be element count &times; a constant <span class=\"chip red\">registered before the outcome</span></div>\n    <div class=\"x\">Two unrelated projects landed 7.7% apart at 17.3 and 15.0 person-days per element &mdash; a booking system from an RFP and a worldwide fax platform on a hand-built cluster. If the output is, to first order, element count times a constant, then it measures <b>how finely the modeller chose to cut</b> rather than the project. This was written down before the outcome was read, precisely so it could not be invented after.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">one row</span><div class=\"body\">\n    <div class=\"t\">The highest calibration priority the rate author ever flagged</div>\n    <div class=\"x\">The adjudication of differences during the parallel run is priced per message type, because the true driver &mdash; distinct classes of difference &mdash; is unknowable in advance. The rate author flagged it with P/O = 10 and stated that its error is <b>one-sided: it can understate and cannot overstate</b>.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">two rows</span><div class=\"body\">\n    <div class=\"t\">Adjudications on the desk, worth +333 person-days</div>\n    <div class=\"x\">The five unsizeable elements and thirteen closure violations (+182) and the four scope decisions (+151) are written down and unruled. Applied, they take the centre past the outcome rather than short of it.</div>\n  </div></div>\n</div>",
-      "src": "examples/FaxRxTx/run31_whole_model_assembly.md"
-    },
-    {
-      "id": "provenance",
-      "title": "Where every number came from",
-      "count": "5 roles",
-      "lead": "Each sensor is an engine with a version, stamped on its own output. They are hired for what they are <b>forbidden to see</b>, not for autonomy &mdash; and on this case the thing they were forbidden to see was the outcome.",
-      "html": "\n<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">1</span><div class=\"body\"><div class=\"t\">Product model &times;2</div><div class=\"x\">52 pinned obligations &rarr; 97 elements. Two identical runs agreed on <b>&times;1.024</b> of anchored structure and placed all 47 product obligations wholly, with zero partial marks at closure.</div></div></div>\n  <div class=\"row\"><span class=\"idx\">2</span><div class=\"body\"><div class=\"t\">Work model</div><div class=\"x\">Crossed against a declared technology &rarr; 570 items over 96 elements, plus four demanded-work branches. 70 refusals, each labelled <b>filter</b> or <b>judgement</b>.</div></div></div>\n  <div class=\"row\"><span class=\"idx\">3</span><div class=\"body\"><div class=\"t\">Size classes &times;2</div><div class=\"x\">74 of 79 sized in each repeat &mdash; <b>but not the same five</b>. Ten element-class divergences of 79, which after pricing is &times;1.033 on the total.</div></div></div>\n  <div class=\"row\"><span class=\"idx\">4</span><div class=\"body\"><div class=\"t\">Rate table <span class=\"chip caution\">uncalibrated</span></div><div class=\"x\">External norms, gap-blind. Eleven extra rows were needed for demanded work no dimension absorbs; the rate author refused all four as single rows on the first round, gave decompositions, and on the second wrote nine rows refusing none. It also caught a duration hiding inside one of them and quarantined it.</div></div></div>\n  <div class=\"row\"><span class=\"idx\">5</span><div class=\"body\"><div class=\"t\">The outcome <span class=\"chip blue\">sealed</span></div><div class=\"x\">Held in a sealed file that no sensor and no prompt ever contained, opened only after the assembly document was written and closed. That document states so in its own first paragraph, and that sentence is the check.</div></div></div>\n</div>\n<h4>What did not run on this case</h4>\n<p><b>Steps B, C and D never ran here</b>, so the centre is table-priced and uncalibrated &mdash; on the\nother case the same chain gained &times;1.415 from that step. And the reference class has not run in\nthis generation, so there is no second opinion. Both are gaps in the case, not in the method.</p>\n<h4>The declaration is now required, not volunteered</h4>\n<p>Every role that produces a number moved to <code>.1</code> on 2026-08-26. The change is the same in each: before any figure it must state <b>its unit, whether leave sits inside it, whose roles are counted, and how far its own sources disagree with each other</b> — and it must <b>not</b> restate its values in a convention foreign to its evidence to match the rest of the pipeline. The diagnostician's <code>.1</code> is the consumer side: reconcile the declarations and size the units component of a gap <i>before</i> attributing the rest to method.</p>\n<p>Nothing about how any of them estimates changed. This closes the failure that has cost this project more than any other — two numbers in different units compared as though they were in one — by making the thing that prevents it a required output rather than something a run happens to mention.</p>",
-      "src": "examples/FaxRxTx/run29_product_model_measurement.md &hellip; run31_whole_model_assembly.md"
-    },
-    {
-      "id": "methodology",
-      "title": "Methodology",
-      "count": "the documents",
-      "lead": "This report is one output of a method that is written down. Nothing below is specific to this case; every file states what it is for, what it may not do, and what would overturn it.",
-      "html": "\n<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">frame</span><div class=\"body\">\n    <div class=\"t\"><a href=\"../../../METHODOLOGY.md\">METHODOLOGY.md</a></div>\n    <div class=\"x\">Why independence of <b>techniques</b> replaces independence of experts, what each method is structurally blind to, and why a divergence is diagnosed rather than averaged.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">chain</span><div class=\"body\">\n    <div class=\"t\"><a href=\"../../../docs/instrument.md\">docs/instrument.md</a></div>\n    <div class=\"x\">What actually runs: the product model, the crossing against a declared technology, the size classes, the pinned table, the script &mdash; and what the chain does not have.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">numbers</span><div class=\"body\">\n    <div class=\"t\"><a href=\"../../../docs/constants.md\">docs/constants.md</a></div>\n    <div class=\"x\">Every constant the method has, and the five it removed, with the reason each was never a property of the work.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">isolation</span><div class=\"body\">\n    <div class=\"t\"><a href=\"../../../PIPELINE.md\">PIPELINE.md</a></div>\n    <div class=\"x\">The visibility matrix: who may see what, and the disciplines that are mechanically checkable rather than promised.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">done</span><div class=\"body\">\n    <div class=\"t\"><a href=\"../../../docs/exit_criterion.md\">docs/exit_criterion.md</a></div>\n    <div class=\"x\">When the instrument may be called fit for use, decided in advance: four cases with documented outcomes, none used for fitting. <b>This case is the first of the four.</b></div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">standing</span><div class=\"body\">\n    <div class=\"t\"><a href=\"../../../docs/status_2026-08-25.md\">docs/status.md</a> &middot; <a href=\"../../../findings.md\">findings.md</a></div>\n    <div class=\"x\">What may be claimed today and what may not, and the working log behind it &mdash; including the readings currently suspended and why.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">this case</span><div class=\"body\">\n    <div class=\"t\"><a href=\"../\">examples/FaxRxTx/</a></div>\n    <div class=\"x\">The pinned inputs, the assumption log, the technology declaration, the sealed outcome, and every run with its raw sensor output transcribed verbatim.</div>\n  </div></div>\n</div>",
-      "src": "the report format: tools/report/build_report.py"
-    }
+  "axisLabel": "NET WORKING TIME — PERSON-DAYS OF 8 TASK HOURS",
+  "legend": [
+   {
+    "cls": "blue dash",
+    "text": "Outside view class &mdash; P50 1940 (140 person-months, funded seats × time, all roles)"
+   },
+   {
+    "cls": "red",
+    "text": "Bottom-up, table-priced &mdash; P50 1423, &rho; = 0.5"
+   },
+   {
+    "cls": "teal dash",
+    "text": "Parametric &mdash; parametric · China, parametric · Kitchenham"
+   },
+   {
+    "cls": "fact",
+    "text": "The documented outcome &mdash; 1663 (120 person-months)"
+   }
   ],
-  "footer": {
-    "brand": "3A8",
-    "brandsub": "TriAngulEight<br>an estimation instrument",
-    "fine": [
-      "<b>What this report is not.</b> Not a validated price, and not a price at all &mdash; it is work content in person-days. The centre is uncalibrated: Steps B&ndash;D never ran on this case, and the rate table behind it is external industry norms calibrated against no outcome. There is no second opinion here; the reference class has not run on this case in this generation.",
-      "<b>What it is.</b> The one comparison this project has against something that actually happened. The estimate was closed before the outcome was opened, nothing was fitted on it, and the miss is &times;1.17 &mdash; carrying a known &times;8.5 under-pricing of one stage and seven named holes priced at zero."
-    ]
+  "hint": "<b>Two views of the same distributions.</b> Above, how likely each answer is &mdash; all curves on one scale, each enclosing the same area. Below, the same thing accumulated: <b>the chance of coming in at or under any figure</b>. <b>Move the pointer</b> and a read line crosses both panels, reporting the chance of exceeding that figure under each instrument. The red bell is the table-priced chain, <b>uncalibrated</b> &mdash; Steps B&ndash;D never ran on this case &mdash; and its width is the rate table's O/M/P spread under a declared &rho; = 0.5, a convention. The dotted blue curve is the outside view, a lognormal fitted to its declared quantiles; its tail is drawn to P95 and its P99 is off scale. The two teal curves are the parametric instrument, function points priced on two published effort curves: they sit &times;22 below the outcome by design, because they price the functional shell only. The black line is the documented outcome, 120 staffed person-months restated in this unit.",
+  "parametric": [
+   {
+    "id": "parametric · China",
+    "median": 75.4,
+    "sigma": 0.95,
+    "dash": "6 3"
+   },
+   {
+    "id": "parametric · Kitchenham",
+    "median": 64.9,
+    "sigma": 0.59,
+    "dash": "2 3"
+   }
+  ],
+  "fact": {
+   "value": 1663,
+   "label": "the outcome &mdash; 1663"
   }
+ },
+ "tiles": [
+  {
+   "cls": "red",
+   "k": "Centre",
+   "v": "1423",
+   "unit": "pd",
+   "d": "11 386 net task hours &mdash; the table-priced assembly, uncalibrated"
+  },
+  {
+   "cls": "red",
+   "k": "Corridor &middot; P10&ndash;P90",
+   "v": "1121&ndash;1726",
+   "unit": "pd",
+   "d": "The drawn band. From the O/M/P in every rate cell, under a declared item correlation of <b>&rho; = 0.5</b>. A convention, not a measurement."
+  },
+  {
+   "cls": "none",
+   "k": "The outcome",
+   "v": "1663",
+   "unit": "pd",
+   "d": "120 staffed person-months, a participant's memory at &plusmn;20%, restated in this unit by the case's own conversion (run 33)."
+  },
+  {
+   "cls": "red",
+   "k": "Against the outcome",
+   "v": "&times;1.17",
+   "unit": "",
+   "d": "Inside the &times;1.3 gate. The outcome sits at about P85 of the declared corridor and below the outside view's median."
+  },
+  {
+   "cls": "",
+   "k": "Repeat spread",
+   "v": "&times;1.033",
+   "unit": "",
+   "d": "Two independent size classifications, 87.3% class agreement, priced from the same table: 1 400.4 and 1 446.0 person-days."
+  },
+  {
+   "cls": "blue",
+   "k": "Outside view &middot; P50",
+   "v": "1940",
+   "unit": "pd",
+   "d": "Funded seats &times; time, all roles &mdash; <b>the same unit the outcome is recorded in</b>; 140 person-months against an outcome of 120."
+  }
+ ],
+ "sections": [
+  {
+   "id": "how-to-read",
+   "title": "How to read the chart",
+   "count": "the method",
+   "lead": "Both instruments produce a distribution. Only one of them did so without being asked.",
+   "html": "<p>Both instruments produce a distribution. The outside view produces quantiles natively; the\nbottom-up's range comes from the optimistic, most-likely and pessimistic value in every rate cell,\nsummed under a <b>declared</b> item correlation of &rho; = 0.5 &mdash; independent items would claim\nthe total is known to about &plusmn;2%, perfectly correlated ones would give about &times;1.9, and the\ntruth is certainly neither. Across &rho; from 0.25 to 0.75 the band edges move about &plusmn;20%. The\nwidth of the red bell is therefore a property of the rate table and of that convention, not of the\nproject; what each curve's width does and does not contain is tabulated in <code>docs/sensors/README.md</code>.</p>\n<h4>Curves that must not be read as one</h4>\n<p>Each curve answers a different question. The outside view says where projects of this class landed\nagainst their early estimates &mdash; that width is the class's heterogeneity, the risk of the project.\nThe bottom-up says what this work costs at the pinned rates &mdash; its width is the rates' spread under\nthe declared correlation. A no-method family says what a bare model guesses on the same text, one thin\ncurve per run, never pooled &mdash; its spread is the model's, not the project's. A parametric curve\nprices the functional shell only. Two readings of the outside view are one sensor run twice on the same\ninput; where they disagree, the distance between them is that sensor's own uncertainty about the level,\nand neither is averaged with the other. <b>Only the marked quantiles are readings; the curve between\nthem is interpolation.</b></p>\n<h4>The unit, and the one conversion applied</h4>\n<p>Net hours of work on the task, shown as person-days of 8 such hours. <b>Leave, public holidays and\nsickness are not in these numbers</b>, and neither is any notion of calendar or headcount. Every sensor\ndeclares its own unit before its figures; the class readings are converted to task hours by the factor\ntheir own declarations contain, applied to the class side only &mdash; the bottom-up needs none, having\nbeen priced in task hours to begin with. The comparison-layer conversion to staffed person-months is the\nauthor's constant (<code>docs/constants.md</code> §4a) and appears in the text, never on the chart.</p>\n<h4>Known direction of error</h4>\n<p>The bottom-up curve is a normal approximation. Rate cells are right-skewed and correlated sums keep\nskew, so the true upper tail is <b>fatter</b> than drawn.</p>\n",
+   "src": "docs/constants.md &middot; docs/instrument.md &middot; docs/sensors/"
+  },
+  {
+   "id": "outcome",
+   "title": "Against the outcome",
+   "count": "&times;1.17 &middot; ~P85",
+   "lead": "This is the only case in the project with a documented outcome, and the only place any of the method's claims can be scored at all.",
+   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">gate</span><div class=\"body\">\n    <div class=\"t\">The chain lands inside the &times;1.3 gate <span class=\"chip red\">&times;1.17</span></div>\n    <div class=\"x\">11 386 net task hours against an outcome of about 13 304 (120 staffed person-months at the case's own conversion, run 33). The number was written down and closed before the outcome was opened (run 32).</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">corridor</span><div class=\"body\">\n    <div class=\"t\">The outcome sits at about P85 of the declared corridor</div>\n    <div class=\"x\">The corridor is the rate table's O/M/P spread under &rho; = 0.5, a convention; that the outcome falls inside it at P85 is one observation, not a calibration.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">class</span><div class=\"body\">\n    <div class=\"t\">The outside view lands on the other side <span class=\"chip blue\">&times;1.17 high</span></div>\n    <div class=\"x\">The class median, 140 person-months in the unit the outcome is recorded in, is &times;1.17 above the outcome where the chain is &times;0.86 below it. Neither is averaged.</div>\n  </div></div>\n</div>",
+   "src": "examples/FaxRxTx/run32_fact_comparison.md &middot; run33_unit_of_the_fact.md"
+  },
+  {
+   "id": "obligations",
+   "title": "Obligations",
+   "count": "52",
+   "lead": "One entry per obligation <b>as the document words it</b>, under the document's own ids. Ids never change, so every artefact downstream still means what it meant. <b>No run may add, remove, split or merge an entry.</b>",
+   "html": "<div class=\"tbl-scroll tbl-tall\"><table><thead><tr><th>id</th><th>obligation</th><th>kind</th></tr></thead><tbody>\n<tr><td class=\"tag\">F01</td><td>A worldwide fax send-and-receive service covering at least Europe and the USA <i>(the participant does not remember whether Australia was included)</i></td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F02</td><td>The user receives incoming faxes by email</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F03</td><td>The user sends outgoing faxes by emailing a special address</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F04</td><td>Faxes received at the points of presence arrive at the Miami data centre as TIFF files</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F05</td><td>Depending on the user's configuration, the fax is either attached to the email page by page as TIFF or converted to PDF and attached</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F06</td><td>Conversion of a received fax to PDF</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F07</td><td>Digitisation (OCR) as part of the conversion to PDF</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F08</td><td>OCR is performed on a third-party library</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F09</td><td>OCR workers carry out the digitisation</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F10</td><td>The email carrying the fax is sent to the user</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F11</td><td>Conversion and sending are carried out by workers</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F12</td><td>The email sent to the submission address is parsed</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F13</td><td>The recipient's fax number is extracted from the email</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F14</td><td>The document from the attachment is rendered to TIFF</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F15</td><td>Rendering goes through a printer driver of the Black Ice class <i>(\"it seems\")</i></td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F16</td><td>The rendered TIFF is sent as an archive to a point of presence</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F17</td><td>Which point of presence receives the TIFF is decided by the ready least-cost routing program</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F18</td><td>Renderers for the main document formats: DOC, XLS, PPT, PDF, TXT, GIF, TIFF</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F19</td><td>On the order of 8–10 input formats in all; each format is a separate piece of integration and stabilisation work</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F20</td><td>An own cluster of Windows computers for rendering and other tasks</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F21</td><td>A cluster management tool — queue lengths and so on <i>(no further detail given anywhere in the source)</i></td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F22</td><td>No job queue (MQ) is used; MSMQ is deliberately excluded</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F23</td><td>A home-grown system of watchdogs and tokens (an unordered store) holds the status of each fax</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F24</td><td>The watchdog-and-token system resumes work if something went wrong</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F25</td><td>Orchestration of a large number of faxes in flight</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F26</td><td>The fax archive is stored on the Lustre file system</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F27</td><td>The working files are stored on the Lustre file system</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F28</td><td>A database is part of the system <i>(the DBMS is not specified)</i></td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F29</td><td>The components communicate through the database and an API</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F30</td><td>The development language is C#</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F31</td><td>NOC — an internal control centre</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F32</td><td>The NOC shows the state of the remote nodes (PoP)</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F33</td><td>The NOC shows the state of the cluster</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F34</td><td>The NOC shows the state of the queues</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F35</td><td>User portal — the users' website <i>(named in the source; no functional detail given anywhere)</i></td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F36</td><td>Nominal target volume ~1,000,000 faxes per 10-hour day (~30/s on average)</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F37</td><td>Burst mode of about ten times nominal (~300/s)</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F38</td><td>10–20 points of presence are served</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F39</td><td>A render cluster of ~16–20 nodes joined by a private network</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F40</td><td>CDR data is saved</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F41</td><td>Billing data is saved <i>(billing itself is out of scope)</i></td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F42</td><td>Integration with the old system</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F43</td><td>Coexistence with the old system for the duration of the transition</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F44</td><td>Distribution across the cluster is a mandatory property, not an option</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F45</td><td>Surviving failures is a mandatory property, not an option</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F46</td><td>Delivery control of every fax is a mandatory property, not an option</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F47</td><td>The new system replaces the core functionality of the existing first version</td><td class=\"q\">product</td></tr>\n<tr><td class=\"tag\">F48</td><td>A stage of domain immersion and architecture/technology selection, about 1–2 months (DHT and the like were studied)</td><td class=\"q\">work</td></tr>\n<tr><td class=\"tag\">F49</td><td>Integration tests on the real message stream</td><td class=\"q\">work</td></tr>\n<tr><td class=\"tag\">F50</td><td>The integration-test results are compared with the \"old system\" and must agree</td><td class=\"q\">work</td></tr>\n<tr><td class=\"tag\">F51</td><td>Rollout to production: the new system takes production traffic in prod</td><td class=\"q\">work</td></tr>\n<tr><td class=\"tag\">F52</td><td>The old version can be decommissioned</td><td class=\"q\">work</td></tr>\n</tbody></table></div>",
+   "src": "requirements_product.md &middot; requirements_work.md"
+  },
+  {
+   "id": "findings",
+   "title": "Findings",
+   "count": "2",
+   "lead": "Produced without being asked for, by instruments whose job was something else.",
+   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">sizing</span><div class=\"body\">\n    <div class=\"t\">Four elements refused as unsizeable by both repeats</div>\n    <div class=\"x\">A schema that names a platform and not an entity kind, a handler defined by a question, an integration interface with neither direction nor payload, a scope baseline that names no function. Named holes, never guessed (run 31).</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">parametric</span><div class=\"body\">\n    <div class=\"t\">Function points price the shell <span class=\"chip caution\">&times;22 low &middot; by design</span></div>\n    <div class=\"x\">23&ndash;27 of 52 obligations sit outside what function points count &mdash; telephony, routing, rendering, the points of presence. The parametric instrument's place on this chart is the measure of that.</div>\n  </div></div>\n</div>",
+   "src": "examples/FaxRxTx/run31_whole_model_assembly.md &middot; run39_raw/"
+  },
+  {
+   "id": "defaults",
+   "title": "Defaults",
+   "count": "9",
+   "lead": "Each is a fork the document leaves open and the estimate had to close. <b>The reading taken is inside the centre; the reading refused is not.</b> One row per entry of the assumption log, its first paragraph.",
+   "html": "<div class=\"stack\">\n<div class=\"row\"><span class=\"idx\">A1</span><div class=\"body\"><div class=\"t\">Estimation scope</div><div class=\"x\">The full cycle for the \"the team did\" list from SYSTEM.md §6: the phase of domain immersion and architecture/technology selection (~1–2 months) + design + development + testing + rollout to production of the new version of the core functionality replacing the first version. - Included: rendering and OCR workers, the cluster with the delivery-control mechanism (watchdogs + tokens), NOC, the user portal, the inbound-email parser, saving CDR/billing data, integration tests on the real stream with comparison to the old system. - <b>Not included:</b> the PoP software, the routing program, billing,…</div></div></div>\n<div class=\"row\"><span class=\"idx\">A2</span><div class=\"body\"><div class=\"t\">Definition of Done</div><div class=\"x\">The new system takes production traffic in prod; the integration tests on the real stream have passed, the results agree with the old system; the old version can be decommissioned.</div></div></div>\n<div class=\"row\"><span class=\"idx\">A3</span><div class=\"body\"><div class=\"t\">Team and starting conditions</div><div class=\"x\">The team <b>did not know the domain</b> — immersion in the subject area, discussions, and technology selection took ~1–2 months (included in A1). Mitigating factor: a working v1 exists as a live reference of requirements (\"like v1, but fix what we don't like\") — there is no full-scale requirements gathering from scratch, but the domain (fax protocols, telecom, distributed delivery) is new to the team. Blended composition, including QA and PM. The team's headcount is <b>not</b> part of the assumptions (the volume of work is estimated, not the calendar).</div></div></div>\n<div class=\"row\"><span class=\"idx\">A4</span><div class=\"body\"><div class=\"t\">Reuse</div><div class=\"x\">No first-version code in the new one (\"no reference base classes\"). Reused: the ready PoP software, the ready routing, a third-party OCR library, rendering via a printer driver (Black Ice-class), the existing storage infrastructure (Lustre) and the DB as technologies — we do not develop these, only integrate with them.</div></div></div>\n<div class=\"row\"><span class=\"idx\">A5</span><div class=\"body\"><div class=\"t\">Technological era</div><div class=\"x\">2007–2009: C#/.NET ~3.x, a Windows cluster on our own hardware, no clouds and no ready orchestrators (what a message broker/Kubernetes would give today is written by hand — watchdogs, tokens, delivery control). MSMQ deliberately excluded from the negative experience of v1.</div></div></div>\n<div class=\"row\"><span class=\"idx\">A6</span><div class=\"body\"><div class=\"t\">Target scale</div><div class=\"x\">The engineering target — <b>~1 million faxes / 10-hour day (~30/s on average)</b>, with bursts up to ~10× (<b>~300/s</b>, \"10 million/day\" — an estimate of the peak mode). A cluster of ~16–20 nodes, 10–20 PoPs. The estimate is made for designing to the nominal with burst resilience: distribution, surviving failures, and delivery control of every fax are mandatory properties, not options.</div></div></div>\n<div class=\"row\"><span class=\"idx\">A7</span><div class=\"body\"><div class=\"t\">Rendering formats</div><div class=\"x\">8–10 input formats (DOC, XLS, PPT, PDF, TXT, GIF, TIFF + possibly 1–3 forgotten ones). Each format is a separate piece of integration and stabilization work, not a \"free\" extension of the list.</div></div></div>\n<div class=\"row\"><span class=\"idx\">A8</span><div class=\"body\"><div class=\"t\">Organizational context</div><div class=\"x\">A product company (Venali), an internal rework by management decision. There is no hard deadline, but there is pressure. The process — a planning phase, then scrum. Approvals are internal, faster than the enterprise client of the BMS example. Accounted for in reference class (decomposition, by construction, does not see it).</div></div></div>\n<div class=\"row\"><span class=\"idx\">A9</span><div class=\"body\"><div class=\"t\">Units</div><div class=\"x\">Estimation in <b>person-months</b> (1 pm ≈ 21 pd ≈ 168 hours), the total effort of the whole team, including QA/PM and the architecture-selection phase. Conversion to a calendar duration is a separate step, not part of the runs.</div></div></div>\n</div>",
+   "src": "assumptions.md &middot; technology_declaration.md"
+  },
+  {
+   "id": "not-in-number",
+   "title": "Estimate gaps",
+   "count": "3",
+   "lead": "Not oversights. Each is a thing the chain refused to price, with the reason it refused.",
+   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">1</span><div class=\"body\">\n    <div class=\"t\">Seven named holes</div>\n    <div class=\"x\">Items the sizing sensors refused to size, listed by the assembly and priced at nothing.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">2</span><div class=\"body\">\n    <div class=\"t\">No calibration <span class=\"chip caution\">Steps B&ndash;D not run</span></div>\n    <div class=\"x\">The centre is the table-priced assembly as it stands; the gap-blind rate round and the diagnosis were not run on this case in this generation.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">3</span><div class=\"body\">\n    <div class=\"t\">The rate table's level</div>\n    <div class=\"x\">Uncalibrated against any outcome; this case is the one place it has been scored, once.</div>\n  </div></div>\n</div>",
+   "src": "examples/FaxRxTx/run31_whole_model_assembly.md"
+  },
+  {
+   "id": "provenance",
+   "title": "Where every number came from",
+   "count": "7 roles",
+   "lead": "Each sensor is an engine with a version, stamped on its own output. They are hired for what they are <b>forbidden to see</b>, not for autonomy.",
+   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">1</span><div class=\"body\">\n    <div class=\"t\">Product model &middot; n = 2 &middot; Hotyn-M 1.1</div>\n    <div class=\"x\">47 product obligations &rarr; 97 elements; the second reading differs &times;1.02 in structure. Produces no effort figure of any kind.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">2</span><div class=\"body\">\n    <div class=\"t\">Work model &middot; Hotyn-W 1.1</div>\n    <div class=\"x\">Crossed against the declared technology in three batches &rarr; 570 work items on 96 elements. Work the product needs but no declared activity covers is reported as a finding, never invented.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">3</span><div class=\"body\">\n    <div class=\"t\">Size classes &middot; n = 2 &middot; Hotyn-D 2.0</div>\n    <div class=\"x\">Each element classified by counting named things, the enumeration being the justification. Class agreement 87.3%; whole-chain repeat spread &times;1.033.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">4</span><div class=\"body\">\n    <div class=\"t\">Rate table <span class=\"chip caution\">uncalibrated</span></div>\n    <div class=\"x\">External norms in net task hours, gap-blind: never saw a project total, a budget, or a gap a rate would explain.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">5</span><div class=\"body\">\n    <div class=\"t\">Outside view &middot; Lytin-R 1.1</div>\n    <div class=\"x\">Ran in ignorance of all of the above, the unit convention withheld so that it declared its own: funded seats &times; time, all roles &mdash; the same unit the outcome is recorded in.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">P</span><div class=\"body\">\n    <div class=\"t\">Parametric &middot; Hotyn-P 1.0 / Hotyn-N 1.0</div>\n    <div class=\"x\">Function points counted from the pinned obligation list by a sensor that never sees weights or effort, priced on two published effort curves. The functional shell only.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">F</span><div class=\"body\">\n    <div class=\"t\">The outcome</div>\n    <div class=\"x\">Sealed before the estimate, opened after the number was written down and closed (run 32).</div>\n  </div></div>\n</div>\n<h4>Two coordinates, not one</h4>\n<p>An estimate is a property of the triple <b>(project &times; engine &times; model)</b>. Every sensor on this case ran on Claude Opus 5, so the model coordinate is held fixed and the readings are engine-and-project readings only.</p>",
+   "src": "PIPELINE.md &middot; docs/instrument.md"
+  },
+  {
+   "id": "methodology",
+   "title": "Methodology",
+   "count": "the documents",
+   "lead": "This report is one output of a method that is written down. Nothing below is specific to this case; every file states what it is for, what it may not do, and what would change it.",
+   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">frame</span><div class=\"body\">\n    <div class=\"t\"><a href=\"../../../METHODOLOGY.md\">METHODOLOGY.md</a></div>\n    <div class=\"x\">Why independence of <b>techniques</b> replaces independence of experts, what each method is structurally blind to, and why a divergence is diagnosed rather than averaged.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">chain</span><div class=\"body\">\n    <div class=\"t\"><a href=\"../../../docs/instrument.md\">docs/instrument.md</a></div>\n    <div class=\"x\">What actually runs: the product model, the crossing against a declared technology, the size classes, the pinned table, the script. What is pinned at each step and what each sensor is forbidden to produce.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">curves</span><div class=\"body\">\n    <div class=\"t\"><a href=\"../../../docs/sensors/README.md\">docs/sensors/</a></div>\n    <div class=\"x\">One note per curve on this chart: what the sensor was conceived as, what question it answers, what its width includes and leaves out, what has been measured about it, how to read its output, what may change.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">numbers</span><div class=\"body\">\n    <div class=\"t\"><a href=\"../../../docs/constants.md\">docs/constants.md</a></div>\n    <div class=\"x\">Every constant the method has, and the comparison-layer conversion pinned by the author: 6 net task hours per present day, &times;1.10 leave, 21 days &mdash; so 1 staffed person-month &asymp; 114.5 net task hours.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">case</span><div class=\"body\">\n    <div class=\"t\"><a href=\"../../../docs/case_profile.md\">docs/case_profile.md</a></div>\n    <div class=\"x\">Team grade, site count, domain familiarity and the outcome's unit are pinned <b>before</b> any estimate exists, so that no condition can be chosen after a number is on the table.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">isolation</span><div class=\"body\">\n    <div class=\"t\"><a href=\"../../../PIPELINE.md\">PIPELINE.md</a></div>\n    <div class=\"x\">The visibility matrix: who may see what, in what order the sensors are launched, and the disciplines that are mechanically checkable rather than promised.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">prices</span><div class=\"body\">\n    <div class=\"t\"><a href=\"../../../docs/rate_table.md\">docs/rate_table.md</a> &middot; <a href=\"../../../docs/technology_catalogue.md\">technology_catalogue.md</a></div>\n    <div class=\"x\">The pinned rates, in net person-hours, written gap-blind by a role that never saw a project total. And the vocabulary a technology declaration is written in.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">done</span><div class=\"body\">\n    <div class=\"t\"><a href=\"../../../docs/exit_criterion.md\">docs/exit_criterion.md</a></div>\n    <div class=\"x\">When the instrument may be called fit for use, decided in advance: repeatability, position against human estimators, calibratability against outcomes.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">this case</span><div class=\"body\">\n    <div class=\"t\"><a href=\"../\">this case's folder</a></div>\n    <div class=\"x\">The pinned inputs, the case profile, the assumption log, the technology declaration, and every run with its raw sensor output kept verbatim.</div>\n  </div></div>\n</div>\n",
+   "src": "the report format: tools/report/build_report.py"
+  }
+ ],
+ "footer": {
+  "brand": "3A8",
+  "brandsub": "TriAngulEight<br>an estimation instrument",
+  "fine": [
+   "<b>What this report is not.</b> Not a validated price, and not a price at all &mdash; it is work content in net task hours, shown as person-days of 8 such hours. Converting it into money, calendar or headcount is the reader's act, using the reader's own figures. Every bottom-up number rests on a rate table of external industry norms calibrated against no outcome.",
+   "<b>What it is.</b> The estimate, its corridor, the disagreement between two structurally independent methods stated rather than averaged away, and, on the record, the obligations, the findings, the questions and the defaults that the number is standing on."
+  ]
+ }
 }
