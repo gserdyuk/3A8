@@ -167,8 +167,12 @@ appeared at https://leap.epam.com/hyperfactory/ai-assets-marketplace.
 
 ### 2.5. Decide before submitting
 
-- Ownership and license: a copy on EPAM GitLab with an EPAM author makes the
-  asset an internal corporate one. The license must allow that.
+- Ownership and license — **settled by the author, 2026-09-16:** the copyright holder is Gennadiy
+  Serdyuk <gserdyuk@gmail.com>, stated in `LICENSE` (Apache 2.0 appendix) and `NOTICE`. The GitHub
+  repository is canonical; the EPAM GitLab copy is a mirror under the same license, not a transfer.
+  The `authors` line of FACTORY.md carries the epam.com address so that the catalogue card links to
+  the author as an employee; it does not change who owns the work. Whether EPAM's own IP policy has a
+  view on this is a question the author puts to EPAM, not one the repository can settle.
 - `owner`: personal name or EPM-UASP.
 - "Proven On" (L2/L3) is filled for only 8 of 38 factories; FaxRxTx as the
   one validated case honestly rates L2.
