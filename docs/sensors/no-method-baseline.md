@@ -73,6 +73,8 @@ whatever the corpus did not see.
 | FaxRxTx, n = 10, against a fact | mean 120.5 A9 pm, CV 13.75%, max/min 1.722, mean pairwise ratio 1.168; **×1.47 high** under the pinned conversion; accuracy undecidable before it | run 41 |
 | FaxRxTx, same prompt a day later, n = 10 | mean 138.0, CV 13.47%; **level ×1.145 up** with identical injected material in both batches | run 43 |
 | SAS, n = 10 | ×0.75 below the raw chain; spread ×1.92 across runs | run 49 |
+| FaxRxTx, a third batch, n = 10 | mean 125.0, CV 8.6%, max/min 1.38 — inside the two earlier batches | run 69, round 1 |
+| FaxRxTx, the same ten after one Delphi exchange (each reads all ten replies, anonymous and verbatim, and revises or holds) | max/min 1.38 → **1.08**, median 122.5 → 126.5; against the fact ×1.53 → ×1.56; declared ranges containing the fact 4 of 10 → 1 of 10. **Agreement without accuracy:** the family's width is sampling noise and collapses on contact, its level is the model's prior on the text and does not move | run 69 |
 | what it is the comparator for | gate v2.0 test 1: the chain's end-to-end ×1.0532 is 3.0× tighter than the baseline's own pairwise agreement | run 42 vs 41 |
 
 ## 6. How to read a reading
