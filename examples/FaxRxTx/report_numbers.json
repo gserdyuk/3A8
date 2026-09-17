@@ -1,6 +1,6 @@
 {
  "hours_per_pd": 8,
- "dates_line": "chain, outside view, Step C and diagnosis run <b>16 Sep 2026</b> (runs 61&ndash;67) &middot; outcome opened <b>after</b> the estimate document was fixed (run 68) &middot; no-method control and its Delphi <b>17 Sep</b> (runs 69&ndash;73, five panels)",
+ "dates_line": "chain, outside view, Step C and diagnosis run <b>16 Sep 2026</b> (runs 61&ndash;67) &middot; outcome opened <b>after</b> the estimate document was fixed (run 68) &middot; no-method control and its Delphi <b>17 Sep</b> (runs 69&ndash;73, five panels) and the secret ballot on a fixed list (run 74)",
  "counts": {
   "elements": 84,
   "leaves": 68,
@@ -106,8 +106,8 @@
   },
   {
    "idx": "0",
-   "title": "No method &times;50 in five panels, each run as a Delphi &middot; runs 69&ndash;73, beside the estimate",
-   "text": "Five panels of ten bare agents on the pinned prompt of run 41, all on 17 September. Thin ochre curves: the fifty independent round-1 answers. Thick teal: the consensus of the three free panels (A solid, B dashed, C dotted) &mdash; 126.5, 135, 147.5 pm. Thick ochre: the consensus of the two panels run under three rules &mdash; a line includes its testing, a line cites the text, additions are contestable by vote (D solid, E dashed) &mdash; 148 and 134 pm. The rules removed every invented line and every separate QA line and made removals as common as additions; they did not bring the panels together (&times;1.10 apart) and did not lower the level. The actual is 81.8 pm. Records: run69_delphi.md, run70_71_delphi_repeats.md, run72_73_delphi_rules.md. Not part of the run-61 estimate."
+   "title": "No method &times;50 in five panels, each run as a Delphi, and a secret ballot of forty &middot; runs 69&ndash;74, beside the estimate",
+   "text": "Five panels of ten bare agents on the pinned prompt of run 41, all on 17 September. Thin ochre curves: the fifty independent round-1 answers. Thick teal: the consensus of the three free panels (A solid, B dashed, C dotted) &mdash; 126.5, 135, 147.5 pm. Thick ochre: the consensus of the two panels run under three rules &mdash; a line includes its testing, a line cites the text, additions are contestable by vote (D solid, E dashed) &mdash; 148 and 134 pm. The rules removed every invented line and every separate QA line and made removals as common as additions; they did not bring the panels together (&times;1.10 apart) and did not lower the level. The actual is 81.8 pm. Records: run69_delphi.md, run70_71_delphi_repeats.md, run72_73_delphi_rules.md. Dotted ochre: run 74 &mdash; the seventeen lines panel D ended with, fixed, sized in secret by forty fresh agents with no exchange; the curve pools their forty declared ranges. Four groups of ten agree within &times;1.03 (debating panels: &times;1.10&ndash;1.17), and the level rises to 174 pm, &times;2.13 of the actual: a list handed over as fixed is sized dearer than the same list by its own authors. Record: run74_secret_sizing.md. Not part of the run-61 estimate."
   }
  ],
  "pooled": [
@@ -145,6 +145,13 @@
    "dash": "7 4",
    "curves_file": "run73_raw/curves_R3_pd.json",
    "legend": "Panel E consensus (run 73, under the three rules) &mdash; median 134 pm"
+  },
+  {
+   "id": "secret ballot, fixed list",
+   "pen": "ochre",
+   "dash": "2 3",
+   "curves_file": "run74_raw/curves_R1_pd.json",
+   "legend": "Secret ballot on a fixed list (run 74, forty estimators, no exchange) &mdash; 174 pm"
   }
  ]
 }

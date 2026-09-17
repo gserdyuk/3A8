@@ -16,6 +16,16 @@ The author's question: what does a Delphi among the ten no-method runs buy? Run 
 - [ ] **Stability across panels** — runs 70 and 71 repeat run 69 with fresh participants; compare the three
       consensus figures and, more to the point, the three sets of final work lists
       (`examples/FaxRxTx/run70_delphi_repeats_registration.md`).
+- [x] **Numbers by secret ballot, list by debate** (the author's proposal, run 74,
+      `examples/FaxRxTx/run74_secret_sizing.md`): forty secret sizings of one fixed list; groups of ten agree
+      within x1.03-1.04 where debating panels stood x1.10-1.17 apart; individuals differ by one scale factor each
+      (lines correlate 0.80 across estimators). The level rose to 174 pm (x2.13 of the actual): a list handed over
+      as fixed is sized dearer than by its authors, carved-out lines x1.5-3.5 dearer.
+- [ ] **The list is now the free parameter.** Put panel E's list (run 73) to the same secret ballot: two lists of
+      one project, each stable to a few percent - how far apart? And write the ballot list for a stranger: a line
+      carved out of another says so, or is merged back before the ballot.
+- [ ] **Norm table against the ballot** - a table fixes the per-estimator scale factor that averaging needs ten
+      estimators to cancel; its reasonableness can be checked against the run-74 line medians. Not run yet.
 - [ ] **Commit subjects reach the participants.** The harness injects the five most recent commit subjects into
       every subagent. A subject that states a result against the actual is a leak into any later bare run on that
       case. Rule adopted: no figure in a commit subject on a case while panels on it may still be launched; the

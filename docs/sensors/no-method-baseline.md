@@ -75,6 +75,7 @@ whatever the corpus did not see.
 | SAS, n = 10 | ×0.75 below the raw chain; spread ×1.92 across runs | run 49 |
 | FaxRxTx, a third batch, n = 10 | mean 125.0, CV 8.6%, max/min 1.38 — inside the two earlier batches | run 69, round 1 |
 | FaxRxTx, the same ten after one Delphi exchange (each reads all ten replies, anonymous and verbatim, and revises or holds) | max/min 1.38 → **1.08**, median 122.5 → 126.5; against the fact ×1.53 → ×1.56; declared ranges containing the fact 4 of 10 → 1 of 10. **Agreement without accuracy:** the family's width is sampling noise and collapses on contact, its level is the model's prior on the text and does not move | run 69 |
+| FaxRxTx, a fixed list of seventeen lines (one rule-bound panel's) sized in secret by forty bare agents, no exchange; a group's figure = sum of per-line medians | groups of ten x1.03 apart (random pairs x1.04; debating panels x1.10-1.17); own totals 130-237, one scale factor per estimator (lines correlate 0.80); level 174 pm, **x2.13 of the fact** - above every panel: a list handed over as fixed is sized dearer than by its authors. **Averaging buys stability, not level; the list is the remaining freedom** | run 74 |
 | what it is the comparator for | gate v2.0 test 1: the chain's end-to-end ×1.0532 is 3.0× tighter than the baseline's own pairwise agreement | run 42 vs 41 |
 
 ## 6. How to read a reading

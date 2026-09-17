@@ -7,7 +7,7 @@
  "meta": [
   "<b>52</b> obligations &mdash; 47 product, 5 work",
   "<b>84</b> model elements &middot; <b>521</b> work items",
-  "chain, outside view, Step C and diagnosis run <b>16 Sep 2026</b> (runs 61&ndash;67) &middot; outcome opened <b>after</b> the estimate document was fixed (run 68) &middot; no-method control and its Delphi <b>17 Sep</b> (runs 69&ndash;73, five panels)",
+  "chain, outside view, Step C and diagnosis run <b>16 Sep 2026</b> (runs 61&ndash;67) &middot; outcome opened <b>after</b> the estimate document was fixed (run 68) &middot; no-method control and its Delphi <b>17 Sep</b> (runs 69&ndash;73, five panels) and the secret ballot on a fixed list (run 74)",
   "unit <b>1 pd = 8 net task hours</b> &mdash; leave, holidays and sickness not included"
  ],
  "chart": {
@@ -112,11 +112,15 @@
     "text": "Panel E consensus (run 73, under the three rules) &mdash; median 134 pm"
    },
    {
+    "cls": "ochre thick dot",
+    "text": "Secret ballot on a fixed list (run 74, forty estimators, no exchange) &mdash; 174 pm"
+   },
+   {
     "cls": "fact",
     "text": "The remembered outcome &mdash; ~10 people &times; ~1 year = 120 staffed pm (&plusmn;20%), &times;114.5 net h"
    }
   ],
-  "hint": "<b>What each width is.</b> The red bell is the calibrated centre with the chain's O/M/P co-variation at an <b>assumed</b> &rho; = 0.5, scaled by the calibration &mdash; it does not contain the product-model spread (&times;1.10 on leaves here), the rate table being one sample, the team's grade, or the unit-factor dispute. The grey band is the Step C rate envelope (all lows, all highs) &mdash; <b>not percentiles</b>. The blue curves are two launches of the outside view: their width is the heterogeneity of the class; the distance between them (&times;1.57 at P50) is the level uncertainty between readings and is not a width. Each outside curve was converted from its own declared unit (RC65-1: recorded 168-h months &times;126 net h; RC65-2: staffed months &times;114.5). The black mark is the outcome as remembered, &plusmn;20%. <b>The fifty thin ochre curves</b> are the no-method control of 17 September: five panels of ten bare agents on the same requirements and assumption log. <b>The thick curves</b> are the five panels after their Delphi: teal for the three that talked freely, ochre for the two that talked under three rules (a line includes its testing, a line cites the text, additions are put to a vote). Each thick curve is tall and narrow &mdash; a panel agrees with itself &mdash; and the five stand apart from one another by more than any of them admits: <b>agreement inside a panel, disagreement between panels, none near the outcome</b>. The rules cleaned the tables (no invented lines, no double-booked testing) without moving the panels together. That is why this family is a control, drawn and never used.",
+  "hint": "<b>What each width is.</b> The red bell is the calibrated centre with the chain's O/M/P co-variation at an <b>assumed</b> &rho; = 0.5, scaled by the calibration &mdash; it does not contain the product-model spread (&times;1.10 on leaves here), the rate table being one sample, the team's grade, or the unit-factor dispute. The grey band is the Step C rate envelope (all lows, all highs) &mdash; <b>not percentiles</b>. The blue curves are two launches of the outside view: their width is the heterogeneity of the class; the distance between them (&times;1.57 at P50) is the level uncertainty between readings and is not a width. Each outside curve was converted from its own declared unit (RC65-1: recorded 168-h months &times;126 net h; RC65-2: staffed months &times;114.5). The black mark is the outcome as remembered, &plusmn;20%. <b>The fifty thin ochre curves</b> are the no-method control of 17 September: five panels of ten bare agents on the same requirements and assumption log. <b>The thick curves</b> are the five panels after their Delphi: teal for the three that talked freely, ochre for the two that talked under three rules (a line includes its testing, a line cites the text, additions are put to a vote). Each thick curve is tall and narrow &mdash; a panel agrees with itself &mdash; and the five stand apart from one another by more than any of them admits: <b>agreement inside a panel, disagreement between panels, none near the outcome</b>. The rules cleaned the tables (no invented lines, no double-booked testing) without moving the panels together. <b>The dotted ochre curve</b> is a secret ballot: the list of lines one rule-bound panel agreed, fixed, and sized by forty fresh agents who never saw one another&rsquo;s figures. It is wide because it does not hide how far individuals disagree, and its centre is stable &mdash; any ten of the forty land within a few percent of any other ten &mdash; and it stands further from the outcome than every panel: <b>averaging buys stability, not level</b>. That is why this family is a control, drawn and never used.",
   "nomethod": [
    {
     "id": "run69 R1 P-1",
@@ -604,6 +608,173 @@
       "sigma": 0.148
      }
     ]
+   },
+   {
+    "id": "secret ballot, fixed list",
+    "pen": "ochre",
+    "dash": "2 3",
+    "components": [
+     {
+      "median": 3793,
+      "sigma": 0.142
+     },
+     {
+      "median": 3365,
+      "sigma": 0.143
+     },
+     {
+      "median": 3182,
+      "sigma": 0.129
+     },
+     {
+      "median": 3284,
+      "sigma": 0.148
+     },
+     {
+      "median": 4980,
+      "sigma": 0.133
+     },
+     {
+      "median": 3945,
+      "sigma": 0.124
+     },
+     {
+      "median": 3656,
+      "sigma": 0.155
+     },
+     {
+      "median": 3738,
+      "sigma": 0.131
+     },
+     {
+      "median": 4056,
+      "sigma": 0.128
+     },
+     {
+      "median": 4844,
+      "sigma": 0.127
+     },
+     {
+      "median": 4651,
+      "sigma": 0.126
+     },
+     {
+      "median": 3285,
+      "sigma": 0.125
+     },
+     {
+      "median": 5074,
+      "sigma": 0.139
+     },
+     {
+      "median": 3645,
+      "sigma": 0.123
+     },
+     {
+      "median": 4608,
+      "sigma": 0.126
+     },
+     {
+      "median": 3674,
+      "sigma": 0.151
+     },
+     {
+      "median": 4110,
+      "sigma": 0.139
+     },
+     {
+      "median": 2985,
+      "sigma": 0.124
+     },
+     {
+      "median": 3922,
+      "sigma": 0.142
+     },
+     {
+      "median": 3125,
+      "sigma": 0.139
+     },
+     {
+      "median": 2783,
+      "sigma": 0.139
+     },
+     {
+      "median": 3596,
+      "sigma": 0.139
+     },
+     {
+      "median": 3011,
+      "sigma": 0.129
+     },
+     {
+      "median": 3906,
+      "sigma": 0.128
+     },
+     {
+      "median": 3425,
+      "sigma": 0.139
+     },
+     {
+      "median": 3575,
+      "sigma": 0.139
+     },
+     {
+      "median": 4389,
+      "sigma": 0.139
+     },
+     {
+      "median": 3532,
+      "sigma": 0.139
+     },
+     {
+      "median": 4389,
+      "sigma": 0.139
+     },
+     {
+      "median": 3811,
+      "sigma": 0.139
+     },
+     {
+      "median": 3667,
+      "sigma": 0.123
+     },
+     {
+      "median": 3910,
+      "sigma": 0.131
+     },
+     {
+      "median": 4256,
+      "sigma": 0.152
+     },
+     {
+      "median": 3927,
+      "sigma": 0.128
+     },
+     {
+      "median": 4025,
+      "sigma": 0.139
+     },
+     {
+      "median": 3879,
+      "sigma": 0.142
+     },
+     {
+      "median": 3678,
+      "sigma": 0.155
+     },
+     {
+      "median": 3344,
+      "sigma": 0.143
+     },
+     {
+      "median": 3656,
+      "sigma": 0.155
+     },
+     {
+      "median": 3303,
+      "sigma": 0.121
+     }
+    ]
    }
   ],
   "fact": {
@@ -659,7 +830,7 @@
    "k": "No method &middot; 50 runs",
    "v": "1 978&ndash;3 746",
    "unit": "pd",
-   "d": "Fifty bare runs in five panels, 17 September (runs 69&ndash;73). Consensus after each panel&rsquo;s Delphi: free panels 126.5 / 135 / 147.5 pm, rule-bound panels 148 / 134 pm. Inside a panel the totals end &times;1.06&ndash;1.23 apart; between panels &times;1.17 free and &times;1.10 under rules; against the outcome &times;1.55&ndash;1.81."
+   "d": "Fifty bare runs in five panels, 17 September (runs 69&ndash;73). Consensus after each panel&rsquo;s Delphi: free panels 126.5 / 135 / 147.5 pm, rule-bound panels 148 / 134 pm. Inside a panel the totals end &times;1.06&ndash;1.23 apart; between panels &times;1.17 free and &times;1.10 under rules; against the outcome &times;1.55&ndash;1.81. Secret ballot on a fixed list of seventeen lines, forty agents, no exchange (run 74): 174 pm; four groups of ten &times;1.03 apart; &times;2.13 against the outcome."
   },
   {
    "cls": "blue",
@@ -738,7 +909,7 @@
    "title": "Where every number came from",
    "count": "8 roles",
    "lead": "Each sensor is an engine with a version, stamped on its own output. They are hired for what they are <b>forbidden to see</b>, not for autonomy.",
-   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">1</span><div class=\"body\">\n    <div class=\"t\">Product model &middot; n = 2 &middot; Hotyn-M 2.1 &middot; run 61</div>\n    <div class=\"x\">47 product obligations &rarr; <b>HM61-1</b>: 84 elements, 68 leaves, 47/47 whole (closed); HM61-2: 91 / 75, F19 residue. Leaves &times;1.10, coverage-set Jaccard 0.51. The first launch of both repeats stopped for contamination: the pinned product projection quotes a duration it says it removed; the figure was struck in the prompt and fresh instances launched.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">2</span><div class=\"body\">\n    <div class=\"t\">Work model &middot; Hotyn-W 1.2 &middot; run 62</div>\n    <div class=\"x\">4 batches, one crossing each &rarr; 521 element-attached items, 0 row mismatches (after a read-time fix of one group-definition phrasing). F51 absorbed by the production cutover; F48, F49, F50, F52 standing as own branches.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">3</span><div class=\"body\">\n    <div class=\"t\">Size classes &middot; n = 2 &middot; Hotyn-D 2.0 &middot; run 63</div>\n    <div class=\"x\">64 / 63 leaves sized, 95.6% class agreement; 4 / 5 unsizeable (L27, L38, L51, L56; + L46). Assembly 10&nbsp;094 / 9&nbsp;747 net task hours, &times;1.036.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">4</span><div class=\"body\">\n    <div class=\"t\">Demanded-work rows &middot; Hotyn-K 1.1 &middot; run 64</div>\n    <div class=\"x\">W-F49 (62.7 h) and W-F52 (37.3 h) priced; W-F48 and W-F50 refused &mdash; headcount and parallel-run period undeclared. Raw chain 9&nbsp;846&ndash;10&nbsp;194 h.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">5</span><div class=\"body\">\n    <div class=\"t\">Outside view &middot; n = 2 &middot; Lytin-R 1.1 &middot; run 65</div>\n    <div class=\"x\">One class (in-house second-generation rewrite of a distributed back-end with a parallel-run cutover), 55% confidence. RC65-1 in recorded 168-h months, leave out: 80 / 150 / 240 / 310. RC65-2 in staffed months, leave in: 55 / 105 / 175 / 240.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">6</span><div class=\"body\">\n    <div class=\"t\">Step C rates &middot; Lytin-K 1.1 &middot; run 66</div>\n    <div class=\"x\">Gap-blind. Fills A1&ndash;A5 (A5 unpriceable), T1&ndash;T5, two globals G1 (within-day overhead) and G2 (era + learning curve). Fills priced by the orchestrator's script through rate table v0.1-h.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">7</span><div class=\"body\">\n    <div class=\"t\">Steps B, D &middot; Lytin-G 1.1 &middot; run 67</div>\n    <div class=\"x\">Units first: G1 duplicates the pinned 6-h day, chain stopped at G2. Centre 17&nbsp;350 h, corridor 11&nbsp;795&ndash;26&nbsp;330, reserve = raw class tails. Explained 83% against RC65-1; overshoot against RC65-2.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">0</span><div class=\"body\">\n    <div class=\"t\">No method &times;50 in five panels, each run as a Delphi &middot; runs 69&ndash;73, beside the estimate</div>\n    <div class=\"x\">Five panels of ten bare agents on the pinned prompt of run 41, all on 17 September. Thin ochre curves: the fifty independent round-1 answers. Thick teal: the consensus of the three free panels (A solid, B dashed, C dotted) &mdash; 126.5, 135, 147.5 pm. Thick ochre: the consensus of the two panels run under three rules &mdash; a line includes its testing, a line cites the text, additions are contestable by vote (D solid, E dashed) &mdash; 148 and 134 pm. The rules removed every invented line and every separate QA line and made removals as common as additions; they did not bring the panels together (&times;1.10 apart) and did not lower the level. The actual is 81.8 pm. Records: run69_delphi.md, run70_71_delphi_repeats.md, run72_73_delphi_rules.md. Not part of the run-61 estimate.</div>\n  </div></div>\n</div>\n<h4>Two coordinates, not one</h4>\n<p>An estimate is a property of the triple <b>(project &times; engine &times; model)</b>. Every sensor on this estimate ran on Claude Opus 5 (alias <code>opus</code>, recorded per turn as <code>claude-opus-5</code>), so the model coordinate is held fixed. Claude Code 2.1.270; every prompt reached its sensor byte-identical; every turn ended <code>end_turn</code>.</p>",
+   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">1</span><div class=\"body\">\n    <div class=\"t\">Product model &middot; n = 2 &middot; Hotyn-M 2.1 &middot; run 61</div>\n    <div class=\"x\">47 product obligations &rarr; <b>HM61-1</b>: 84 elements, 68 leaves, 47/47 whole (closed); HM61-2: 91 / 75, F19 residue. Leaves &times;1.10, coverage-set Jaccard 0.51. The first launch of both repeats stopped for contamination: the pinned product projection quotes a duration it says it removed; the figure was struck in the prompt and fresh instances launched.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">2</span><div class=\"body\">\n    <div class=\"t\">Work model &middot; Hotyn-W 1.2 &middot; run 62</div>\n    <div class=\"x\">4 batches, one crossing each &rarr; 521 element-attached items, 0 row mismatches (after a read-time fix of one group-definition phrasing). F51 absorbed by the production cutover; F48, F49, F50, F52 standing as own branches.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">3</span><div class=\"body\">\n    <div class=\"t\">Size classes &middot; n = 2 &middot; Hotyn-D 2.0 &middot; run 63</div>\n    <div class=\"x\">64 / 63 leaves sized, 95.6% class agreement; 4 / 5 unsizeable (L27, L38, L51, L56; + L46). Assembly 10&nbsp;094 / 9&nbsp;747 net task hours, &times;1.036.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">4</span><div class=\"body\">\n    <div class=\"t\">Demanded-work rows &middot; Hotyn-K 1.1 &middot; run 64</div>\n    <div class=\"x\">W-F49 (62.7 h) and W-F52 (37.3 h) priced; W-F48 and W-F50 refused &mdash; headcount and parallel-run period undeclared. Raw chain 9&nbsp;846&ndash;10&nbsp;194 h.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">5</span><div class=\"body\">\n    <div class=\"t\">Outside view &middot; n = 2 &middot; Lytin-R 1.1 &middot; run 65</div>\n    <div class=\"x\">One class (in-house second-generation rewrite of a distributed back-end with a parallel-run cutover), 55% confidence. RC65-1 in recorded 168-h months, leave out: 80 / 150 / 240 / 310. RC65-2 in staffed months, leave in: 55 / 105 / 175 / 240.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">6</span><div class=\"body\">\n    <div class=\"t\">Step C rates &middot; Lytin-K 1.1 &middot; run 66</div>\n    <div class=\"x\">Gap-blind. Fills A1&ndash;A5 (A5 unpriceable), T1&ndash;T5, two globals G1 (within-day overhead) and G2 (era + learning curve). Fills priced by the orchestrator's script through rate table v0.1-h.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">7</span><div class=\"body\">\n    <div class=\"t\">Steps B, D &middot; Lytin-G 1.1 &middot; run 67</div>\n    <div class=\"x\">Units first: G1 duplicates the pinned 6-h day, chain stopped at G2. Centre 17&nbsp;350 h, corridor 11&nbsp;795&ndash;26&nbsp;330, reserve = raw class tails. Explained 83% against RC65-1; overshoot against RC65-2.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">0</span><div class=\"body\">\n    <div class=\"t\">No method &times;50 in five panels, each run as a Delphi, and a secret ballot of forty &middot; runs 69&ndash;74, beside the estimate</div>\n    <div class=\"x\">Five panels of ten bare agents on the pinned prompt of run 41, all on 17 September. Thin ochre curves: the fifty independent round-1 answers. Thick teal: the consensus of the three free panels (A solid, B dashed, C dotted) &mdash; 126.5, 135, 147.5 pm. Thick ochre: the consensus of the two panels run under three rules &mdash; a line includes its testing, a line cites the text, additions are contestable by vote (D solid, E dashed) &mdash; 148 and 134 pm. The rules removed every invented line and every separate QA line and made removals as common as additions; they did not bring the panels together (&times;1.10 apart) and did not lower the level. The actual is 81.8 pm. Records: run69_delphi.md, run70_71_delphi_repeats.md, run72_73_delphi_rules.md. Dotted ochre: run 74 &mdash; the seventeen lines panel D ended with, fixed, sized in secret by forty fresh agents with no exchange; the curve pools their forty declared ranges. Four groups of ten agree within &times;1.03 (debating panels: &times;1.10&ndash;1.17), and the level rises to 174 pm, &times;2.13 of the actual: a list handed over as fixed is sized dearer than the same list by its own authors. Record: run74_secret_sizing.md. Not part of the run-61 estimate.</div>\n  </div></div>\n</div>\n<h4>Two coordinates, not one</h4>\n<p>An estimate is a property of the triple <b>(project &times; engine &times; model)</b>. Every sensor on this estimate ran on Claude Opus 5 (alias <code>opus</code>, recorded per turn as <code>claude-opus-5</code>), so the model coordinate is held fixed. Claude Code 2.1.270; every prompt reached its sensor byte-identical; every turn ended <code>end_turn</code>.</p>",
    "src": "PIPELINE.md &middot; docs/instrument.md"
   },
   {
