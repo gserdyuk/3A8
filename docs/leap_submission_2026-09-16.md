@@ -55,6 +55,34 @@ Thank you,
 Gennadiy Serdyuk
 gennadiy_serdyuk@epam.com
 
+## Follow-up, 2026-09-17 — the LEAP team's question and the reply
+
+Dima (LEAP team) asked whether the skills under `skills/` are part of the factory rather than standalone
+skills, and noted that by their data processing rules `FACTORY.md` must sit in the root of the directory where
+the factory is located — for this repository, its root. Both are right. `FACTORY.md` was moved from
+`factories/3a8/` to the repository root the same day (its links and `tools/check_frontmatter.py` adjusted,
+the mirror pushed). The reply:
+
+> Hello Dima,
+>
+> Yes, that is correct on both points.
+>
+> The repository as a whole is one Factory. The four skills under `skills/` are not standalone: they are the
+> Factory's entry points (`/3a8:estimate`, `/3a8:estimate-product`, `/3a8:estimate-reference-class`,
+> `/3a8:estimate-wbs`), each carrying the run order for the internal sensors in `agents/`. Outside the Factory
+> they do not make sense, so please treat them as part of it rather than as separate assets. The same holds
+> for the agents in `agents/`: they are the Factory's internal sensors, each defined by what it must not see,
+> and belong to the Factory, not to the catalogue on their own.
+>
+> I have moved `FACTORY.md` to the root of the repository, as your process expects:
+> https://git.epam.com/gennadiy_serdyuk/3A8/-/blob/main/FACTORY.md
+> The `factories/` folder no longer exists; the mirror is up to date.
+>
+> Please let me know if anything else in the layout or the frontmatter needs adjusting.
+>
+> Thank you,
+> Gennadiy
+
 ## After it is published
 
 - Check the card at https://leap.epam.com/hyperfactory/ai-assets-marketplace; the repository is re-crawled on every

@@ -14,7 +14,7 @@ def frontmatter(path):
 bad = 0
 targets = [(p, "agent") for p in glob.glob("agents/*.md") + glob.glob("agents/*/*.md")]
 targets += [(p, "skill") for p in glob.glob("skills/*/SKILL.md")]
-targets += [(p, "factory") for p in glob.glob("factories/*/FACTORY.md")]
+targets += [(p, "factory") for p in glob.glob("FACTORY.md") + glob.glob("factories/*/FACTORY.md")]
 for path, kind in targets:
     try:
         fm = frontmatter(path)
@@ -33,7 +33,9 @@ for path, kind in targets:
             problems.append("sdlc_phase must be a single value")
         if "project_deployments" in fm and fm["project_deployments"] == []:
             problems.append("project_deployments is an empty list (omit it)")
-    if not re.fullmatch(r"[A-Za-z0-9_-]+", path.replace("\\", "/").split("/")[-2]):
+    parts = path.replace("\\", "/").split("/")
+    # a FACTORY.md in the repository root has no parent folder to name-check
+    if len(parts) > 1 and not re.fullmatch(r"[A-Za-z0-9_-]+", parts[-2]):
         problems.append("folder name has forbidden characters")
     if problems:
         print(f"FAIL {path}: " + "; ".join(problems)); bad += 1

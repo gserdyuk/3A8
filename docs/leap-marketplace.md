@@ -33,7 +33,7 @@ The letter and the pre-send check: `docs/leap_submission_2026-09-16.md`.
       `git log` and GitHub show one person.
 - [x] **LICENSE.** (done 2026-09-13, Apache 2.0) The repository has none. Choose one (twotakt uses
       Apache 2.0) and add it before the EPAM GitLab copy is refreshed.
-- [x] **Package as a factory.** (done 2026-09-13, `factories/3a8/FACTORY.md`) Create `factories/3a8/FACTORY.md` (template
+- [x] **Package as a factory.** (done 2026-09-13 as `factories/3a8/FACTORY.md`; **moved to the repository root, `FACTORY.md`, on 2026-09-17** at the LEAP team's request — see 2.4) Create `factories/3a8/FACTORY.md` (template
       in 2.3). Key fields: `sdlc_phase: Planning & Analysis`,
       `support_level: Self-Serve`. Use cases:
       - Effort estimation from an RFP or a requirement list
@@ -110,7 +110,10 @@ git push epam main
 - `skills/<name>/SKILL.md` — one skill per folder.
 - `agents/<name>/agent.md` (or `<name>.md`, `<name>.agent.md`) — one agent
   per folder.
-- `factories/<name>/FACTORY.md` — file name strictly uppercase.
+- `factories/<name>/FACTORY.md` — file name strictly uppercase. **The file sits in the root of the
+  directory that is the factory.** A repository that holds several factories uses `factories/<name>/`;
+  a repository that *is* one factory, as this one, carries `FACTORY.md` in its root, and the `skills/`
+  beside it are read as part of that factory, not as standalone skills (LEAP team, 2026-09-17).
 - Folder name = asset identifier: letters, digits, `-`, `_` only.
 - Skill and agent frontmatter: `name`, `description`,
   `author: "Name <email>"`. The guide says email is required; in practice
@@ -151,12 +154,17 @@ Email to SpecialEPM-EASEFeedback@epam.com, one folder URL per asset type
 plus the owner:
 
 ```
-skills:    https://git.epam.com/gennadiy_serdyuk/3A8/-/tree/main/skills
-factories: https://git.epam.com/gennadiy_serdyuk/3A8/-/tree/main/factories
-owner:     Gennadiy Serdyuk
+factory: https://git.epam.com/gennadiy_serdyuk/3A8   (FACTORY.md in the repository root)
+owner:   Gennadiy Serdyuk
 ```
 
-The factory and the four entry-point skills (`skills/estimate*`) are submitted.
+Submitted 2026-09-16 with two URLs (`factories/`, `skills/`). On 2026-09-17 the LEAP team (Dima) asked
+whether the skills belong to the factory rather than stand alone, and said that by their processing rules
+`FACTORY.md` belongs in the root of the directory where the factory lives — here, the repository root.
+Answer: yes, the four skills are the factory's entry points; `FACTORY.md` moved to the root the same day.
+The letter and the reply: `docs/leap_submission_2026-09-16.md`.
+
+One asset is submitted: the factory, with the four entry-point skills (`skills/estimate*`) as its parts.
 The agents are deliberately not submitted as separate assets (see checklist
 item on hiding internal agents): they are internal sensors that only make sense
 inside an entry point.

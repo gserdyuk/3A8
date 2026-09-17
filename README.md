@@ -72,6 +72,7 @@ Current state of every claim, including which documents are stale and how:
 
 ## In this repository
 
+- [`FACTORY.md`](FACTORY.md) — the catalogue card of the instrument (EPAM LEAP AI Assets Marketplace): what it is, how to run it, its standing and limits. The repository as a whole is the factory; `skills/` are its entry points, `agents/` its internal sensors.
 - [`METHODOLOGY.md`](METHODOLOGY.md) — the frame: methods, their blind spots, the pipeline, boundaries. Unchanged.
 - [`docs/instrument.md`](docs/instrument.md) — the current chain, step by step, with what is pinned where.
 - [`PIPELINE.md`](PIPELINE.md) — the visibility matrix and the disciplines that are machine-checkable.

@@ -57,8 +57,8 @@ range with an explained residual.
 
 The agents in this repository are **not a pick-and-mix set.** Each one is
 hired for what it is forbidden to see. Who may see what is defined in
-[`PIPELINE.md`](../../PIPELINE.md); the run order, step by step, is in
-[`docs/instrument.md`](../../docs/instrument.md). Running an agent outside
+[`PIPELINE.md`](PIPELINE.md); the run order, step by step, is in
+[`docs/instrument.md`](docs/instrument.md). Running an agent outside
 that order, or feeding it an artifact the matrix says it may not see, breaks
 the method silently: the estimate will still come out, it just stops meaning
 anything.
@@ -80,8 +80,8 @@ the record.
    - `/3a8:estimate` — the whole instrument: both halves in ignorance of each other,
      diagnosis, gap-blind calibration, a range with an explained residual.
 3. Pin the case profile **before** any estimate exists
-   (see [`docs/exit_criterion.md`](../../docs/exit_criterion.md) and
-   [`docs/case_profile.md`](../../docs/case_profile.md)).
+   (see [`docs/exit_criterion.md`](docs/exit_criterion.md) and
+   [`docs/case_profile.md`](docs/case_profile.md)).
 4. Raw sensor output is transcribed verbatim under `examples/<case>/run*_raw/`;
    the report is built by `tools/report/build_report.py`.
 
@@ -94,23 +94,23 @@ format). A third case, SAS, is kept outside the public repository because its so
 ## Standing and limits
 
 Definition of done is pinned in advance and never edited while looking at a
-result: exit criterion v2.0 in [`docs/status_2026-08-27.md`](../../docs/status_2026-08-27.md) §6c
+result: exit criterion v2.0 in [`docs/status_2026-08-27.md`](docs/status_2026-08-27.md) §6c
 (repeatability of the whole chain no worse than ×1.3; position inside the corridor of professional
 estimators on a shared text; one correction fitted on two cases reducing the miss on a third; no
 parameter fitted on the case it is scored against). Today: repeatability measured on one case
 (×1.05), the human scale for the position test not yet obtained, one of the three outcomes the
 calibratability test needs. Which runs count toward the criterion, and why, is a decision the
 author takes over the whole history; the withdrawn v1.0 gate is kept as a record in
-[`docs/exit_criterion.md`](../../docs/exit_criterion.md).
+[`docs/exit_criterion.md`](docs/exit_criterion.md).
 
 Current state of every claim, including which documents are stale:
-[`docs/status_2026-08-27.md`](../../docs/status_2026-08-27.md).
+[`docs/status_2026-08-27.md`](docs/status_2026-08-27.md).
 
 ## Further reading
 
-- [`METHODOLOGY.md`](../../METHODOLOGY.md) — the frame: methods, blind spots, boundaries.
-- [`PIPELINE.md`](../../PIPELINE.md) — the visibility matrix.
-- [`findings.md`](../../findings.md) — the working log: *why* it is built this way.
-- [`README.md`](../../README.md) — repository map.
+- [`METHODOLOGY.md`](METHODOLOGY.md) — the frame: methods, blind spots, boundaries.
+- [`PIPELINE.md`](PIPELINE.md) — the visibility matrix.
+- [`findings.md`](findings.md) — the working log: *why* it is built this way.
+- [`README.md`](README.md) — repository map.
 
 License: Apache 2.0. Canonical repository: https://github.com/gserdyuk/3A8.
