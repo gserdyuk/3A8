@@ -82,6 +82,7 @@ h1 em{font-style:italic; color:var(--ink-2)}
 .lg.blue i{border-color:var(--pen-blue)} .lg.red i{border-color:var(--pen-red)}
 .lg.teal i{border-color:var(--pen-teal)}
 .lg.ochre i{border-color:var(--pen-ochre); border-top-width:1px}
+.lg.ochre.thick i{border-top-width:3px} .lg.teal.thick i{border-top-width:3px}
 .lg.dash i{border-top-style:dashed} .lg.dot i{border-top-style:dotted; border-top-width:3px}
 .lg.fact i{border-color:var(--ink); border-top-width:3px}
 svg.plot{width:100%; height:auto; display:block; overflow:visible}
@@ -260,6 +261,15 @@ const pdfParam = (r,x) => x<=0 ? 0 :
   Math.exp(-Math.pow(Math.log(x)-Math.log(r.median),2)/(2*r.sigma*r.sigma))
   /(x*r.sigma*Math.sqrt(2*Math.PI));
 const cdfParam = (r,x) => x<=0 ? 0 : Phi((Math.log(x)-Math.log(r.median))/r.sigma);
+/* pooled curves, if the case carries any: the equal-weight mixture of a family of lognormals (the average of
+   their densities), drawn thick in the named pen. A control device — it shows what pooling a family does;
+   it is never a reading of the instrument. {id, pen: "ochre"|"teal", dash, components:[{median, sigma}]} */
+const POOLS = CASE.pooled || [];
+const pdfPool = (p,x) => p.components.reduce((s,c)=>s+pdfParam(c,x),0)/p.components.length;
+const cdfPool = (p,x) => p.components.reduce((s,c)=>s+cdfParam(c,x),0)/p.components.length;
+const poolSpan = p => [Math.max(0.5, Math.min(...p.components.map(c=>c.median*Math.exp(-3.4*c.sigma)))),
+                       Math.max(...p.components.map(c=>c.median*Math.exp(3.4*c.sigma)))];
+const poolPeak = p => { const [lo,hi]=poolSpan(p); let m=0; for(let j=0;j<=200;j++){ m=Math.max(m,pdfPool(p,lo*Math.pow(hi/lo,j/200))); } return m; };
 
 /* the log panel appears when the instruments' medians span more than this */
 const LOG_RATIO_THRESHOLD = 4;
@@ -320,7 +330,7 @@ const DENS = CASE.outside.map(densOutside), DENB = densBottomUp();
 /* the density scale belongs to the standing instruments and the no-method family alike;
    a family of many thin curves that peaks above the panel would be clipped into a fringe */
 const DENN_PEAK = NOMETH.map(r => pdfParam(r, r.median*Math.exp(-r.sigma*r.sigma)));
-const DMAX = Math.max(...DENS.flat().map(p=>p[1]), ...DENB.map(p=>p[1]), ...DENN_PEAK, ...ALT.map(r=>pdfAlt(r,r.mu)));
+const DMAX = Math.max(...DENS.flat().map(p=>p[1]), ...DENB.map(p=>p[1]), ...DENN_PEAK, ...ALT.map(r=>pdfAlt(r,r.mu)), ...POOLS.map(poolPeak));
 const Yd = d => DEN_BOT - (d / DMAX) * (DEN_BOT - DEN_TOP);
 
 const dpath = pts => pts.map(([x,d],i)=>`${i?"L":"M"} ${X(x).toFixed(1)} ${Yd(d).toFixed(1)}`).join(" ");
@@ -442,6 +452,20 @@ NOMETH.forEach(r=>{
   const dp = dpts.map(([x,d],j)=>`${j?"L":"M"} ${X(x).toFixed(1)} ${Math.max(DEN_TOP,Yd(d)).toFixed(1)}`).join(" ");
   svg += `<path d="${dp}" fill="none" stroke="var(--pen-ochre)" stroke-width="0.9" opacity=".75" stroke-linejoin="round"/>`;
   svg += `<path d="${cpath(cpts)}" fill="none" stroke="var(--pen-ochre)" stroke-width="0.9" opacity=".75" stroke-linejoin="round"/>`;
+});
+
+/* ---------- pooled curves: a family averaged into one line ---------- */
+POOLS.forEach(p=>{
+  const [lo,hiRaw] = poolSpan(p), hi = Math.min(XMAX, hiRaw);
+  const dpts=[], cpts=[], N=300;
+  for(let j=0;j<=N;j++){
+    const x = lo*Math.pow(hi/lo, j/N);
+    dpts.push([x, pdfPool(p,x)]); cpts.push([x, cdfPool(p,x)]);
+  }
+  const pen = `var(--pen-${p.pen||"ochre"})`, dash = p.dash ? ` stroke-dasharray="${p.dash}"` : "";
+  const dp = dpts.map(([x,d],j)=>`${j?"L":"M"} ${X(x).toFixed(1)} ${Math.max(DEN_TOP,Yd(d)).toFixed(1)}`).join(" ");
+  svg += `<path d="${dp}" fill="none" stroke="${pen}" stroke-width="2.6"${dash} stroke-linejoin="round"/>`;
+  svg += `<path d="${cpath(cpts)}" fill="none" stroke="${pen}" stroke-width="2.6"${dash} stroke-linejoin="round"/>`;
 });
 
 /* ---------- the raw table sum ---------- */
@@ -608,6 +632,7 @@ function move(evt){
     const md = ps[Math.floor(ps.length/2)], k = ps.filter(p=>p>0.5).length;
     lines.push([`no-method, ${NOMETH.length} runs: median ${Math.round(100*md)}% over · ${k} of ${NOMETH.length} put it above`, "var(--pen-ochre)"]);
   }
+  POOLS.forEach(p => lines.push([`${p.id}: ${over(cdfPool(p, v))}`, `var(--pen-${p.pen||"ochre"})`]));
   if(CASE.fact) lines.push([`outcome: ${(v/CASE.fact.value).toFixed(2)}\u00d7`, "var(--ink-2)"]);
 
   curT.textContent = "";

@@ -208,6 +208,12 @@ def main():
         chart['nomethod'] = nm if isinstance(nm, list) else [{'id': k, **v} for k, v in nm.items()]   # list, or {id: {median, sigma}}
         meds = sorted(c['median'] for c in chart['nomethod'])
         chart['legend'].append({'cls': 'ochre', 'text': T.get('nomethod_legend') or 'No method &mdash; %d bare runs, one thin curve each, medians %s&ndash;%s' % (len(meds), fmt(meds[0]), fmt(meds[-1]))})
+    for p in N.get('pooled') or []:
+        comps = json.load(open(os.path.join(case, p['curves_file']), encoding='utf-8'))
+        comps = comps if isinstance(comps, list) else [{'id': k, **v} for k, v in comps.items()]
+        chart.setdefault('pooled', []).append({'id': p['id'], 'pen': p.get('pen', 'ochre'), 'dash': p.get('dash'),
+                                               'components': [{'median': c['median'], 'sigma': c['sigma']} for c in comps]})
+        chart['legend'].append({'cls': '%s thick%s' % (p.get('pen', 'ochre'), ' dash' if p.get('dash') else ''), 'text': p['legend']})
     if N.get('fact'):
         chart['fact'] = {'value': pd(N['fact']['value_h']), 'label': N['fact'].get('label') or ('the outcome &mdash; %d' % pd(N['fact']['value_h']))}
         chart['legend'].append({'cls': 'fact', 'text': N['fact'].get('legend') or 'The documented outcome &mdash; %d' % pd(N['fact']['value_h'])})

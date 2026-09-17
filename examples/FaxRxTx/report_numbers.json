@@ -1,6 +1,6 @@
 {
  "hours_per_pd": 8,
- "dates_line": "chain, outside view, Step C and diagnosis run <b>16 Sep 2026</b> (runs 61&ndash;67) &middot; outcome opened <b>after</b> the estimate document was fixed (run 68)",
+ "dates_line": "chain, outside view, Step C and diagnosis run <b>16 Sep 2026</b> (runs 61&ndash;67) &middot; outcome opened <b>after</b> the estimate document was fixed (run 68) &middot; no-method control and its Delphi <b>17 Sep</b> (run 69)",
  "counts": {
   "elements": 84,
   "leaves": 68,
@@ -49,7 +49,7 @@
    "source": "run 65, converted as run 67 applied"
   }
  ],
- "nomethod_curves_file": "run43_raw/curves_pd.json",
+ "nomethod_curves_file": "run69_raw/curves_R1_pd.json",
  "parametric": null,
  "fact": {
   "value_h": 13745,
@@ -66,7 +66,7 @@
   "rates": "Lytin-K 1.1",
   "diagnosis": "Lytin-G 1.1",
   "model_note": "Every sensor on this estimate ran on Claude Opus 5 (alias <code>opus</code>, recorded per turn as <code>claude-opus-5</code>), so the model coordinate is held fixed. Claude Code 2.1.270; every prompt reached its sensor byte-identical; every turn ended <code>end_turn</code>.",
-  "nomethod": "no sensor definition, 2 × 10 bare runs (runs 41, 43, 26–27 Aug)"
+  "nomethod": "no sensor definition, 10 bare runs of the pinned run-41 prompt, then one Delphi exchange among them (run 69, 17 Sep)"
  },
  "provenance": [
   {
@@ -106,8 +106,24 @@
   },
   {
    "idx": "0",
-   "title": "No method &times;20 &middot; runs 41 and 43, added by the author after the run",
-   "text": "The requirements and the assumption log handed to a bare agent with no sensor definition, ten times on 26 August and ten more on 27 August, one permitted file read each. Each run declared its own P10&ndash;P90; each is drawn as its own thin curve and none is pooled. Not part of the run-61 estimate: the child was told not to read earlier runs, and this family is the control drawn beside every FaxRxTx report."
+   "title": "No method &times;10, and a Delphi among them &middot; run 69, added beside the estimate",
+   "text": "The requirements and the assumption log handed to ten bare agents with no sensor definition (the pinned prompt of run 41, unchanged), launched together on 17 September: ten thin curves, each run&rsquo;s declared total as the mode and its declared range as five sigma in log space, the rule run 43&rsquo;s curves were drawn with. The thick ochre curve is their plain average. Then the same ten, each keeping its own context, read all ten replies &mdash; anonymous, verbatim, nothing of the moderator&rsquo;s &mdash; and revised or held: the thick teal curve is the average after that exchange. Spread of totals &times;1.38 &rarr; &times;1.08; centre 122.5 &rarr; 126.5 pm; against the actual &times;1.53 &rarr; &times;1.56. Not part of the run-61 estimate. The older family of twenty (runs 41 and 43) is on report 15:25 of 16 Sep."
+  }
+ ],
+ "pooled": [
+  {
+   "id": "ten averaged",
+   "pen": "ochre",
+   "dash": null,
+   "curves_file": "run69_raw/curves_R1_pd.json",
+   "legend": "The ten averaged &mdash; the mean of the ten independent curves (mean of totals 125 pm = 2 625 pd)"
+  },
+  {
+   "id": "consensus",
+   "pen": "teal",
+   "dash": null,
+   "curves_file": "run69_raw/curves_R2_pd.json",
+   "legend": "Consensus &mdash; the same ten after reading each other, one Delphi exchange (median 126.5 pm = 2 657 pd)"
   }
  ]
 }

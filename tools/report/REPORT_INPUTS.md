@@ -47,6 +47,9 @@ number that is not in a sensor's output, the assembly's output or the diagnosis.
 - `raw_marks`: extra ticks on the axis, `[{"value_h", "label", "lo_h", "hi_h"}]`.
 - `parametric`: `[{"id", "median_h" | "median_pd", "sigma", "dash"}]` for the function-point instrument; leave it `null` where the instrument prices the functional shell only and says nothing about the case (the author dropped it from the FaxRxTx report, 2026-09-16).
 - `nomethod_curves_file`: a JSON list `[{id, median, sigma}]` or a dict `{id: {median, sigma}}`, medians in person-days of the report unit, one entry per bare run; both forms the project has produced are read.
+- `pooled`: `[{"id", "legend", "pen": "ochre"|"teal", "dash", "curves_file"}]` — a thick curve that is the equal-weight
+  mixture (the average of the densities) of the lognormals in `curves_file` (same forms as the no-method file). A control
+  device: it shows what pooling a family does (run 69, the Delphi among bare estimators); never a reading of the instrument.
 - `axis_max_pd` overrides the computed axis end.
 
 ## `report_text.json` — the prose, written by the orchestrator from the run records

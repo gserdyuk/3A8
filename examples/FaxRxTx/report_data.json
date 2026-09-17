@@ -7,7 +7,7 @@
  "meta": [
   "<b>52</b> obligations &mdash; 47 product, 5 work",
   "<b>84</b> model elements &middot; <b>521</b> work items",
-  "chain, outside view, Step C and diagnosis run <b>16 Sep 2026</b> (runs 61&ndash;67) &middot; outcome opened <b>after</b> the estimate document was fixed (run 68)",
+  "chain, outside view, Step C and diagnosis run <b>16 Sep 2026</b> (runs 61&ndash;67) &middot; outcome opened <b>after</b> the estimate document was fixed (run 68) &middot; no-method control and its Delphi <b>17 Sep</b> (run 69)",
   "unit <b>1 pd = 8 net task hours</b> &mdash; leave, holidays and sickness not included"
  ],
  "chart": {
@@ -89,114 +89,168 @@
    },
    {
     "cls": "ochre",
-    "text": "No method &mdash; 20 bare runs, one thin curve each, medians 1 942&ndash;3 600"
+    "text": "No method &mdash; 10 bare runs, one thin curve each, medians 2 266&ndash;3 113"
+   },
+   {
+    "cls": "ochre thick",
+    "text": "The ten averaged &mdash; the mean of the ten independent curves (mean of totals 125 pm = 2 625 pd)"
+   },
+   {
+    "cls": "teal thick",
+    "text": "Consensus &mdash; the same ten after reading each other, one Delphi exchange (median 126.5 pm = 2 657 pd)"
    },
    {
     "cls": "fact",
     "text": "The remembered outcome &mdash; ~10 people &times; ~1 year = 120 staffed pm (&plusmn;20%), &times;114.5 net h"
    }
   ],
-  "hint": "<b>What each width is.</b> The red bell is the calibrated centre with the chain's O/M/P co-variation at an <b>assumed</b> &rho; = 0.5, scaled by the calibration &mdash; it does not contain the product-model spread (&times;1.10 on leaves here), the rate table being one sample, the team's grade, or the unit-factor dispute. The grey band is the Step C rate envelope (all lows, all highs) &mdash; <b>not percentiles</b>. The blue curves are two launches of the outside view: their width is the heterogeneity of the class; the distance between them (&times;1.57 at P50) is the level uncertainty between readings and is not a width. Each outside curve was converted from its own declared unit (RC65-1: recorded 168-h months &times;126 net h; RC65-2: staffed months &times;114.5). The black mark is the outcome as remembered, &plusmn;20%. <b>The twenty thin ochre curves</b> are the no-method control (runs 41 and 43, 26&ndash;27 August): the same requirements and assumption log handed to a bare agent with no method, twenty times, each run's own P10&ndash;P90 fitted as a lognormal, drawn as a family and never pooled. Added by the author beside the run-61 estimate; not a reading of this run.",
+  "hint": "<b>What each width is.</b> The red bell is the calibrated centre with the chain's O/M/P co-variation at an <b>assumed</b> &rho; = 0.5, scaled by the calibration &mdash; it does not contain the product-model spread (&times;1.10 on leaves here), the rate table being one sample, the team's grade, or the unit-factor dispute. The grey band is the Step C rate envelope (all lows, all highs) &mdash; <b>not percentiles</b>. The blue curves are two launches of the outside view: their width is the heterogeneity of the class; the distance between them (&times;1.57 at P50) is the level uncertainty between readings and is not a width. Each outside curve was converted from its own declared unit (RC65-1: recorded 168-h months &times;126 net h; RC65-2: staffed months &times;114.5). The black mark is the outcome as remembered, &plusmn;20%. <b>The ten thin ochre curves</b> are the no-method control of 17 September (run 69): the same requirements and assumption log handed to ten bare agents with no method, each run&rsquo;s own declared range drawn as its own curve. <b>The thick ochre curve</b> is their plain average. <b>The thick teal curve</b> is the same ten after one Delphi exchange, in which each read the other nine replies and revised or held: the ten drew together (&times;1.38 &rarr; &times;1.08 between totals) and the curve grew taller and narrower, <b>and it did not move toward the outcome</b> &mdash; it moved a little away from it. Agreement among copies of one model is not evidence; that is why this family is a control, drawn and never used.",
   "nomethod": [
    {
-    "id": "B-1",
-    "median": 2780,
+    "id": "R1 P-1",
+    "median": 3113,
     "sigma": 0.148
    },
    {
-    "id": "B-2",
-    "median": 1942,
-    "sigma": 0.169
+    "id": "R1 P-2",
+    "median": 2266,
+    "sigma": 0.165
    },
    {
-    "id": "B-3",
-    "median": 2575,
-    "sigma": 0.144
-   },
-   {
-    "id": "B-4",
-    "median": 2582,
-    "sigma": 0.149
-   },
-   {
-    "id": "B-5",
-    "median": 2598,
-    "sigma": 0.172
-   },
-   {
-    "id": "B-6",
-    "median": 2256,
-    "sigma": 0.163
-   },
-   {
-    "id": "B-7",
-    "median": 3324,
-    "sigma": 0.142
-   },
-   {
-    "id": "B-8",
-    "median": 2572,
-    "sigma": 0.144
-   },
-   {
-    "id": "B-9",
-    "median": 2705,
-    "sigma": 0.182
-   },
-   {
-    "id": "B-10",
-    "median": 2603,
-    "sigma": 0.172
-   },
-   {
-    "id": "C-1",
-    "median": 2602,
-    "sigma": 0.173
-   },
-   {
-    "id": "C-2",
-    "median": 3442,
-    "sigma": 0.168
-   },
-   {
-    "id": "C-3",
-    "median": 3224,
-    "sigma": 0.151
-   },
-   {
-    "id": "C-4",
-    "median": 3221,
-    "sigma": 0.147
-   },
-   {
-    "id": "C-5",
-    "median": 3130,
-    "sigma": 0.156
-   },
-   {
-    "id": "C-6",
-    "median": 3600,
-    "sigma": 0.181
-   },
-   {
-    "id": "C-7",
-    "median": 2815,
-    "sigma": 0.159
-   },
-   {
-    "id": "C-8",
-    "median": 2593,
+    "id": "R1 P-3",
+    "median": 2577,
     "sigma": 0.15
    },
    {
-    "id": "C-9",
-    "median": 2377,
-    "sigma": 0.163
+    "id": "R1 P-4",
+    "median": 2899,
+    "sigma": 0.149
    },
    {
-    "id": "C-10",
-    "median": 2803,
-    "sigma": 0.159
+    "id": "R1 P-5",
+    "median": 2694,
+    "sigma": 0.161
+   },
+   {
+    "id": "R1 P-6",
+    "median": 2792,
+    "sigma": 0.149
+   },
+   {
+    "id": "R1 P-7",
+    "median": 2609,
+    "sigma": 0.186
+   },
+   {
+    "id": "R1 P-8",
+    "median": 2587,
+    "sigma": 0.162
+   },
+   {
+    "id": "R1 P-9",
+    "median": 2811,
+    "sigma": 0.171
+   },
+   {
+    "id": "R1 P-10",
+    "median": 2597,
+    "sigma": 0.173
+   }
+  ],
+  "pooled": [
+   {
+    "id": "ten averaged",
+    "pen": "ochre",
+    "dash": null,
+    "components": [
+     {
+      "median": 3113,
+      "sigma": 0.148
+     },
+     {
+      "median": 2266,
+      "sigma": 0.165
+     },
+     {
+      "median": 2577,
+      "sigma": 0.15
+     },
+     {
+      "median": 2899,
+      "sigma": 0.149
+     },
+     {
+      "median": 2694,
+      "sigma": 0.161
+     },
+     {
+      "median": 2792,
+      "sigma": 0.149
+     },
+     {
+      "median": 2609,
+      "sigma": 0.186
+     },
+     {
+      "median": 2587,
+      "sigma": 0.162
+     },
+     {
+      "median": 2811,
+      "sigma": 0.171
+     },
+     {
+      "median": 2597,
+      "sigma": 0.173
+     }
+    ]
+   },
+   {
+    "id": "consensus",
+    "pen": "teal",
+    "dash": null,
+    "components": [
+     {
+      "median": 2899,
+      "sigma": 0.149
+     },
+     {
+      "median": 2694,
+      "sigma": 0.161
+     },
+     {
+      "median": 2802,
+      "sigma": 0.161
+     },
+     {
+      "median": 2753,
+      "sigma": 0.155
+     },
+     {
+      "median": 2705,
+      "sigma": 0.173
+     },
+     {
+      "median": 2700,
+      "sigma": 0.168
+     },
+     {
+      "median": 2758,
+      "sigma": 0.161
+     },
+     {
+      "median": 2689,
+      "sigma": 0.156
+     },
+     {
+      "median": 2698,
+      "sigma": 0.166
+     },
+     {
+      "median": 2806,
+      "sigma": 0.166
+     }
+    ]
    }
   ],
   "fact": {
@@ -249,10 +303,10 @@
   },
   {
    "cls": "ochre",
-   "k": "No method &middot; 20 runs",
-   "v": "1 942&ndash;3 600",
+   "k": "No method &middot; 10 runs",
+   "v": "2 266&ndash;3 113",
    "unit": "pd",
-   "d": "Medians of twenty bare runs on the same text, in two batches a day apart; spread &times;1.85 between runs; each run declares a corridor of about &times;1.5 of its own. Their mean sits above the outcome and near the calibrated centre &mdash; on this case the bare model overshoots where on SAS it undershot."
+   "d": "Ten bare runs on the same text, 17 September (run 69): totals 105&ndash;145 pm, mean 125. After one Delphi exchange among the same ten: 125&ndash;135 pm, median 126.5. The spread fell &times;1.38 &rarr; &times;1.08; the distance to the outcome did not (&times;1.53 &rarr; &times;1.56); declared ranges containing the outcome, 4 of 10 &rarr; 1 of 10."
   },
   {
    "cls": "blue",
@@ -331,7 +385,7 @@
    "title": "Where every number came from",
    "count": "8 roles",
    "lead": "Each sensor is an engine with a version, stamped on its own output. They are hired for what they are <b>forbidden to see</b>, not for autonomy.",
-   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">1</span><div class=\"body\">\n    <div class=\"t\">Product model &middot; n = 2 &middot; Hotyn-M 2.1 &middot; run 61</div>\n    <div class=\"x\">47 product obligations &rarr; <b>HM61-1</b>: 84 elements, 68 leaves, 47/47 whole (closed); HM61-2: 91 / 75, F19 residue. Leaves &times;1.10, coverage-set Jaccard 0.51. The first launch of both repeats stopped for contamination: the pinned product projection quotes a duration it says it removed; the figure was struck in the prompt and fresh instances launched.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">2</span><div class=\"body\">\n    <div class=\"t\">Work model &middot; Hotyn-W 1.2 &middot; run 62</div>\n    <div class=\"x\">4 batches, one crossing each &rarr; 521 element-attached items, 0 row mismatches (after a read-time fix of one group-definition phrasing). F51 absorbed by the production cutover; F48, F49, F50, F52 standing as own branches.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">3</span><div class=\"body\">\n    <div class=\"t\">Size classes &middot; n = 2 &middot; Hotyn-D 2.0 &middot; run 63</div>\n    <div class=\"x\">64 / 63 leaves sized, 95.6% class agreement; 4 / 5 unsizeable (L27, L38, L51, L56; + L46). Assembly 10&nbsp;094 / 9&nbsp;747 net task hours, &times;1.036.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">4</span><div class=\"body\">\n    <div class=\"t\">Demanded-work rows &middot; Hotyn-K 1.1 &middot; run 64</div>\n    <div class=\"x\">W-F49 (62.7 h) and W-F52 (37.3 h) priced; W-F48 and W-F50 refused &mdash; headcount and parallel-run period undeclared. Raw chain 9&nbsp;846&ndash;10&nbsp;194 h.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">5</span><div class=\"body\">\n    <div class=\"t\">Outside view &middot; n = 2 &middot; Lytin-R 1.1 &middot; run 65</div>\n    <div class=\"x\">One class (in-house second-generation rewrite of a distributed back-end with a parallel-run cutover), 55% confidence. RC65-1 in recorded 168-h months, leave out: 80 / 150 / 240 / 310. RC65-2 in staffed months, leave in: 55 / 105 / 175 / 240.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">6</span><div class=\"body\">\n    <div class=\"t\">Step C rates &middot; Lytin-K 1.1 &middot; run 66</div>\n    <div class=\"x\">Gap-blind. Fills A1&ndash;A5 (A5 unpriceable), T1&ndash;T5, two globals G1 (within-day overhead) and G2 (era + learning curve). Fills priced by the orchestrator's script through rate table v0.1-h.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">7</span><div class=\"body\">\n    <div class=\"t\">Steps B, D &middot; Lytin-G 1.1 &middot; run 67</div>\n    <div class=\"x\">Units first: G1 duplicates the pinned 6-h day, chain stopped at G2. Centre 17&nbsp;350 h, corridor 11&nbsp;795&ndash;26&nbsp;330, reserve = raw class tails. Explained 83% against RC65-1; overshoot against RC65-2.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">0</span><div class=\"body\">\n    <div class=\"t\">No method &times;20 &middot; runs 41 and 43, added by the author after the run</div>\n    <div class=\"x\">The requirements and the assumption log handed to a bare agent with no sensor definition, ten times on 26 August and ten more on 27 August, one permitted file read each. Each run declared its own P10&ndash;P90; each is drawn as its own thin curve and none is pooled. Not part of the run-61 estimate: the child was told not to read earlier runs, and this family is the control drawn beside every FaxRxTx report.</div>\n  </div></div>\n</div>\n<h4>Two coordinates, not one</h4>\n<p>An estimate is a property of the triple <b>(project &times; engine &times; model)</b>. Every sensor on this estimate ran on Claude Opus 5 (alias <code>opus</code>, recorded per turn as <code>claude-opus-5</code>), so the model coordinate is held fixed. Claude Code 2.1.270; every prompt reached its sensor byte-identical; every turn ended <code>end_turn</code>.</p>",
+   "html": "<div class=\"stack\">\n  <div class=\"row\"><span class=\"idx\">1</span><div class=\"body\">\n    <div class=\"t\">Product model &middot; n = 2 &middot; Hotyn-M 2.1 &middot; run 61</div>\n    <div class=\"x\">47 product obligations &rarr; <b>HM61-1</b>: 84 elements, 68 leaves, 47/47 whole (closed); HM61-2: 91 / 75, F19 residue. Leaves &times;1.10, coverage-set Jaccard 0.51. The first launch of both repeats stopped for contamination: the pinned product projection quotes a duration it says it removed; the figure was struck in the prompt and fresh instances launched.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">2</span><div class=\"body\">\n    <div class=\"t\">Work model &middot; Hotyn-W 1.2 &middot; run 62</div>\n    <div class=\"x\">4 batches, one crossing each &rarr; 521 element-attached items, 0 row mismatches (after a read-time fix of one group-definition phrasing). F51 absorbed by the production cutover; F48, F49, F50, F52 standing as own branches.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">3</span><div class=\"body\">\n    <div class=\"t\">Size classes &middot; n = 2 &middot; Hotyn-D 2.0 &middot; run 63</div>\n    <div class=\"x\">64 / 63 leaves sized, 95.6% class agreement; 4 / 5 unsizeable (L27, L38, L51, L56; + L46). Assembly 10&nbsp;094 / 9&nbsp;747 net task hours, &times;1.036.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">4</span><div class=\"body\">\n    <div class=\"t\">Demanded-work rows &middot; Hotyn-K 1.1 &middot; run 64</div>\n    <div class=\"x\">W-F49 (62.7 h) and W-F52 (37.3 h) priced; W-F48 and W-F50 refused &mdash; headcount and parallel-run period undeclared. Raw chain 9&nbsp;846&ndash;10&nbsp;194 h.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">5</span><div class=\"body\">\n    <div class=\"t\">Outside view &middot; n = 2 &middot; Lytin-R 1.1 &middot; run 65</div>\n    <div class=\"x\">One class (in-house second-generation rewrite of a distributed back-end with a parallel-run cutover), 55% confidence. RC65-1 in recorded 168-h months, leave out: 80 / 150 / 240 / 310. RC65-2 in staffed months, leave in: 55 / 105 / 175 / 240.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">6</span><div class=\"body\">\n    <div class=\"t\">Step C rates &middot; Lytin-K 1.1 &middot; run 66</div>\n    <div class=\"x\">Gap-blind. Fills A1&ndash;A5 (A5 unpriceable), T1&ndash;T5, two globals G1 (within-day overhead) and G2 (era + learning curve). Fills priced by the orchestrator's script through rate table v0.1-h.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">7</span><div class=\"body\">\n    <div class=\"t\">Steps B, D &middot; Lytin-G 1.1 &middot; run 67</div>\n    <div class=\"x\">Units first: G1 duplicates the pinned 6-h day, chain stopped at G2. Centre 17&nbsp;350 h, corridor 11&nbsp;795&ndash;26&nbsp;330, reserve = raw class tails. Explained 83% against RC65-1; overshoot against RC65-2.</div>\n  </div></div>\n  <div class=\"row\"><span class=\"idx\">0</span><div class=\"body\">\n    <div class=\"t\">No method &times;10, and a Delphi among them &middot; run 69, added beside the estimate</div>\n    <div class=\"x\">The requirements and the assumption log handed to ten bare agents with no sensor definition (the pinned prompt of run 41, unchanged), launched together on 17 September: ten thin curves, each run&rsquo;s declared total as the mode and its declared range as five sigma in log space, the rule run 43&rsquo;s curves were drawn with. The thick ochre curve is their plain average. Then the same ten, each keeping its own context, read all ten replies &mdash; anonymous, verbatim, nothing of the moderator&rsquo;s &mdash; and revised or held: the thick teal curve is the average after that exchange. Spread of totals &times;1.38 &rarr; &times;1.08; centre 122.5 &rarr; 126.5 pm; against the actual &times;1.53 &rarr; &times;1.56. Not part of the run-61 estimate. The older family of twenty (runs 41 and 43) is on report 15:25 of 16 Sep.</div>\n  </div></div>\n</div>\n<h4>Two coordinates, not one</h4>\n<p>An estimate is a property of the triple <b>(project &times; engine &times; model)</b>. Every sensor on this estimate ran on Claude Opus 5 (alias <code>opus</code>, recorded per turn as <code>claude-opus-5</code>), so the model coordinate is held fixed. Claude Code 2.1.270; every prompt reached its sensor byte-identical; every turn ended <code>end_turn</code>.</p>",
    "src": "PIPELINE.md &middot; docs/instrument.md"
   },
   {
