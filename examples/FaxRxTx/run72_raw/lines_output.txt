@@ -1,0 +1,53 @@
+run 72 P-1   total 147.0  lines 17  sum of mapped lines  147.0
+run 72 P-2   total 151.0  lines 18  sum of mapped lines  151.0
+run 72 P-3   total 143.0  lines 17  sum of mapped lines  143.0
+run 72 P-4   total 148.0  lines 17  sum of mapped lines  148.0
+run 72 P-5   total 147.0  lines 17  sum of mapped lines  147.0
+run 72 P-6   total 150.0  lines 17  sum of mapped lines  150.0
+run 72 P-7   total 149.0  lines 19  sum of mapped lines  149.0
+run 72 P-8   total 148.0  lines 17  sum of mapped lines  148.0
+run 72 P-9   total 147.0  lines 17  sum of mapped lines  147.0
+run 72 P-10  total 150.0  lines 17  sum of mapped lines  150.0
+run 73 P-1   total 135.0  lines 16  sum of mapped lines  135.0
+run 73 P-2   total 135.0  lines 18  sum of mapped lines  135.0
+run 73 P-3   total 132.0  lines 19  sum of mapped lines  132.0
+run 73 P-4   total 134.0  lines 17  sum of mapped lines  134.0
+run 73 P-5   total 131.0  lines 18  sum of mapped lines  131.0
+run 73 P-6   total 136.0  lines 18  sum of mapped lines  136.0
+run 73 P-7   total 134.0  lines 18  sum of mapped lines  134.0
+run 73 P-8   total 125.0  lines 17  sum of mapped lines  125.0
+run 73 P-9   total 132.0  lines 18  sum of mapped lines  132.0
+run 73 P-10  total 149.0  lines 18  sum of mapped lines  149.0
+
+=== rows no rule matched (0) ===
+
+=== lines: how many of ten carry it, the panel median and range; last column = max/min of the three panel medians ===
+novelty tax                                    |  0/10 carry                             |  0/10 carry                             |   —
+glue / omissions                               |  0/10 carry                             |  0/10 carry                             |   —
+discount / rounding                            |  0/10 carry                             |  0/10 carry                             |   —
+QA, separate line                              |  0/10 carry                             |  0/10 carry                             |   —
+PM                                             | 10/10 carry · median  14.0 · 13.0–14.0 | 10/10 carry · median  14.0 · 13.0–16.0 | x1.00
+immersion                                      | 10/10 carry · median  12.0 · 12.0–12.0 | 10/10 carry · median  10.0 · 10.0–12.0 | x1.20
+load / burst rig (a built thing)               | 10/10 carry · median   5.0 ·  4.0– 6.0 |  6/10 carry · median   5.0 ·  4.0– 6.0 | x1.00
+burst hardening                                |  0/10 carry                             |  0/10 carry                             |   —
+delivery-control core                          | 10/10 carry · median  22.0 · 20.0–23.0 | 10/10 carry · median  20.0 · 20.0–24.0 | x1.10
+cluster management                             | 10/10 carry · median   6.0 ·  6.0– 6.0 | 10/10 carry · median   7.5 ·  6.0–10.0 | x1.25
+render workers                                 | 10/10 carry · median  14.0 · 14.0–16.0 | 10/10 carry · median  15.0 · 13.0–16.0 | x1.07
+OCR                                            | 10/10 carry · median   6.0 ·  6.0– 6.0 | 10/10 carry · median   5.0 ·  5.0– 5.0 | x1.20
+Rx path                                        | 10/10 carry · median   9.0 ·  8.0– 9.0 | 10/10 carry · median   6.0 ·  5.0– 8.0 | x1.50
+Tx parser                                      | 10/10 carry · median   8.0 ·  8.0–10.0 | 10/10 carry · median   6.0 ·  5.0– 7.0 | x1.33
+NOC                                            | 10/10 carry · median   9.0 ·  9.0– 9.0 | 10/10 carry · median   8.0 ·  7.0– 8.0 | x1.12
+portal                                         | 10/10 carry · median  10.0 · 10.0–10.0 | 10/10 carry · median   8.0 ·  8.0– 9.0 | x1.25
+CDR                                            | 10/10 carry · median   3.0 ·  3.0– 4.0 | 10/10 carry · median   3.0 ·  3.0– 3.0 | x1.00
+real-stream / load testing                     | 10/10 carry · median  10.0 · 10.0–10.0 | 10/10 carry · median   9.0 ·  8.0–10.0 | x1.11
+data layer / API                               | 10/10 carry · median   9.0 ·  9.0– 9.0 | 10/10 carry · median   7.5 ·  7.0– 8.0 | x1.20
+old-system / reused integration                | 10/10 carry · median   6.0 ·  5.0– 7.0 | 10/10 carry · median   6.5 ·  5.0–11.0 | x1.08
+rollout / cutover                              | 10/10 carry · median   5.0 ·  4.0– 5.0 | 10/10 carry · median   4.0 ·  4.0– 5.0 | x1.25
+worker framework                               |  0/10 carry                             |  0/10 carry                             |   —
+
+=== boundary-free groups ===
+delivery stack (core + mgmt tool + burst)      | 10/10 carry · median  33.0 · 31.0–34.0 | 10/10 carry · median  30.0 · 28.0–36.0 | x1.10
+verification (real-stream/load + separate QA)  | 10/10 carry · median  10.0 · 10.0–10.0 | 10/10 carry · median   9.0 ·  8.0–10.0 | x1.11
+overhead (PM + glue + novelty + discounts)     | 10/10 carry · median  14.0 · 13.0–14.0 | 10/10 carry · median  14.0 · 13.0–16.0 | x1.00
+render + worker framework                      | 10/10 carry · median  14.0 · 14.0–16.0 | 10/10 carry · median  15.0 · 13.0–16.0 | x1.07
+data + old-system integration                  | 10/10 carry · median  15.0 · 14.0–16.0 | 10/10 carry · median  14.0 · 12.0–19.0 | x1.07

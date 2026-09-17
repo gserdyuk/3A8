@@ -1,0 +1,351 @@
+panel	participant	line	also_matches	pm	label
+run 72	P-1	immersion		12.0	Domain immersion, architecture and technology selection (DHT and alternatives studied)
+run 72	P-1	render workers	worker framework	4.0	Render worker host: job model, node-side execution, restart and isolation on the Windows cluster, printer-driver harness
+run 72	P-1	render workers		10.0	Format renderers: 8–10 input formats, each integrated and stabilised
+run 72	P-1	OCR		6.0	OCR workers and TIFF→PDF conversion with digitisation on a third-party library
+run 72	P-1	delivery-control core		23.0	Delivery-control core: watchdogs, tokens, unordered status store, per-fax status and resume, holding at ~30/s nominal with ~300/s bursts
+run 72	P-1	cluster management		6.0	Cluster management tool: queue lengths, node health and work placement over 16–20 nodes
+run 72	P-1	data layer / API		9.0	Data layer: DB schema, the inter-component API the components talk through, Lustre integration for the fax archive and working files
+run 72	P-1	Rx path		8.0	Rx path in the data centre: intake of TIFF from 10–20 PoPs, per-user page-by-page vs PDF configuration, email assembly and mass delivery
+run 72	P-1	Tx parser		8.0	Tx path: inbound-email parser, fax-number extraction, attachment handling, archive packaging and hand-off
+run 72	P-1	NOC		9.0	NOC internal control centre: state of the remote PoPs, the cluster and the queues
+run 72	P-1	portal		10.0	User portal
+run 72	P-1	CDR		3.0	CDR and billing-data capture (billing itself out)
+run 72	P-1	old-system / reused integration		6.0	Integration with the reused PoP software and least-cost routing, and coexistence with v1 through the transition
+run 72	P-1	real-stream / load testing	worker framework	10.0	Integration tests on the real stream and the comparison harness against the old system
+run 72	P-1	load / burst rig (a built thing)		4.0	Load-generation and failure-injection rig for the burst mode (~300/s) and the end-to-end campaign run on it across the cluster and the PoPs
+run 72	P-1	rollout / cutover		5.0	Rollout to production traffic and readiness to decommission v1
+run 72	P-1	PM		14.0	Project management and coordination (one line): one PM/scrum lead at ~0.8 FTE across the ~18 calendar months the total implies, heavier in the planning phase, lighter in steady-state scrum
+run 72	P-2	immersion		12.0	Domain immersion, architecture and technology selection (DHT etc.), whole blended team
+run 72	P-2	render workers	worker framework	4.0	Render worker host: job model, node-side execution, restart and isolation on the Windows cluster
+run 72	P-2	render workers		11.0	Format renderers: 8–10 input formats via the printer-driver path, each integrated and stabilised
+run 72	P-2	OCR		6.0	OCR workers and TIFF→PDF conversion with digitisation on a third-party library
+run 72	P-2	delivery-control core		22.0	Delivery-control core: watchdogs + tokens over an unordered store, per-fax status, resume after failure
+run 72	P-2	load / burst rig (a built thing)		6.0	Load-generation and failure-injection rig, and the end-to-end runs made on it at ~30/s nominal and ~300/s burst
+run 72	P-2	cluster management		6.0	Cluster management tool: node and queue-length control, job placement over 16–20 nodes
+run 72	P-2	Rx path		9.0	Rx path in the data centre: intake of TIFF from the PoPs, per-user configuration, e-mail assembly and dispatch
+run 72	P-2	Tx parser		8.0	Tx path: inbound-mail parser, number extraction, attachment handling, archive hand-off to a PoP
+run 72	P-2	data layer / API		9.0	Data layer: DB schema and the API the components talk through; Lustre archive and working files
+run 72	P-2	old-system / reused integration		3.0	Interfaces to the reused PoP software and the least-cost routing program
+run 72	P-2	old-system / reused integration		4.0	Coexistence with v1 through the transition
+run 72	P-2	NOC		9.0	NOC: state of remote PoPs, cluster and queues
+run 72	P-2	portal		10.0	User portal
+run 72	P-2	CDR		3.0	CDR / billing-data capture (billing itself out)
+run 72	P-2	real-stream / load testing	worker framework	10.0	Integration-test harness on the real stream with result comparison to the old system
+run 72	P-2	rollout / cutover		5.0	Production rollout: cutover onto live traffic to the point v1 can be decommissioned
+run 72	P-2	PM		14.0	Project management and coordination (one line, Rule 3): one PM/scrum lead at ~0.8 FTE across the ~19 implied calendar months
+run 72	P-3	immersion		12.0	Domain immersion, architecture and technology selection (DHT and alternatives studied, target design fixed), whole blended team
+run 72	P-3	Rx path		9.0	Rx path in the data center: intake of TIFF from the PoPs, per-user page-by-page vs PDF configuration, email composition and dispatch
+run 72	P-3	render workers	worker framework	4.0	Render worker host: job model, node-side execution, restart and isolation on the Windows cluster, printer-driver harness
+run 72	P-3	render workers		10.0	Format renderers: 8–10 input formats, each integrated and stabilised
+run 72	P-3	OCR		6.0	OCR workers on a third-party library, TIFF→PDF with digitisation
+run 72	P-3	Tx parser		8.0	Inbound-email parser and the Tx assembly: address parsing, number extraction, archive packaging and hand-off to a PoP
+run 72	P-3	delivery-control core		20.0	Delivery-control core: watchdogs, tokens, unordered status store, per-fax status, resume after failure, distribution and failure survival across the cluster, no MQ
+run 72	P-3	load / burst rig (a built thing)		5.0	End-to-end load and failure-injection rig, and the campaign run on it: the assembled system proven at ~30/s nominal and ~300/s peak across 16–20 nodes and 10–20 PoPs
+run 72	P-3	cluster management		6.0	Cluster management tool: queue lengths, node state, operator actions
+run 72	P-3	data layer / API		9.0	Storage and data layer: Lustre for archive and working files, the DB schema, the inter-component API
+run 72	P-3	NOC		9.0	NOC: state of remote PoPs, cluster and queues
+run 72	P-3	portal		10.0	User portal
+run 72	P-3	CDR		3.0	CDR and billing-data capture (billing itself out)
+run 72	P-3	real-stream / load testing		10.0	Integration-test rig on the real stream with result comparison against the old system
+run 72	P-3	old-system / reused integration		5.0	Coexistence with the old system through the transition
+run 72	P-3	rollout / cutover		4.0	Production rollout and cutover to the point v1 can be decommissioned
+run 72	P-3	PM		13.0	Project management and coordination — one PM/scrum lead at ~0.7 FTE across the ~18 calendar months the total implies, the planning phase heavier and steady-state scrum lighter
+run 72	P-4	immersion		12.0	Domain immersion, architecture and technology selection (DHT and alternatives)
+run 72	P-4	render workers	worker framework	4.0	Render worker host: job model, node-side execution, restart and isolation on the Windows cluster
+run 72	P-4	render workers		10.0	Format renderers: 8–10 input formats through the printer-driver path, each integrated and stabilised
+run 72	P-4	OCR		6.0	OCR workers and TIFF→PDF conversion with digitisation on a third-party library
+run 72	P-4	delivery-control core		22.0	Delivery-control core: watchdogs + tokens over an unordered store, per-fax status, resume after failure
+run 72	P-4	cluster management		6.0	Cluster management tool (queue lengths, node state, job placement)
+run 72	P-4	Rx path		9.0	Rx path: intake of TIFF from the PoPs, per-user configuration, email assembly and dispatch
+run 72	P-4	Tx parser		8.0	Tx path: inbound-email parser, fax-number extraction, archive packaging and handoff to a PoP
+run 72	P-4	data layer / API		9.0	Data layer: DB schema, the inter-component API, Lustre integration for the archive and working files
+run 72	P-4	NOC		9.0	NOC: state of remote PoPs, cluster and queues
+run 72	P-4	portal		10.0	User portal
+run 72	P-4	CDR		3.0	CDR / billing-data capture (billing itself excluded)
+run 72	P-4	old-system / reused integration		6.0	Coexistence with the old system through the transition, including the interfaces to the reused PoP software and routing
+run 72	P-4	real-stream / load testing	worker framework	10.0	Integration tests on the real stream with the comparison harness against the old system
+run 72	P-4	load / burst rig (a built thing)		5.0	Load-generation and failure-injection rig and the end-to-end campaign run on it at ~30/s nominal and ~300/s burst across the cluster and PoPs
+run 72	P-4	rollout / cutover		5.0	Production rollout and cutover to the point the old version can be decommissioned
+run 72	P-4	PM		14.0	Project management and coordination (one line): one PM/scrum lead at ~0.75 FTE across the ~18 calendar months this total implies, heavier in the planning phase
+run 72	P-5	immersion		12.0	Domain immersion, architecture and technology selection (DHT etc.), whole blended team
+run 72	P-5	render workers	worker framework	4.0	Render worker host: job model, node-side execution, restart and isolation on the Windows cluster; printer-driver harness
+run 72	P-5	render workers		10.0	Format renderers: 8–10 input formats, each integrated and stabilised
+run 72	P-5	OCR		6.0	OCR workers and TIFF→PDF conversion with digitisation on a third-party library
+run 72	P-5	delivery-control core		23.0	Cluster delivery-control core: watchdogs, tokens, unordered status store, per-fax resume, distribution over ~16–20 nodes and failure survival
+run 72	P-5	load / burst rig (a built thing)		4.0	Load-generation and failure-injection rig for the burst mode (~300/s) across the cluster and the PoPs, and the campaign run on it
+run 72	P-5	cluster management		6.0	Cluster management tool (queue lengths, node control, job placement)
+run 72	P-5	Rx path		8.0	Rx datacenter path: intake of TIFF from the PoPs, per-user config, email composition and send
+run 72	P-5	Tx parser		8.0	Tx path: inbound-email parser, number extraction, archive packaging and hand-off
+run 72	P-5	data layer / API		9.0	Data layer: Lustre archive and working files, DB schema, inter-component API
+run 72	P-5	NOC		9.0	NOC: state of remote PoPs, cluster and queues
+run 72	P-5	portal		10.0	User portal
+run 72	P-5	CDR		3.0	CDR / billing-data capture (billing itself excluded)
+run 72	P-5	old-system / reused integration		6.0	Integration with the old system and coexistence for the transition, including interfaces to the reused PoP software and routing
+run 72	P-5	real-stream / load testing	worker framework	10.0	Integration tests on the real stream + comparison harness vs the old system
+run 72	P-5	rollout / cutover		5.0	Production rollout, cutover, decommissioning of v1
+run 72	P-5	PM		14.0	Project management and coordination (one line, Rule 3): one PM/scrum lead at ~0.8 FTE across the ~18 calendar months this total implies
+run 72	P-6	immersion		12.0	Domain immersion, architecture and technology selection (DHT and alternatives studied)
+run 72	P-6	render workers	worker framework	4.0	Render worker host: job model, node-side execution, restart and isolation on the Windows cluster; printer-driver harness
+run 72	P-6	render workers		10.0	Format renderers: 8–10 input formats, each integrated and stabilised
+run 72	P-6	OCR		6.0	OCR workers on a third-party library, TIFF→PDF with digitisation
+run 72	P-6	delivery-control core		22.0	Delivery-control core: watchdogs + tokens over an unordered store, per-fax status, resume after failure, no MQ
+run 72	P-6	load / burst rig (a built thing)		6.0	End-to-end load and failure-injection rig and the campaign run on it across the cluster and the PoPs at ~30/s nominal and ~300/s peak
+run 72	P-6	cluster management		6.0	Cluster management tool: queue lengths, node state, job placement over 16–20 nodes
+run 72	P-6	data layer / API		9.0	Data layer: Lustre archive and working files, DB schema, the inter-component API
+run 72	P-6	Rx path		9.0	Rx path: intake of TIFF from the PoPs, per-user page-by-page or PDF configuration, email assembly and dispatch
+run 72	P-6	Tx parser		8.0	Tx path: inbound-email parser, number extraction, archive packaging, handoff to routing/PoP
+run 72	P-6	NOC		9.0	NOC: state of remote PoPs, cluster and queues
+run 72	P-6	portal		10.0	User portal
+run 72	P-6	CDR		4.0	CDR / billing-data capture (billing itself excluded)
+run 72	P-6	real-stream / load testing	worker framework	10.0	Integration tests on the real stream with the comparison harness against the old system
+run 72	P-6	old-system / reused integration		6.0	Coexistence with v1 through the transition and integration with the reused PoP software and routing
+run 72	P-6	rollout / cutover		5.0	Rollout to production traffic and readiness to decommission v1
+run 72	P-6	PM		14.0	Project management and coordination (one line, Rule 3): one PM/scrum lead at ~0.8 FTE across the ~18 calendar months the total implies, the planning phase heavier and steady-state scrum lighter
+run 72	P-7	immersion		12.0	Domain immersion, architecture and technology selection (DHT etc.), to a chosen design, whole blended team
+run 72	P-7	Rx path		4.0	Rx ingest path: receiving TIFFs from the PoPs into the Miami data center
+run 72	P-7	render workers	worker framework	4.0	Render worker host: job model, node-side execution, restart/isolation on the Windows cluster
+run 72	P-7	render workers		11.0	Format renderers: 8–10 formats via a printer-driver class product, each integrated and stabilised
+run 72	P-7	OCR		6.0	OCR workers and TIFF→PDF conversion with digitisation on a third-party library
+run 72	P-7	Rx path		5.0	Email assembly and delivery to the user (page-by-page TIFF or PDF, per-user configuration)
+run 72	P-7	Tx parser		5.0	Inbound-email parser: MIME/attachments, fax-number extraction, sender feedback on errors
+run 72	P-7	Tx parser		5.0	Tx packaging and handoff to the PoP (archive out, interfaces to the ready routing and PoP software)
+run 72	P-7	delivery-control core		20.0	Delivery-control orchestrator: watchdogs, tokens, unordered status store, per-fax status and resume after failure
+run 72	P-7	load / burst rig (a built thing)		5.0	Load-generation and failure-injection rig, and the end-to-end campaign run on it at ~30/s nominal with ~300/s peaks
+run 72	P-7	cluster management		6.0	Cluster management tool: queue depths, node health, work placement over 16–20 nodes
+run 72	P-7	data layer / API		9.0	Data layer: Lustre integration for archive and working files, DB schema, inter-component API
+run 72	P-7	NOC		9.0	NOC: state of 10–20 remote PoPs, the cluster and the queues
+run 72	P-7	portal		10.0	User portal
+run 72	P-7	CDR		4.0	CDR and billing-data capture (billing itself out)
+run 72	P-7	real-stream / load testing	worker framework	10.0	Integration tests on the real stream with a comparison harness against the old system
+run 72	P-7	old-system / reused integration		5.0	Coexistence and integration with the old system for the transition
+run 72	P-7	rollout / cutover		5.0	Production rollout and cutover to the point the old version can be decommissioned
+run 72	P-7	PM		14.0	Project management and coordination (one line, Rule 3): one PM/scrum lead at ~0.75 FTE across the ~18 calendar months this total implies, within-day coordination already inside the other lines
+run 72	P-8	immersion		12.0	Domain immersion, architecture and technology selection (DHT etc.), whole blended team
+run 72	P-8	render workers	worker framework	4.0	Render worker host: job model, node-side execution, restart and isolation on the Windows cluster; printer-driver harness
+run 72	P-8	render workers		10.0	Format renderers: 8–10 input formats, each integrated and stabilised
+run 72	P-8	OCR		6.0	OCR workers: TIFF→PDF with digitisation on a third-party library
+run 72	P-8	delivery-control core		23.0	Delivery-control core: watchdogs, tokens, unordered status store, per-fax status and resume after failure, no MQ
+run 72	P-8	cluster management		6.0	Cluster management tool: queue lengths, node control
+run 72	P-8	load / burst rig (a built thing)		4.0	Load-generation and failure-injection rig for the burst mode (~300/s), and the end-to-end campaign run on it across the cluster and the PoPs
+run 72	P-8	data layer / API		9.0	Data layer: Lustre archive and working files, DB schema, the inter-component API
+run 72	P-8	Rx path		9.0	Rx path: intake of TIFF from the PoPs, per-user config, page-by-page TIFF or PDF attachment, email send
+run 72	P-8	Tx parser		8.0	Tx path: inbound-email parser, number extraction, attachments, archive packaging and hand-off to a PoP
+run 72	P-8	old-system / reused integration		6.0	Coexistence with the old system through the transition
+run 72	P-8	NOC		9.0	NOC: state of remote PoPs, cluster, queues
+run 72	P-8	portal		10.0	User portal
+run 72	P-8	CDR		3.0	CDR / billing-data capture (billing itself excluded)
+run 72	P-8	real-stream / load testing		10.0	Integration-test rig on the real stream with result comparison against the old system
+run 72	P-8	rollout / cutover		5.0	Production rollout and cutover to the point v1 can be decommissioned
+run 72	P-8	PM		14.0	Project management and coordination (one line): one PM/scrum lead at ~0.8 FTE across the ~18 calendar months this total implies
+run 72	P-9	immersion		12.0	Domain immersion, architecture and technology selection (DHT and alternatives), target architecture agreed
+run 72	P-9	render workers	worker framework	4.0	Render worker host: job model, node-side execution, restart and isolation on the Windows cluster, printer-driver harness
+run 72	P-9	render workers		10.0	Format renderers: 8–10 input formats, each integrated and stabilised
+run 72	P-9	OCR		6.0	OCR workers on the third-party library, TIFF→PDF with digitisation
+run 72	P-9	delivery-control core		22.0	Cluster core: watchdogs + tokens, unordered status store, resume-after-failure, per-fax delivery control, stabilised to nominal and burst
+run 72	P-9	load / burst rig (a built thing)		5.0	Load-generation and failure-injection rig for the burst mode (~300/s), and the end-to-end campaign run on it across the cluster and the PoPs
+run 72	P-9	cluster management		6.0	Cluster management tool: queue lengths, node and worker control
+run 72	P-9	Rx path		9.0	Rx pipeline: intake of TIFFs from the PoPs, per-user configuration, page-by-page TIFF or PDF, email assembly and dispatch
+run 72	P-9	Tx parser		8.0	Tx pipeline: inbound-email parser, number extraction, archive packaging, handoff to the ready routing and PoP
+run 72	P-9	data layer / API		9.0	Storage and data layer: Lustre archive and working files, DB schema, the inter-component API
+run 72	P-9	NOC		9.0	NOC: state of remote PoPs, cluster and queues
+run 72	P-9	portal		10.0	User portal
+run 72	P-9	CDR		3.0	CDR and billing-data capture (billing itself excluded)
+run 72	P-9	old-system / reused integration		5.0	Coexistence with the old system through the transition
+run 72	P-9	real-stream / load testing	worker framework	10.0	Integration tests on the real stream with the comparison harness against the old system
+run 72	P-9	rollout / cutover		5.0	Production rollout and cutover to the point v1 can be decommissioned
+run 72	P-9	PM		14.0	Project management and coordination — one line: one PM/scrum lead at ~0.8 FTE across the ~18 calendar months the total implies, heavier in the planning phase, lighter in steady-state scrum
+run 72	P-10	immersion		12.0	Domain immersion, architecture and technology selection (DHT and alternatives studied, target design fixed), whole blended team
+run 72	P-10	render workers	worker framework	5.0	Render worker host: job model, node-side execution, restart and isolation on the Windows cluster; printer-driver harness
+run 72	P-10	render workers		11.0	Format renderers: 8–10 input formats, each integrated and stabilised
+run 72	P-10	OCR		6.0	OCR workers on a third-party library; TIFF→PDF with digitisation
+run 72	P-10	delivery-control core		22.0	Delivery-control core: watchdogs + tokens, unordered token store, per-fax status, resume after failure, stabilised to nominal and burst
+run 72	P-10	cluster management		6.0	Cluster management tool: node and queue-length control, job placement over ~16–20 nodes
+run 72	P-10	data layer / API		9.0	Data layer: Lustre archive and working files, DB schema, the API components talk through
+run 72	P-10	Rx path		9.0	Rx path in the data centre: intake of TIFF from the PoPs, per-user TIFF-page or PDF attachment, email assembly and dispatch
+run 72	P-10	Tx parser		8.0	Tx path: inbound-email parser, number extraction, archive assembly, handoff to routing/PoP
+run 72	P-10	NOC		9.0	NOC: state of 10–20 remote PoPs, the cluster and the queues
+run 72	P-10	portal		10.0	User portal, including per-user delivery configuration
+run 72	P-10	CDR		3.0	CDR / billing-data capture (billing engine excluded)
+run 72	P-10	old-system / reused integration		6.0	Integration with the reused assets (PoP software, least-cost routing) and coexistence with v1 through the transition
+run 72	P-10	real-stream / load testing	worker framework	10.0	Integration tests on the real stream with the comparison harness against the old system
+run 72	P-10	load / burst rig (a built thing)		5.0	Load-generation and failure-injection rig, and the end-to-end campaign run on it at nominal ~30/s and ~300/s burst across the cluster and the PoPs
+run 72	P-10	rollout / cutover		5.0	Production rollout and cutover to the point the old version can be decommissioned
+run 72	P-10	PM		14.0	Project management and coordination (one line): one PM/scrum lead at ~0.75 FTE across the ~19 calendar months the total implies
+run 73	P-1	immersion		10.0	Domain immersion, architecture and technology selection (DHT etc.), at the blended team's width
+run 73	P-1	render workers		5.0	Render worker framework: job intake, process isolation, printer-driver harness, crash recovery
+run 73	P-1	render workers		11.0	Per-format render integration and stabilisation, 8–10 formats
+run 73	P-1	OCR		5.0	OCR workers and TIFF→PDF conversion on the third-party library
+run 73	P-1	delivery-control core		24.0	Delivery-control core: watchdogs + tokens over an unordered store, per-fax state, resume, no MQ — including its tuning to the nominal and burst rates
+run 73	P-1	cluster management		6.0	Cluster management tool: node/queue-length control, job distribution over ~16–20 nodes
+run 73	P-1	data layer / API		8.0	Storage and data layer: Lustre integration, DB schema, inter-component API
+run 73	P-1	Rx path		7.0	Rx pipeline: TIFF intake from PoPs, per-user configuration, page-wise TIFF or PDF assembly, email send
+run 73	P-1	Tx parser		6.0	Tx pipeline: inbound-email parser, number extraction, archive packaging, handoff to routing/PoP
+run 73	P-1	NOC		8.0	NOC: state of remote PoPs, cluster and queues
+run 73	P-1	portal		9.0	User portal
+run 73	P-1	CDR		3.0	CDR / billing-data capture (billing itself out)
+run 73	P-1	old-system / reused integration		6.0	Integration with the old system and coexistence for the transition
+run 73	P-1	real-stream / load testing	worker framework	9.0	Integration tests on the real stream + comparison harness against the old system
+run 73	P-1	rollout / cutover		4.0	Rollout to production traffic, cutover, v1 decommission readiness
+run 73	P-1	PM		14.0	Project management and coordination — one line
+run 73	P-2	immersion		10.0	Domain immersion, architecture and technology selection (DHT and alternatives), at the blended team's width
+run 73	P-2	delivery-control core		22.0	Delivery-control core: watchdogs + tokens over an unordered store, per-fax status, resumption, failure survival
+run 73	P-2	cluster management		5.0	Cluster runtime: job distribution across ~16–20 Windows nodes on the private network
+run 73	P-2	cluster management		3.0	Cluster management tool: queue lengths, node state
+run 73	P-2	render workers	worker framework	5.0	Render-worker host: job intake, printer-driver (Black Ice-class) harness, process isolation and crash recovery
+run 73	P-2	render workers		10.0	Per-format renderers, 8–10 formats, each integrated and stabilized
+run 73	P-2	OCR		5.0	OCR workers, TIFF→PDF conversion on a third-party library
+run 73	P-2	Rx path		5.0	Rx path in the data centre: per-user configuration, page-wise TIFF or PDF assembly, outbound mail
+run 73	P-2	Tx parser		5.0	Tx path: inbound-email parser, recipient number extraction, archive packaging
+run 73	P-2	old-system / reused integration		4.0	PoP transport and integration with the existing PoP software and the reused least-cost routing
+run 73	P-2	data layer / API		8.0	Data layer: Lustre archive and working files, DB schema, the inter-component API
+run 73	P-2	NOC		8.0	NOC — state of the remote PoPs, the cluster and the queues
+run 73	P-2	portal		9.0	User portal: per-user fax configuration, history
+run 73	P-2	CDR		3.0	CDR and billing-data capture (billing engine excluded)
+run 73	P-2	real-stream / load testing		9.0	Integration tests on the real message stream with the comparison harness against the old system
+run 73	P-2	old-system / reused integration		5.0	Integration with the old system and coexistence through the transition
+run 73	P-2	rollout / cutover		4.0	Rollout to production traffic, cutover, readiness to decommission v1
+run 73	P-2	PM		15.0	Project management and coordination — one line: 120 pm of work lines at a blended width of about eight implies ~15 calendar months, and one PM/scrum lead full-time across that span
+run 73	P-3	immersion		11.0	Domain immersion, architecture and technology selection (DHT etc.), at the blended team's width
+run 73	P-3	render workers		5.0	Render-worker frame: job intake, process isolation, node-local execution, printer-driver harness, crash recovery
+run 73	P-3	render workers		10.0	Format renderers, 8–10 formats, each integrated and stabilised
+run 73	P-3	OCR		5.0	OCR workers on a third-party library + TIFF→PDF conversion path
+run 73	P-3	Rx path		3.0	Rx output assembly: per-page TIFF vs PDF per user configuration
+run 73	P-3	Rx path		3.0	Outbound email delivery of received faxes at the nominal rate
+run 73	P-3	Tx parser		5.0	Inbound-email parser (Tx): address and number extraction, attachments, archive packaging
+run 73	P-3	delivery-control core		20.0	Fax orchestrator: watchdogs + tokens, unordered status store, per-fax state, resume after failure
+run 73	P-3	cluster management		6.0	Cluster runtime: job distribution over ~16–20 Windows nodes, private network
+run 73	P-3	cluster management		3.0	Cluster management tool (queue lengths, node state)
+run 73	P-3	data layer / API		7.0	Storage and data layer: Lustre working files and archive, DB schema, inter-component API
+run 73	P-3	old-system / reused integration		4.0	PoP transport and integration with the existing PoP software and the reused least-cost routing
+run 73	P-3	old-system / reused integration		3.0	Coexistence with the old system for the duration of the transition
+run 73	P-3	NOC		8.0	NOC: state of the remote PoPs, the cluster and the queues
+run 73	P-3	portal		8.0	User portal (per-user fax configuration, history)
+run 73	P-3	CDR		3.0	CDR and billing-data capture and persistence (billing itself excluded)
+run 73	P-3	real-stream / load testing	worker framework	9.0	Integration tests on the real stream + comparison harness against the old system
+run 73	P-3	rollout / cutover		4.0	Rollout to production traffic, cutover, readiness to decommission v1
+run 73	P-3	PM		15.0	Project management and coordination (one line, Rule 3): one PM/scrum-lead equivalent full time across the ~15 calendar months that 117 pm of delivery lines at a team of this width imply
+run 73	P-4	immersion		10.0	Domain immersion, architecture and technology selection (DHT and alternatives), at the blended team's width
+run 73	P-4	render workers		5.0	Render worker frame: job intake, process isolation, printer-driver (Black Ice-class) integration, crash recovery
+run 73	P-4	render workers		10.0	Per-format renderers, 8–10 formats, each integrated and stabilised
+run 73	P-4	OCR		5.0	OCR workers on a third-party library; TIFF→PDF conversion path with digitisation
+run 73	P-4	delivery-control core		20.0	Delivery-control core: watchdogs, tokens, unordered status store, resume-on-failure — the fax orchestrator
+run 73	P-4	cluster management		6.0	Cluster runtime and management tool: dispatch over ~16–20 nodes on the private network, queue lengths, node state
+run 73	P-4	Rx path		8.0	Rx path in the data centre: TIFF intake from the PoPs, per-user configuration, page-wise TIFF or PDF assembly, email dispatch
+run 73	P-4	Tx parser		7.0	Tx path: inbound-email parser, number extraction, TIFF archive packaging, handoff to the existing routing/PoP
+run 73	P-4	data layer / API		7.0	Storage and data layer: Lustre archive and working files, DB schema, the inter-component API
+run 73	P-4	NOC		8.0	NOC: state of remote PoPs, cluster and queues
+run 73	P-4	portal		8.0	User portal
+run 73	P-4	CDR		3.0	CDR and billing-data capture (billing itself excluded)
+run 73	P-4	old-system / reused integration		6.0	Integration with the old system and coexistence through the transition
+run 73	P-4	real-stream / load testing	worker framework	9.0	Comparison harness and integration tests on the real message stream against the old system
+run 73	P-4	rollout / cutover		4.0	Rollout to production traffic, cutover, readiness to decommission v1
+run 73	P-4	load / burst rig (a built thing)		4.0	Load and burst rig to ~30/s nominal and ~300/s peak across 16–20 nodes, and tuning to it
+run 73	P-4	PM		14.0	Project management and coordination (one line, Rule 3): one PM/scrum lead at full time across the ~15 calendar months the 120 pm of work lines imply at the staffing below, less the planning-phase coordination already inside the immersion line
+run 73	P-5	immersion		10.0	Domain immersion, architecture and technology selection (DHT etc. studied), at the blended team's width
+run 73	P-5	render workers	worker framework	5.0	Render-worker host: job intake, sandboxing, printer-driver harness, crash recovery
+run 73	P-5	render workers		10.0	Per-format renderers, 8–10 formats, each integrated and stabilised
+run 73	P-5	OCR		5.0	OCR workers and the TIFF→PDF conversion path on a third-party library
+run 73	P-5	delivery-control core		20.0	Delivery-control core: watchdogs + tokens, unordered status store, per-fax state, resume-on-failure (no MQ)
+run 73	P-5	cluster management		4.0	Cluster runtime: job distribution over ~16–20 Windows nodes on the private network
+run 73	P-5	cluster management		3.0	Cluster management tool (queue lengths, node state)
+run 73	P-5	Rx path		6.0	Rx path: intake of TIFF from PoPs, per-user configuration, email assembly and sending
+run 73	P-5	Tx parser		6.0	Tx path: inbound-email parser, number extraction, archive packaging, handoff to routing/PoP
+run 73	P-5	data layer / API		8.0	Storage and DB layer: Lustre archive and working files, DB schema, inter-component API
+run 73	P-5	NOC		7.0	NOC: state of remote PoPs, cluster and queues
+run 73	P-5	portal		8.0	User portal
+run 73	P-5	CDR		3.0	CDR / billing data capture (billing itself out)
+run 73	P-5	real-stream / load testing		9.0	Integration tests on the real stream with the old-system comparison harness
+run 73	P-5	load / burst rig (a built thing)		5.0	Load and failure rig to ~30/s nominal with ~10× burst on 16–20 nodes, and tuning to it
+run 73	P-5	old-system / reused integration		5.0	Integration with the old system and coexistence through the transition
+run 73	P-5	rollout / cutover		4.0	Cutover: production rollout, stabilisation to v1 decommission readiness
+run 73	P-5	PM		13.0	Project management and coordination (one line, Rule 3)
+run 73	P-6	immersion		10.0	Domain immersion, architecture and technology selection (DHT and alternatives), at the blended team's width
+run 73	P-6	render workers	worker framework	4.0	Render-worker host: job intake, printer-driver harness, process isolation and crash recovery
+run 73	P-6	render workers		10.0	Per-format renderers, 8–10 formats, each integrated and stabilised
+run 73	P-6	OCR		5.0	OCR workers on a third-party library, TIFF→searchable PDF
+run 73	P-6	delivery-control core		21.0	Delivery-control orchestrator: watchdogs + tokens, unordered status store, per-fax status, resume-on-failure
+run 73	P-6	cluster management		5.0	Cluster runtime: job distribution over ~16–20 Windows nodes on the private network
+run 73	P-6	cluster management		3.0	Cluster management tool: queue lengths, node state
+run 73	P-6	data layer / API		8.0	Data layer: Lustre archive and working files, DB schema, the inter-component API
+run 73	P-6	Rx path		7.0	Rx path: TIFF intake from the PoPs into the data centre, per-user configuration, page-wise TIFF or PDF email assembly and sending
+run 73	P-6	Tx parser		7.0	Tx path: inbound-email parser, number extraction, attachments, archive packaging and hand-off to the existing routing/PoP
+run 73	P-6	NOC		8.0	NOC: state of PoPs, cluster and queues, over the cluster tool's instrumentation
+run 73	P-6	portal		9.0	User portal
+run 73	P-6	CDR		3.0	CDR and billing-data capture (billing excluded)
+run 73	P-6	old-system / reused integration		5.0	Integration with the old system and coexistence through the transition
+run 73	P-6	rollout / cutover		4.0	Rollout to production traffic, cutover, readiness to decommission v1
+run 73	P-6	load / burst rig (a built thing)		5.0	Load and burst rig to ~30/s nominal with ~300/s peak across 16–20 nodes and 10–20 PoPs, and tuning to it
+run 73	P-6	real-stream / load testing		9.0	Integration tests on the real message stream with the comparison harness against the old system
+run 73	P-6	PM		13.0	Project management and coordination (one line, Rule 3; ~11% of the 123 pm of work lines, one PM/scrum lead plus ceremony and cross-component coordination over the span they imply)
+run 73	P-7	immersion		12.0	Domain immersion, architecture and technology selection (DHT etc.), whole team at ~1.5 months
+run 73	P-7	delivery-control core		20.0	Delivery-control orchestrator: watchdogs + tokens, unordered status store, per-fax status and resume, no MQ
+run 73	P-7	cluster management	render workers	10.0	Render cluster runtime and cluster management tool (dispatch, queue lengths, node health) over 16–20 nodes
+run 73	P-7	render workers	worker framework	4.0	Render-worker host: job intake, printer-driver (Black Ice-class) harness, process isolation and crash recovery
+run 73	P-7	render workers		9.0	Per-format renderers, 8–10 formats, each integrated and stabilised
+run 73	P-7	OCR		5.0	OCR workers and TIFF→PDF conversion on a third-party library
+run 73	P-7	Rx path		5.0	Rx path in the data centre: per-user configuration, page-by-page TIFF or PDF assembly, email delivery
+run 73	P-7	Tx parser		5.0	Tx path: inbound-email parser, number extraction, archive packaging
+run 73	P-7	old-system / reused integration		4.0	PoP transport and integration with the existing PoP software and the reused least-cost routing
+run 73	P-7	data layer / API		7.0	Storage and DB/API layer: Lustre archive and working files, DB schema, inter-component contracts
+run 73	P-7	NOC		7.0	NOC: state of remote PoPs, cluster and queues
+run 73	P-7	portal		8.0	User portal
+run 73	P-7	CDR		3.0	CDR / billing data capture (billing itself out)
+run 73	P-7	real-stream / load testing	worker framework	8.0	Integration-test harness on the real stream with comparison to the old system
+run 73	P-7	load / burst rig (a built thing)		5.0	Load and burst rig to ~30/s nominal with ~10× peak across 16–20 nodes and 10–20 PoPs, and tuning to it
+run 73	P-7	old-system / reused integration		4.0	Coexistence and integration with v1 through the transition
+run 73	P-7	rollout / cutover		4.0	Rollout to production traffic, cutover, readiness to decommission v1
+run 73	P-7	PM		14.0	Project management and coordination — one line: one PM-equivalent plus scrum ceremony ownership across the ~14-month span the 120 pm of work lines imply
+run 73	P-8	immersion		10.0	Domain immersion, discussions, architecture and technology selection (DHT etc.), at the blended team's width
+run 73	P-8	render workers	worker framework	5.0	Render-worker host: printer-driver harness, job intake, process isolation and crash recovery
+run 73	P-8	render workers		10.0	Format renderers, 8–10 formats, each integrated and stabilised against real documents
+run 73	P-8	OCR		5.0	OCR workers and TIFF→PDF conversion on a third-party library
+run 73	P-8	delivery-control core		20.0	Delivery-control orchestrator: watchdogs + tokens, unordered status store, per-fax status, resume, failure survival
+run 73	P-8	cluster management		5.0	Cluster runtime: job distribution across ~16–20 Windows nodes on the private network
+run 73	P-8	cluster management		3.0	Cluster management tool: queue lengths, node state
+run 73	P-8	data layer / API		7.0	Storage and DB layer plus the inter-component API (Lustre archive and working files, DBMS)
+run 73	P-8	Tx parser		6.0	Tx path: inbound-email parser, number extraction, TIFF archive packaging, transport to the PoP and handoff to the existing routing
+run 73	P-8	Rx path		6.0	Rx path in the data centre: TIFF intake from the 10–20 PoPs, per-user configuration, page-wise TIFF or PDF assembly, email dispatch
+run 73	P-8	NOC		7.0	NOC: state of the remote PoPs, the cluster and the queues
+run 73	P-8	portal		8.0	User portal: per-user fax configuration, history
+run 73	P-8	CDR		3.0	CDR and billing-data capture and persistence (billing itself excluded)
+run 73	P-8	old-system / reused integration		5.0	Integration with the old system and coexistence through the transition
+run 73	P-8	real-stream / load testing	worker framework	8.0	Integration-test harness on the real message stream, comparing results to the old system
+run 73	P-8	rollout / cutover		4.0	Rollout to production traffic, cutover, readiness to decommission v1
+run 73	P-8	PM		13.0	Project management and coordination — 1 FTE PM/scrum lead across the ~13–14-month delivery the 112 pm of work lines imply
+run 73	P-9	immersion		10.0	Domain immersion, architecture and technology selection (DHT etc.), whole blended team
+run 73	P-9	render workers	worker framework	4.0	Render-worker host: job intake, printer-driver harness, process isolation and crash recovery
+run 73	P-9	render workers		10.0	Per-format renderers, 8–10 formats, each integrated and stabilised
+run 73	P-9	OCR		5.0	OCR workers and TIFF→PDF conversion on a third-party library
+run 73	P-9	delivery-control core		20.0	Cluster orchestrator: watchdogs + tokens, unordered status store, resume-on-failure, delivery control per fax
+run 73	P-9	cluster management		6.0	Cluster runtime and management tool: dispatch over ~16–20 nodes on the private network, queue lengths, node state
+run 73	P-9	NOC		8.0	NOC: state of remote PoPs, cluster, queues
+run 73	P-9	portal		8.0	User portal (per-user configuration, fax history)
+run 73	P-9	Tx parser		5.0	Inbound-email parser and Tx submission path (number extraction, attachments, archive assembly)
+run 73	P-9	Rx path		5.0	Rx delivery path: per-user config, page-by-page TIFF or PDF attachment, outbound mail
+run 73	P-9	old-system / reused integration		4.0	PoP transport and integration with the existing PoP software and the reused least-cost routing
+run 73	P-9	data layer / API		7.0	Storage and data layer: Lustre archive and working files, DB schema, inter-component API
+run 73	P-9	old-system / reused integration		5.0	Integration with the old system and coexistence for the transition
+run 73	P-9	CDR		3.0	CDR and billing-data capture (billing itself excluded)
+run 73	P-9	real-stream / load testing	worker framework	8.0	Integration-test harness on the real message stream with result comparison against the old system
+run 73	P-9	load / burst rig (a built thing)		4.0	Load and burst rig to ~30/s nominal with ~300/s peak across 16–20 nodes, and tuning to it
+run 73	P-9	rollout / cutover		4.0	Cutover: taking production traffic, stabilisation to decommission of v1
+run 73	P-9	PM		16.0	Project management and coordination — one line: one PM-equivalent plus scrum ceremony ownership across the ~17 calendar months that 116 pm of work lines at seven delivery staff imply
+run 73	P-10	immersion		12.0	Domain immersion, architecture and technology selection (DHT and alternatives), at the blended team's width
+run 73	P-10	render workers	worker framework	5.0	Render worker host: printer-driver (Black Ice-class) harness, job intake, process isolation, crash recovery
+run 73	P-10	render workers		10.0	Per-format renderers, 8–10 formats, each integrated and stabilised
+run 73	P-10	OCR		5.0	OCR workers and TIFF→PDF conversion path on the third-party library
+run 73	P-10	delivery-control core		24.0	Fax orchestrator: watchdogs + token store, status of every fax, resume after failure, distribution over the nodes (MQ excluded)
+run 73	P-10	cluster management		6.0	Cluster management tool: queue lengths, node state, control
+run 73	P-10	Rx path		5.0	Rx assembly and dispatch in the data centre: per-user configuration, page-wise TIFF or PDF, outbound mail
+run 73	P-10	old-system / reused integration		6.0	PoP transport and integration with the existing PoP software and the reused least-cost routing
+run 73	P-10	NOC		8.0	NOC: state of PoPs, cluster and queues, over the cluster tool's instrumentation
+run 73	P-10	portal		9.0	User portal: per-user configuration and fax history, rebuilt against v1 as reference
+run 73	P-10	Tx parser		6.0	Inbound-email parser (Tx): parse mail, extract fax number, take attachments, package the archive
+run 73	P-10	data layer / API		8.0	Data layer: Lustre fax archive and working files, DB schema, inter-component API
+run 73	P-10	CDR		3.0	CDR / billing-data capture (billing itself out)
+run 73	P-10	real-stream / load testing	worker framework	10.0	Integration tests on the real stream with the comparison harness against the old system
+run 73	P-10	old-system / reused integration		5.0	Coexistence with v1 through the transition (integration with the old system while both run)
+run 73	P-10	load / burst rig (a built thing)		6.0	Load and burst rig to ~30/s nominal and ~300/s peak across 16–20 nodes and 10–20 PoPs, and tuning to it
+run 73	P-10	rollout / cutover		5.0	Production rollout, cutover, readiness to decommission v1
+run 73	P-10	PM		16.0	Project management and coordination (one line, Rule 3): one PM/scrum lead full-time across the ~16.5 calendar months the 133 pm of work lines imply at a delivery-side team of eight

@@ -21,6 +21,10 @@ sys.argv = [sys.argv[0]]
 import delphi   # noqa: E402  (its functions only; HERE inside it stays run 69's and is not used)
 
 PANELS = [('run 69', 'run69_raw', 3), ('run 70', 'run70_raw', 3), ('run 71', 'run71_raw', 3)]
+if os.environ.get('DELPHI_PANELS'):      # e.g. run72_raw:4,run73_raw:3 - the rule-bound panels and their last segment
+    PANELS = [(x.split(':')[0].replace('_raw', '').replace('run', 'run '), x.split(':')[0], int(x.split(':')[1]))
+              for x in os.environ['DELPHI_PANELS'].split(',')]
+OUT = os.environ.get('DELPHI_OUT', HERE)
 
 RULES = [   # first match wins; order is the judgement
     ('novelty tax', r'novelty'),
@@ -29,12 +33,13 @@ RULES = [   # first match wins; order is the judgement
     ('QA, separate line', r'^\W*(?:uplift:?\W*)?(?:named uplift:?\W*)?(?:dedicated |cross-cutting |system-level )?qa\b|qa uplift|qa/pm uplift|dedicated qa|qa beyond|qa function|qa outside|cross-cutting qa'),
     ('PM', r'\bpm\b|project management|coordination|scrum'),
     ('immersion', r'immersion'),
-    ('burst hardening', r'burst (?:and scale |and |& )?(?:hardening|qualification)|scale and burst|performance work|^\W*load and burst rig'),
+    ('load / burst rig (a built thing)', r'rig\b.{0,60}(?:campaign|runs made on it|tuning to it)|(?:load|capacity|failure)[- ](?:generation|and failure|and burst|injection).{0,40}rig|^\W*(?:end-to-end )?load and (?:failure|burst)'),
+    ('burst hardening', r'burst (?:and scale |and |& )?(?:hardening|qualification)|scale and burst|performance work'),
     ('delivery-control core', r'watchdog|delivery[- ]control|orchestrat|cluster core|cluster \+ delivery|cluster with delivery|cluster and delivery'),
     ('cluster management', r'cluster management|management tool|cluster runtime'),
     ('render workers', r'render|format'),
     ('OCR', r'\bocr\b'),
-    ('Rx path', r'\brx\b|outbound e?-?mail|outbound mail'),
+    ('Rx path', r'\brx\b|outbound e?-?mail|outbound mail|email assembly and delivery'),
     ('Tx parser', r'inbound|parser|\btx\b'),
     ('NOC', r'\bnoc\b'),
     ('portal', r'portal'),
@@ -46,7 +51,7 @@ RULES = [   # first match wins; order is the judgement
     ('worker framework', r'worker (?:runtime|harness|host)|harness'),
 ]
 GROUPS = {
-    'delivery stack (core + mgmt tool + burst)': ['delivery-control core', 'cluster management', 'burst hardening'],
+    'delivery stack (core + mgmt tool + burst)': ['delivery-control core', 'cluster management', 'burst hardening', 'load / burst rig (a built thing)'],
     'verification (real-stream/load + separate QA)': ['real-stream / load testing', 'QA, separate line'],
     'overhead (PM + glue + novelty + discounts)': ['PM', 'glue / omissions', 'novelty tax', 'discount / rounding'],
     'render + worker framework': ['render workers', 'worker framework'],
@@ -110,7 +115,7 @@ for panel, folder, seg in PANELS:
             records.append({'panel': panel, 'p': p, 'line': cat, 'also': also, 'pm': val, 'label': label})
         print('%s %-5s total %5s  lines %2d  sum of mapped lines %6.1f' % (panel, p, total, len(rows), ssum))
 
-with open(os.path.join(HERE, 'lines.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+with open(os.path.join(OUT, 'lines.tsv'), 'w', encoding='utf-8', newline='\n') as f:
     f.write('panel\tparticipant\tline\talso_matches\tpm\tlabel\n')
     for r in records:
         f.write('%s\t%s\t%s\t%s\t%s\t%s\n' % (r['panel'], r['p'], r['line'], ';'.join(r['also']), r['pm'], r['label']))
@@ -143,7 +148,7 @@ def show(title, names):
             cellstr.append('%2d/10 carry · median %5.1f · %4.1f–%4.1f' % (len(v), med, min(v), max(v)))
         else:
             cellstr.append(' 0/10 carry' + ' ' * 28)
-    spread = (max(meds) / min(meds)) if len(meds) == 3 and min(meds) > 0 else None
+    spread = (max(meds) / min(meds)) if len(meds) == len(PANELS) and min(meds) > 0 else None
     print('%-46s | %s | %s' % (title[:46], ' | '.join(cellstr), ('x%.2f' % spread) if spread else '  —'))
 
 

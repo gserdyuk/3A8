@@ -1,0 +1,52 @@
+[
+ {
+  "id": "run73 R1 P-1",
+  "median": 3746,
+  "sigma": 0.139
+ },
+ {
+  "id": "run73 R1 P-2",
+  "median": 3305,
+  "sigma": 0.148
+ },
+ {
+  "id": "run73 R1 P-3",
+  "median": 2059,
+  "sigma": 0.146
+ },
+ {
+  "id": "run73 R1 P-4",
+  "median": 2449,
+  "sigma": 0.151
+ },
+ {
+  "id": "run73 R1 P-5",
+  "median": 2411,
+  "sigma": 0.158
+ },
+ {
+  "id": "run73 R1 P-6",
+  "median": 2877,
+  "sigma": 0.149
+ },
+ {
+  "id": "run73 R1 P-7",
+  "median": 2497,
+  "sigma": 0.127
+ },
+ {
+  "id": "run73 R1 P-8",
+  "median": 1978,
+  "sigma": 0.153
+ },
+ {
+  "id": "run73 R1 P-9",
+  "median": 2368,
+  "sigma": 0.158
+ },
+ {
+  "id": "run73 R1 P-10",
+  "median": 3507,
+  "sigma": 0.156
+ }
+]

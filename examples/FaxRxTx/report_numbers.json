@@ -1,6 +1,6 @@
 {
  "hours_per_pd": 8,
- "dates_line": "chain, outside view, Step C and diagnosis run <b>16 Sep 2026</b> (runs 61&ndash;67) &middot; outcome opened <b>after</b> the estimate document was fixed (run 68) &middot; no-method control and its Delphi <b>17 Sep</b> (runs 69&ndash;71, three panels)",
+ "dates_line": "chain, outside view, Step C and diagnosis run <b>16 Sep 2026</b> (runs 61&ndash;67) &middot; outcome opened <b>after</b> the estimate document was fixed (run 68) &middot; no-method control and its Delphi <b>17 Sep</b> (runs 69&ndash;73, five panels)",
  "counts": {
   "elements": 84,
   "leaves": 68,
@@ -49,7 +49,7 @@
    "source": "run 65, converted as run 67 applied"
   }
  ],
- "nomethod_curves_file": "run70_raw/curves_R1_three_panels_pd.json",
+ "nomethod_curves_file": "run72_raw/curves_R1_five_panels_pd.json",
  "parametric": null,
  "fact": {
   "value_h": 13745,
@@ -66,7 +66,7 @@
   "rates": "Lytin-K 1.1",
   "diagnosis": "Lytin-G 1.1",
   "model_note": "Every sensor on this estimate ran on Claude Opus 5 (alias <code>opus</code>, recorded per turn as <code>claude-opus-5</code>), so the model coordinate is held fixed. Claude Code 2.1.270; every prompt reached its sensor byte-identical; every turn ended <code>end_turn</code>.",
-  "nomethod": "no sensor definition, 3 panels &times; 10 bare runs of the pinned run-41 prompt, each panel then run as a Delphi (runs 69&ndash;71, 17 Sep)"
+  "nomethod": "no sensor definition, 5 panels &times; 10 bare runs, each panel then run as a Delphi: three free (runs 69&ndash;71), two under three rules with contestable additions (runs 72&ndash;73), 17 Sep"
  },
  "provenance": [
   {
@@ -106,52 +106,45 @@
   },
   {
    "idx": "0",
-   "title": "No method &times;30 in three panels, each run as a Delphi &middot; runs 69&ndash;71, beside the estimate",
-   "text": "Three panels of ten bare agents with no sensor definition, the pinned prompt of run 41 unchanged, all on 17 September. Thin ochre curves: the thirty independent round-1 answers. Thick ochre: each panel&rsquo;s plain average (solid A, dashed B, dotted C). Thick teal: the same panel after its Delphi &mdash; every participant keeps its context, reads all ten replies anonymous and verbatim, revises or holds; two rounds for panel A, three for B and C. Inside a panel the totals close up (&times;1.38&ndash;1.45 &rarr; &times;1.08&ndash;1.23); between panels they move apart (round-1 means 125 / 129.5 / 135.5, consensus 126.5 / 135 / 147.5 pm); every panel drifts upward and away from the actual (81.8 pm). The final work lists agree on every line the source names; what differs is each panel&rsquo;s own extra lines and whether QA is counted inside the lines or on top. Records: run69_delphi.md, run70_71_delphi_repeats.md. Not part of the run-61 estimate."
+   "title": "No method &times;50 in five panels, each run as a Delphi &middot; runs 69&ndash;73, beside the estimate",
+   "text": "Five panels of ten bare agents on the pinned prompt of run 41, all on 17 September. Thin ochre curves: the fifty independent round-1 answers. Thick teal: the consensus of the three free panels (A solid, B dashed, C dotted) &mdash; 126.5, 135, 147.5 pm. Thick ochre: the consensus of the two panels run under three rules &mdash; a line includes its testing, a line cites the text, additions are contestable by vote (D solid, E dashed) &mdash; 148 and 134 pm. The rules removed every invented line and every separate QA line and made removals as common as additions; they did not bring the panels together (&times;1.10 apart) and did not lower the level. The actual is 81.8 pm. Records: run69_delphi.md, run70_71_delphi_repeats.md, run72_73_delphi_rules.md. Not part of the run-61 estimate."
   }
  ],
  "pooled": [
-  {
-   "id": "panel A averaged",
-   "pen": "ochre",
-   "dash": null,
-   "curves_file": "run69_raw/curves_R1_pd.json",
-   "legend": "Panel A, ten independent runs averaged &mdash; mean of totals 125 pm (run 69)"
-  },
-  {
-   "id": "panel B averaged",
-   "pen": "ochre",
-   "dash": "7 4",
-   "curves_file": "run70_raw/curves_R1_pd.json",
-   "legend": "Panel B, ten independent runs averaged &mdash; mean of totals 129.5 pm (run 70)"
-  },
-  {
-   "id": "panel C averaged",
-   "pen": "ochre",
-   "dash": "2 3",
-   "curves_file": "run71_raw/curves_R1_pd.json",
-   "legend": "Panel C, ten independent runs averaged &mdash; mean of totals 135.5 pm (run 71)"
-  },
   {
    "id": "panel A consensus",
    "pen": "teal",
    "dash": null,
    "curves_file": "run69_raw/curves_R2_pd.json",
-   "legend": "Panel A consensus &mdash; the same ten after 2 Delphi rounds, median 126.5 pm"
+   "legend": "Panel A consensus (run 69, free, no rules) &mdash; median 126.5 pm"
   },
   {
    "id": "panel B consensus",
    "pen": "teal",
    "dash": "7 4",
    "curves_file": "run70_raw/curves_R3_pd.json",
-   "legend": "Panel B consensus &mdash; the same ten after 3 Delphi rounds, median 135 pm"
+   "legend": "Panel B consensus (run 70, free, no rules) &mdash; median 135 pm"
   },
   {
    "id": "panel C consensus",
    "pen": "teal",
    "dash": "2 3",
    "curves_file": "run71_raw/curves_R3_pd.json",
-   "legend": "Panel C consensus &mdash; the same ten after 3 Delphi rounds, median 147.5 pm"
+   "legend": "Panel C consensus (run 71, free, no rules) &mdash; median 147.5 pm"
+  },
+  {
+   "id": "panel D consensus",
+   "pen": "ochre",
+   "dash": null,
+   "curves_file": "run72_raw/curves_R4_pd.json",
+   "legend": "Panel D consensus (run 72, under the three rules) &mdash; median 148 pm"
+  },
+  {
+   "id": "panel E consensus",
+   "pen": "ochre",
+   "dash": "7 4",
+   "curves_file": "run73_raw/curves_R3_pd.json",
+   "legend": "Panel E consensus (run 73, under the three rules) &mdash; median 134 pm"
   }
  ]
 }

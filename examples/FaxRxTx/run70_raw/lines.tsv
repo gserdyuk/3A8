@@ -248,7 +248,7 @@ run 70	P-6	data layer / API		6.0	DB schema + inter-component API fabric + Lustre
 run 70	P-6	CDR		3.0	CDR / billing-data capture (engine excluded)
 run 70	P-6	old-system / reused integration		5.0	Integration with the reused pieces (PoP protocol, routing hand-off) and coexistence with v1
 run 70	P-6	real-stream / load testing	old-system / reused integration	9.0	Integration testing on the real stream, diff against the old system
-run 70	P-6	burst hardening		5.0	Load and burst rig: instrumented proof of 30/s sustained and ~300/s across 16–20 nodes, soak
+run 70	P-6	load / burst rig (a built thing)		5.0	Load and burst rig: instrumented proof of 30/s sustained and ~300/s across 16–20 nodes, soak
 run 70	P-6	rollout / cutover		5.0	Production rollout, traffic migration, cutover, stabilisation to the A2 bar
 run 70	P-6	QA, separate line		5.0	QA beyond the embedded share and beyond the two test lines: regression suites, defect cycles across the run
 run 70	P-6	PM		13.0	PM, coordination, release management (one near-full-time PM across ~21 calendar months)
