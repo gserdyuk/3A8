@@ -8,6 +8,25 @@ Convention: `- [ ]` open · `- [x]` done, with the commit or run that closed it.
 
 ---
 
+## Opened 2026-09-17 — debates among bare estimators (a control series on FaxRxTx)
+
+The author's question: what does a Delphi among the ten no-method runs buy? Run 69 answered for one panel
+(`examples/FaxRxTx/run69_delphi.md`). Open:
+
+- [ ] **Stability across panels** — runs 70 and 71 repeat run 69 with fresh participants; compare the three
+      consensus figures and, more to the point, the three sets of final work lists
+      (`examples/FaxRxTx/run70_delphi_repeats_registration.md`).
+- [ ] **Commit subjects reach the participants.** The harness injects the five most recent commit subjects into
+      every subagent. A subject that states a result against the actual is a leak into any later bare run on that
+      case. Rule adopted: no figure in a commit subject on a case while panels on it may still be launched; the
+      figures go in the body and the run record. Worth a line in `PIPELINE.md` beside the other machine-checkable
+      disciplines, and a check in `tools/` that greps the last five subjects for digits before a launch.
+- [ ] **`findings.md` §3 overstates SEEAgent** (Bui, Dam, Hoda 2025): story points per user story, agents fine-tuned
+      on the project's own history, no ablation of the debate. It does not bear on RFP-stage estimation by
+      identical agents; run 69 does. Awaiting the author's word to amend the paragraph.
+
+---
+
 ## TODO — the three actions, set 2026-08-27
 
 From `docs/status_2026-08-27.md` §7, which also states the goal and the boundaries these serve, and
