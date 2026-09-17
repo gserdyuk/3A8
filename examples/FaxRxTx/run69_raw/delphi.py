@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Run 69 — the moderator's helper for the Delphi among ten bare estimators.
 
-    py -X utf8 delphi.py extract <round>     # transcribe the round's ten replies verbatim, build the next round's sheet
-    py -X utf8 delphi.py stats               # the table of totals and ranges per round
+    py -X utf8 delphi.py [<run_raw dir>] extract <round>   # transcribe the round's ten replies verbatim, build the next sheet
+    py -X utf8 delphi.py [<run_raw dir>] stats             # the table of totals and ranges per round
+
+Without a directory it works on its own folder (run 69). Runs 70 and 71 repeat the experiment with their own folders
+(participants.json, replies, ledger, sheets) and this same script.
 
 The harness keeps each participant's transcript (~/.claude/projects/<project>/<session>/subagents/agent-<id>.jsonl).
 A participant is continued across rounds, so its transcript holds one segment per round: a user message (the round's
@@ -14,6 +17,8 @@ The actual outcome appears only in `stats`, never in a sheet.
 import glob, hashlib, json, os, re, statistics, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+if len(sys.argv) > 1 and os.path.isdir(sys.argv[1]):
+    HERE = os.path.abspath(sys.argv.pop(1))
 PROJ = os.path.expanduser(r'~/.claude/projects/C--home-OhmNova-3A8')
 PARTICIPANTS = json.load(open(os.path.join(HERE, 'participants.json'), encoding='utf-8'))   # {"P-1": agentId, ...}
 ACTUAL_PM = 13745 / 168.0      # the actual, in the prompt's A9 person-months; used by `stats` only
