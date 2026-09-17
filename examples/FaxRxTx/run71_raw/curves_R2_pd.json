@@ -1,0 +1,52 @@
+[
+ {
+  "id": "run71 R2 P-1",
+  "median": 3239,
+  "sigma": 0.167
+ },
+ {
+  "id": "run71 R2 P-2",
+  "median": 3453,
+  "sigma": 0.165
+ },
+ {
+  "id": "run71 R2 P-3",
+  "median": 2693,
+  "sigma": 0.16
+ },
+ {
+  "id": "run71 R2 P-4",
+  "median": 3453,
+  "sigma": 0.165
+ },
+ {
+  "id": "run71 R2 P-5",
+  "median": 3020,
+  "sigma": 0.163
+ },
+ {
+  "id": "run71 R2 P-6",
+  "median": 3117,
+  "sigma": 0.153
+ },
+ {
+  "id": "run71 R2 P-7",
+  "median": 3560,
+  "sigma": 0.164
+ },
+ {
+  "id": "run71 R2 P-8",
+  "median": 2972,
+  "sigma": 0.159
+ },
+ {
+  "id": "run71 R2 P-9",
+  "median": 3024,
+  "sigma": 0.168
+ },
+ {
+  "id": "run71 R2 P-10",
+  "median": 3127,
+  "sigma": 0.163
+ }
+]

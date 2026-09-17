@@ -1,0 +1,152 @@
+[
+ {
+  "id": "run69 R1 P-1",
+  "median": 3113,
+  "sigma": 0.148
+ },
+ {
+  "id": "run69 R1 P-2",
+  "median": 2266,
+  "sigma": 0.165
+ },
+ {
+  "id": "run69 R1 P-3",
+  "median": 2577,
+  "sigma": 0.15
+ },
+ {
+  "id": "run69 R1 P-4",
+  "median": 2899,
+  "sigma": 0.149
+ },
+ {
+  "id": "run69 R1 P-5",
+  "median": 2694,
+  "sigma": 0.161
+ },
+ {
+  "id": "run69 R1 P-6",
+  "median": 2792,
+  "sigma": 0.149
+ },
+ {
+  "id": "run69 R1 P-7",
+  "median": 2609,
+  "sigma": 0.186
+ },
+ {
+  "id": "run69 R1 P-8",
+  "median": 2587,
+  "sigma": 0.162
+ },
+ {
+  "id": "run69 R1 P-9",
+  "median": 2811,
+  "sigma": 0.171
+ },
+ {
+  "id": "run69 R1 P-10",
+  "median": 2597,
+  "sigma": 0.173
+ },
+ {
+  "id": "run70 R1 P-1",
+  "median": 2373,
+  "sigma": 0.164
+ },
+ {
+  "id": "run70 R1 P-2",
+  "median": 2266,
+  "sigma": 0.165
+ },
+ {
+  "id": "run70 R1 P-3",
+  "median": 3239,
+  "sigma": 0.167
+ },
+ {
+  "id": "run70 R1 P-4",
+  "median": 2997,
+  "sigma": 0.139
+ },
+ {
+  "id": "run70 R1 P-5",
+  "median": 2587,
+  "sigma": 0.162
+ },
+ {
+  "id": "run70 R1 P-6",
+  "median": 2373,
+  "sigma": 0.164
+ },
+ {
+  "id": "run70 R1 P-7",
+  "median": 3015,
+  "sigma": 0.159
+ },
+ {
+  "id": "run70 R1 P-8",
+  "median": 3260,
+  "sigma": 0.185
+ },
+ {
+  "id": "run70 R1 P-9",
+  "median": 3015,
+  "sigma": 0.159
+ },
+ {
+  "id": "run70 R1 P-10",
+  "median": 2792,
+  "sigma": 0.149
+ },
+ {
+  "id": "run71 R1 P-1",
+  "median": 3045,
+  "sigma": 0.188
+ },
+ {
+  "id": "run71 R1 P-2",
+  "median": 3015,
+  "sigma": 0.159
+ },
+ {
+  "id": "run71 R1 P-3",
+  "median": 2373,
+  "sigma": 0.164
+ },
+ {
+  "id": "run71 R1 P-4",
+  "median": 3239,
+  "sigma": 0.167
+ },
+ {
+  "id": "run71 R1 P-5",
+  "median": 2384,
+  "sigma": 0.177
+ },
+ {
+  "id": "run71 R1 P-6",
+  "median": 3443,
+  "sigma": 0.156
+ },
+ {
+  "id": "run71 R1 P-7",
+  "median": 2801,
+  "sigma": 0.16
+ },
+ {
+  "id": "run71 R1 P-8",
+  "median": 2479,
+  "sigma": 0.162
+ },
+ {
+  "id": "run71 R1 P-9",
+  "median": 3239,
+  "sigma": 0.167
+ },
+ {
+  "id": "run71 R1 P-10",
+  "median": 3239,
+  "sigma": 0.167
+ }
+]

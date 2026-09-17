@@ -1,0 +1,52 @@
+[
+ {
+  "id": "run70 R2 P-1",
+  "median": 2811,
+  "sigma": 0.171
+ },
+ {
+  "id": "run70 R2 P-2",
+  "median": 2703,
+  "sigma": 0.171
+ },
+ {
+  "id": "run70 R2 P-3",
+  "median": 3020,
+  "sigma": 0.163
+ },
+ {
+  "id": "run70 R2 P-4",
+  "median": 2801,
+  "sigma": 0.16
+ },
+ {
+  "id": "run70 R2 P-5",
+  "median": 2801,
+  "sigma": 0.16
+ },
+ {
+  "id": "run70 R2 P-6",
+  "median": 2899,
+  "sigma": 0.149
+ },
+ {
+  "id": "run70 R2 P-7",
+  "median": 3015,
+  "sigma": 0.159
+ },
+ {
+  "id": "run70 R2 P-8",
+  "median": 3024,
+  "sigma": 0.168
+ },
+ {
+  "id": "run70 R2 P-9",
+  "median": 2796,
+  "sigma": 0.155
+ },
+ {
+  "id": "run70 R2 P-10",
+  "median": 3122,
+  "sigma": 0.158
+ }
+]

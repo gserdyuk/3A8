@@ -213,7 +213,7 @@ def main():
         comps = comps if isinstance(comps, list) else [{'id': k, **v} for k, v in comps.items()]
         chart.setdefault('pooled', []).append({'id': p['id'], 'pen': p.get('pen', 'ochre'), 'dash': p.get('dash'),
                                                'components': [{'median': c['median'], 'sigma': c['sigma']} for c in comps]})
-        chart['legend'].append({'cls': '%s thick%s' % (p.get('pen', 'ochre'), ' dash' if p.get('dash') else ''), 'text': p['legend']})
+        chart['legend'].append({'cls': '%s thick%s' % (p.get('pen', 'ochre'), (' dot' if str(p.get('dash')).startswith('2') else ' dash') if p.get('dash') else ''), 'text': p['legend']})
     if N.get('fact'):
         chart['fact'] = {'value': pd(N['fact']['value_h']), 'label': N['fact'].get('label') or ('the outcome &mdash; %d' % pd(N['fact']['value_h']))}
         chart['legend'].append({'cls': 'fact', 'text': N['fact'].get('legend') or 'The documented outcome &mdash; %d' % pd(N['fact']['value_h'])})
